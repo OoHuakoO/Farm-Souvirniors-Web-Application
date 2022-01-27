@@ -19,7 +19,7 @@ export default function navbar() {
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
-            font-family: 'Prompt', sans-serif;
+            font-family: "Prompt", sans-serif;
             font-style: normal;
             font-weight: bold;
             font-size: 24px;

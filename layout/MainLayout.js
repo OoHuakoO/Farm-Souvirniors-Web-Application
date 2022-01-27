@@ -23,16 +23,19 @@ export default function MainLayout({ children }) {
           rel="stylesheet"
           href="https://www.w3schools.com/w3css/4/w3.css"
         />
-      {/* Google Web Fonts */}
-       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-       <div>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
- <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;700&display=swap" rel="stylesheet" />
-
-</div>
-
-
+        {/* Google Web Fonts */}
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+        <div>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;700&display=swap"
+            rel="stylesheet"
+          />
+        </div>
       </Head>
       <Navbar />
       <Sidebar />

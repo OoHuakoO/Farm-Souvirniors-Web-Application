@@ -47,7 +47,7 @@ export default function Sidebar() {
           }
 
           .sidenav a {
-            font-family: 'Prompt', sans-serif;
+            font-family: "Prompt", sans-serif;
             padding: 35px 6px 6px 50px;
             text-decoration: none;
             font-size: 20px;
