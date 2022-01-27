@@ -19,7 +19,7 @@ export default function navbar() {
 
         {isAuthenticated ? (
           <div>
-            <p style={{ color: "white" }}>Connected to BSC {walletAddress}</p>
+            <p style={{ color: "white" }}>Connected to Address {walletAddress}</p>
             <div onClick={() => logout()} className="buttonLogin">
               <p>logout </p>
             </div>
