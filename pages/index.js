@@ -1,6 +1,7 @@
 import React from "react";
 
 const index = () => {
+  
   return (
     <div>
       <div className="main-home" style={{ marginLeft: "25%" }}>
