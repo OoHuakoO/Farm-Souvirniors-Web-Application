@@ -5,12 +5,24 @@ export default function navbar() {
     <div>
       <div className="topnav" style={{ marginLeft: "15%" }}>
         <h1>FARM SOUVIRNIORS</h1>
+        <div className="buttonLogin">
+          <p>Login</p>
+        </div>
       </div>
+
       <style jsx>
         {`
+          .buttonLogin {
+            height: 30px;
+            width: 50px;
+            background-color: red;
+            margin-left: 100px;
+          }
           .topnav {
             overflow: hidden;
             background-color: #272c32;
+            display: flex;
+            flex-direction: row;
           }
 
           .topnav h1 {
