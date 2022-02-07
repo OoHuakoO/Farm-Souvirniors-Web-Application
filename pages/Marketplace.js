@@ -1,8 +1,10 @@
 import React from 'react';
+import styles from "../styles/Marketplace.module.css";
 
 export default function Marketplace() {
-  return <div style={{ marginLeft: "15%" }}> 
-      <h1>Marketplace</h1>
-     
+  return <div className={styles.mainhome}> 
+  
+      <h1 >Marketplace</h1>
+      
   </div>;
 }
