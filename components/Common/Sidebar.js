@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../../styles/Sidebar.module.css";
 
 export default function Sidebar() {
   return (
@@ -20,47 +21,22 @@ export default function Sidebar() {
         </a>
       </div> */}
 
-      <div className="sidenav">
+      <div className={styles.sidenav}>
         <a href="/PlayGame">
-          <span className="material-icons">sports_esports</span>Play Game
+          <span className="material-icons">sports_esports</span>
+         <span> Play Game</span>
         </a>
         <a href="/Marketplace">
           {" "}
-          <span className="material-icons">shopping_bag</span>Marketplace
+          <span className="material-icons">shopping_bag</span>
+          <span>Marketplace</span>
         </a>
         <a href="/MyItem">
-          <span className="material-icons">person</span>My Item
+          <span className="material-icons">person</span>
+          <span>My Item</span>
         </a>
       </div>
-      <style jsx>
-        {`
-          .sidenav {
-            height: 100%;
-            width: 15%;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #2e373f;
-            overflow-x: hidden;
-            padding-top: 100px;
-          }
-
-          .sidenav a {
-            font-family: "Prompt", sans-serif;
-            padding: 35px 6px 6px 50px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #ffffff;
-            display: block;
-            margin: auto;
-          }
-
-          .sidenav a:hover {
-            color: #f1f1f1;
-          }
-        `}
-      </style>
+      
     </div>
   );
 }
