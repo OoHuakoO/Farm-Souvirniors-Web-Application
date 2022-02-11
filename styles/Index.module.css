@@ -1,3 +1,29 @@
-/* .mainhome {
-    margin-left: 20%;
-} */
+.homemain {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.homeWelcome h2{
+  font-family: "Prompt", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 86px;
+  line-height: 105px;
+  text-align: center;
+
+  color: #7c8289;
+}
+.buttonLogin {
+  width: 200px;
+  height: 50px;
+  background: #ffa34c;
+  border-radius: 10px;
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+}

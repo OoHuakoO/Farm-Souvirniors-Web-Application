@@ -1,10 +1,11 @@
 import Image from "next/image";
-import binance from "../../public/binance-coin-bnb-logo.png";
+import Ethereum from "../../public/Ethereum-icon-purple.png";
 import exchange from "../../public/Exchange.svg";
 import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import Web3 from "web3";
 import styles from "../../styles/Navbar.module.css";
+
 export default function navbar() {
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const [walletAddress, setWalletAddress] = useState();
@@ -27,17 +28,17 @@ export default function navbar() {
       </div>
       {/* Nav-right */}
       <div>
-        {isAuthenticated ? (
+        {!isAuthenticated ? (
           <div className={styles.munuNavbarRight}>
             <div className={styles.buttonNavbarConnected}>
               <div>
                 <Image
-                  src={binance}
-                  alt="binance"
-                  width={20}
+                  src={Ethereum}
+                  alt="Ethereum"
+                  width={25}
                   automatically
                   provided
-                  height={20}
+                  height={25}
                   automatically
                   provided
                   blurDataURL="data:..."

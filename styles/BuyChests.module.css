@@ -1,0 +1,57 @@
+.BuyChestsPages {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  padding: 50px 20px;
+  
+}
+.CardBuyChests1 {
+  width: 360px;
+  height: 470px;
+  background-color: #ffd177;
+  border-radius: 10px;
+  padding: 30px;
+}
+.CardBuyChests2 {
+  width: 300px;
+  height: 410px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.buttonBuy {
+  width: 192px;
+  height: 45px;
+  background: #242a30;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+  color: aliceblue;
+}
+.typeBox {
+  font-family: "Prompt", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  padding: 5px;
+}
+.bnb {
+  font-family: "Prompt", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
