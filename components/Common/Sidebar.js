@@ -1,5 +1,14 @@
 import React from "react";
 import styles from "../../styles/Sidebar.module.css";
+import {
+  ProSidebar,
+  Menu,
+  MenuItem,
+  SubMenu,
+  SidebarHeader,
+  SidebarFooter,
+  SidebarContent
+} from "react-pro-sidebar";
 
 export default function Sidebar() {
   return (
@@ -23,6 +32,7 @@ export default function Sidebar() {
           <span>My Item</span>
           </div>
         </a>
+        
       </div>
     </div>
   );
