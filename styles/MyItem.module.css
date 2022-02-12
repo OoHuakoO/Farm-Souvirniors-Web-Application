@@ -1,0 +1,103 @@
+.mainMyItem {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  padding: 50px 20px;
+  flex-wrap: wrap;
+}
+.cardMyItem1 {
+  max-width: 350px;
+  width: 100%;
+  height: 350px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 30px 0px 30px 30px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.cardMyItem2 {
+  /* width: 300px; */
+  height: 260px;
+  background-color: #f8f4d3;
+  border-radius: 10px 10px 0px 0px;
+  padding: 20px;
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; */
+}
+.uidCard {
+  font-family: "Prompt", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 27px;
+}
+.imageMyItem {
+  display: flex;
+  justify-content: center;
+}
+.NameCard {
+  text-align: center;
+  font-family: "Prompt", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+}
+.buttonSell {
+  height: 40px;
+  width: 150px;
+  padding: 10px 15px;
+  background: #272c32;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color: aliceblue;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* CardSell */
+
+.buttonCancleSell {
+height: 40px;
+  width: 150px;
+  padding: 10px 15px;
+  background: #ffffff;
+  border: 1px solid  #FF0909;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color:  #FF0909;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* CardMarketplace */
+
+.cardMyItem3 {
+    max-width: 350px;
+    width: 100%;
+    height: 400px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 30px 0px 30px 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .cardMyItem4 {
+    /* width: 300px; */
+    height: 300px;
+    background-color: #f8f4d3;
+    border-radius: 10px 10px 0px 0px;
+    padding: 20px;
+    /* display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; */
+  }

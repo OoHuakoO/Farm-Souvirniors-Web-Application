@@ -1,10 +1,12 @@
 import Image from "next/image";
+
 import Ethereum from "../../public/Ethereum-icon-purple.png";
 import exchange from "../../public/Exchange.svg";
 import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import Web3 from "web3";
 import styles from "../../styles/Navbar.module.css";
+import { Link } from "react-router-dom";
 
 export default function navbar() {
   const { authenticate, isAuthenticated, logout } = useMoralis();
@@ -23,7 +25,7 @@ export default function navbar() {
   return (
     <div className={styles.navbarLayout}>
       {/* Nav-left */}
-      <div  className={styles.munuNavbarLeft}>
+      <div className={styles.munuNavbarLeft}>
         <h1>FARM SOUVIRNIORS</h1>
       </div>
       {/* Nav-right */}
@@ -39,18 +41,20 @@ export default function navbar() {
                   automatically
                   provided
                   height={25}
-                  automatically
-                  provided
                   blurDataURL="data:..."
-                  automatically
-                  provided
                   placeholder="blur" // Optional blur-up while loading
                 />
               </div>
               <div>Connected to Address {walletAddress}</div>
             </div>
-            <div className={[styles.buttonNavbar, styles.buttonNavbarConnected].join(" ")}>
-              <div >
+
+            <div
+              className={[
+                styles.buttonNavbar,
+                styles.buttonNavbarConnected,
+              ].join(" ")}
+            >
+              <div>
                 <Image
                   src={exchange}
                   alt="exchange"
@@ -58,11 +62,7 @@ export default function navbar() {
                   automatically
                   provided
                   height={15}
-                  automatically
-                  provided
                   blurDataURL="data:..."
-                  automatically
-                  provided
                   placeholder="blur" // Optional blur-up while loading
                 />
               </div>
