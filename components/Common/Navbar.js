@@ -6,11 +6,13 @@ import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import Web3 from "web3";
 import styles from "../../styles/Navbar.module.css";
+import NFTContractBuild from "contracts/NFT.json";
 import { Link } from "react-router-dom";
 
 export default function navbar() {
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const [walletAddress, setWalletAddress] = useState();
+  const [contractNFT, setContractNFT] = useState();
   const getAddressWallet = async () => {
     const web3 = new Web3(
       Web3.givenProvider ||
@@ -19,8 +21,21 @@ export default function navbar() {
     const accounts = await web3.eth.requestAccounts();
     setWalletAddress(accounts[0]);
   };
+  const getContract = async () => {
+    const web3 = new Web3(
+      Web3.givenProvider ||
+        "https://ropsten.infura.io/v3/b0f95459c5a149cc9032a56d32fd1bdf"
+    );
+    const netId = await web3.eth.net.getId()
+    NFT = new web3.eth.Contract(
+      NFTContractBuild.abi,
+      NFTContractBuild.networks[netId].address
+    );
+    setContractNFT(NFT);
+  };
   useEffect(() => {
     getAddressWallet();
+    getContract();
   }, []);
   return (
     <div className={styles.navbarLayout}>
@@ -70,12 +85,19 @@ export default function navbar() {
             </div>
             <div
               onClick={() => {
-                console.log('logout')
+                console.log("logout");
                 logout();
               }}
               className={[styles.buttonNavbar, styles.logout].join(" ")}
             >
               Logout
+            </div>
+            <div
+              onClick={() => {
+                craftNFT();
+              }}
+            >
+              test
             </div>
           </div>
         ) : (

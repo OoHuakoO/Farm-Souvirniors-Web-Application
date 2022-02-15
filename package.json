@@ -8,6 +8,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@truffle/contract": "^4.4.8",
+    "@truffle/hdwallet-provider": "^2.0.3",
     "@walletconnect/web3-provider": "^1.7.1",
     "@web3auth/web3auth": "^0.2.4",
     "@zeit/next-css": "^1.0.1",
@@ -20,8 +22,10 @@
     "react-moralis": "^1.1.0",
     "react-pro-sidebar": "^0.7.1",
     "react-router-dom": "^6.2.1",
+    "truffle-hdwallet-provider": "^1.0.17",
     "web3": "^1.7.0",
-    "yarn": "^1.22.17"
+    "yarn": "^1.22.17",
+    "contracts" : "file:./build/contracts"
   },
   "devDependencies": {
     "eslint": "8.6.0",
