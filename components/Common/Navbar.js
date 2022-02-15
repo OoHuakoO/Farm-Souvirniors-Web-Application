@@ -30,7 +30,7 @@ export default function navbar() {
       </div>
       {/* Nav-right */}
       <div>
-        {!isAuthenticated ? (
+        {isAuthenticated ? (
           <div className={styles.munuNavbarRight}>
             <div className={styles.buttonNavbarConnected}>
               <div>
@@ -69,7 +69,10 @@ export default function navbar() {
               Exchange
             </div>
             <div
-              onClick={() => logout()}
+              onClick={() => {
+                console.log('logout')
+                logout();
+              }}
               className={[styles.buttonNavbar, styles.logout].join(" ")}
             >
               Logout
