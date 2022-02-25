@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import NFTContractBuild from "contracts/NFT.json";
-import RandomBoxContractBuild from "contracts/NFT.json";
+import RandomBoxContractBuild from "contracts/RandomBox.json";
 let NFT;
 let RandomBox;
 // Development
@@ -13,6 +13,7 @@ const web3 = new Web3(
 
 const getContract = async () => {
   const netId = await web3.eth.net.getId();
+  console.log(netId)
   NFT = new web3.eth.Contract(
     NFTContractBuild.abi,
     NFTContractBuild.networks[netId].address

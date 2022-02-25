@@ -38,6 +38,14 @@ export default function Sidebar() {
             </div>
           </a>
         </Link>
+        <Link href="/Craft">
+          <a>
+            <div className={styles.menuplaygame}>
+              <span className="material-icons">psychology</span>
+              <span>Craft</span>
+            </div>
+          </a>
+        </Link>
       </div>
     </div>
   );
