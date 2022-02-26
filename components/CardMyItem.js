@@ -4,7 +4,9 @@ import Image from "next/image";
 import Corn from "../public/corn.png";
 
 const CardMyItem = (props) => {
+  
   return (
+
     <div className={styles.cardMyItem1}>
       <div className={styles.cardMyItem2}>
         <div className={styles.uidCard}>

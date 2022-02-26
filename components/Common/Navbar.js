@@ -56,6 +56,7 @@ export default function navbar() {
             >
               <div>
                 <Image
+                className={styles.exchangeSVG}
                   src={exchange}
                   alt="exchange"
                   width={15}

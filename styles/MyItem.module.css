@@ -60,18 +60,36 @@
   justify-content: center;
   cursor: pointer;
 }
+.buttonCategory {
+  padding: 10px 20px;
+  background-color: #d6d1ce;
+  outline: none;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-right: 10px;
+}
+.buttonCategoryActive {
+  padding: 10px 20px;
+  background-color: #ffa34c;
+  outline: none;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-right: 10px;
+}
 
 /* CardSell */
 
 .buttonCancleSell {
-height: 40px;
+  height: 40px;
   width: 150px;
   padding: 10px 15px;
   background: #ffffff;
-  border: 1px solid  #FF0909;
+  border: 1px solid #ff0909;
   box-sizing: border-box;
   border-radius: 10px;
-  color:  #FF0909;
+  color: #ff0909;
   margin: auto;
   display: flex;
   align-items: center;
@@ -82,22 +100,24 @@ height: 40px;
 /* CardMarketplace */
 
 .cardMyItem3 {
-    max-width: 350px;
-    width: 100%;
-    height: 400px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    margin: 30px 0px 30px 30px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  .cardMyItem4 {
-    /* width: 300px; */
-    height: 300px;
-    background-color: #f8f4d3;
-    border-radius: 10px 10px 0px 0px;
-    padding: 20px;
-    /* display: flex;
+  max-width: 350px;
+  width: 100%;
+  height: 400px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 30px 0px 30px 30px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.cardMyItem4 {
+  /* width: 300px; */
+  height: 300px;
+  background-color: #f8f4d3;
+  border-radius: 10px 10px 0px 0px;
+  padding: 20px;
+  /* display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center; */
-  }
+}
+
+/* CardCraft */

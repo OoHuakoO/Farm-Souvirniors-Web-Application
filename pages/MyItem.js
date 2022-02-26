@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/MyItem.module.css";
 import Corn from "../public/corn.png";
 import CardMyItem from "../components/CardMyItem";
@@ -9,36 +9,50 @@ export default function MyItem() {
       name: "Corn",
       UID: 10024510303,
       image: "Corn.png",
+      category: "Vetgetable",
     },
     {
       name: "Corn",
       UID: 10024510303,
       image: "Corn.png",
+      category: "Animal",
+    },
+    {
+      name: "Corn",
+      UID: 100245103035,
+      image: "Corn.png",
+      category: "Fruit",
     },
     {
       name: "Corn",
       UID: 10024510303,
       image: "Corn.png",
+      category: "Vetgetable",
     },
-    {
-      name: "Corn",
-      UID: 10024510303,
-      image: "Corn.png",
-    },
-   
   ];
+  const categories = ["All", "Fruit", "Vetgetable", "Chest"];
+  const [CurrentCategory, setCurrentCategory] = useState("All");
+
   return (
-    <div className={styles.mainMyItem}>
-      {
-        cardMyItem.map((item,index) => {
+    <div>
+      <div> Class : 
+        {categories.map((category) => {
           return (
-            <CardMyItem key={index} {...item} />
-          
+            <button className={CurrentCategory === category ? styles.buttonCategoryActive : styles.buttonCategory} onClick={()=>setCurrentCategory(category)} key={category}>{category}</button>
           )
-        }
-        )
-      }
-      
+        })}
+      </div>
+      <div className={styles.mainMyItem}>
+        {CurrentCategory == "All"
+          ? cardMyItem.map((item, index) => {
+              return <CardMyItem key={index} {...item} />;
+            })
+          : cardMyItem
+              .filter((_item) => CurrentCategory === _item.category)
+              .map((item, index) => {
+                return <CardMyItem key={index} {...item} />;
+              })}
+      </div>
     </div>
   );
 }

@@ -45,4 +45,8 @@
 .buttonNavbar:hover {
   border: 1px solid #ffa34c;
   color: #ffa34c;
+  
+}
+.buttonNavbar:hover .exchangeSVG {
+  filter: invert(82%) sepia(11%) saturate(6158%) hue-rotate(324deg) brightness(102%) contrast(101%) !important; 
 }
