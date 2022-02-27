@@ -1,5 +1,3 @@
 export default {
-    apiBaseURLLocal: 'http://localhost:8000',
-    apiBaseURLProduction : ''
-  };
-  
+  apiBaseURL: "https://farm-souvirnior-project.herokuapp.com",
+};

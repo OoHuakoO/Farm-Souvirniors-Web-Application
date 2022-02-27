@@ -3,7 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import { MoralisProvider } from "react-moralis";
 function MyApp({ Component, pageProps }) {
   return (
-    <MoralisProvider appId="kPg7clzA2Be7arc960GrpLVJEaXZh0X4u9h3VNjq" serverUrl="https://hqgfasdwij2x.usemoralis.com:2053/server">
+    <MoralisProvider appId="b5cFwbXEDsLEqcWRFCHCWrMl6oIeDecs4BirPL4H" serverUrl="https://dvtlqjh2dbih.usemoralis.com:2053/server">
       <MainLayout>
         <Component {...pageProps} />
       </MainLayout>
