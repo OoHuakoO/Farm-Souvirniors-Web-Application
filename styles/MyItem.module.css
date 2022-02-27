@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  padding: 50px 20px;
+  padding: 0px 20px;
   flex-wrap: wrap;
 }
 .cardMyItem1 {
@@ -21,6 +21,7 @@
   background-color: #f8f4d3;
   border-radius: 10px 10px 0px 0px;
   padding: 20px;
+  cursor: pointer;
   /* display: flex;
   justify-content: center;
   flex-direction: column;
@@ -60,14 +61,21 @@
   justify-content: center;
   cursor: pointer;
 }
+.buttonSell:hover {
+  border: 1px solid #ffa34c;
+  color: aliceblue;
+  background-color: #ffa34c;
+  
+}
 .buttonCategory {
   padding: 10px 20px;
   background-color: #d6d1ce;
+  color: #989695;
   outline: none;
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  margin-right: 10px;
+  margin: 0px 10px;
 }
 .buttonCategoryActive {
   padding: 10px 20px;
@@ -76,7 +84,10 @@
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  margin-right: 10px;
+  margin: 0px 10px;
+}
+.maincategory {
+  padding: 20px 40px;
 }
 
 /* CardSell */
@@ -96,6 +107,12 @@
   justify-content: center;
   cursor: pointer;
 }
+.buttonCancleSell:hover {
+  border: 1px solid #ff0909;
+  color: #ffffff;
+  background-color: #ff0909;
+  
+}
 
 /* CardMarketplace */
 
@@ -114,6 +131,7 @@
   background-color: #f8f4d3;
   border-radius: 10px 10px 0px 0px;
   padding: 20px;
+  cursor: pointer;
   /* display: flex;
     justify-content: center;
     flex-direction: column;
@@ -121,3 +139,36 @@
 }
 
 /* CardCraft */
+.cardMyItem5 {
+  max-width: 350px;
+  width: 100%;
+  height: 500px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 30px 0px 30px 30px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.cardMyItem6 {
+  /* width: 300px; */
+  height: 300px;
+  background-color: #f8f4d3;
+  border-radius: 10px 10px 0px 0px;
+  padding: 20px 20px 0px 20px;
+  cursor: pointer;
+  /* display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; */
+}
+.popupCraft {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0px 0px 0px;
+  cursor: pointer;
+  
+}
+.popupCraft:hover {
+  color: #ffa34c;
+  
+}
+

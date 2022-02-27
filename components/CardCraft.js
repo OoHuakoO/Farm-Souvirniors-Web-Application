@@ -2,12 +2,13 @@ import React from 'react';
 import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import Corn from "../public/corn.png";
-
+import coinApple from "../public/coinApple.png";
+import coinWood from "../public/coinWood.svg";
 
 const CardCraft = (props) => {
   return (
-    <div className={styles.cardMyItem1}>
-      <div className={styles.cardMyItem2}>
+    <div className={styles.cardMyItem5}>
+      <div className={styles.cardMyItem6}>
         <div className={styles.uidCard}>
           <span>UID : </span>
           <span>{props.UID}</span>
@@ -24,12 +25,15 @@ const CardCraft = (props) => {
             placeholder="blur" // Optional blur-up while loading
           />
         </div>
+        <div >
+        <span className={styles.popupCraft}>ดูเพิ่มเติม</span>
+      </div>
       </div>
       <div className={styles.NameCard}>
         <span>{props.name}</span>
       </div>
-      <div className={styles.NameCard}>
-        <span>{props.name}</span>
+      <div className={styles.coinCraft}>
+        <span>{props.coin1}</span>
       </div>
       <div className={styles.buttonSell}>
         <span>Craft</span>

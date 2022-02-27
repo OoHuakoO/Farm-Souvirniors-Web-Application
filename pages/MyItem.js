@@ -30,12 +30,12 @@ export default function MyItem() {
       category: "Vetgetable",
     },
   ];
-  const categories = ["All", "Fruit", "Vetgetable", "Chest"];
+  const categories = ["All","Animal","Fruit", "Vetgetable", "Chest"];
   const [CurrentCategory, setCurrentCategory] = useState("All");
 
   return (
     <div>
-      <div> Class : 
+      <div className={styles.maincategory}> Class : 
         {categories.map((category) => {
           return (
             <button className={CurrentCategory === category ? styles.buttonCategoryActive : styles.buttonCategory} onClick={()=>setCurrentCategory(category)} key={category}>{category}</button>
