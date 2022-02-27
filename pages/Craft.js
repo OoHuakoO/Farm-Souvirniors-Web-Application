@@ -70,17 +70,6 @@ export default function Craft() {
               })}
       </div>
     </div>
-    // <div className={styles.mainMyItem}>
-    //   {
-    //    cardSell.map((item,index) => {
-    //       return (
-    //         <CardCraft key={index} {...item} />
-          
-    //       )
-    //     }
-    //     )
-    //   }
-      
-    // </div>
+    
   )
 }

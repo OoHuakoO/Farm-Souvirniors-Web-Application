@@ -54,17 +54,6 @@ export default function Marketplace() {
               })}
       </div>
     </div>
-    // <div className={styles.mainMyItem}>
-    //   {
-    //    cardMarketplace.map((item,index) => {
-    //       return (
-    //         <CardMarketplace key={index} {...item} />
-          
-    //       )
-    //     }
-    //     )
-    //   }
-      
-    // </div>
+    
   );
 }

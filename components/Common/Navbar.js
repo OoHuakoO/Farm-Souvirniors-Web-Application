@@ -6,6 +6,7 @@ import { useMoralis } from "react-moralis";
 import styles from "../../styles/Navbar.module.css";
 import { getContract, craftNFT } from "../../web3";
 import Web3 from "web3";
+import Link from "next/link";
 export default function navbar() {
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const [walletAddress, setWalletAddress] = useState();
@@ -35,8 +36,6 @@ export default function navbar() {
                   src={Ethereum}
                   alt="Ethereum"
                   width={25}
-                  automatically
-                  provided
                   height={25}
                   blurDataURL="data:..."
                   placeholder="blur" // Optional blur-up while loading
@@ -44,7 +43,7 @@ export default function navbar() {
               </div>
               <div>Connected to Address {walletAddress}</div>
             </div>
-
+            <Link href="/Exchange">
             <div
               className={[
                 styles.buttonNavbar,
@@ -57,8 +56,6 @@ export default function navbar() {
                   src={exchange}
                   alt="exchange"
                   width={15}
-                  automatically
-                  provided
                   height={15}
                   blurDataURL="data:..."
                   placeholder="blur" // Optional blur-up while loading
@@ -66,6 +63,7 @@ export default function navbar() {
               </div>
               Exchange
             </div>
+            </Link>
             <div
               onClick={() => {
                 logout();

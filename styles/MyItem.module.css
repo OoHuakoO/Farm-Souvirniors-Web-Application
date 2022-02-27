@@ -9,7 +9,7 @@
 .cardMyItem1 {
   max-width: 350px;
   width: 100%;
-  height: 350px;
+  height: 370px;
   background-color: #ffffff;
   border-radius: 10px;
   margin: 30px 0px 30px 30px;
@@ -45,6 +45,7 @@
   font-weight: 500;
   font-size: 24px;
   line-height: 36px;
+  padding: 10px 0px;
 }
 .buttonSell {
   height: 40px;
@@ -65,7 +66,6 @@
   border: 1px solid #ffa34c;
   color: aliceblue;
   background-color: #ffa34c;
-  
 }
 .buttonCategory {
   padding: 10px 20px;
@@ -111,7 +111,6 @@
   border: 1px solid #ff0909;
   color: #ffffff;
   background-color: #ff0909;
-  
 }
 
 /* CardMarketplace */
@@ -119,7 +118,7 @@
 .cardMyItem3 {
   max-width: 350px;
   width: 100%;
-  height: 400px;
+  height: 410px;
   background-color: #ffffff;
   border-radius: 10px;
   margin: 30px 0px 30px 30px;
@@ -142,7 +141,7 @@
 .cardMyItem5 {
   max-width: 350px;
   width: 100%;
-  height: 500px;
+  height: 455px;
   background-color: #ffffff;
   border-radius: 10px;
   margin: 30px 0px 30px 30px;
@@ -150,25 +149,70 @@
 }
 .cardMyItem6 {
   /* width: 300px; */
-  height: 300px;
+  height: 250px;
   background-color: #f8f4d3;
   border-radius: 10px 10px 0px 0px;
-  padding: 20px 20px 0px 20px;
+  padding: 20px;
   cursor: pointer;
   /* display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center; */
 }
-.popupCraft {
-  display: flex;
-  justify-content: flex-end;
-  padding: 20px 0px 0px 0px;
-  cursor: pointer;
-  
-}
-.popupCraft:hover {
-  color: #ffa34c;
-  
-}
 
+.coinCraft {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.coinCraft1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0px 20px 20px 20px;
+}
+.coinCraft2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0px 20px 20px 20px;
+}
+.coinCraft1Icon {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.coinCraft2Icon {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.coinCraft1Coin {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+  font-family: "Prompt", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 36px;
+}
+.coinCraft2Coin {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+  font-family: "Prompt", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 36px;
+}
+.costCraft {
+  padding: 0px 20px;
+  font-family: "Prompt", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 36px;
+}

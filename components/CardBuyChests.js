@@ -13,8 +13,7 @@ const CardBuychests = (props) => {
             src={"/../public/" + props.image}
             alt="Box1"
             width={200}
-            automatically
-            provided
+           
             height={200}
             blurDataURL="data:..."
             placeholder="blur" // Optional blur-up while loading
@@ -33,8 +32,7 @@ const CardBuychests = (props) => {
               src={Ethereum}
               alt="Ethereum"
               width={25}
-              automatically
-              provided
+              
               height={25}
               blurDataURL="data:..."
               placeholder="blur" // Optional blur-up while loading

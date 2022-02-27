@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import styles from "../styles/MyItem.module.css";
 import Corn from "../public/corn.png";
 import CardSell from "../components/CardSell";
@@ -29,17 +29,28 @@ export default function Sell() {
       image: "Corn.png",
       category: "Vetgetable",
     },
-   
   ];
-  const categories = ["All","Animal","Fruit", "Vetgetable", "Chest"];
+  const categories = ["All", "Animal", "Fruit", "Vetgetable", "Chest"];
   const [CurrentCategory, setCurrentCategory] = useState("All");
   return (
     <div>
-      <div className={styles.maincategory}> Class : 
+      <div className={styles.maincategory}>
+        {" "}
+        Class :
         {categories.map((category) => {
           return (
-            <button className={CurrentCategory === category ? styles.buttonCategoryActive : styles.buttonCategory} onClick={()=>setCurrentCategory(category)} key={category}>{category}</button>
-          )
+            <button
+              className={
+                CurrentCategory === category
+                  ? styles.buttonCategoryActive
+                  : styles.buttonCategory
+              }
+              onClick={() => setCurrentCategory(category)}
+              key={category}
+            >
+              {category}
+            </button>
+          );
         })}
       </div>
       <div className={styles.mainMyItem}>
@@ -54,17 +65,5 @@ export default function Sell() {
               })}
       </div>
     </div>
-    // <div className={styles.mainMyItem}>
-    //   {
-    //    cardSell.map((item,index) => {
-    //       return (
-    //         <CardSell key={index} {...item} />
-          
-    //       )
-    //     }
-    //     )
-    //   }
-      
-    // </div>
   );
 }

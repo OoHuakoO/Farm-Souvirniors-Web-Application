@@ -21,8 +21,7 @@ const CardMarketplace = (props) => {
             src={"/../public/" + props.image}
             alt="Corn"
             width={200}
-            automatically
-            provided
+           
             height={200}
             blurDataURL="data:..."
             placeholder="blur" // Optional blur-up while loading
@@ -37,8 +36,7 @@ const CardMarketplace = (props) => {
                   src={Ethereum}
                   alt="Ethereum"
                   width={25}
-                  automatically
-                  provided
+                  
                   height={25}
                   blurDataURL="data:..."
                   placeholder="blur" // Optional blur-up while loading

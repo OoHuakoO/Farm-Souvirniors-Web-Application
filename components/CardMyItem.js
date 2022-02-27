@@ -18,8 +18,7 @@ const CardMyItem = (props) => {
             src={"/../public/" + props.image}
             alt="Corn"
             width={200}
-            automatically
-            provided
+           
             height={200}
             blurDataURL="data:..."
             placeholder="blur" // Optional blur-up while loading
