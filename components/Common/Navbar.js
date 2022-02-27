@@ -1,15 +1,17 @@
+
 import Image from "next/image";
 import Ethereum from "../../public/Ethereum-icon-purple.png";
 import exchange from "../../public/Exchange.svg";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useContext} from "react";
 import { useMoralis } from "react-moralis";
 import styles from "../../styles/Navbar.module.css";
 import { getContract, craftNFT } from "../../web3";
+import { useUserState } from '../../context/user';
 import Web3 from "web3";
 export default function navbar() {
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const [walletAddress, setWalletAddress] = useState();
-
+  const { address_wallet } = useMissionsState();
   const getAddressWallet = async () => {
     const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
     const accounts = await web3.eth.requestAccounts();
