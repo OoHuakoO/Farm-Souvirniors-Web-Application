@@ -29,7 +29,7 @@ export default function MyItem() {
       category: "Vetgetable",
     },
   ];
-  const categories = ["All", "Animal", "Fruit", "Vetgetable", "Chest"];
+  const categories = ["all", "animal", "fruit", "vegetable", "chest"];
   const [CurrentCategory, setCurrentCategory] = useState("All");
 
   return (
@@ -54,7 +54,7 @@ export default function MyItem() {
         })}
       </div>
       <div className={styles.mainMyItem}>
-        {CurrentCategory == "All"
+        {CurrentCategory == "all"
           ? cardMyItem.map((item, index) => {
               return <CardMyItem key={index} {...item} />;
             })

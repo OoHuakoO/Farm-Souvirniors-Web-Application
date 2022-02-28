@@ -23,7 +23,6 @@ export default function navbar() {
     const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
     const accounts = await web3.eth.requestAccounts();
     const response = await Login(accounts[0]);
-    console.log(response.data);
   };
   const logoutUser = () => {
     localStorage.removeItem("address_wallet");

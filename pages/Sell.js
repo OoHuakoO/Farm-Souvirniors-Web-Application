@@ -30,7 +30,7 @@ export default function Sell() {
       category: "Vetgetable",
     },
   ];
-  const categories = ["All", "Animal", "Fruit", "Vetgetable", "Chest"];
+  const categories = ["all", "animal", "fruit", "vegetable", "chest"];
   const [CurrentCategory, setCurrentCategory] = useState("All");
   return (
     <div>
@@ -54,7 +54,7 @@ export default function Sell() {
         })}
       </div>
       <div className={styles.mainMyItem}>
-        {CurrentCategory == "All"
+        {CurrentCategory == "all"
           ? cardSell.map((item, index) => {
               return <CardSell key={index} {...item} />;
             })

@@ -31,7 +31,7 @@ export default function Marketplace() {
     },
    
   ];
-  const categories = ["All","Animal","Fruit", "Vetgetable", "Chest"];
+  const categories = ["all","animal","fruit", "vegetable", "chest"];
   const [CurrentCategory, setCurrentCategory] = useState("All");
   return (
     <div>
@@ -43,7 +43,7 @@ export default function Marketplace() {
         })}
       </div>
       <div className={styles.mainMyItem}>
-        {CurrentCategory == "All"
+        {CurrentCategory == "all"
           ? cardMarketplace.map((item, index) => {
               return <CardMarketplace key={index} {...item} />;
             })
