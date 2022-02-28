@@ -1,75 +1,66 @@
-import React, { useState } from 'react';
-import CardCraft from '../components/CardCraft';
+import React, { useState, useEffect } from "react";
+import CardCraft from "../components/CardCraft";
 import styles from "../styles/MyItem.module.css";
-import Corn from "../public/corn.png";
-import coinApple from "../public/coinApple.png";
-import coinWood from "../public/coinWood.svg";
+import { getInfoNFT } from "../api/info-nft";
+import { useMoralis } from "react-moralis";
+import { useUserState } from "../context/user";
 export default function Craft() {
-  const cardCraft = [
-    {
-      name: "Corn",
-      UID: 10024510303,
-      image: "Corn.png",
-      category: "Vetgetable",
-      iconcoin1: "coinWood.svg",
-      coin1:1000,
-      iconcoin2: "coinApple.png",
-      coin2:200,
-    },
-    {
-      name: "Corn",
-      UID: 10024510303,
-      image: "Corn.png",
-      category: "Animal",
-      iconcoin1: "coinWood.svg",
-      coin1:1000,
-      iconcoin2: "coinApple.png",
-      coin2:200,
-    },
-    {
-      name: "Corn",
-      UID: 100245103035,
-      image: "Corn.png",
-      category: "Fruit",
-      iconcoin1: "coinWood.svg",
-      coin1:1000,
-      iconcoin2: "coinApple.png",
-      coin2:200,
-    },
-    {
-      name: "Corn",
-      UID: 10024510303,
-      image: "Corn.png",
-      category: "Vetgetable",
-      iconcoin1: "coinWood.svg",
-      coin1:1000,
-      iconcoin2: "coinApple.png",
-      coin2:200,
-    },
-  ];
-  const categories = ["All","Animal","Fruit", "Vetgetable", "Chest"];
-  const [CurrentCategory, setCurrentCategory] = useState("All");
+  const { address_wallet } = useUserState();
+  const [dataCraft, setDataCraft] = useState([]);
+  const categories = ["all", "animal", "fruit", "vegetable"];
+  const [CurrentCategory, setCurrentCategory] = useState("all");
+
+  useEffect(() => {
+    async function fetchGetInfoNFT() {
+      let response = await getInfoNFT();
+      setDataCraft(response.data);
+    }
+    fetchGetInfoNFT();
+  }, []);
   return (
     <div>
-      <div className={styles.maincategory}> Class : 
+      <div className={styles.maincategory}>
+        {" "}
+        Class :
         {categories.map((category) => {
           return (
-            <button className={CurrentCategory === category ? styles.buttonCategoryActive : styles.buttonCategory} onClick={()=>setCurrentCategory(category)} key={category}>{category}</button>
-          )
+            <button
+              className={
+                CurrentCategory === category
+                  ? styles.buttonCategoryActive
+                  : styles.buttonCategory
+              }
+              onClick={() => setCurrentCategory(category)}
+              key={category}
+            >
+              {category}
+            </button>
+          );
         })}
       </div>
       <div className={styles.mainMyItem}>
-        {CurrentCategory == "All"
-          ? cardCraft.map((item, index) => {
-              return <CardCraft key={index} {...item} />;
+        {CurrentCategory == "all"
+          ? dataCraft.map((item, index) => {
+              return (
+                <CardCraft
+                  key={index}
+                  {...item}
+                  address_wallet={address_wallet}
+                />
+              );
             })
-          : cardCraft
-              .filter((_item) => CurrentCategory === _item.category)
+          : dataCraft
+              .filter((_item) => CurrentCategory === _item.type)
               .map((item, index) => {
-                return <CardCraft key={index} {...item} />;
+                return (
+                  <CardCraft
+                    key={index}
+                    {...item}
+                    address_wallet={address_wallet}
+                  />
+                );
               })}
       </div>
     </div>
-    
-  )
+  );
 }

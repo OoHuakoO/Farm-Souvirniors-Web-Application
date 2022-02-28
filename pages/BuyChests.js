@@ -28,20 +28,12 @@ export default function BuyChests() {
       total: 3000,
       image: "Box1.png",
     },
-   
   ];
   return (
     <div className={styles.BuyChestsPages}>
-      {
-        cardBuyChest.map((item,index) => {
-          return (
-            <CardBuychests key={index} {...item} />
-          
-          )
-        }
-        )
-      }
-      
+      {cardBuyChest.map((item, index) => {
+        return <CardBuychests key={index} {...item} />;
+      })}
     </div>
   );
 }

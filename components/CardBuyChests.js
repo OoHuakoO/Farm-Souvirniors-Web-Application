@@ -13,10 +13,7 @@ const CardBuychests = (props) => {
             src={"/../public/" + props.image}
             alt="Box1"
             width={200}
-           
             height={200}
-            blurDataURL="data:..."
-            placeholder="blur" // Optional blur-up while loading
           />
         </div>
         <div className={styles.typeBox}>
@@ -32,7 +29,6 @@ const CardBuychests = (props) => {
               src={Ethereum}
               alt="Ethereum"
               width={25}
-              
               height={25}
               blurDataURL="data:..."
               placeholder="blur" // Optional blur-up while loading

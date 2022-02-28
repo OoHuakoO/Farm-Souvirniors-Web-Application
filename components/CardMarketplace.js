@@ -21,10 +21,7 @@ const CardMarketplace = (props) => {
             src={"/../public/" + props.image}
             alt="Corn"
             width={200}
-           
             height={200}
-            blurDataURL="data:..."
-            placeholder="blur" // Optional blur-up while loading
           />
         </div>
       </div>
@@ -32,21 +29,11 @@ const CardMarketplace = (props) => {
         <span>{props.name}</span>
         <span>{props.price} ETH</span>
         <span>
-                <Image
-                  src={Ethereum}
-                  alt="Ethereum"
-                  width={25}
-                  
-                  height={25}
-                  blurDataURL="data:..."
-                  placeholder="blur" // Optional blur-up while loading
-                />
-              </span>
+          <Image src={Ethereum} alt="Ethereum" width={25} height={25} />
+        </span>
       </div>
       <div className={styles.buttonSell}>
         <span>Sell</span>
-
-       
       </div>
     </div>
   );

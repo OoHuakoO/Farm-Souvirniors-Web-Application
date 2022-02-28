@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/Sidebar.module.css";
 import Link from "next/link";
 import { useMoralis } from "react-moralis";
-import { useUserState } from "../../context/user";
 export default function Sidebar() {
   const { authenticate, isAuthenticated, logout } = useMoralis();
   return (

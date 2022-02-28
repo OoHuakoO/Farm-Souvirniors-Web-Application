@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
-import Corn from "../public/corn.png";
-
 const CardSell = (props) => {
   return (
     <div className={styles.cardMyItem1}>
@@ -16,10 +14,7 @@ const CardSell = (props) => {
             src={"/../public/" + props.image}
             alt="Corn"
             width={200}
-            
             height={200}
-            blurDataURL="data:..."
-            placeholder="blur" // Optional blur-up while loading
           />
         </div>
       </div>

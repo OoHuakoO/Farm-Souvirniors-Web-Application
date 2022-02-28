@@ -4,11 +4,12 @@ import exchange from "../../public/Exchange.svg";
 import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import styles from "../../styles/Navbar.module.css";
-import { getContract, craftNFT } from "../../web3";
-import { useUserState } from "../../context/user";
+import { getContract } from "../../web3";
+import { useRouter } from "next/router";
 import Web3 from "web3";
 import Link from "next/link";
 export default function navbar() {
+  const router = useRouter();
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const [walletAddress, setWalletAddress] = useState();
   const getAddressWallet = async () => {
@@ -20,7 +21,9 @@ export default function navbar() {
   const logoutUser = () => {
     localStorage.removeItem("address_wallet");
     logout();
-    window.location.reload();
+    router.push({
+      pathname: "/",
+    });
   };
   useEffect(() => {
     getContract();
@@ -52,30 +55,29 @@ export default function navbar() {
                   alt="Ethereum"
                   width={25}
                   height={25}
-                  blurDataURL="data:..."
-                  placeholder="blur" // Optional blur-up while loading
+                
                 />
               </div>
               <div>Connected to Address {walletAddress}</div>
             </div>
             <Link href="/Exchange">
-            <div
-              className={[
-                styles.buttonNavbar,
-                styles.buttonNavbarConnected,
-              ].join(" ")}
-            >
-              <div>
-                <Image
-                  className={styles.exchangeSVG}
-                  src={exchange}
-                  alt="exchange"
-                  width={15}
-                  height={15}
-                />
+              <div
+                className={[
+                  styles.buttonNavbar,
+                  styles.buttonNavbarConnected,
+                ].join(" ")}
+              >
+                <div>
+                  <Image
+                    className={styles.exchangeSVG}
+                    src={exchange}
+                    alt="exchange"
+                    width={15}
+                    height={15}
+                  />
+                </div>
+                Exchange
               </div>
-              Exchange
-            </div>
             </Link>
             <div
               onClick={() => {
