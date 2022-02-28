@@ -4,7 +4,7 @@ const getInfoNFT = async () => {
   const response = await Axios.get(`${Config.apiBaseURL}/in-game/info-nft`);
   return response.data;
 };
-const CraftNFT = async (
+const craftNFTAPI = async (
   name,
   picture,
   reward,
@@ -28,5 +28,5 @@ const CraftNFT = async (
 };
 module.exports = {
   getInfoNFT,
-  CraftNFT,
+  craftNFTAPI,
 };

@@ -53,7 +53,7 @@ contract NFT {
         uint16 _cost_fruit,
         uint16 _energy_consumed,
         uint16 _amount_food
-    ) internal {
+    ) public {
         nft.push(
             info_nft(
                 _nft_id,

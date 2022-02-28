@@ -1,8 +1,36 @@
 import React from "react";
 import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
+import { craftNFTAPI } from "../api/info-nft";
+import { craftNFTWeb3 } from "../web3/index";
+
 const CardCraft = (props) => {
-  console.log(props.address_wallet);
+  const craftNFT = async (item) => {
+    const responseAPI = await craftNFTAPI(
+      item.name,
+      item.picture,
+      item.reward,
+      item.type,
+      item.cost,
+      item.energy_consumed,
+      item.amount_food,
+      props.address_wallet
+    );
+    const responseWeb3 = await craftNFTWeb3(
+      Date.now(),
+      item.name,
+      item.picture,
+      item.reward,
+      item.type,
+      item.cost.wood,
+      item.cost.fruit,
+      item.energy_consumed,
+      item.amount_food,
+      props.address_wallet
+    );
+    console.log("responseWeb3", responseWeb3);
+    console.log("responseAPI", responseAPI);
+  };
   return (
     <div className={styles.cardMyItem5}>
       <div className={styles.cardMyItem6}>
@@ -41,7 +69,7 @@ const CardCraft = (props) => {
           <div className={styles.coinCraft2Coin}>{props.cost.fruit}</div>
         </div>
       </div>
-      <div className={styles.buttonSell}>
+      <div onClick={() => craftNFT(props)} className={styles.buttonSell}>
         <span>Craft</span>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import NFTContractBuild from "contracts/NFT.json";
-import RandomBoxContractBuild from "contracts/RandomBox.json";
+import RandomBoxContractBuild from "contracts/NFT.json";
 let NFT;
 let RandomBox;
 // Development
@@ -23,7 +23,7 @@ const getContract = async () => {
   );
 };
 getContract();
-const craftNFT = async (
+const craftNFTWeb3 = async (
   pid,
   name,
   picture,
@@ -168,7 +168,7 @@ const addCountRandomBox = async (indexNFT, count, address_wallet) => {
 };
 module.exports = {
   getContract,
-  craftNFT,
+  craftNFTWeb3,
   getDetailNFT,
   getOwnerNft,
   sellNFT,

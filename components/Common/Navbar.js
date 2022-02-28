@@ -4,7 +4,7 @@ import exchange from "../../public/Exchange.svg";
 import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import styles from "../../styles/Navbar.module.css";
-import { getContract } from "../../web3";
+import { craftNFTWeb3 } from "../../web3/index";
 import { useRouter } from "next/router";
 import { Login } from "../../api/user";
 import Web3 from "web3";
@@ -13,16 +13,31 @@ export default function Navbar() {
   const router = useRouter();
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const [walletAddress, setWalletAddress] = useState();
+  const craft = async () => {
+    await craftNFTWeb3(
+      "corn",
+      "https://res.cloudinary.com/smilejob/image/upload/v1644302035/Farm-Souvirniors/Corn_dl4f2a.png",
+      5,
+      "animal",
+
+      10,
+      10,
+
+      5,
+      5,
+      "0x629812063124cE2448703B889D754b232B3622BA"
+    );
+  };
   const getAddressWallet = async () => {
-    const web3 = new Web3(Web3.givenProvider || "https://ropsten.infura.io/v3/b0f95459c5a149cc9032a56d32fd1bdf");
+    const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
     const accounts = await web3.eth.requestAccounts();
     await localStorage.setItem("address_wallet", accounts[0]);
     setWalletAddress(accounts[0]);
   };
   const loginUser = async () => {
-    const web3 = new Web3(Web3.givenProvider || "https://ropsten.infura.io/v3/b0f95459c5a149cc9032a56d32fd1bdf");
+    const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
     const accounts = await web3.eth.requestAccounts();
-    const response = await Login(accounts[0]);
+    await Login(accounts[0]);
   };
   const logoutUser = () => {
     localStorage.removeItem("address_wallet");
@@ -32,7 +47,6 @@ export default function Navbar() {
     });
   };
   useEffect(() => {
-    getContract();
     getAddressWallet();
     window.ethereum.on("accountsChanged", function (accounts) {
       logoutUser();
@@ -48,6 +62,7 @@ export default function Navbar() {
     <div className={styles.navbarLayout}>
       {/* Nav-left */}
       <div className={styles.munuNavbarLeft}>
+        <h1 onClick={() => craft()}>craft</h1>
         {isAuthenticated ? (
           <h1
             onClick={() => {
