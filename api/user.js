@@ -1,7 +1,7 @@
 import Axios from "axios";
 import Config from "../config";
 const Login = async (address_wallet) => {
-  const response = await Axios.post(`${Config.apiBaseURL}/user/save-nft`, {
+  const response = await Axios.post(`${Config.apiBaseURL}/user/save-user`, {
     address_wallet,
   });
   return response.data;

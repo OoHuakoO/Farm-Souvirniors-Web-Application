@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "../styles/MyItem.module.css";
-import Corn from "../public/corn.png";
 import CardMyItem from "../components/CardMyItem";
 
 export default function MyItem() {

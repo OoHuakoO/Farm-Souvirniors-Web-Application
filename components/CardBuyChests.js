@@ -25,14 +25,7 @@ const CardBuychests = (props) => {
         <div className={styles.bnb}>
           <div>{props.price} ETH</div>
           <div>
-            <Image
-              src={Ethereum}
-              alt="Ethereum"
-              width={25}
-              height={25}
-              blurDataURL="data:..."
-              placeholder="blur" // Optional blur-up while loading
-            />
+            <Image src={Ethereum} alt="Ethereum" width={25} height={25} />
           </div>
         </div>
         <div className={styles.buttonBuy}>buy</div>

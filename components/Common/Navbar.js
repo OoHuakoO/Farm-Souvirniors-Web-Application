@@ -6,6 +6,7 @@ import { useMoralis } from "react-moralis";
 import styles from "../../styles/Navbar.module.css";
 import { getContract } from "../../web3";
 import { useRouter } from "next/router";
+import { Login } from "../../api/user";
 import Web3 from "web3";
 import Link from "next/link";
 export default function navbar() {
@@ -17,6 +18,12 @@ export default function navbar() {
     const accounts = await web3.eth.requestAccounts();
     await localStorage.setItem("address_wallet", accounts[0]);
     setWalletAddress(accounts[0]);
+  };
+  const loginUser = async () => {
+    const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
+    const accounts = await web3.eth.requestAccounts();
+    const response = await Login(accounts[0]);
+    console.log(response.data);
   };
   const logoutUser = () => {
     localStorage.removeItem("address_wallet");
@@ -42,7 +49,29 @@ export default function navbar() {
     <div className={styles.navbarLayout}>
       {/* Nav-left */}
       <div className={styles.munuNavbarLeft}>
-        <h1>FARM SOUVIRNIORS</h1>
+        {isAuthenticated ? (
+          <h1
+            onClick={() => {
+              router.push({
+                pathname: "/BuyChests",
+              });
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            FARM SOUVIRNIORS
+          </h1>
+        ) : (
+          <h1
+            onClick={() => {
+              router.push({
+                pathname: "/",
+              });
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            FARM SOUVIRNIORS
+          </h1>
+        )}
       </div>
       {/* Nav-right */}
       <div>
@@ -50,13 +79,7 @@ export default function navbar() {
           <div className={styles.munuNavbarRight}>
             <div className={styles.buttonNavbarConnected}>
               <div>
-                <Image
-                  src={Ethereum}
-                  alt="Ethereum"
-                  width={25}
-                  height={25}
-                
-                />
+                <Image src={Ethereum} alt="Ethereum" width={25} height={25} />
               </div>
               <div>Connected to Address {walletAddress}</div>
             </div>
@@ -90,8 +113,12 @@ export default function navbar() {
           </div>
         ) : (
           <div
-            onClick={() => {
-              authenticate();
+            onClick={async () => {
+              await authenticate();
+              loginUser();
+              router.push({
+                pathname: "/BuyChests",
+              });
             }}
             className={styles.buttonNavbar}
           >
