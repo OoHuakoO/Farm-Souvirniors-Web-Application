@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { Login } from "../../api/user";
 import Web3 from "web3";
 import Link from "next/link";
-export default function navbar() {
+export default function Navbar() {
   const router = useRouter();
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const [walletAddress, setWalletAddress] = useState();
