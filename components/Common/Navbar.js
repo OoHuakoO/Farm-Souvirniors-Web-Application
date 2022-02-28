@@ -14,13 +14,13 @@ export default function Navbar() {
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const [walletAddress, setWalletAddress] = useState();
   const getAddressWallet = async () => {
-    const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
+    const web3 = new Web3(Web3.givenProvider || "https://ropsten.infura.io/v3/b0f95459c5a149cc9032a56d32fd1bdf");
     const accounts = await web3.eth.requestAccounts();
     await localStorage.setItem("address_wallet", accounts[0]);
     setWalletAddress(accounts[0]);
   };
   const loginUser = async () => {
-    const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
+    const web3 = new Web3(Web3.givenProvider || "https://ropsten.infura.io/v3/b0f95459c5a149cc9032a56d32fd1bdf");
     const accounts = await web3.eth.requestAccounts();
     const response = await Login(accounts[0]);
   };
