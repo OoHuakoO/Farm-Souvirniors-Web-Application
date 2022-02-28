@@ -29,7 +29,8 @@
     "react-router-dom": "^6.2.1",
     "truffle-hdwallet-provider": "^1.0.17",
     "web3": "^1.7.0",
-    "yarn": "^1.22.17"
+    "yarn": "^1.22.17",
+    "contracts" : "file:./build/contracts"
   },
   "devDependencies": {
     "eslint": "8.6.0",
