@@ -9,29 +9,29 @@ export default function Sell() {
       name: "Corn",
       UID: 10024510303,
       image: "Corn.png",
-      category: "Vetgetable",
+      category: "vegetable",
     },
     {
       name: "Corn",
       UID: 10024510303,
       image: "Corn.png",
-      category: "Animal",
+      category: "animal",
     },
     {
       name: "Corn",
       UID: 100245103035,
       image: "Corn.png",
-      category: "Fruit",
+      category: "fruit",
     },
     {
       name: "Corn",
       UID: 10024510303,
       image: "Corn.png",
-      category: "Vetgetable",
+      category: "vegetable",
     },
   ];
   const categories = ["all", "animal", "fruit", "vegetable", "chest"];
-  const [CurrentCategory, setCurrentCategory] = useState("All");
+  const [CurrentCategory, setCurrentCategory] = useState("all");
   return (
     <div>
       <div className={styles.maincategory}>

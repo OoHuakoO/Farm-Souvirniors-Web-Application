@@ -13,21 +13,7 @@ export default function Navbar() {
   const router = useRouter();
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const [walletAddress, setWalletAddress] = useState();
-  const craft = async () => {
-    await craftNFTWeb3(
-      "corn",
-      "https://res.cloudinary.com/smilejob/image/upload/v1644302035/Farm-Souvirniors/Corn_dl4f2a.png",
-      5,
-      "animal",
 
-      10,
-      10,
-
-      5,
-      5,
-      "0x629812063124cE2448703B889D754b232B3622BA"
-    );
-  };
   const getAddressWallet = async () => {
     const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
     const accounts = await web3.eth.requestAccounts();
@@ -62,7 +48,6 @@ export default function Navbar() {
     <div className={styles.navbarLayout}>
       {/* Nav-left */}
       <div className={styles.munuNavbarLeft}>
-        <h1 onClick={() => craft()}>craft</h1>
         {isAuthenticated ? (
           <h1
             onClick={() => {

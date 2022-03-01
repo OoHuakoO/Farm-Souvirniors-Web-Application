@@ -4,12 +4,12 @@ import RandomBoxContractBuild from "contracts/NFT.json";
 let NFT;
 let RandomBox;
 // Development
-// const web3 = new Web3("http://127.0.0.1:7545");
+const web3 = new Web3("http://127.0.0.1:7545");
 // Testnet Ropsten
-const web3 = new Web3(
-  Web3.givenProvider ||
-    "https://ropsten.infura.io/v3/b0f95459c5a149cc9032a56d32fd1bdf"
-);
+// const web3 = new Web3(
+//   Web3.givenProvider ||
+//     "https://ropsten.infura.io/v3/b0f95459c5a149cc9032a56d32fd1bdf"
+// );
 
 const getContract = async () => {
   const netId = await web3.eth.net.getId();

@@ -16,20 +16,24 @@ const CardCraft = (props) => {
       item.amount_food,
       props.address_wallet
     );
-    const responseWeb3 = await craftNFTWeb3(
-      Date.now(),
-      item.name,
-      item.picture,
-      item.reward,
-      item.type,
-      item.cost.wood,
-      item.cost.fruit,
-      item.energy_consumed,
-      item.amount_food,
-      props.address_wallet
-    );
-    console.log("responseWeb3", responseWeb3);
-    console.log("responseAPI", responseAPI);
+    if (responseAPI.data !== "please add resource") {
+      const responseWeb3 = await craftNFTWeb3(
+        Date.now(),
+        item.name,
+        item.picture,
+        item.reward,
+        item.type,
+        item.cost.wood,
+        item.cost.fruit,
+        item.energy_consumed,
+        item.amount_food,
+        props.address_wallet
+      );
+      console.log("responseWeb3", responseWeb3);
+    }
+    else{
+      // popup แจ้งเตือน
+    }
   };
   return (
     <div className={styles.cardMyItem5}>
