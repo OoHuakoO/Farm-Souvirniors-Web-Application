@@ -42,22 +42,24 @@ export default function MyItem() {
       if (isAuthenticated) {
         let responseWeb3 = await getOwnerNftWeb3(address_wallet);
         let responseAPI = await getOwnerNFTAPI(address_wallet);
-        await responseWeb3.map(
-          async (dataFromSmartContract, indexFromSmartContract) => {
-            await responseAPI.data.map((dataFromDB, indexFromDB) => {
-              if (dataFromSmartContract.nft_id === dataFromDB.nft_id) {
-                dataFromSmartContract.status = dataFromDB.status;
-              }
-              if (
-                responseWeb3.length - 1 === indexFromSmartContract &&
-                responseAPI.data.length - 1 === indexFromDB
-              ) {
-                console.log(responseWeb3)
-                setDataMyItem(responseWeb3);
-              }
-            });
-          }
-        );
+        if (responseWeb3.length !== 0) {
+          await responseWeb3.map(
+            async (dataFromSmartContract, indexFromSmartContract) => {
+              await responseAPI.data.map((dataFromDB, indexFromDB) => {
+                if (dataFromSmartContract.nft_id === dataFromDB.nft_id) {
+                  dataFromSmartContract.status = dataFromDB.status;
+                }
+                if (
+                  responseWeb3.length - 1 === indexFromSmartContract &&
+                  responseAPI.data.length - 1 === indexFromDB
+                ) {
+                  console.log(responseWeb3);
+                  setDataMyItem(responseWeb3);
+                }
+              });
+            }
+          );
+        }
       }
     }
     fetchGetOwnerNFT();
