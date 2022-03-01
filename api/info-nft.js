@@ -5,6 +5,7 @@ const getInfoNFT = async () => {
   return response.data;
 };
 const craftNFTAPI = async (
+  pid,
   name,
   picture,
   reward,
@@ -15,6 +16,7 @@ const craftNFTAPI = async (
   address_wallet
 ) => {
   const response = await Axios.post(`${Config.apiBaseURL}/in-game/craft-nft`, {
+    pid,
     name,
     picture,
     reward,

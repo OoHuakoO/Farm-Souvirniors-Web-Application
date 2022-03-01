@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import CardCraft from "../components/CardCraft";
 import styles from "../styles/MyItem.module.css";
 import { getInfoNFT } from "../api/info-nft";
-import { useMoralis } from "react-moralis";
 import { useUserState } from "../context/user";
 export default function Craft() {
   const { address_wallet } = useUserState();
   const [dataCraft, setDataCraft] = useState([]);
   const categories = ["all", "animal", "fruit", "vegetable"];
   const [CurrentCategory, setCurrentCategory] = useState("all");
-
   useEffect(() => {
     async function fetchGetInfoNFT() {
       let response = await getInfoNFT();

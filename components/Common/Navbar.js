@@ -4,7 +4,6 @@ import exchange from "../../public/Exchange.svg";
 import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import styles from "../../styles/Navbar.module.css";
-import { craftNFTWeb3 } from "../../web3/index";
 import { useRouter } from "next/router";
 import { Login } from "../../api/user";
 import Web3 from "web3";
@@ -19,6 +18,7 @@ export default function Navbar() {
     const accounts = await web3.eth.requestAccounts();
     await localStorage.setItem("address_wallet", accounts[0]);
     setWalletAddress(accounts[0]);
+   
   };
   const loginUser = async () => {
     const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");

@@ -4,7 +4,6 @@ import Footer from "../components/Common/Footer";
 import Head from "next/head";
 import Navbar from "../components/Common/Navbar";
 import styles from "../styles/MainLayout.module.css";
-
 export default function MainLayout({ children }) {
   return (
     <div>

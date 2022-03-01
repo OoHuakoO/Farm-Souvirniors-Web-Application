@@ -6,7 +6,9 @@ import { craftNFTWeb3 } from "../web3/index";
 
 const CardCraft = (props) => {
   const craftNFT = async (item) => {
+    const pid = Date.now();
     const responseAPI = await craftNFTAPI(
+      pid,
       item.name,
       item.picture,
       item.reward,
@@ -18,7 +20,7 @@ const CardCraft = (props) => {
     );
     if (responseAPI.data !== "please add resource") {
       const responseWeb3 = await craftNFTWeb3(
-        Date.now(),
+        pid,
         item.name,
         item.picture,
         item.reward,
@@ -30,8 +32,7 @@ const CardCraft = (props) => {
         props.address_wallet
       );
       console.log("responseWeb3", responseWeb3);
-    }
-    else{
+    } else {
       // popup แจ้งเตือน
     }
   };

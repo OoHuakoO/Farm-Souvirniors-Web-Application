@@ -81,7 +81,7 @@ const getDetailNFT = async (pid) => {
     },
   };
 };
-const getOwnerNft = async (address) => {
+const getOwnerNftWeb3 = async (address) => {
   let jsonOnwerNFT = [];
   const listOwnerNFT = await NFT.methods.getNFTByOwner(address).call();
   for (const [index, id] of listOwnerNFT.entries()) {
@@ -170,7 +170,7 @@ module.exports = {
   getContract,
   craftNFTWeb3,
   getDetailNFT,
-  getOwnerNft,
+  getOwnerNftWeb3,
   sellNFT,
   buyNFT,
   getContractAddress,
