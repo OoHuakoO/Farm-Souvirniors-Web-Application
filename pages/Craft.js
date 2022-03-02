@@ -14,7 +14,12 @@ export default function Craft() {
       setDataCraft(response.data);
     }
     fetchGetInfoNFT();
+    return () => {
+      setDataCraft([]);
+      setCurrentCategory("all");
+    };
   }, []);
+
   return (
     <div>
       <div className={styles.maincategory}>

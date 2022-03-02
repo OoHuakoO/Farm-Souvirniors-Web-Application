@@ -14,7 +14,6 @@ export default function MyItem() {
   useEffect(() => {
     async function fetchGetOwnerNFT() {
       if (isAuthenticated) {
-        console.log(share_address_wallet);
         let responseWeb3 = await getOwnerNftWeb3(share_address_wallet);
         let responseAPI = await getOwnerNFTAPI(share_address_wallet);
         if (responseWeb3) {
@@ -28,7 +27,6 @@ export default function MyItem() {
                   responseWeb3.length - 1 === indexFromSmartContract &&
                   responseAPI.data.length - 1 === indexFromDB
                 ) {
-                  console.log(responseWeb3);
                   setDataMyItem(responseWeb3);
                 }
               });
@@ -39,6 +37,12 @@ export default function MyItem() {
     }
     fetchGetOwnerNFT();
   }, [isAuthenticated]);
+  useEffect(() => {
+    return () => {
+      setDataMyItem([]);
+      setCurrentCategory("all");
+    };
+  }, []);
   return (
     <div>
       <div className={styles.maincategory}>

@@ -17,18 +17,20 @@ export default function Navbar() {
   const getAddressWallet = async () => {
     const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
     const accounts = await web3.eth.requestAccounts();
-    await localStorage.setItem("address_wallet", accounts[0]);
     setWalletAddress(accounts[0]);
     setShare_Address_wallet(accounts[0]);
   };
   const loginUser = async () => {
     if (window.web3) {
-      const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
-      const accounts = await web3.eth.requestAccounts();
-      await Login(accounts[0]);
-      router.push({
-        pathname: "/BuyChests",
-      });
+      const authen = await authenticate();
+      if (authen) {
+        const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
+        const accounts = await web3.eth.requestAccounts();
+        await Login(accounts[0]);
+        router.push({
+          pathname: "/BuyChests",
+        });
+      }
     } else {
       window.alert(" You should consider trying to install metamask");
     }
@@ -128,8 +130,7 @@ export default function Navbar() {
           </div>
         ) : (
           <div
-            onClick={async () => {
-              await authenticate();
+            onClick={() => {
               loginUser();
             }}
             className={styles.buttonNavbar}
