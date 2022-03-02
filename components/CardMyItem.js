@@ -11,20 +11,26 @@ const CardMyItem = (props) => {
           <span>{props.nft_id}</span>
         </div>
         <div className={styles.imageMyItem}>
-          <Image
-            src={props.picture}
-            alt="Corn"
-            width={200}
-            height={200}
-          />
+          <Image src={props.picture} alt="Corn" width={200} height={200} />
         </div>
       </div>
       <div className={styles.NameCard}>
         <span>{props.name}</span>
       </div>
-      <div className={styles.buttonSell}>
-        <span>Sell</span>
-      </div>
+      {props.status === "not_plant" ? (
+        <div className={styles.buttonSell}>
+          <span> Sell</span>
+        </div>
+      ) : (
+        <>
+          <div className={styles.buttonSell}>
+            <span>Not Sell</span>
+          </div>
+          <div>
+            <span>this nft in game</span>
+          </div>
+        </>
+      )}
     </div>
   );
 };
