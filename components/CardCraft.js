@@ -3,8 +3,9 @@ import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import { craftNFTAPI } from "../api/info-nft";
 import { craftNFTWeb3 } from "../web3/index";
-
+import { useRouter } from "next/router";
 const CardCraft = (props) => {
+  const router = useRouter();
   const craftNFT = async (item) => {
     const pid = Date.now();
     const responseAPI = await craftNFTAPI(
@@ -32,6 +33,9 @@ const CardCraft = (props) => {
         props.address_wallet
       );
       console.log("responseWeb3", responseWeb3);
+      router.push({
+        pathname: "/MyItem",
+      });
     } else {
       // popup แจ้งเตือน
     }

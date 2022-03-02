@@ -42,7 +42,7 @@ export default function MyItem() {
       if (isAuthenticated) {
         let responseWeb3 = await getOwnerNftWeb3(address_wallet);
         let responseAPI = await getOwnerNFTAPI(address_wallet);
-        if (responseWeb3.length !== 0) {
+        if (responseWeb3) {
           await responseWeb3.map(
             async (dataFromSmartContract, indexFromSmartContract) => {
               await responseAPI.data.map((dataFromDB, indexFromDB) => {
