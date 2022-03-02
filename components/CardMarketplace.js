@@ -18,8 +18,8 @@ const CardMarketplace = (props) => {
       const responseWeb3 = await buyNFTWeb3(
         props.share_address_wallet,
         item.seller,
-        item.nft_id,
-        item.indexNFT
+        item.indexNFT,
+        item.price
       );
       console.log(responseWeb3);
     }
