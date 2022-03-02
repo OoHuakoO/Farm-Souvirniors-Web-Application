@@ -17,7 +17,7 @@ const CardCraft = (props) => {
       item.cost,
       item.energy_consumed,
       item.amount_food,
-      props.address_wallet
+      props.share_address_wallet
     );
     if (responseAPI.data !== "please add resource") {
       const responseWeb3 = await craftNFTWeb3(
@@ -30,7 +30,7 @@ const CardCraft = (props) => {
         item.cost.fruit,
         item.energy_consumed,
         item.amount_food,
-        props.address_wallet
+        props.share_address_wallet
       );
       console.log("responseWeb3", responseWeb3);
       router.push({

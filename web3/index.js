@@ -23,6 +23,7 @@ const getContract = async () => {
   );
 };
 getContract();
+
 const craftNFTWeb3 = async (
   pid,
   name,
@@ -83,18 +84,20 @@ const getDetailNFT = async (pid) => {
 };
 const getOwnerNftWeb3 = async (address) => {
   let jsonOnwerNFT = [];
-  const listOwnerNFT = await NFT.methods.getNFTByOwner(address).call();
-  for (const [index, id] of listOwnerNFT.entries()) {
-    await getDetailNFT(id.toString()).then((data) => {
-      jsonOnwerNFT.push({ ...data.data, indexNFT: id.toString() });
-    });
-    if (index === listOwnerNFT.length - 1) {
-      return jsonOnwerNFT;
+  if (NFT) {
+    const listOwnerNFT = await NFT.methods.getNFTByOwner(address).call();
+    for (const [index, id] of listOwnerNFT.entries()) {
+      await getDetailNFT(id.toString()).then((data) => {
+        jsonOnwerNFT.push({ ...data.data, indexNFT: id.toString() });
+      });
+      if (index === listOwnerNFT.length - 1) {
+        return jsonOnwerNFT;
+      }
     }
   }
 };
 
-const sellNFT = async (address_wallet, indexNFT, price) => {
+const sellNFTWeb3 = async (address_wallet, indexNFT, price) => {
   await NFT.methods
     .sellNFT(indexNFT, price)
     .send({ from: address_wallet, gas: 5500000 });
@@ -123,7 +126,9 @@ const buyNFT = async (
 };
 
 const getContractAddress = async () => {
-  return NFT._address;
+  if (NFT) {
+    return NFT._address;
+  }
 };
 
 const mintRandomBox = async (address_wallet, name, price, count, picture) => {
@@ -171,7 +176,7 @@ module.exports = {
   craftNFTWeb3,
   getDetailNFT,
   getOwnerNftWeb3,
-  sellNFT,
+  sellNFTWeb3,
   buyNFT,
   getContractAddress,
   cancleNFT,

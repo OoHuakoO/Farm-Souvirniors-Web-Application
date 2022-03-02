@@ -1,8 +1,26 @@
 import React from "react";
 import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
-
+import { sellNFTAPI } from "../api/marketplace";
+import { sellNFTWeb3 } from "../web3/index";
+import { useRouter } from "next/router";
 const CardMyItem = (props) => {
+  const router = useRouter();
+  const sellNFT = async (item) => {
+    const responseAPI = await sellNFTAPI("0.01", item.nft_id);
+    if (responseAPI.data === "sell nft successfully") {
+      const responseWeb3 = await sellNFTWeb3(
+        props.share_address_wallet,
+        item.indexNFT,
+        "0.01"
+      );
+      console.log(responseWeb3);
+    }
+    console.log(responseAPI);
+    router.push({
+      pathname: "/Sell",
+    });
+  };
   return (
     <div className={styles.cardMyItem1}>
       <div className={styles.cardMyItem2}>
@@ -18,7 +36,7 @@ const CardMyItem = (props) => {
         <span>{props.name}</span>
       </div>
       {props.status === "not_plant" ? (
-        <div className={styles.buttonSell}>
+        <div onClick={() => sellNFT(props)} className={styles.buttonSell}>
           <span> Sell</span>
         </div>
       ) : (

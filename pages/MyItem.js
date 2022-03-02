@@ -6,42 +6,17 @@ import { useUserState } from "../context/user";
 import { getOwnerNftWeb3 } from "../web3/index";
 import { useMoralis } from "react-moralis";
 export default function MyItem() {
-  const { address_wallet } = useUserState();
+  const { share_address_wallet } = useUserState();
   const [dataMyItem, setDataMyItem] = useState([]);
-  const { authenticate, isAuthenticated, logout } = useMoralis();
-  const cardMyItem = [
-    {
-      name: "Corn",
-      UID: 10024510303,
-      image: "Corn.png",
-      category: "vegetable",
-    },
-    {
-      name: "Corn",
-      UID: 10024510303,
-      image: "Corn.png",
-      category: "animal",
-    },
-    {
-      name: "Corn",
-      UID: 100245103035,
-      image: "Corn.png",
-      category: "fruit",
-    },
-    {
-      name: "Corn",
-      UID: 10024510303,
-      image: "Corn.png",
-      category: "vegetable",
-    },
-  ];
+  const { isAuthenticated } = useMoralis();
   const categories = ["all", "animal", "fruit", "vegetable", "chest"];
   const [CurrentCategory, setCurrentCategory] = useState("all");
   useEffect(() => {
     async function fetchGetOwnerNFT() {
       if (isAuthenticated) {
-        let responseWeb3 = await getOwnerNftWeb3(address_wallet);
-        let responseAPI = await getOwnerNFTAPI(address_wallet);
+        console.log(share_address_wallet);
+        let responseWeb3 = await getOwnerNftWeb3(share_address_wallet);
+        let responseAPI = await getOwnerNFTAPI(share_address_wallet);
         if (responseWeb3) {
           await responseWeb3.map(
             async (dataFromSmartContract, indexFromSmartContract) => {
@@ -88,12 +63,24 @@ export default function MyItem() {
       <div className={styles.mainMyItem}>
         {CurrentCategory == "all"
           ? dataMyItem.map((item, index) => {
-              return <CardMyItem key={index} {...item} />;
+              return (
+                <CardMyItem
+                  key={index}
+                  {...item}
+                  share_address_wallet={share_address_wallet}
+                />
+              );
             })
           : dataMyItem
               .filter((_item) => CurrentCategory === _item.type_nft)
               .map((item, index) => {
-                return <CardMyItem key={index} {...item} />;
+                return (
+                  <CardMyItem
+                    key={index}
+                    {...item}
+                    share_address_wallet={share_address_wallet}
+                  />
+                );
               })}
       </div>
     </div>

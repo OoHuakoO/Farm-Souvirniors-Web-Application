@@ -11,7 +11,7 @@ const buyNFT = async (buyer_address_wallet, seller_address_wallet, nft_id) => {
   );
   return response.data;
 };
-const sellNFT = async (price, nft_id) => {
+const sellNFTAPI = async (price, nft_id) => {
   const response = await Axios.post(
     `${Config.apiBaseURL}/marketplace/sell-nft`,
     {
@@ -33,6 +33,6 @@ const cancleNFT = async (nft_id) => {
 
 module.exports = {
   buyNFT,
-  sellNFT,
-  cancleNFT
+  sellNFTAPI,
+  cancleNFT,
 };
