@@ -13,7 +13,7 @@ export default function MyItem() {
   const [CurrentCategory, setCurrentCategory] = useState("all");
   useEffect(() => {
     async function fetchGetOwnerNFT() {
-      if (isAuthenticated) {
+      if (isAuthenticated && share_address_wallet) {
         let responseWeb3 = await getOwnerNftWeb3(share_address_wallet);
         let responseAPI = await getOwnerNFTAPI(share_address_wallet);
         if (responseWeb3) {

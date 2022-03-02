@@ -84,7 +84,7 @@ const getDetailNFT = async (pid) => {
 };
 const getOwnerNftWeb3 = async (address) => {
   let jsonOnwerNFT = [];
-  if (NFT) {
+  if (NFT && address) {
     const listOwnerNFT = await NFT.methods.getNFTByOwner(address).call();
     for (const [index, id] of listOwnerNFT.entries()) {
       await getDetailNFT(id.toString()).then((data) => {
@@ -104,14 +104,14 @@ const sellNFTWeb3 = async (address_wallet, indexNFT, price) => {
   return { status: "success" };
 };
 
-const cancleNFT = async (address_wallet, indexNFT) => {
+const cancleNFTWeb3 = async (address_wallet, indexNFT) => {
   await NFT.methods
     .cancleNFT(indexNFT)
     .send({ from: address_wallet, gas: 5500000 });
   return { status: "success" };
 };
 
-const buyNFT = async (
+const buyNFTWeb3 = async (
   buyer_address_wallet,
   seller_address_wallet,
   indexNFT,
@@ -177,9 +177,9 @@ module.exports = {
   getDetailNFT,
   getOwnerNftWeb3,
   sellNFTWeb3,
-  buyNFT,
+  buyNFTWeb3,
   getContractAddress,
-  cancleNFT,
+  cancleNFTWeb3,
   mintRandomBox,
   getRandomBox,
   addCountRandomBox,
