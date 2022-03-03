@@ -6,6 +6,8 @@ import Ethereum from "../public/Ethereum-icon-purple.png";
 import { buyNFTAPI } from "../api/marketplace";
 import { buyNFTWeb3 } from "../web3/index";
 import { useRouter } from "next/router";
+import LinesEllipsis from 'react-lines-ellipsis'
+
 const CardMarketplace = (props) => {
   const router = useRouter();
   const buyNFT = async (item) => {
@@ -35,8 +37,10 @@ const CardMarketplace = (props) => {
           <span>UID : </span>
           <span>{props.nft_id}</span>
         </div>
-        <div className={styles.uidCard}>
+        
+        <div className={[styles.uidSeller, 'd-inline-block text-truncate'].join(' ')}>
           <span>Seller : </span>
+          
           <span>{props.seller}</span>
         </div>
         <div className={styles.imageMyItem}>
