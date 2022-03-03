@@ -1,1 +1,95 @@
+.buttonCategory {
+  padding: 10px 20px;
+  background-color: #d6d1ce;
+  color: #989695;
+  outline: none;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin: 0px 10px;
+}
+.buttonCategoryActive {
+  padding: 10px 20px;
+  background-color: #ffa34c;
+  outline: none;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin: 0px 10px;
+}
+.maincategory {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.BgExchange {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #f8f4d3;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+.Exchange {
+    width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  padding: 0px 20px;
+  flex-wrap: wrap;
+}
+.topicExchange {
+    font-family: "Prompt", sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 24px;
+line-height: 36px;
+}
+.topicExchangeFruit{
+    display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.topicExchangeWood{
+    display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.topicExchangeMeat{
+    display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 
+  .coinCraft1Icon {
+    display: flex;
+    justify-content:  flex-start;
+    align-content: center;
+    align-items: center;
+  }
+  .coinCraft2Icon {
+    display: flex;
+    justify-content:  flex-start;
+    align-content: center;
+    align-items: center;
+  }
+  .coinCraft1Coin {
+    display: flex;
+    justify-content:    center;
+    align-content: center;
+    align-items: center;
+    font-family: "Prompt", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 36px;
+  }
+  .coinCraft2Coin {
+    display: flex;
+    justify-content:center;
+    align-content: center;
+    align-items: center;
+    font-family: "Prompt", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 36px;
+  }
