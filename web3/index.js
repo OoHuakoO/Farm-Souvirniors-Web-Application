@@ -4,7 +4,7 @@ import RandomBoxContractBuild from "contracts/NFT.json";
 let NFT;
 let RandomBox;
 // Development
-const web3 = new Web3("http://127.0.0.1:7545");
+const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
 // Testnet Ropsten
 // const web3 = new Web3(
 //   Web3.givenProvider ||
@@ -23,6 +23,7 @@ const getContract = async () => {
   );
 };
 getContract();
+
 const craftNFTWeb3 = async (
   pid,
   name,
@@ -83,32 +84,34 @@ const getDetailNFT = async (pid) => {
 };
 const getOwnerNftWeb3 = async (address) => {
   let jsonOnwerNFT = [];
-  const listOwnerNFT = await NFT.methods.getNFTByOwner(address).call();
-  for (const [index, id] of listOwnerNFT.entries()) {
-    await getDetailNFT(id.toString()).then((data) => {
-      jsonOnwerNFT.push({ ...data.data, indexNFT: id.toString() });
-    });
-    if (index === listOwnerNFT.length - 1) {
-      return jsonOnwerNFT;
+  if (NFT && address) {
+    const listOwnerNFT = await NFT.methods.getNFTByOwner(address).call();
+    for (const [index, id] of listOwnerNFT.entries()) {
+      await getDetailNFT(id.toString()).then((data) => {
+        jsonOnwerNFT.push({ ...data.data, indexNFT: id.toString() });
+      });
+      if (index === listOwnerNFT.length - 1) {
+        return jsonOnwerNFT;
+      }
     }
   }
 };
 
-const sellNFT = async (address_wallet, indexNFT, price) => {
+const sellNFTWeb3 = async (address_wallet, indexNFT, price) => {
   await NFT.methods
     .sellNFT(indexNFT, price)
     .send({ from: address_wallet, gas: 5500000 });
   return { status: "success" };
 };
 
-const cancleNFT = async (address_wallet, indexNFT) => {
+const cancleNFTWeb3 = async (address_wallet, indexNFT) => {
   await NFT.methods
     .cancleNFT(indexNFT)
     .send({ from: address_wallet, gas: 5500000 });
   return { status: "success" };
 };
 
-const buyNFT = async (
+const buyNFTWeb3 = async (
   buyer_address_wallet,
   seller_address_wallet,
   indexNFT,
@@ -123,7 +126,9 @@ const buyNFT = async (
 };
 
 const getContractAddress = async () => {
-  return NFT._address;
+  if (NFT) {
+    return NFT._address;
+  }
 };
 
 const mintRandomBox = async (address_wallet, name, price, count, picture) => {
@@ -171,10 +176,10 @@ module.exports = {
   craftNFTWeb3,
   getDetailNFT,
   getOwnerNftWeb3,
-  sellNFT,
-  buyNFT,
+  sellNFTWeb3,
+  buyNFTWeb3,
   getContractAddress,
-  cancleNFT,
+  cancleNFTWeb3,
   mintRandomBox,
   getRandomBox,
   addCountRandomBox,

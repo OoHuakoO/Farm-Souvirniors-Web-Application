@@ -1,6 +1,6 @@
 import Axios from "axios";
 import Config from "../config";
-const buyNFT = async (buyer_address_wallet, seller_address_wallet, nft_id) => {
+const buyNFTAPI = async (buyer_address_wallet, seller_address_wallet, nft_id) => {
   const response = await Axios.post(
     `${Config.apiBaseURL}/marketplace/buy-nft`,
     {
@@ -11,7 +11,7 @@ const buyNFT = async (buyer_address_wallet, seller_address_wallet, nft_id) => {
   );
   return response.data;
 };
-const sellNFT = async (price, nft_id) => {
+const sellNFTAPI = async (price, nft_id) => {
   const response = await Axios.post(
     `${Config.apiBaseURL}/marketplace/sell-nft`,
     {
@@ -21,7 +21,7 @@ const sellNFT = async (price, nft_id) => {
   );
   return response.data;
 };
-const cancleNFT = async (nft_id) => {
+const cancleNFTAPI = async (nft_id) => {
   const response = await Axios.post(
     `${Config.apiBaseURL}/marketplace/cancle-nft`,
     {
@@ -32,7 +32,7 @@ const cancleNFT = async (nft_id) => {
 };
 
 module.exports = {
-  buyNFT,
-  sellNFT,
-  cancleNFT
+  buyNFTAPI,
+  sellNFTAPI,
+  cancleNFTAPI,
 };

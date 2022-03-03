@@ -4,7 +4,7 @@ import styles from "../styles/MyItem.module.css";
 import { getInfoNFT } from "../api/info-nft";
 import { useUserState } from "../context/user";
 export default function Craft() {
-  const { address_wallet } = useUserState();
+  const { share_address_wallet } = useUserState();
   const [dataCraft, setDataCraft] = useState([]);
   const categories = ["all", "animal", "fruit", "vegetable"];
   const [CurrentCategory, setCurrentCategory] = useState("all");
@@ -14,7 +14,12 @@ export default function Craft() {
       setDataCraft(response.data);
     }
     fetchGetInfoNFT();
+    return () => {
+      setDataCraft([]);
+      setCurrentCategory("all");
+    };
   }, []);
+
   return (
     <div>
       <div className={styles.maincategory}>
@@ -43,7 +48,7 @@ export default function Craft() {
                 <CardCraft
                   key={index}
                   {...item}
-                  address_wallet={address_wallet}
+                  share_address_wallet={share_address_wallet}
                 />
               );
             })
@@ -54,7 +59,7 @@ export default function Craft() {
                   <CardCraft
                     key={index}
                     {...item}
-                    address_wallet={address_wallet}
+                    share_address_wallet={share_address_wallet}
                   />
                 );
               })}

@@ -6,43 +6,61 @@ import { useMoralis } from "react-moralis";
 import styles from "../../styles/Navbar.module.css";
 import { useRouter } from "next/router";
 import { Login } from "../../api/user";
+import { useUserState } from "../../context/user";
 import Web3 from "web3";
 import Link from "next/link";
 export default function Navbar() {
   const router = useRouter();
   const { authenticate, isAuthenticated, logout } = useMoralis();
   const [walletAddress, setWalletAddress] = useState();
-
+  const { setShare_Address_wallet } = useUserState();
   const getAddressWallet = async () => {
     const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
     const accounts = await web3.eth.requestAccounts();
-    await localStorage.setItem("address_wallet", accounts[0]);
     setWalletAddress(accounts[0]);
-   
+    setShare_Address_wallet(accounts[0]);
   };
   const loginUser = async () => {
-    const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
-    const accounts = await web3.eth.requestAccounts();
-    await Login(accounts[0]);
+    if (window.web3) {
+      const authen = await authenticate();
+      if (authen) {
+        const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
+        const accounts = await web3.eth.requestAccounts();
+        await Login(accounts[0]);
+        router.push({
+          pathname: "/BuyChests",
+        });
+      }
+    } else {
+      window.alert(" You should consider trying to install metamask");
+    }
   };
-  const logoutUser = () => {
-    localStorage.removeItem("address_wallet");
-    logout();
+  const logoutUser = async () => {
+    await logout();
     router.push({
       pathname: "/",
     });
   };
   useEffect(() => {
-    getAddressWallet();
-    window.ethereum.on("accountsChanged", function (accounts) {
-      logoutUser();
-    });
-    window.ethereum.on("networkChanged", function (networkId) {
-      logoutUser();
-    });
+    const init = async () => {
+      if (window.web3) {
+        getAddressWallet();
+        window.ethereum.on("accountsChanged", function (accounts) {
+          logoutUser();
+        });
+        window.ethereum.on("networkChanged", function (networkId) {
+          logoutUser();
+        });
+      } else {
+        window.alert(" You should consider trying to install metamask");
+      }
+    };
+    init();
   }, []);
   useEffect(() => {
-    getAddressWallet();
+    if (window.web3) {
+      getAddressWallet();
+    }
   }, [isAuthenticated]);
   return (
     <div className={styles.navbarLayout}>
@@ -112,12 +130,8 @@ export default function Navbar() {
           </div>
         ) : (
           <div
-            onClick={async () => {
-              await authenticate();
+            onClick={() => {
               loginUser();
-              router.push({
-                pathname: "/BuyChests",
-              });
             }}
             className={styles.buttonNavbar}
           >

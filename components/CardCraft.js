@@ -3,8 +3,9 @@ import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import { craftNFTAPI } from "../api/info-nft";
 import { craftNFTWeb3 } from "../web3/index";
-
+import { useRouter } from "next/router";
 const CardCraft = (props) => {
+  const router = useRouter();
   const craftNFT = async (item) => {
     const pid = Date.now();
     const responseAPI = await craftNFTAPI(
@@ -16,7 +17,7 @@ const CardCraft = (props) => {
       item.cost,
       item.energy_consumed,
       item.amount_food,
-      props.address_wallet
+      props.share_address_wallet
     );
     if (responseAPI.data !== "please add resource") {
       const responseWeb3 = await craftNFTWeb3(
@@ -29,9 +30,12 @@ const CardCraft = (props) => {
         item.cost.fruit,
         item.energy_consumed,
         item.amount_food,
-        props.address_wallet
+        props.share_address_wallet
       );
       console.log("responseWeb3", responseWeb3);
+      router.push({
+        pathname: "/MyItem",
+      });
     } else {
       // popup แจ้งเตือน
     }
