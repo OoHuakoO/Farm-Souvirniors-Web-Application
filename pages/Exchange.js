@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CardExchange from "../components/CardExchange";
 import styles from "../styles/Exchange.module.css";
 
+
 export default function Exchange() {
   const cardExchange = [
     {
