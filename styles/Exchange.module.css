@@ -23,7 +23,7 @@
   padding: 20px;
 }
 .BgExchange {
-  width: 60%;
+  width: 50%;
   margin: 0 auto;
   background-color: #f8f4d3;
   display: flex;
@@ -33,12 +33,65 @@
   flex-direction: column;
   padding: 20px;
 }
+.exchangeCoin {
+  width: 100%;
+
+  margin: 0 auto;
+  
+  border-radius: 10px;
+}
 .exchangeCoin1 {
   width: 100%;
-  padding: 20px;
-  margin: 0 auto;
+  padding: 20px 20px 20px 20px;
   background-color: #eec587;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.exchangeCoin2 {
+  width: 100%;
+  padding: 20px 20px 20px 20px;
+  background-color: #eec587;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.formSelect {
+  background-color: #eee5d7;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.menuSwap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.buttonExchange {
+  height: 40px;
+  width: 150px;
+  padding: 10px 15px;
+  background: #272c32;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color: aliceblue;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 50px;
+}
+.buttonExchange:hover {
+  border: 1px solid #ffa34c;
+  color: aliceblue;
+  background-color: #ffa34c;
+}
+.TopicExchange {
+  padding: 20px 0px;
 }
