@@ -9,17 +9,10 @@ const CardBuychests = (props) => {
     <div className={styles.CardBuyChests1}>
       <div className={styles.CardBuyChests2}>
         <div>
-          <Image
-            src={"/../public/" + props.image}
-            alt="Box1"
-            width={200}
-            height={200}
-          />
+          <Image src={props.picture} alt="Box1" width={200} height={200} />
         </div>
         <div className={styles.typeBox}>
-          <span>
-            {props.balance}/{props.total}{" "}
-          </span>
+          <span>{props.count}/100 </span>
           <span> {props.name}</span>
         </div>
         <div className={styles.bnb}>

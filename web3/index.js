@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import NFTContractBuild from "contracts/NFT.json";
-import RandomBoxContractBuild from "contracts/NFT.json";
+import RandomBoxContractBuild from "contracts/RandomBox.json";
 let NFT;
 let RandomBox;
 // Development
@@ -83,6 +83,7 @@ const getDetailNFT = async (pid) => {
   };
 };
 const getOwnerNftWeb3 = async (address) => {
+  await getContract();
   let jsonOnwerNFT = [];
   if (NFT && address) {
     const listOwnerNFT = await NFT.methods.getNFTByOwner(address).call();
@@ -126,9 +127,8 @@ const buyNFTWeb3 = async (
 };
 
 const getContractAddress = async () => {
-  if (NFT) {
-    return NFT._address;
-  }
+  await getContract();
+  return NFT._address;
 };
 
 const mintRandomBox = async (address_wallet, name, price, count, picture) => {
@@ -153,6 +153,7 @@ const getDetailRandomBox = async (pid) => {
   };
 };
 const getRandomBox = async () => {
+  await getContract();
   let jsonRandomBox = [];
   const listRandombox = await RandomBox.methods._getRandomBox().call();
   for (const [index, id] of listRandombox.entries()) {
