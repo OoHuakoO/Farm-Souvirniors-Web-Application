@@ -94,4 +94,26 @@
 }
 .TopicExchange {
   padding: 20px 0px;
+  font-family: "Prompt", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 27px;
+}
+.Coin1 {
+  font-family: "Prompt", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 27px;
+}
+.coin2 {
+  height: 40px;
+  width: 150px;
+  background: #ffa34c;
+  box-sizing: border-box;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
