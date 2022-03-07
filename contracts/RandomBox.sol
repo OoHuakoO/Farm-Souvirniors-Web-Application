@@ -15,12 +15,7 @@ contract RandomBox is NFT {
         owner = msg.sender;
     }
 
-    event BuyRandomBox(
-        address indexed _to,
-        string name,
-        string picture,
-        uint256 indexNFT
-    );
+    event BuyRandomBox(address indexed _to, string name, string picture);
     event OpenRandomBox(address indexed from, uint256 indexNFT);
     mapping(uint256 => address) public randomBoxToContractAddress;
     mapping(address => uint256) public ContractAddressRandomBoxCount;
@@ -68,15 +63,12 @@ contract RandomBox is NFT {
         uint256 _indexRandomBox,
         string memory _name,
         string memory _picture
-    ) public payable is_user {
-        _craftNFT(_nft_id, _name, _picture, 0, "chest", 0, 0, 0, 0);
-        uint256 id = nft.length - 1;
-        ownerNft[id] = msg.sender;
-        ownerNFTCount[msg.sender] = ownerNFTCount[msg.sender] + 1;
+    ) public payable {
         info_randomBox storage randomBox = box[_indexRandomBox];
         randomBox.count = randomBox.count - 1;
         payable(owner).transfer(msg.value);
-        emit BuyRandomBox(msg.sender, _name, _picture, id);
+        _craftNFT(_nft_id, _name, _picture, 0, "chest", 0, 0, 0, 0);
+        emit BuyRandomBox(msg.sender, _name, _picture);
     }
 
     function _openRandomBox(
@@ -90,7 +82,7 @@ contract RandomBox is NFT {
         uint16 _energy_consumed,
         uint16 _amount_food,
         uint256 _indexRandomBox
-    ) public is_user {
+    ) public {
         ownerNft[_indexRandomBox] = 0x000000000000000000000000000000000000dEaD;
         ownerNFTCount[msg.sender] = ownerNFTCount[msg.sender] - 1;
         _craftNFT(

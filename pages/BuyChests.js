@@ -37,36 +37,15 @@ export default function BuyChests() {
   useEffect(() => {
     async function fetctGetRandomBox() {
       let response = await getRandomBox();
-      setListRandomBox(response);
+      if (response) {
+        setListRandomBox(response);
+      }
     }
     fetctGetRandomBox();
     return () => {
       setListRandomBox([]);
     };
   }, [isAuthenticated]);
-  const cardBuyChest = [
-    {
-      name: "Animal Chests",
-      price: 1,
-      balance: 3000,
-      total: 3000,
-      image: "Box1.png",
-    },
-    {
-      name: "Vegatable Chests",
-      price: 1,
-      balance: 3000,
-      total: 3000,
-      image: "Box1.png",
-    },
-    {
-      name: "Fruit Chests",
-      price: 1,
-      balance: 3000,
-      total: 3000,
-      image: "Box1.png",
-    },
-  ];
   return (
     <div className={styles.BuyChestsPages}>
       <div
@@ -77,7 +56,13 @@ export default function BuyChests() {
         Mint
       </div>
       {listRandomBox.map((item, index) => {
-        return <CardBuychests key={index} {...item} />;
+        return (
+          <CardBuychests
+            key={index}
+            {...item}
+            share_address_wallet={share_address_wallet}
+          />
+        );
       })}
     </div>
   );

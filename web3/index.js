@@ -84,16 +84,14 @@ const getDetailNFT = async (pid) => {
 };
 const getOwnerNftWeb3 = async (address) => {
   await getContract();
-  let jsonOnwerNFT = [];
-  if (NFT && address) {
-    const listOwnerNFT = await NFT.methods.getNFTByOwner(address).call();
-    for (const [index, id] of listOwnerNFT.entries()) {
-      await getDetailNFT(id.toString()).then((data) => {
-        jsonOnwerNFT.push({ ...data.data, indexNFT: id.toString() });
-      });
-      if (index === listOwnerNFT.length - 1) {
-        return jsonOnwerNFT;
-      }
+  let jsonOwnerNFT = [];
+  const listOwnerNFT = await NFT.methods.getNFTByOwner(address).call();
+  for (const [index, id] of listOwnerNFT.entries()) {
+    await getDetailNFT(id.toString()).then((data) => {
+      jsonOwnerNFT.push({ ...data.data, indexNFT: id.toString() });
+    });
+    if (index === listOwnerNFT.length - 1) {
+      return jsonOwnerNFT;
     }
   }
 };
@@ -172,6 +170,25 @@ const addCountRandomBox = async (indexNFT, count, address_wallet) => {
   });
   return { status: "success" };
 };
+const buyRandomBox = async (
+  pid,
+  price,
+  indexNFT,
+  name,
+  picture,
+  address_wallet
+) => {
+  const res = await RandomBox.methods
+    ._buyRandomBox(pid, indexNFT, name, picture)
+    .send({
+      from: address_wallet,
+      gas: 5500000,
+      value: web3.utils.toWei(price, "ether"),
+    });
+  console.log(res);
+  return { status: "success" };
+};
+
 module.exports = {
   getContract,
   craftNFTWeb3,
@@ -184,4 +201,5 @@ module.exports = {
   mintRandomBox,
   getRandomBox,
   addCountRandomBox,
+  buyRandomBox,
 };

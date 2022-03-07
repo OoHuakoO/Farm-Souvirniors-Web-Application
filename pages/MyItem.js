@@ -16,6 +16,7 @@ export default function MyItem() {
       if (isAuthenticated && share_address_wallet) {
         let responseWeb3 = await getOwnerNftWeb3(share_address_wallet);
         let responseAPI = await getOwnerNFTAPI(share_address_wallet);
+      
         if (responseWeb3) {
           await responseWeb3.map(
             async (dataFromSmartContract, indexFromSmartContract) => {

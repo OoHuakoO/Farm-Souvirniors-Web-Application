@@ -39,8 +39,8 @@ contract NFT {
     );
     event SellNFT(address indexed from, string price, uint256 indexNFT);
     event CancleNFT(address indexed from, uint256 indexNFT);
-    mapping(uint256 => address) internal ownerNft;
-    mapping(address => uint256) internal ownerNFTCount;
+    mapping(uint256 => address) public ownerNft;
+    mapping(address => uint256) public ownerNFTCount;
     info_nft[] public nft;
 
     function _craftNFT(
@@ -53,7 +53,7 @@ contract NFT {
         uint16 _cost_fruit,
         uint16 _energy_consumed,
         uint16 _amount_food
-    ) public {
+    ) internal {
         nft.push(
             info_nft(
                 _nft_id,
