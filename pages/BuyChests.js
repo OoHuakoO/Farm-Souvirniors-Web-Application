@@ -12,7 +12,7 @@ export default function BuyChests() {
     // Animal chest
     await mintRandomBox(
       share_address_wallet,
-      "Animal Chests",
+      "animal chests",
       "0.01",
       100,
       "https://res.cloudinary.com/smilejob/image/upload/v1645697086/Farm-Souvirniors/animal-chest_waxfph.png"

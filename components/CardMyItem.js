@@ -35,7 +35,16 @@ const CardMyItem = (props) => {
       <div className={styles.NameCard}>
         <span>{props.name}</span>
       </div>
-      {props.status === "not_plant" ? (
+      {props.type_nft === "chest" ? (
+        <div style={{display : 'flex', flexDirection: "row" }}>
+          <div className={styles.buttonSell}>
+            <span>open</span>
+          </div>
+          <div className={styles.buttonSell}>
+            <span>sell</span>
+          </div>
+        </div>
+      ) : props.status === "not_plant" ? (
         <div onClick={() => sellNFT(props)} className={styles.buttonSell}>
           <span> Sell</span>
         </div>

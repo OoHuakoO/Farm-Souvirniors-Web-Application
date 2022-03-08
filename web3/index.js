@@ -4,7 +4,7 @@ import RandomBoxContractBuild from "contracts/RandomBox.json";
 let NFT;
 let RandomBox;
 // Development
-const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
+const web3 = new Web3(Web3.givenProvider);
 // Testnet Ropsten
 // const web3 = new Web3(
 //   Web3.givenProvider ||
@@ -49,6 +49,7 @@ const craftNFTWeb3 = async (
       amount_food
     )
     .send({ from: address_wallet, gas: 5500000 });
+
   return { status: "success" };
 };
 
@@ -178,21 +179,59 @@ const buyRandomBox = async (
   picture,
   address_wallet
 ) => {
-  const res = await RandomBox.methods
-    ._buyRandomBox(pid, indexNFT, name, picture)
-    .send({
-      from: address_wallet,
-      gas: 5500000,
-      value: web3.utils.toWei(price, "ether"),
-    });
-  console.log(res);
+  await RandomBox.methods._buyRandomBox(pid, indexNFT, name, picture).send({
+    from: address_wallet,
+    gas: 5500000,
+    value: web3.utils.toWei(price, "ether"),
+  });
   return { status: "success" };
 };
-
+const getDetailOwnerRandombox = async (pid) => {
+  const {
+    nft_id,
+    name,
+    picture,
+    reward,
+    type_nft,
+    price,
+    cost_wood,
+    cost_fruit,
+    energy_consumed,
+    amount_food,
+    seller,
+  } = await RandomBox.methods.nft(pid).call();
+  return {
+    data: {
+      nft_id: nft_id.toString(),
+      name: name.toString(),
+      picture: picture.toString(),
+      reward: reward.toString(),
+      type_nft: type_nft.toString(),
+      price: price.toString(),
+      cost_wood: cost_wood.toString(),
+      cost_fruit: cost_fruit.toString(),
+      energy_consumed: energy_consumed.toString(),
+      amount_food: amount_food.toString(),
+      seller: seller.toString(),
+    },
+  };
+};
+const getOwnerRandomBox = async (address) => {
+  await getContract();
+  let jsonOwnerRandombox = [];
+  const listOwnerNFT = await RandomBox.methods.getNFTByOwner(address).call();
+  for (const [index, id] of listOwnerNFT.entries()) {
+    await getDetailOwnerRandombox(id.toString()).then((data) => {
+      jsonOwnerRandombox.push({ ...data.data, indexNFT: id.toString() });
+    });
+    if (index === listOwnerNFT.length - 1) {
+      return jsonOwnerRandombox;
+    }
+  }
+};
 module.exports = {
   getContract,
   craftNFTWeb3,
-  getDetailNFT,
   getOwnerNftWeb3,
   sellNFTWeb3,
   buyNFTWeb3,
@@ -202,4 +241,5 @@ module.exports = {
   getRandomBox,
   addCountRandomBox,
   buyRandomBox,
+  getOwnerRandomBox,
 };
