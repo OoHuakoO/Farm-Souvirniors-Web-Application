@@ -5,7 +5,7 @@ import Config from "../config";
 import dataFromNFT from "../build/contracts/NFT.json";
 import dataRandomBox from "../build/contracts/RandomBox.json";
 // Development
-const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
+const web3 = new Web3(Web3.givenProvider || Config.web3ProviderGanache);
 // Testnet Ropsten
 // const web3 = new Web3(
 //   Web3.givenProvider || "https://data-seed-prebsc-1-s1.binance.org:8545"
