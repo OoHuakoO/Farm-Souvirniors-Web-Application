@@ -15,7 +15,7 @@ export default function Navbar() {
   const [walletAddress, setWalletAddress] = useState();
   const { setShare_Address_wallet } = useUserState();
   const getAddressWallet = async () => {
-    const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:7545");
     const accounts = await web3.eth.requestAccounts();
     setWalletAddress(accounts[0]);
     setShare_Address_wallet(accounts[0]);
@@ -24,7 +24,7 @@ export default function Navbar() {
     if (window.web3) {
       const authen = await authenticate();
       if (authen) {
-        const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
+        const web3 = new Web3(Web3.givenProvider || "http://localhost:7545");
         const accounts = await web3.eth.requestAccounts();
         await Login(accounts[0]);
         router.push({
