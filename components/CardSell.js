@@ -3,6 +3,7 @@ import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import { cancleNFTAPI } from "../api/marketplace";
 import { cancleNFTWeb3 } from "../web3/nft";
+import { cancleRandomBox } from "../web3/randomBox";
 import { useRouter } from "next/router";
 const CardSell = (props) => {
   const router = useRouter();
@@ -16,6 +17,16 @@ const CardSell = (props) => {
       console.log(responseWeb3);
     }
     console.log(responseAPI);
+    router.push({
+      pathname: "/MyItem",
+    });
+  };
+  const handleCancleRandomBox = async (item) => {
+    const response = await cancleRandomBox(
+      props.share_address_wallet,
+      item.indexNFT
+    );
+    console.log(response);
     router.push({
       pathname: "/MyItem",
     });
@@ -34,12 +45,21 @@ const CardSell = (props) => {
       <div className={styles.NameCard}>
         <span>{props.name}</span>
       </div>
-      <div
-        onClick={() => cancleSell(props)}
-        className={styles.buttonCancleSell}
-      >
-        <span>Cancle Sell</span>
-      </div>
+      {props.type_nft === "chest" ? (
+        <div
+          onClick={() => handleCancleRandomBox(props)}
+          className={styles.buttonCancleSell}
+        >
+          <span>Cancle Sell</span>
+        </div>
+      ) : (
+        <div
+          onClick={() => cancleSell(props)}
+          className={styles.buttonCancleSell}
+        >
+          <span>Cancle Sell</span>
+        </div>
+      )}
     </div>
   );
 };

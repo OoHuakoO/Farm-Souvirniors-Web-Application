@@ -4,6 +4,7 @@ import Image from "next/image";
 import Ethereum from "../public/Ethereum-icon-purple.png";
 import { buyNFTAPI } from "../api/marketplace";
 import { buyNFTWeb3 } from "../web3/nft";
+import { buyOwnerRandomBox } from "../web3/randomBox";
 import { useRouter } from "next/router";
 
 const CardMarketplace = (props) => {
@@ -28,6 +29,18 @@ const CardMarketplace = (props) => {
       pathname: "/MyItem",
     });
   };
+  const handleBuyOwnerRandomBox = async (item) => {
+    const response = await buyOwnerRandomBox(
+      props.share_address_wallet,
+      item.seller,
+      item.indexNFT,
+      item.price
+    );
+    console.log(response);
+    router.push({
+      pathname: "/MyItem",
+    });
+  };
   return (
     <div className={styles.cardMyItem3}>
       <div className={styles.cardMyItem4}>
@@ -35,10 +48,14 @@ const CardMarketplace = (props) => {
           <span>UID : </span>
           <span>{props.nft_id}</span>
         </div>
-        
-        <div className={[styles.uidSeller, 'd-inline-block text-truncate'].join(' ')}>
+
+        <div
+          className={[styles.uidSeller, "d-inline-block text-truncate"].join(
+            " "
+          )}
+        >
           <span>Seller : </span>
-          
+
           <span>{props.seller}</span>
         </div>
         <div className={styles.imageMyItem}>
@@ -61,6 +78,13 @@ const CardMarketplace = (props) => {
             <span>this Owner NFT</span>
           </div>
         </>
+      ) : props.type_nft === "chest" ? (
+        <div
+          onClick={() => handleBuyOwnerRandomBox(props)}
+          className={styles.buttonSell}
+        >
+          <span>Buy</span>
+        </div>
       ) : (
         <div onClick={() => buyNFT(props)} className={styles.buttonSell}>
           <span>Buy</span>

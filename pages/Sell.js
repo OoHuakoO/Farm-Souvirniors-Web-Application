@@ -26,9 +26,14 @@ export default function Sell() {
           responseContractAddressRandombox
         );
         if (responseWeb3RandomBox && !responseWeb3) {
-          if (data.seller === share_address_wallet) {
-            setDataMySell(responseWeb3RandomBox);
-          }
+          await responseWeb3RandomBox.map(async (data, index) => {
+            if (data.seller === share_address_wallet) {
+              listOwnerNFT.push(data);
+            }
+            if (responseWeb3RandomBox.length - 1 === index) {
+              setDataMySell(listOwnerNFT);
+            }
+          });
         }
 
         if (responseWeb3 && !responseWeb3RandomBox) {

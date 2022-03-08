@@ -41,18 +41,18 @@ export default function MyItem() {
           );
         }
         if (responseWeb3 && responseWeb3RandomBox) {
-          let listNFT = responseWeb3RandomBox.concat(responseWeb3);
-          await listNFT.map(
+          let listOwnerNFT = responseWeb3RandomBox.concat(responseWeb3);
+          await listOwnerNFT.map(
             async (dataFromSmartContract, indexFromSmartContract) => {
               await responseAPI.data.map((dataFromDB, indexFromDB) => {
                 if (dataFromSmartContract.nft_id === dataFromDB.nft_id) {
                   dataFromSmartContract.status = dataFromDB.status;
                 }
                 if (
-                  listNFT.length - 1 === indexFromSmartContract &&
+                  listOwnerNFT.length - 1 === indexFromSmartContract &&
                   responseAPI.data.length - 1 === indexFromDB
                 ) {
-                  setDataMyItem(listNFT);
+                  setDataMyItem(listOwnerNFT);
                 }
               });
             }

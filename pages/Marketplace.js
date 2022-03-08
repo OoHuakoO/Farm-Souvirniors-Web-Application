@@ -3,6 +3,10 @@ import styles from "../styles/MyItem.module.css";
 import CardMarketplace from "../components/CardMarketplace";
 import { useUserState } from "../context/user";
 import { getOwnerNftWeb3, getContractAddressNFT } from "../web3/nft";
+import {
+  getContractAddressRandomBox,
+  getOwnerRandomBox,
+} from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
 export default function Marketplace() {
   const { share_address_wallet } = useUserState();
@@ -14,9 +18,21 @@ export default function Marketplace() {
     async function fetchGetMySell() {
       if (isAuthenticated) {
         let responseContractAddress = await getContractAddressNFT();
+        let responseContractAddressRandombox =
+          await getContractAddressRandomBox();
         let responseWeb3 = await getOwnerNftWeb3(responseContractAddress);
-        if (responseWeb3) {
+        let responseWeb3RandomBox = await getOwnerRandomBox(
+          responseContractAddressRandombox
+        );
+        if (responseWeb3RandomBox && !responseWeb3) {
+          setDataMarketplace(responseWeb3RandomBox);
+        }
+        if (responseWeb3 && !responseWeb3RandomBox) {
           setDataMarketplace(responseWeb3);
+        }
+        if (responseWeb3 && responseWeb3RandomBox) {
+          let listNFT = responseWeb3RandomBox.concat(responseWeb3);
+          setDataMarketplace(listNFT);
         }
       }
     }
