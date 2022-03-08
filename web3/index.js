@@ -1,6 +1,7 @@
 import Web3 from "web3";
 let NFT;
 let RandomBox;
+import Config from "../config";
 import dataFromNFT from "../build/contracts/NFT.json";
 import dataRandomBox from "../build/contracts/RandomBox.json";
 // Development
