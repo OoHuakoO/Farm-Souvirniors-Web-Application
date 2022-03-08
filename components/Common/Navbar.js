@@ -17,7 +17,7 @@ export default function Navbar() {
   const getAddressWallet = async () => {
     const web3 = new Web3(
       Web3.givenProvider ||
-        "https://ropsten.infura.io/v3/b0f95459c5a149cc9032a56d32fd1bdf"
+        "https://data-seed-prebsc-1-s1.binance.org:8545"
     );
     const accounts = await web3.eth.requestAccounts();
     setWalletAddress(accounts[0]);
@@ -29,7 +29,7 @@ export default function Navbar() {
       if (authen) {
         const web3 = new Web3(
           Web3.givenProvider ||
-            "https://ropsten.infura.io/v3/b0f95459c5a149cc9032a56d32fd1bdf"
+            "https://data-seed-prebsc-1-s1.binance.org:8545"
         );
         const accounts = await web3.eth.requestAccounts();
         await Login(accounts[0]);

@@ -62,15 +62,15 @@ module.exports = {
       skipDryRun: true,
     },
     ropsten: {
-      provider: function () {
+      provider: () => {
         return new HDWalletProvider(
           MNEMONIC,
           "https://ropsten.infura.io/v3/b0f95459c5a149cc9032a56d32fd1bdf"
         );
       },
       network_id: 3,
-      gas: 5500000, //make sure this gas allocation isn't over 4M, which is the max
-      confirmation: 2,
+      // gas: 5500000, //make sure this gas allocation isn't over 4M, which is the max
+      confirmation: 10,
       timeoutBlocks: 200,
       skipDryRun: true,
     },

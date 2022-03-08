@@ -5,8 +5,8 @@ import { MoralisProvider } from "react-moralis";
 function MyApp({ Component, pageProps }) {
   return (
     <MoralisProvider
-      appId="kPg7clzA2Be7arc960GrpLVJEaXZh0X4u9h3VNjq"
-      serverUrl="https://hqgfasdwij2x.usemoralis.com:2053/server"
+      appId="3YdqJ5iL4D9TM3DnoGeM9F7QZ5Qm8Z7m0dNP2Na6"
+      serverUrl="https://p5myguticiga.usemoralis.com:2053/server"
     >
       <UserProvider>
         <MainLayout>
