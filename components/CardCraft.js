@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import { craftNFTAPI } from "../api/info-nft";
-import { craftNFTWeb3 } from "../web3/index";
+import { craftNFTWeb3 } from "../web3/nft";
 import { useRouter } from "next/router";
 const CardCraft = (props) => {
   const router = useRouter();

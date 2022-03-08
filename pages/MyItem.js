@@ -3,7 +3,8 @@ import styles from "../styles/MyItem.module.css";
 import CardMyItem from "../components/CardMyItem";
 import { getOwnerNFTAPI } from "../api/owner-nft";
 import { useUserState } from "../context/user";
-import { getOwnerNftWeb3, getOwnerRandomBox } from "../web3/index";
+import { getOwnerNftWeb3 } from "../web3/nft";
+import { getOwnerRandomBox } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
 export default function MyItem() {
   const { share_address_wallet } = useUserState();

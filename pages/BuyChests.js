@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/BuyChests.module.css";
 import CardBuychests from "../components/CardBuyChests";
 import { useUserState } from "../context/user";
-import { mintRandomBox, getRandomBox } from "../web3/index";
+import { mintRandomBox, getRandomBox } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
 export default function BuyChests() {
   const { share_address_wallet } = useUserState();

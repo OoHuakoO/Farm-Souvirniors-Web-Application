@@ -3,7 +3,7 @@ import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import Ethereum from "../public/Ethereum-icon-purple.png";
 import { buyNFTAPI } from "../api/marketplace";
-import { buyNFTWeb3 } from "../web3/index";
+import { buyNFTWeb3 } from "../web3/nft";
 import { useRouter } from "next/router";
 
 const CardMarketplace = (props) => {

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import { cancleNFTAPI } from "../api/marketplace";
-import { cancleNFTWeb3 } from "../web3/index";
+import { cancleNFTWeb3 } from "../web3/nft";
 import { useRouter } from "next/router";
 const CardSell = (props) => {
   const router = useRouter();

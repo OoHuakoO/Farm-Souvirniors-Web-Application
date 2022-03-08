@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/MyItem.module.css";
 import CardMarketplace from "../components/CardMarketplace";
 import { useUserState } from "../context/user";
-import { getOwnerNftWeb3, getContractAddress } from "../web3/index";
+import { getOwnerNftWeb3, getContractAddressNFT } from "../web3/nft";
 import { useMoralis } from "react-moralis";
 export default function Marketplace() {
   const { share_address_wallet } = useUserState();
@@ -13,7 +13,7 @@ export default function Marketplace() {
   useEffect(() => {
     async function fetchGetMySell() {
       if (isAuthenticated) {
-        let responseContractAddress = await getContractAddress();
+        let responseContractAddress = await getContractAddressNFT();
         let responseWeb3 = await getOwnerNftWeb3(responseContractAddress);
         if (responseWeb3) {
           setDataMarketplace(responseWeb3);

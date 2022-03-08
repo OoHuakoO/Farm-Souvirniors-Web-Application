@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/BuyChests.module.css";
 import Image from "next/image";
 import Ethereum from "../public/Ethereum-icon-purple.png";
-import { buyRandomBox } from "../web3/index";
+import { buyRandomBox } from "../web3/randomBox";
 import { useRouter } from "next/router";
 const CardBuychests = (props) => {
   const router = useRouter();

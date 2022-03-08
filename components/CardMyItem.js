@@ -2,7 +2,8 @@ import React from "react";
 import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import { sellNFTAPI } from "../api/marketplace";
-import { sellNFTWeb3 } from "../web3/index";
+import { sellNFTWeb3 } from "../web3/nft";
+import { sellRandomBox } from "../web3/randomBox";
 import { useRouter } from "next/router";
 const CardMyItem = (props) => {
   const router = useRouter();
@@ -21,6 +22,17 @@ const CardMyItem = (props) => {
       pathname: "/Sell",
     });
   };
+  const sellRandombox = async (item) => {
+    const response = await sellRandomBox(
+      props.share_address_wallet,
+      item.indexNFT,
+      "0.01"
+    );
+    router.push({
+      pathname: "/Sell",
+    });
+    console.log(response);
+  };
   return (
     <div className={styles.cardMyItem1}>
       <div className={styles.cardMyItem2}>
@@ -36,12 +48,15 @@ const CardMyItem = (props) => {
         <span>{props.name}</span>
       </div>
       {props.type_nft === "chest" ? (
-        <div style={{display : 'flex', flexDirection: "row" }}>
+        <div style={{ display: "flex", flexDirection: "row" }}>
           <div className={styles.buttonSell}>
-            <span>open</span>
+            <span>Open</span>
           </div>
-          <div className={styles.buttonSell}>
-            <span>sell</span>
+          <div
+            onClick={() => sellRandombox(props)}
+            className={styles.buttonSell}
+          >
+            <span>Sell</span>
           </div>
         </div>
       ) : props.status === "not_plant" ? (
