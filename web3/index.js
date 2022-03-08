@@ -1,26 +1,25 @@
 import Web3 from "web3";
-import NFTContractBuild from "contracts/NFT.json";
-import RandomBoxContractBuild from "contracts/RandomBox.json";
 let NFT;
 let RandomBox;
+import dataFromNFT from "../build/contracts/NFT.json";
+import dataRandomBox from "../build/contracts/RandomBox.json";
 // Development
 // const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
 // Testnet Ropsten
 const web3 = new Web3(
-  Web3.givenProvider ||
-    "https://data-seed-prebsc-1-s1.binance.org:8545"
+  Web3.givenProvider || "https://data-seed-prebsc-1-s1.binance.org:8545"
 );
 const getContract = async () => {
   const netId = await web3.eth.net.getId();
+
   NFT = new web3.eth.Contract(
-    NFTContractBuild.abi,
-    NFTContractBuild.networks[netId].address
+    dataFromNFT.abi,
+    dataFromNFT.networks[netId].address
   );
   RandomBox = new web3.eth.Contract(
-    RandomBoxContractBuild.abi,
-    RandomBoxContractBuild.networks[netId].address
+    dataRandomBox.abi,
+    dataRandomBox.networks[netId].address
   );
-
 };
 getContract();
 
@@ -36,6 +35,7 @@ const craftNFTWeb3 = async (
   amount_food,
   address_wallet
 ) => {
+  await getContract();
   await NFT.methods
     ._craftNFT(
       pid,
@@ -54,6 +54,7 @@ const craftNFTWeb3 = async (
 };
 
 const getDetailNFT = async (pid) => {
+  await getContract();
   const {
     nft_id,
     name,
@@ -98,6 +99,7 @@ const getOwnerNftWeb3 = async (address) => {
 };
 
 const sellNFTWeb3 = async (address_wallet, indexNFT, price) => {
+  await getContract();
   await NFT.methods
     .sellNFT(indexNFT, price)
     .send({ from: address_wallet, gas: 5500000 });
@@ -105,6 +107,7 @@ const sellNFTWeb3 = async (address_wallet, indexNFT, price) => {
 };
 
 const cancleNFTWeb3 = async (address_wallet, indexNFT) => {
+  await getContract();
   await NFT.methods
     .cancleNFT(indexNFT)
     .send({ from: address_wallet, gas: 5500000 });
@@ -117,6 +120,7 @@ const buyNFTWeb3 = async (
   indexNFT,
   price
 ) => {
+  await getContract();
   await NFT.methods.buyNFT(indexNFT, price, seller_address_wallet).send({
     from: buyer_address_wallet,
     gas: 5500000,
@@ -131,6 +135,7 @@ const getContractAddress = async () => {
 };
 
 const mintRandomBox = async (address_wallet, name, price, count, picture) => {
+  await getContract();
   await RandomBox.methods._mintRandomBox(name, price, count, picture).send({
     from: address_wallet,
     gas: 5500000,
@@ -139,6 +144,7 @@ const mintRandomBox = async (address_wallet, name, price, count, picture) => {
 };
 
 const getDetailRandomBox = async (pid) => {
+  await getContract();
   const { name, price, count, picture } = await RandomBox.methods
     .box(pid)
     .call();
@@ -165,6 +171,7 @@ const getRandomBox = async () => {
   }
 };
 const addCountRandomBox = async (indexNFT, count, address_wallet) => {
+  await getContract();
   await RandomBox.methods._addCountRandomBox(indexNFT, count).send({
     from: address_wallet,
     gas: 5500000,
@@ -179,6 +186,7 @@ const buyRandomBox = async (
   picture,
   address_wallet
 ) => {
+  await getContract();
   await RandomBox.methods._buyRandomBox(pid, indexNFT, name, picture).send({
     from: address_wallet,
     gas: 5500000,
@@ -187,6 +195,7 @@ const buyRandomBox = async (
   return { status: "success" };
 };
 const getDetailOwnerRandombox = async (pid) => {
+  await getContract();
   const {
     nft_id,
     name,

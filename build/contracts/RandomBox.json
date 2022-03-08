@@ -21684,12 +21684,6 @@
       "links": {},
       "address": "0x46BC95E2a2f9C4e3A764DcF84B156CaAfFD207Ab",
       "transactionHash": "0x5a49d64b892fe757dd2a3475c0c1143dd3094869f8d953ed82a5a4442e068bec"
-    },
-    "5777": {
-      "events": {},
-      "links": {},
-      "address": "0x08F13D498b029933c6A938a5D6a03b4443363a3D",
-      "transactionHash": "0x107adc5b386b1adb0c7aabba8b30bd38b11d414cf0df064f3b19bea60b253313"
     }
   },
   "schemaVersion": "3.4.4",

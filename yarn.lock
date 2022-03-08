@@ -2548,9 +2548,9 @@ camelcase@^5.0.0:
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
 caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001313:
-  version "1.0.30001313"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001313.tgz#a380b079db91621e1b7120895874e2fd62ed2e2f"
-  integrity sha512-rI1UN0koZUiKINjysQDuRi2VeSCce3bYJNmDcj3PIKREiAmjakugBul1QSkg/fPrlULYl6oWfGg3PbgOSY9X4Q==
+  version "1.0.30001314"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001314.tgz#65c7f9fb7e4594fca0a333bec1d8939662377596"
+  integrity sha512-0zaSO+TnCHtHJIbpLroX7nsD+vYuOVjl3uzFbJO1wMVbuveJA0RK2WcQA9ZUIOiO0/ArMiMgHJLxfEZhQiC0kw==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -2848,9 +2848,6 @@ content-type@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
   integrity sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
-
-"contracts@file:./build/contracts":
-  version "0.0.0"
 
 convert-source-map@1.7.0:
   version "1.7.0"
@@ -3379,9 +3376,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.723, electron-to-chromium@^1.4.76:
-  version "1.4.76"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.76.tgz#a0494baedaf51094b1c172999919becd9975a934"
-  integrity sha512-3Vftv7cenJtQb+k00McEBZ2vVmZ/x+HEF7pcZONZIkOsESqAqVuACmBxMv0JhzX7u0YltU0vSqRqgBSTAhFUjA==
+  version "1.4.77"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.77.tgz#c26e454cb8721d4ebdae3e276c57cd32e51c32ed"
+  integrity sha512-fiDxw8mO9Ph1Z0bjX2sFTPpi0J0QkOiwOJF+5Q0J0baNc/F9lLePAvDPlnoxvbUYYMizqrKPeotRRkJ9LtxAew==
 
 elliptic@6.3.3:
   version "6.3.3"
@@ -3517,9 +3514,9 @@ es-to-primitive@^1.2.1:
     is-symbol "^1.0.2"
 
 es5-ext@^0.10.35, es5-ext@^0.10.50:
-  version "0.10.54"
-  resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.54.tgz#f364944294a00f9562c26bbde5156018f7d5fb6e"
-  integrity sha512-PmZt9baBXDXz2wJ8RRJGGn9r7Ks4zjxWdazbtY2w8EugwojsasRvsyZM2CGN1NPoYfKFK4CqjqFSFYS9wpjtyg==
+  version "0.10.56"
+  resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.56.tgz#fd76bc935212203a83fef35bb58cddde26ae6c3c"
+  integrity sha512-YUhqzoMnIjMW5y8FzaMxsCu0eWCwq32GrlwhOhbQmL5OiZReWFm/KvRiYuvqf3CaG/zZ36Kyb4KfVe674cafCQ==
   dependencies:
     es6-iterator "^2.0.3"
     es6-symbol "^3.1.3"
