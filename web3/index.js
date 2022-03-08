@@ -4,7 +4,7 @@ import RandomBoxContractBuild from "contracts/RandomBox.json";
 let NFT;
 let RandomBox;
 // Development
-const web3 = new Web3(Web3.givenProvider);
+const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
 // Testnet Ropsten
 // const web3 = new Web3(
 //   Web3.givenProvider ||
