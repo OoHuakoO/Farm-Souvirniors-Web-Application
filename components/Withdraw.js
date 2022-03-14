@@ -37,7 +37,7 @@ export const Withdraw = () => {
     const InputSaveCoin = Number(event.target.value);
 
     const TotalCoin = InputSaveCoin - InputSaveCoin * 0.1;
-    console.log("คิดเลข", TotalCoin);
+    // console.log("คิดเลข", TotalCoin);
     setExchangePrice(TotalCoin);
   };
   const withdrawCoin = () => {
@@ -46,7 +46,7 @@ export const Withdraw = () => {
       ExchangePrice: ExchangePrice,
       CoinsExchange: CoinsExchange[SelectedCoinIndex],
     };
-    console.log("dataform", dataForm);
+    // console.log("dataform", dataForm);
   };
 
   return (
