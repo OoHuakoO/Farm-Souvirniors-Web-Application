@@ -1,10 +1,27 @@
 import React from "react";
 import styles from "../styles/BuyChests.module.css";
 import Image from "next/image";
-import Box1 from "../public/Box1.png";
 import Ethereum from "../public/Ethereum-icon-purple.png";
-
+import { buyRandomBox } from "../web3/randomBox";
+import { useRouter } from "next/router";
 const CardBuychests = (props) => {
+  const router = useRouter();
+  const handleBuyRandomBox = async (item) => {
+    const pid = Date.now();
+    const response = await buyRandomBox(
+      pid,
+      item.price,
+      parseInt(item.indexNFT),
+      item.name,
+      item.picture,
+      props.share_address_wallet
+    );
+    if (response) {
+      router.push({
+        pathname: "/MyItem",
+      });
+    }
+  };
   return (
     <div className={styles.CardBuyChests1}>
       <div className={styles.CardBuyChests2}>
@@ -21,7 +38,12 @@ const CardBuychests = (props) => {
             <Image src={Ethereum} alt="Ethereum" width={25} height={25} />
           </div>
         </div>
-        <div className={styles.buttonBuy}>buy</div>
+        <div
+          onClick={() => handleBuyRandomBox(props)}
+          className={styles.buttonBuy}
+        >
+          buy
+        </div>
       </div>
     </div>
   );
