@@ -3,7 +3,10 @@ import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import { sellNFTAPI } from "../api/marketplace";
 import { sellNFTWeb3 } from "../web3/nft";
-import { sellRandomBox, openRandomBoxWeb3 } from "../web3/randomBox";
+import {
+  sellNFTWeb3InstanceRandombox,
+  openRandomBoxWeb3,
+} from "../web3/randomBox";
 import { openRandomBoxAPI, getOneInfoNFT } from "../api/random-box";
 import { useRouter } from "next/router";
 const CardMyItem = (props) => {
@@ -67,22 +70,37 @@ const CardMyItem = (props) => {
     }
   };
   const sellNFT = async (item) => {
-    const responseAPI = await sellNFTAPI("0.01", item.nft_id);
-    if (responseAPI.data === "sell nft successfully") {
+    if (item.from === "nft") {
       const responseWeb3 = await sellNFTWeb3(
         props.share_address_wallet,
         item.indexNFT,
         "0.01"
       );
-      console.log(responseWeb3);
+      if (responseWeb3) {
+        const responseAPI = await sellNFTAPI("0.01", item.nft_id);
+        console.log(responseAPI);
+        router.push({
+          pathname: "/Sell",
+        });
+      }
+    } else if (item.from === "randombox") {
+      console.log(item);
+      const responseWeb3InstanceRandombox = await sellNFTWeb3InstanceRandombox(
+        props.share_address_wallet,
+        item.indexNFT,
+        "0.01"
+      );
+      if (responseWeb3InstanceRandombox) {
+        const responseAPI = await sellNFTAPI("0.01", item.nft_id);
+        console.log(responseAPI);
+        router.push({
+          pathname: "/Sell",
+        });
+      }
     }
-    console.log(responseAPI);
-    router.push({
-      pathname: "/Sell",
-    });
   };
   const sellRandombox = async (item) => {
-    const response = await sellRandomBox(
+    const response = await sellNFTWeb3InstanceRandombox(
       props.share_address_wallet,
       item.indexNFT,
       "0.01"

@@ -20,23 +20,28 @@ export default function MyItem() {
         let responseWeb3RandomBox = await getOwnerRandomBox(
           share_address_wallet
         );
-
         if (responseWeb3RandomBox && !responseWeb3) {
-          await responseWeb3RandomBox.map(
-            async (dataFromSmartContract, indexFromSmartContract) => {
-              await responseAPI.data.map((dataFromDB, indexFromDB) => {
-                if (dataFromSmartContract.nft_id === dataFromDB.nft_id) {
-                  dataFromSmartContract.status = dataFromDB.status;
-                }
-                if (
-                  responseWeb3RandomBox.length - 1 === indexFromSmartContract &&
-                  responseAPI.data.length - 1 === indexFromDB
-                ) {
-                  setDataMyItem(responseWeb3RandomBox);
-                }
-              });
-            }
-          );
+          if (responseAPI.data.length !== 0) {
+            await responseWeb3RandomBox.map(
+              async (dataFromSmartContract, indexFromSmartContract) => {
+                await responseAPI.data.map((dataFromDB, indexFromDB) => {
+                  if (dataFromSmartContract.nft_id === dataFromDB.nft_id) {
+                    dataFromSmartContract.status = dataFromDB.status;
+                    dataFromSmartContract.from = "randombox";
+                  }
+                  if (
+                    responseWeb3RandomBox.length - 1 ===
+                      indexFromSmartContract &&
+                    responseAPI.data.length - 1 === indexFromDB
+                  ) {
+                    setDataMyItem(responseWeb3RandomBox);
+                  }
+                });
+              }
+            );
+          } else {
+            setDataMyItem(responseWeb3RandomBox);
+          }
         }
         if (responseWeb3 && !responseWeb3RandomBox) {
           await responseWeb3.map(
@@ -44,6 +49,7 @@ export default function MyItem() {
               await responseAPI.data.map((dataFromDB, indexFromDB) => {
                 if (dataFromSmartContract.nft_id === dataFromDB.nft_id) {
                   dataFromSmartContract.status = dataFromDB.status;
+                  dataFromSmartContract.from = "nft";
                 }
                 if (
                   responseWeb3.length - 1 === indexFromSmartContract &&
@@ -56,7 +62,17 @@ export default function MyItem() {
           );
         }
         if (responseWeb3 && responseWeb3RandomBox) {
-          let listOwnerNFT = responseWeb3RandomBox.concat(responseWeb3);
+          let newResponseWeb3 = await responseWeb3.map((data) => {
+            data.from = "nft";
+            return data;
+          });
+          let newResponseWeb3RandomBox = await responseWeb3RandomBox.map(
+            (data) => {
+              data.from = "randombox";
+              return data;
+            }
+          );
+          let listOwnerNFT = newResponseWeb3RandomBox.concat(newResponseWeb3);
           await listOwnerNFT.map(
             async (dataFromSmartContract, indexFromSmartContract) => {
               await responseAPI.data.map((dataFromDB, indexFromDB) => {

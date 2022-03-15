@@ -3,26 +3,41 @@ import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import { cancleNFTAPI } from "../api/marketplace";
 import { cancleNFTWeb3 } from "../web3/nft";
-import { cancleRandomBox } from "../web3/randomBox";
+import { cancleNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { useRouter } from "next/router";
 const CardSell = (props) => {
+  console.log(props);
   const router = useRouter();
   const cancleSell = async (item) => {
-    const responseAPI = await cancleNFTAPI(item.nft_id);
-    if (responseAPI.data === "cancle nft successfully") {
+    if (item.from === "nft") {
       const responseWeb3 = await cancleNFTWeb3(
         props.share_address_wallet,
         item.indexNFT
       );
-      console.log(responseWeb3);
+      if (responseWeb3) {
+        const responseAPI = await cancleNFTAPI(item.nft_id);
+        console.log(responseAPI);
+        router.push({
+          pathname: "/MyItem",
+        });
+      }
+    } else if (item.from === "randombox") {
+      const responseWeb3InstanceRandombox =
+        await cancleNFTWeb3InstanceRandombox(
+          props.share_address_wallet,
+          item.indexNFT
+        );
+      if (responseWeb3InstanceRandombox) {
+        const responseAPI = await cancleNFTAPI(item.nft_id);
+        console.log(responseAPI);
+        router.push({
+          pathname: "/MyItem",
+        });
+      }
     }
-    console.log(responseAPI);
-    router.push({
-      pathname: "/MyItem",
-    });
   };
   const handleCancleRandomBox = async (item) => {
-    const response = await cancleRandomBox(
+    const response = await cancleNFTWeb3InstanceRandombox(
       props.share_address_wallet,
       item.indexNFT
     );

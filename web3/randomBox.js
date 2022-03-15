@@ -110,7 +110,8 @@ const getOwnerRandomBox = async (address) => {
     }
   }
 };
-const sellRandomBox = async (address_wallet, indexNFT, price) => {
+const sellNFTWeb3InstanceRandombox = async (address_wallet, indexNFT, price) => {
+
   let { RandomBox } = await getContract();
   await RandomBox.methods
     .sellNFT(indexNFT, price)
@@ -118,7 +119,7 @@ const sellRandomBox = async (address_wallet, indexNFT, price) => {
   return { status: "success" };
 };
 
-const cancleRandomBox = async (address_wallet, indexNFT) => {
+const cancleNFTWeb3InstanceRandombox = async (address_wallet, indexNFT) => {
   let { RandomBox } = await getContract();
   await RandomBox.methods
     .cancleNFT(indexNFT)
@@ -179,9 +180,9 @@ module.exports = {
   addCountRandomBox,
   buyRandomBox,
   getOwnerRandomBox,
-  sellRandomBox,
+  sellNFTWeb3InstanceRandombox,
   getContractAddressRandomBox,
   buyOwnerRandomBox,
-  cancleRandomBox,
+  cancleNFTWeb3InstanceRandombox,
   openRandomBoxWeb3,
 };

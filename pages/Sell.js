@@ -22,32 +22,41 @@ export default function Sell() {
         let responseContractAddressRandombox =
           await getContractAddressRandomBox();
         let responseWeb3 = await getOwnerNftWeb3(responseContractAddress);
-        let responseWeb3RandomBox = await getOwnerRandomBox(
+        let responseWeb3InstanceRandombox = await getOwnerRandomBox(
           responseContractAddressRandombox
         );
-        if (responseWeb3RandomBox && !responseWeb3) {
-          await responseWeb3RandomBox.map(async (data, index) => {
+        if (responseWeb3InstanceRandombox && !responseWeb3) {
+          await responseWeb3InstanceRandombox.map(async (data, index) => {
             if (data.seller === share_address_wallet) {
-              listOwnerNFT.push(data);
+              listOwnerNFT.push({ ...data, from: "randombox" });
             }
-            if (responseWeb3RandomBox.length - 1 === index) {
+            if (responseWeb3InstanceRandombox.length - 1 === index) {
               setDataMySell(listOwnerNFT);
             }
           });
         }
 
-        if (responseWeb3 && !responseWeb3RandomBox) {
+        if (responseWeb3 && !responseWeb3InstanceRandombox) {
           await responseWeb3.map(async (data, index) => {
             if (data.seller === share_address_wallet) {
-              listOwnerNFT.push(data);
+              listOwnerNFT.push({ ...data, from: "nft" });
             }
             if (responseWeb3.length - 1 === index) {
               setDataMySell(listOwnerNFT);
             }
           });
         }
-        if (responseWeb3 && responseWeb3RandomBox) {
-          let listNFT = responseWeb3RandomBox.concat(responseWeb3);
+        if (responseWeb3 && responseWeb3InstanceRandombox) {
+          let newResponseWeb3 = await responseWeb3.map((data) => {
+            data.from = "nft";
+            return data;
+          });
+          let newResponseWeb3RandomBox =
+            await responseWeb3InstanceRandombox.map((data) => {
+              data.from = "randombox";
+              return data;
+            });
+          let listNFT = newResponseWeb3RandomBox.concat(newResponseWeb3);
           await listNFT.map(async (data, index) => {
             if (data.seller === share_address_wallet) {
               listOwnerNFT.push(data);
