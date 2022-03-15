@@ -140,6 +140,39 @@ const buyOwnerRandomBox = async (
   });
   return { status: "success" };
 };
+const openRandomBoxWeb3 = async (
+  pid,
+  name,
+  picture,
+  reward,
+  type_nft,
+  cost_wood,
+  cost_fruit,
+  energy_consumed,
+  amount_food,
+  address_wallet,
+  indexNFT
+) => {
+  let { RandomBox } = await getContract();
+  await RandomBox.methods
+    ._openRandomBox(
+      pid,
+      name,
+      picture,
+      reward,
+      type_nft,
+      cost_wood,
+      cost_fruit,
+      energy_consumed,
+      amount_food,
+      indexNFT
+    )
+    .send({
+      from: address_wallet,
+      gas: 5500000,
+    });
+  return { status: "success" };
+};
 module.exports = {
   mintRandomBox,
   getRandomBox,
@@ -150,4 +183,5 @@ module.exports = {
   getContractAddressRandomBox,
   buyOwnerRandomBox,
   cancleRandomBox,
+  openRandomBoxWeb3,
 };

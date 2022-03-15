@@ -20,8 +20,23 @@ export default function MyItem() {
         let responseWeb3RandomBox = await getOwnerRandomBox(
           share_address_wallet
         );
+
         if (responseWeb3RandomBox && !responseWeb3) {
-          setDataMyItem(responseWeb3RandomBox);
+          await responseWeb3RandomBox.map(
+            async (dataFromSmartContract, indexFromSmartContract) => {
+              await responseAPI.data.map((dataFromDB, indexFromDB) => {
+                if (dataFromSmartContract.nft_id === dataFromDB.nft_id) {
+                  dataFromSmartContract.status = dataFromDB.status;
+                }
+                if (
+                  responseWeb3RandomBox.length - 1 === indexFromSmartContract &&
+                  responseAPI.data.length - 1 === indexFromDB
+                ) {
+                  setDataMyItem(responseWeb3RandomBox);
+                }
+              });
+            }
+          );
         }
         if (responseWeb3 && !responseWeb3RandomBox) {
           await responseWeb3.map(
