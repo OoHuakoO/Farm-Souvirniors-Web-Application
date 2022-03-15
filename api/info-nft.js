@@ -28,7 +28,17 @@ const craftNFTAPI = async (
   });
   return response.data;
 };
+
+const checkResource = async (cost, address_wallet) => {
+  const response = await Axios.post(`${Config.apiBaseURL}/in-game/check-resource`, {
+    cost,
+    address_wallet,
+  });
+  return response.data;
+};
+
 module.exports = {
   getInfoNFT,
   craftNFTAPI,
+  checkResource
 };

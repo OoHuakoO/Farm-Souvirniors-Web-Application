@@ -17,23 +17,28 @@ export default function Exchange() {
   };
   return (
     <div>
-    <div className={styles.topicSelecyExchage}>
-      <button
-        className={
-          CurrentTab === 0 ? styles.buttonCategoryActive : styles.buttonCategory
-        }
-        onClick={() => changeTab(0)}
-      >
-        Deposit
-      </button>
-      <button
-        className={
-          CurrentTab === 1 ? styles.buttonCategoryActive : styles.buttonCategory
-        }
-        onClick={() => changeTab(1)}
-      >
-        withdraw
-      </button></div>
+      <div className={styles.topicSelecyExchage}>
+        <button
+          className={
+            CurrentTab === 0
+              ? styles.buttonCategoryActive
+              : styles.buttonCategory
+          }
+          onClick={() => changeTab(0)}
+        >
+          Deposit
+        </button>
+        <button
+          className={
+            CurrentTab === 1
+              ? styles.buttonCategoryActive
+              : styles.buttonCategory
+          }
+          onClick={() => changeTab(1)}
+        >
+          withdraw
+        </button>
+      </div>
       <SwapTab />
     </div>
   );

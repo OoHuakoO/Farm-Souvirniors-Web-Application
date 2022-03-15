@@ -1,25 +1,19 @@
 import React from "react";
 import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
-import { craftNFTAPI } from "../api/info-nft";
+import { craftNFTAPI, checkResource } from "../api/info-nft";
 import { craftNFTWeb3 } from "../web3/nft";
 import { useRouter } from "next/router";
 const CardCraft = (props) => {
   const router = useRouter();
   const craftNFT = async (item) => {
     const pid = Date.now();
-    const responseAPI = await craftNFTAPI(
-      pid,
-      item.name,
-      item.picture,
-      item.reward,
-      item.type,
+    const resourceCheckResource = await checkResource(
       item.cost,
-      item.energy_consumed,
-      item.amount_food,
       props.share_address_wallet
     );
-    if (responseAPI.data !== "please add resource") {
+
+    if (resourceCheckResource.data === "have enough resource") {
       const responseWeb3 = await craftNFTWeb3(
         pid,
         item.name,
@@ -32,10 +26,24 @@ const CardCraft = (props) => {
         item.amount_food,
         props.share_address_wallet
       );
+      if (responseWeb3) {
+        const responseAPI = await craftNFTAPI(
+          pid,
+          item.name,
+          item.picture,
+          item.reward,
+          item.type,
+          item.cost,
+          item.energy_consumed,
+          item.amount_food,
+          props.share_address_wallet
+        );
+        router.push({
+          pathname: "/MyItem",
+        });
+        console.log("responseAPI", responseAPI);
+      }
       console.log("responseWeb3", responseWeb3);
-      router.push({
-        pathname: "/MyItem",
-      });
     } else {
       // popup แจ้งเตือน
     }
