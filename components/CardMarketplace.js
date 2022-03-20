@@ -4,30 +4,51 @@ import Image from "next/image";
 import Ethereum from "../public/Ethereum-icon-purple.png";
 import { buyNFTAPI } from "../api/marketplace";
 import { buyNFTWeb3 } from "../web3/nft";
-import { buyOwnerRandomBox } from "../web3/randomBox";
+import { buyNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { useRouter } from "next/router";
 
 const CardMarketplace = (props) => {
   const router = useRouter();
   const buyNFT = async (item) => {
-    const responseAPI = await buyNFTAPI(
-      props.share_address_wallet,
-      item.seller,
-      item.nft_id
-    );
-    if (responseAPI.data === "buy nft successfully") {
+    if (item.from === "nft") {
       const responseWeb3 = await buyNFTWeb3(
         props.share_address_wallet,
         item.seller,
         item.indexNFT,
         item.price
       );
+      if (responseWeb3) {
+        const responseAPI = await buyNFTAPI(
+          props.share_address_wallet,
+          item.seller,
+          item.nft_id
+        );
+        console.log(responseAPI);
+        router.push({
+          pathname: "/MyItem",
+        });
+      }
+      console.log(responseWeb3);
+    } else if (item.from === "randombox") {
+      const responseWeb3 = await buyNFTWeb3InstanceRandombox(
+        props.share_address_wallet,
+        item.seller,
+        item.indexNFT,
+        item.price
+      );
+      if (responseWeb3) {
+        const responseAPI = await buyNFTAPI(
+          props.share_address_wallet,
+          item.seller,
+          item.nft_id
+        );
+        console.log(responseAPI);
+        router.push({
+          pathname: "/MyItem",
+        });
+      }
       console.log(responseWeb3);
     }
-    console.log(responseAPI);
-    router.push({
-      pathname: "/MyItem",
-    });
   };
   const handleBuyOwnerRandomBox = async (item) => {
     const response = await buyOwnerRandomBox(

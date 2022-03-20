@@ -84,7 +84,6 @@ const CardMyItem = (props) => {
         });
       }
     } else if (item.from === "randombox") {
-      console.log(item);
       const responseWeb3InstanceRandombox = await sellNFTWeb3InstanceRandombox(
         props.share_address_wallet,
         item.indexNFT,
