@@ -6,7 +6,6 @@ import { cancleNFTWeb3 } from "../web3/nft";
 import { cancleNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { useRouter } from "next/router";
 const CardSell = (props) => {
-  console.log(props);
   const router = useRouter();
   const cancleSell = async (item) => {
     if (item.from === "nft") {

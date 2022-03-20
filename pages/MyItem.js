@@ -4,7 +4,7 @@ import CardMyItem from "../components/CardMyItem";
 import { getOwnerNFTAPI } from "../api/owner-nft";
 import { useUserState } from "../context/user";
 import { getOwnerNftWeb3 } from "../web3/nft";
-import { getOwnerRandomBox } from "../web3/randomBox";
+import { getOwnerNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
 export default function MyItem() {
   const { share_address_wallet } = useUserState();
@@ -17,7 +17,7 @@ export default function MyItem() {
       if (isAuthenticated && share_address_wallet) {
         let responseWeb3 = await getOwnerNftWeb3(share_address_wallet);
         let responseAPI = await getOwnerNFTAPI(share_address_wallet);
-        let responseWeb3RandomBox = await getOwnerRandomBox(
+        let responseWeb3RandomBox = await getOwnerNFTWeb3InstanceRandombox(
           share_address_wallet
         );
         if (responseWeb3RandomBox && !responseWeb3) {
@@ -34,13 +34,20 @@ export default function MyItem() {
                       indexFromSmartContract &&
                     responseAPI.data.length - 1 === indexFromDB
                   ) {
+                    re;
                     setDataMyItem(responseWeb3RandomBox);
                   }
                 });
               }
             );
           } else {
-            setDataMyItem(responseWeb3RandomBox);
+            setDataMyItem(
+              responseWeb3RandomBox.sort(function (a, b) {
+                if (parseInt(a.nft_id) > parseInt(b.nft_id)) return -1;
+                if (parseInt(a.nft_id) < parseInt(b.nft_id)) return 1;
+                return 0;
+              })
+            );
           }
         }
         if (responseWeb3 && !responseWeb3RandomBox) {
@@ -55,7 +62,13 @@ export default function MyItem() {
                   responseWeb3.length - 1 === indexFromSmartContract &&
                   responseAPI.data.length - 1 === indexFromDB
                 ) {
-                  setDataMyItem(responseWeb3);
+                  setDataMyItem(
+                    responseWeb3.sort(function (a, b) {
+                      if (parseInt(a.nft_id) > parseInt(b.nft_id)) return -1;
+                      if (parseInt(a.nft_id) < parseInt(b.nft_id)) return 1;
+                      return 0;
+                    })
+                  );
                 }
               });
             }
@@ -83,7 +96,13 @@ export default function MyItem() {
                   listOwnerNFT.length - 1 === indexFromSmartContract &&
                   responseAPI.data.length - 1 === indexFromDB
                 ) {
-                  setDataMyItem(listOwnerNFT);
+                  setDataMyItem(
+                    listOwnerNFT.sort(function (a, b) {
+                      if (parseInt(a.nft_id) > parseInt(b.nft_id)) return -1;
+                      if (parseInt(a.nft_id) < parseInt(b.nft_id)) return 1;
+                      return 0;
+                    })
+                  );
                 }
               });
             }

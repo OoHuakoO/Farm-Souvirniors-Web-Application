@@ -97,21 +97,24 @@ const getDetailOwnerRandombox = async (pid) => {
     },
   };
 };
-const getOwnerRandomBox = async (address) => {
+const getOwnerNFTWeb3InstanceRandombox = async (address) => {
   let { RandomBox } = await getContract();
-  let jsonOwnerRandombox = [];
+  let jsonOwnerNFT = [];
   const listOwnerNFT = await RandomBox.methods.getNFTByOwner(address).call();
   for (const [index, id] of listOwnerNFT.entries()) {
     await getDetailOwnerRandombox(id.toString()).then((data) => {
-      jsonOwnerRandombox.push({ ...data.data, indexNFT: id.toString() });
+      jsonOwnerNFT.push({ ...data.data, indexNFT: id.toString() });
     });
     if (index === listOwnerNFT.length - 1) {
-      return jsonOwnerRandombox;
+      return jsonOwnerNFT;
     }
   }
 };
-const sellNFTWeb3InstanceRandombox = async (address_wallet, indexNFT, price) => {
-
+const sellNFTWeb3InstanceRandombox = async (
+  address_wallet,
+  indexNFT,
+  price
+) => {
   let { RandomBox } = await getContract();
   await RandomBox.methods
     .sellNFT(indexNFT, price)
@@ -127,7 +130,7 @@ const cancleNFTWeb3InstanceRandombox = async (address_wallet, indexNFT) => {
   return { status: "success" };
 };
 
-const buyOwnerRandomBox = async (
+const buyNFTWeb3InstanceRandombox = async (
   buyer_address_wallet,
   seller_address_wallet,
   indexNFT,
@@ -179,10 +182,10 @@ module.exports = {
   getRandomBox,
   addCountRandomBox,
   buyRandomBox,
-  getOwnerRandomBox,
+  getOwnerNFTWeb3InstanceRandombox,
   sellNFTWeb3InstanceRandombox,
   getContractAddressRandomBox,
-  buyOwnerRandomBox,
+  buyNFTWeb3InstanceRandombox,
   cancleNFTWeb3InstanceRandombox,
   openRandomBoxWeb3,
 };

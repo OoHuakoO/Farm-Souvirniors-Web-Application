@@ -5,7 +5,7 @@ import { useUserState } from "../context/user";
 import { getOwnerNftWeb3, getContractAddressNFT } from "../web3/nft";
 import {
   getContractAddressRandomBox,
-  getOwnerRandomBox,
+  getOwnerNFTWeb3InstanceRandombox,
 } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
 export default function Sell() {
@@ -22,9 +22,10 @@ export default function Sell() {
         let responseContractAddressRandombox =
           await getContractAddressRandomBox();
         let responseWeb3 = await getOwnerNftWeb3(responseContractAddress);
-        let responseWeb3InstanceRandombox = await getOwnerRandomBox(
-          responseContractAddressRandombox
-        );
+        let responseWeb3InstanceRandombox =
+          await getOwnerNFTWeb3InstanceRandombox(
+            responseContractAddressRandombox
+          );
         if (responseWeb3InstanceRandombox && !responseWeb3) {
           await responseWeb3InstanceRandombox.map(async (data, index) => {
             if (data.seller === share_address_wallet) {
