@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import { craftNFTAPI, checkResource } from "../api/info-nft";
 import { craftNFTWeb3 } from "../web3/nft";
 import { useRouter } from "next/router";
+
+import Modal from "../components/PopupDetail";
+
+
 const CardCraft = (props) => {
   const router = useRouter();
   const craftNFT = async (item) => {
@@ -47,10 +51,16 @@ const CardCraft = (props) => {
     } else {
       // popup แจ้งเตือน
     }
+    
   };
+
+  //popup
+  const [showModal, setshowModal] = useState(false);
+
   return (
     <div className={styles.cardMyItem5}>
-      <div className={styles.cardMyItem6}>
+      <div onClick={() => setshowModal(true)} className={styles.cardMyItem6} >
+        
         <div className={styles.imageMyItem}>
           <Image src={props.picture} alt="Corn" width={200} height={200} />
         </div>
@@ -89,7 +99,11 @@ const CardCraft = (props) => {
       <div onClick={() => craftNFT(props)} className={styles.buttonSell}>
         <span>Craft</span>
       </div>
+      <Modal show={showModal} onclose={() => setshowModal(false)}>
+          kkkkkk
+      </Modal>
     </div>
+
   );
 };
 

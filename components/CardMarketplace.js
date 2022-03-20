@@ -41,6 +41,8 @@ const CardMarketplace = (props) => {
       pathname: "/MyItem",
     });
   };
+  
+
   return (
     <div className={styles.cardMyItem3}>
       <div className={styles.cardMyItem4}>
