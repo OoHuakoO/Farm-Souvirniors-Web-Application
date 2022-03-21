@@ -1,7 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/Exchange.module.css";
-
-export const Deposit = () => {
+import {
+  getContractAddressSteakToken,
+  depositSteakToken,
+} from "../web3/steakToken";
+import {
+  getContractAddressFurnitureToken,
+  depositFurnitureToken,
+} from "../web3/furnitureToken";
+import {
+  getContractAddressWineToken,
+  depositWineToken,
+} from "../web3/wineToken";
+export const Deposit = (props) => {
   const CoinsExchange = [
     {
       nameCoin2: "Fruit",
@@ -22,32 +33,47 @@ export const Deposit = () => {
       priceCoin2: 1,
     },
   ];
-
   const [SelectedCoinIndex, setSelectedCoinIndex] = useState(0);
-  // const [InputPrice , setInputPrice] = useState("");
   const [ExchangePrice, setExchangePrice] = useState(0);
   const changeSelectcoin = (index) => {
     const _index = Number(index);
-    //   console.log("555",_index)
     setSelectedCoinIndex(_index);
   };
   //คิดภาษีกับจำนวน coin
   const calculateCoin = (event) => {
-    // console.log("5555", event);
     const InputSaveCoin = Number(event.target.value);
-
     const TotalCoin = InputSaveCoin;
-    // console.log("คิดเลข", TotalCoin);
     setExchangePrice(TotalCoin);
   };
-  const DepositCoin = () => {
-    console.log("ExchangePrice", ExchangePrice);
-    const dataForm = {
-      ExchangePrice: ExchangePrice,
-      CoinsExchange: CoinsExchange[SelectedCoinIndex],
-    };
-    console.log("dataform", dataForm);
+  const DepositCoin = async () => {
+    if (CoinsExchange[SelectedCoinIndex].nameCoin2 === "Wood") {
+      let response = await depositFurnitureToken(
+        props.share_address_wallet,
+        ExchangePrice
+      );
+      console.log("response", response);
+    } else if (CoinsExchange[SelectedCoinIndex].nameCoin2 === "Meat") {
+      let response = await depositSteakToken(
+        props.share_address_wallet,
+        ExchangePrice
+      );
+      console.log("response", response);
+    } else {
+      let response = await depositWineToken(
+        props.share_address_wallet,
+        ExchangePrice
+      );
+      console.log("response", response);
+    }
   };
+  // useEffect(() => {
+  //   const getContractToken = async () => {
+  //     console.log("steakToken", await getContractAddressSteakToken());
+  //     console.log("furnitureToken", await getContractAddressFurnitureToken());
+  //     console.log("wineToken", await getContractAddressWineToken());
+  //   };
+  //   getContractToken();
+  // }, []);
   return (
     <div>
       <div className={styles.BgExchange}>
@@ -61,9 +87,6 @@ export const Deposit = () => {
                   className="form-control"
                   aria-label="Default"
                   aria-describedby="inputGroup-sizing-default"
-                  // onChange={(event)=>{
-                  //   setInputPrice(event.target.value)
-                  // }}
                   onChange={calculateCoin}
                 />
               </div>

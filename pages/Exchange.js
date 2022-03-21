@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Deposit } from "../components/Deposit";
 import { Withdraw } from "../components/Withdraw";
 import styles from "../styles/Exchange.module.css";
+import { useUserState } from "../context/user";
 
 export default function Exchange() {
+  const { share_address_wallet } = useUserState();
   const [CurrentTab, setCurrentTab] = useState(1);
   const changeTab = (index) => {
     setCurrentTab(index);
   };
   const SwapTab = () => {
     if (CurrentTab == 0) {
-      return <Deposit />;
+      return <Deposit share_address_wallet={share_address_wallet} />;
     } else if (CurrentTab == 1) {
-      return <Withdraw />;
+      return <Withdraw share_address_wallet={share_address_wallet} />;
     }
   };
   return (
