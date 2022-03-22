@@ -101,6 +101,7 @@ const CardMyItem = (props) => {
             props.share_address_wallet,
             responseGetInfoNFT.data.name
           );
+          props.setRefrestFetchAPI(!props.refrestFetchAPI);
           console.log(responseAPI);
         }
       }
