@@ -12,6 +12,7 @@ import {
   getContractAddressWineToken,
   depositWineToken,
 } from "../web3/wineToken";
+import { depositTokenAPI } from "../api/token";
 export const Deposit = (props) => {
   const CoinsExchange = [
     {
@@ -47,23 +48,47 @@ export const Deposit = (props) => {
   };
   const DepositCoin = async () => {
     if (CoinsExchange[SelectedCoinIndex].nameCoin2 === "Wood") {
-      let response = await depositFurnitureToken(
+      let responseWeb3 = await depositFurnitureToken(
         props.share_address_wallet,
         ExchangePrice
       );
-      console.log("response", response);
+      console.log("responseWeb3", responseWeb3);
+      if (responseWeb3) {
+        let responseAPI = await depositTokenAPI(
+          props.share_address_wallet,
+          ExchangePrice,
+          CoinsExchange[SelectedCoinIndex].nameCoin2
+        );
+        console.log("responseAPI", responseAPI);
+      }
     } else if (CoinsExchange[SelectedCoinIndex].nameCoin2 === "Meat") {
-      let response = await depositSteakToken(
+      let responseWeb3 = await depositSteakToken(
         props.share_address_wallet,
         ExchangePrice
       );
-      console.log("response", response);
+      console.log("responseWeb3", responseWeb3);
+      if (responseWeb3) {
+        let responseAPI = await depositTokenAPI(
+          props.share_address_wallet,
+          ExchangePrice,
+          CoinsExchange[SelectedCoinIndex].nameCoin2
+        );
+        console.log("responseAPI", responseAPI);
+      }
     } else {
-      let response = await depositWineToken(
+      let responseWeb3 = await depositWineToken(
         props.share_address_wallet,
         ExchangePrice
       );
-      console.log("response", response);
+      if (responseWeb3) {
+        let responseAPI = await depositTokenAPI(
+          props.share_address_wallet,
+          ExchangePrice,
+          CoinsExchange[SelectedCoinIndex].nameCoin2
+        );
+        console.log("responseAPI", responseAPI);
+      }
+      console.log("responseWeb3", responseWeb3);
     }
   };
   // useEffect(() => {
