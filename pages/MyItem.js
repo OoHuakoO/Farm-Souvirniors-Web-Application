@@ -34,7 +34,6 @@ export default function MyItem() {
                       indexFromSmartContract &&
                     responseAPI.data.length - 1 === indexFromDB
                   ) {
-                    re;
                     setDataMyItem(responseWeb3RandomBox);
                   }
                 });
