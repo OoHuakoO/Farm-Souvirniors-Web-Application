@@ -10,13 +10,13 @@ export default function BuyChests() {
   const { isAuthenticated } = useMoralis();
   const handleMintRandomBox = async () => {
     // Animal chest
-    await mintRandomBox(
-      share_address_wallet,
-      "animal chests",
-      "0.01",
-      100,
-      "https://res.cloudinary.com/smilejob/image/upload/v1645697086/Farm-Souvirniors/animal-chest_waxfph.png"
-    );
+    // await mintRandomBox(
+    //   share_address_wallet,
+    //   "Animal chests",
+    //   "0.01",
+    //   100,
+    //   "https://res.cloudinary.com/smilejob/image/upload/v1645697086/Farm-Souvirniors/animal-chest_waxfph.png"
+    // );
     // Fruit Chest
     // await mintRandomBox(
     //   share_address_wallet,
@@ -26,13 +26,13 @@ export default function BuyChests() {
     //   "https://res.cloudinary.com/smilejob/image/upload/v1645697085/Farm-Souvirniors/fruit-chest_mx58t4.png"
     // );
     // Vegetable Chest
-    // await mintRandomBox(
-    //   share_address_wallet,
-    //   "Vegetable Chests",
-    //   "0.01",
-    //   100,
-    //   "https://res.cloudinary.com/smilejob/image/upload/v1645697085/Farm-Souvirniors/vegatable-chest_idssx9.png"
-    // );
+    await mintRandomBox(
+      share_address_wallet,
+      "Vegetable Chests",
+      "0.01",
+      100,
+      "https://res.cloudinary.com/smilejob/image/upload/v1645697085/Farm-Souvirniors/vegatable-chest_idssx9.png"
+    );
   };
   useEffect(() => {
     async function fetctGetRandomBox() {
@@ -48,13 +48,13 @@ export default function BuyChests() {
   }, [isAuthenticated]);
   return (
     <div className={styles.BuyChestsPages}>
-      <div
+      {/* <div
         onClick={() => {
           handleMintRandomBox();
         }}
       >
         Mint
-      </div>
+      </div> */}
       {listRandomBox.map((item, index) => {
         return (
           <CardBuychests

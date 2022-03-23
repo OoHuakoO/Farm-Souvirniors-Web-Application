@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import styles from "../styles/Exchange.module.css";
-
-export const Withdraw = () => {
+import { withdrawSteakToken } from "../web3/steakToken";
+import { withdrawFurnitureToken } from "../web3/furnitureToken";
+import { withdrawWineToken } from "../web3/wineToken";
+import { checkResource, withdrawTokenAPI } from "../api/token";
+export const Withdraw = (props) => {
   const CoinsExchange = [
     {
       nameCoin1: "Fruit",
@@ -24,29 +27,90 @@ export const Withdraw = () => {
   ];
 
   const [SelectedCoinIndex, setSelectedCoinIndex] = useState(0);
-  // const [InputPrice , setInputPrice] = useState("");
   const [ExchangePrice, setExchangePrice] = useState(0);
+  const [inputSaveCoin, setInputSaveCoin] = useState(0);
   const changeSelectcoin = (index) => {
     const _index = Number(index);
-    //   console.log("555",_index)
     setSelectedCoinIndex(_index);
   };
   //คิดภาษีกับจำนวน coin
   const calculateCoin = (event) => {
-    console.log("5555", event);
     const InputSaveCoin = Number(event.target.value);
-
+    setInputSaveCoin(InputSaveCoin);
     const TotalCoin = InputSaveCoin - InputSaveCoin * 0.1;
-    // console.log("คิดเลข", TotalCoin);
     setExchangePrice(TotalCoin);
   };
-  const withdrawCoin = () => {
-    console.log("ExchangePrice", ExchangePrice);
-    const dataForm = {
-      ExchangePrice: ExchangePrice,
-      CoinsExchange: CoinsExchange[SelectedCoinIndex],
-    };
-    // console.log("dataform", dataForm);
+  const withdrawCoin = async () => {
+    if (CoinsExchange[SelectedCoinIndex].nameCoin1 === "Wood") {
+      let responseAPI = await checkResource(
+        props.share_address_wallet,
+        inputSaveCoin,
+        CoinsExchange[SelectedCoinIndex].nameCoin1
+      );
+      if (responseAPI.data === "can withdraw token") {
+        let responseWeb3 = await withdrawFurnitureToken(
+          props.share_address_wallet,
+          ExchangePrice
+        );
+        if (responseWeb3) {
+          let responseAPI = await withdrawTokenAPI(
+            props.share_address_wallet,
+            inputSaveCoin,
+            CoinsExchange[SelectedCoinIndex].nameCoin1
+          );
+          console.log("responseAPI", responseAPI);
+        }
+        console.log("responseWeb3", responseWeb3);
+      } else {
+        console.log(responseAPI.data);
+      }
+    } else if (CoinsExchange[SelectedCoinIndex].nameCoin1 === "Meat") {
+      let responseAPI = await checkResource(
+        props.share_address_wallet,
+        inputSaveCoin,
+        CoinsExchange[SelectedCoinIndex].nameCoin1
+      );
+      if (responseAPI.data === "can withdraw token") {
+        let responseWeb3 = await withdrawSteakToken(
+          props.share_address_wallet,
+          ExchangePrice
+        );
+        if (responseWeb3) {
+          let responseAPI = await withdrawTokenAPI(
+            props.share_address_wallet,
+            inputSaveCoin,
+            CoinsExchange[SelectedCoinIndex].nameCoin1
+          );
+          console.log("responseAPI", responseAPI);
+        }
+        console.log("responseWeb3", responseWeb3);
+      } else {
+        console.log(responseAPI.data);
+      }
+    } else {
+      let responseAPI = await checkResource(
+        props.share_address_wallet,
+        inputSaveCoin,
+        CoinsExchange[SelectedCoinIndex].nameCoin1
+      );
+      if (responseAPI.data === "can withdraw token") {
+        let responseWeb3 = await withdrawWineToken(
+          props.share_address_wallet,
+          ExchangePrice
+        );
+        if (responseWeb3) {
+          let responseAPI = await withdrawTokenAPI(
+            props.share_address_wallet,
+            inputSaveCoin,
+            CoinsExchange[SelectedCoinIndex].nameCoin1
+          );
+          console.log("responseAPI", responseAPI);
+        }
+        console.log("responseWeb3", responseWeb3);
+      } else {
+        console.log(responseAPI.data);
+      }
+    }
   };
 
   return (
@@ -62,9 +126,6 @@ export const Withdraw = () => {
                   className="form-control"
                   aria-label="Default"
                   aria-describedby="inputGroup-sizing-default"
-                  // onChange={(event)=>{
-                  //   setInputPrice(event.target.value)
-                  // }}
                   onChange={calculateCoin}
                 />
               </div>

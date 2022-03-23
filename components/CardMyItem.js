@@ -28,6 +28,7 @@ const CardMyItem = (props) => {
   };
   const openRandombox = async (item) => {
     const pid = Date.now();
+    var NFT;
     let animal = [
       {
         value: "cow",
@@ -42,30 +43,67 @@ const CardMyItem = (props) => {
         probability: 0.6,
       },
     ];
-    let NFT = randomNFT(animal);
-    let responseGetInfoNFT = await getOneInfoNFT(NFT);
-    if (responseGetInfoNFT.data) {
-      let responseWeb3 = await openRandomBoxWeb3(
-        pid,
-        responseGetInfoNFT.data.name,
-        responseGetInfoNFT.data.picture,
-        responseGetInfoNFT.data.reward,
-        responseGetInfoNFT.data.type,
-        responseGetInfoNFT.data.cost.wood,
-        responseGetInfoNFT.data.cost.fruit,
-        responseGetInfoNFT.data.energy_consumed,
-        responseGetInfoNFT.data.amount_food,
-        props.share_address_wallet,
-        item.indexNFT
-      );
-      console.log(responseWeb3);
-      if (responseWeb3) {
-        let responseAPI = await openRandomBoxAPI(
+    let fruit = [
+      {
+        value: "strawberry",
+        probability: 0.1,
+      },
+      {
+        value: "grape",
+        probability: 0.3,
+      },
+      {
+        value: "apple",
+        probability: 0.6,
+      },
+    ];
+    let vegetable = [
+      {
+        value: "cauliflower",
+        probability: 0.1,
+      },
+      {
+        value: "pumpkin",
+        probability: 0.3,
+      },
+      {
+        value: "corn",
+        probability: 0.6,
+      },
+    ];
+    if (item.name === "animal chests") {
+      NFT = randomNFT(animal);
+    } else if (item.name === "Fruit Chests") {
+      NFT = randomNFT(fruit);
+    } else if (item.name === "Vegetable Chests") {
+      NFT = randomNFT(vegetable);
+    }
+    if (NFT) {
+      let responseGetInfoNFT = await getOneInfoNFT(NFT);
+      if (responseGetInfoNFT.data) {
+        let responseWeb3 = await openRandomBoxWeb3(
           pid,
+          responseGetInfoNFT.data.name,
+          responseGetInfoNFT.data.picture,
+          responseGetInfoNFT.data.reward,
+          responseGetInfoNFT.data.type,
+          responseGetInfoNFT.data.cost.wood,
+          responseGetInfoNFT.data.cost.fruit,
+          responseGetInfoNFT.data.energy_consumed,
+          responseGetInfoNFT.data.amount_food,
           props.share_address_wallet,
-          responseGetInfoNFT.data.name
+          item.indexNFT
         );
-        console.log(responseAPI);
+        console.log(responseWeb3);
+        if (responseWeb3) {
+          let responseAPI = await openRandomBoxAPI(
+            pid,
+            props.share_address_wallet,
+            responseGetInfoNFT.data.name
+          );
+          props.setRefrestFetchAPI(!props.refrestFetchAPI);
+          console.log(responseAPI);
+        }
       }
     }
   };
