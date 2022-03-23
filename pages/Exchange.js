@@ -3,6 +3,7 @@ import { Deposit } from "../components/Deposit";
 import { Withdraw } from "../components/Withdraw";
 import styles from "../styles/Exchange.module.css";
 import { useUserState } from "../context/user";
+import CardInventories from "../components/CardInventories";
 
 export default function Exchange() {
   const { share_address_wallet } = useUserState();
@@ -40,7 +41,11 @@ export default function Exchange() {
         >
           withdraw
         </button>
+        
       </div>
+      
+      <CardInventories/>
+     
       <SwapTab />
     </div>
   );

@@ -3,6 +3,7 @@ import CardCraft from "../components/CardCraft";
 import styles from "../styles/MyItem.module.css";
 import { getInfoNFT } from "../api/info-nft";
 import { useUserState } from "../context/user";
+import CardInventories from "../components/CardInventories";
 export default function Craft() {
   const { share_address_wallet } = useUserState();
   const [dataCraft, setDataCraft] = useState([]);
@@ -39,8 +40,12 @@ export default function Craft() {
               {category}
             </button>
           );
+          
         })}
       </div>
+      
+      <CardInventories/>
+      
       <div className={styles.mainMyItem}>
         {CurrentCategory == "all"
           ? dataCraft.map((item, index) => {

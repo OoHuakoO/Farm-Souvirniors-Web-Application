@@ -1,0 +1,23 @@
+.topicInventories {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #f4dbb9;
+  width: 500px;
+  margin: 20px auto 20px auto;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+.inventories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inventoriesCoin {
+  padding: 0px 10px;
+  font-family: "Prompt";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 27px;
+}
