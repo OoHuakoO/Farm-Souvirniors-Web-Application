@@ -4,9 +4,9 @@ import Image from "next/image";
 import { craftNFTAPI, checkResource } from "../api/info-nft";
 import { craftNFTWeb3 } from "../web3/nft";
 import { useRouter } from "next/router";
+import { Modal, Button } from "react-bootstrap";
 
-import Modal from "../components/PopupDetail";
-
+// import Modal from "./PopupDetail";
 
 const CardCraft = (props) => {
   const router = useRouter();
@@ -51,16 +51,15 @@ const CardCraft = (props) => {
     } else {
       // popup แจ้งเตือน
     }
-    
   };
-
-  //popup
-  const [showModal, setshowModal] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const handleClose = () => setShowPopup(false);
+  const handleShow = () => setShowPopup(true);
 
   return (
     <div className={styles.cardMyItem5}>
-      <div onClick={() => setshowModal(true)} className={styles.cardMyItem6} >
-        
+      <div className={styles.cardMyItem6} onClick={handleShow}>
+        {/* <div onClick={() => setshowModal(true)} className={styles.cardMyItem6} > */}
         <div className={styles.imageMyItem}>
           <Image src={props.picture} alt="Corn" width={200} height={200} />
         </div>
@@ -99,11 +98,27 @@ const CardCraft = (props) => {
       <div onClick={() => craftNFT(props)} className={styles.buttonSell}>
         <span>Craft</span>
       </div>
-      <Modal show={showModal} onclose={() => setshowModal(false)}>
-          kkkkkk
+
+      <Modal
+        show={showPopup}
+        onHide={handleClose}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
       </Modal>
     </div>
-
   );
 };
 
