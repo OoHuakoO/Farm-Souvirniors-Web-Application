@@ -58,6 +58,7 @@ export const Withdraw = (props) => {
             inputSaveCoin,
             CoinsExchange[SelectedCoinIndex].nameCoin1
           );
+          props.setRefrestFetchAPI(!props.refrestFetchAPI)
           console.log("responseAPI", responseAPI);
         }
         console.log("responseWeb3", responseWeb3);
@@ -81,6 +82,7 @@ export const Withdraw = (props) => {
             inputSaveCoin,
             CoinsExchange[SelectedCoinIndex].nameCoin1
           );
+          props.setRefrestFetchAPI(!props.refrestFetchAPI)
           console.log("responseAPI", responseAPI);
         }
         console.log("responseWeb3", responseWeb3);
@@ -104,6 +106,7 @@ export const Withdraw = (props) => {
             inputSaveCoin,
             CoinsExchange[SelectedCoinIndex].nameCoin1
           );
+          props.setRefrestFetchAPI(!props.refrestFetchAPI)
           console.log("responseAPI", responseAPI);
         }
         console.log("responseWeb3", responseWeb3);

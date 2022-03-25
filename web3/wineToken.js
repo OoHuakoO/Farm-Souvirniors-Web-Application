@@ -15,6 +15,7 @@ const withdrawWineToken = async (address_wallet, value) => {
   return { status: "success" };
 };
 const depositWineToken = async (address_wallet, value) => {
+  console.log(address_wallet, value)
   let { WineToken } = await getContract();
   await WineToken.methods._DepositToken(address_wallet, value).send({
     from: address_wallet,

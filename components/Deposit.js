@@ -48,9 +48,10 @@ export const Deposit = (props) => {
   };
   const DepositCoin = async () => {
     if (CoinsExchange[SelectedCoinIndex].nameCoin2 === "Wood") {
+      console.log(CoinsExchange[SelectedCoinIndex].nameCoin2)
       let responseWeb3 = await depositFurnitureToken(
         props.share_address_wallet,
-        ExchangePrice
+        parseInt(ExchangePrice)
       );
       console.log("responseWeb3", responseWeb3);
       if (responseWeb3) {
@@ -59,6 +60,7 @@ export const Deposit = (props) => {
           ExchangePrice,
           CoinsExchange[SelectedCoinIndex].nameCoin2
         );
+        props.setRefrestFetchAPI(!props.refrestFetchAPI);
         console.log("responseAPI", responseAPI);
       }
     } else if (CoinsExchange[SelectedCoinIndex].nameCoin2 === "Meat") {
@@ -73,6 +75,7 @@ export const Deposit = (props) => {
           ExchangePrice,
           CoinsExchange[SelectedCoinIndex].nameCoin2
         );
+        props.setRefrestFetchAPI(!props.refrestFetchAPI);
         console.log("responseAPI", responseAPI);
       }
     } else {
@@ -86,19 +89,20 @@ export const Deposit = (props) => {
           ExchangePrice,
           CoinsExchange[SelectedCoinIndex].nameCoin2
         );
+        props.setRefrestFetchAPI(!props.refrestFetchAPI);
         console.log("responseAPI", responseAPI);
       }
       console.log("responseWeb3", responseWeb3);
     }
   };
-  // useEffect(() => {
-  //   const getContractToken = async () => {
-  //     console.log("steakToken", await getContractAddressSteakToken());
-  //     console.log("furnitureToken", await getContractAddressFurnitureToken());
-  //     console.log("wineToken", await getContractAddressWineToken());
-  //   };
-  //   getContractToken();
-  // }, []);
+  useEffect(() => {
+    const getContractToken = async () => {
+      console.log("steakToken", await getContractAddressSteakToken());
+      console.log("furnitureToken", await getContractAddressFurnitureToken());
+      console.log("wineToken", await getContractAddressWineToken());
+    };
+    getContractToken();
+  }, []);
   return (
     <div>
       <div className={styles.BgExchange}>
