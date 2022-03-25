@@ -44,7 +44,7 @@ export default function Exchange() {
         
       </div>
       
-      <CardInventories/>
+      
      
       <SwapTab />
     </div>
