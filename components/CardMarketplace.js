@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect }from "react";
 import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import Ethereum from "../public/Ethereum-icon-purple.png";
@@ -6,6 +6,7 @@ import { buyNFTAPI } from "../api/marketplace";
 import { buyNFTWeb3 } from "../web3/nft";
 import { buyNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { useRouter } from "next/router";
+import { Modal, Button } from "react-bootstrap";
 
 const CardMarketplace = (props) => {
   const router = useRouter();
@@ -62,11 +63,13 @@ const CardMarketplace = (props) => {
       pathname: "/MyItem",
     });
   };
-  
+  const [showPopup, setShowPopup] = useState(false);
+  const handleClose = () => setShowPopup(false);
+  const handleShow = () => setShowPopup(true);
 
   return (
     <div className={styles.cardMyItem3}>
-      <div className={styles.cardMyItem4}>
+      <div className={styles.cardMyItem4} onClick={handleShow}>
         <div className={styles.uidCard}>
           <span>UID : </span>
           <span>{props.nft_id}</span>
@@ -113,6 +116,25 @@ const CardMarketplace = (props) => {
           <span>Buy</span>
         </div>
       )}
+      <Modal
+        show={showPopup}
+        onHide={handleClose}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

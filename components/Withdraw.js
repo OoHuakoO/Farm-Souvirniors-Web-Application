@@ -119,7 +119,10 @@ export const Withdraw = (props) => {
   return (
     <div>
       <div className={styles.BgExchange}>
-        <div className={styles.TopicExchange}>Swap</div>
+      <div className={styles.TopicExchange}>
+          <div >Swap</div>
+          <div>Balance : 0</div>
+        </div>
         <div className={styles.exchangeCoin}>
           <div className={styles.exchangeCoin1}>
             <div className={styles.Coin1}>

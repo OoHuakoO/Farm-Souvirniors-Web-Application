@@ -33,6 +33,7 @@ export default function Craft() {
   }, [isAuthenticated]);
   return (
     <div>
+      <div className={styles.maincategoryInventories}>
       <div className={styles.maincategory}>
         {" "}
         Class :
@@ -54,7 +55,7 @@ export default function Craft() {
       </div>
 
       <CardInventories dataResource={dataResource} />
-
+      </div>
       <div className={styles.mainMyItem}>
         {CurrentCategory == "all"
           ? dataCraft.map((item, index) => {

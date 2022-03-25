@@ -89,6 +89,11 @@
 .maincategory {
   padding: 20px 40px;
 }
+.maincategoryInventories {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
 
 /* CardSell */
 

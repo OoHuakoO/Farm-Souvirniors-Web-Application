@@ -48,7 +48,7 @@ export const Deposit = (props) => {
   };
   const DepositCoin = async () => {
     if (CoinsExchange[SelectedCoinIndex].nameCoin2 === "Wood") {
-      console.log(CoinsExchange[SelectedCoinIndex].nameCoin2)
+      console.log(CoinsExchange[SelectedCoinIndex].nameCoin2);
       let responseWeb3 = await depositFurnitureToken(
         props.share_address_wallet,
         parseInt(ExchangePrice)
@@ -106,7 +106,10 @@ export const Deposit = (props) => {
   return (
     <div>
       <div className={styles.BgExchange}>
-        <div className={styles.TopicExchange}>Swap</div>
+        <div className={styles.TopicExchange}>
+          <div >Swap</div>
+          <div>Balance : 0</div>
+        </div>
         <div className={styles.exchangeCoin}>
           <div className={styles.exchangeCoin1}>
             <div className={styles.Coin1}>

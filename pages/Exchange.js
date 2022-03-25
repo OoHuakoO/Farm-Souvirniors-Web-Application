@@ -66,7 +66,7 @@ export default function Exchange() {
         </button>
       </div>
 
-      <CardInventories dataResource={dataResource} />
+      
 
       <SwapTab />
     </div>
