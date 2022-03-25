@@ -15,6 +15,7 @@ const withdrawFurnitureToken = async (address_wallet, value) => {
   return { status: "success" };
 };
 const depositFurnitureToken = async (address_wallet, value) => {
+  console.log(address_wallet, value)
   let { FurnitureToken } = await getContract();
   await FurnitureToken.methods._DepositToken(address_wallet, value).send({
     from: address_wallet,

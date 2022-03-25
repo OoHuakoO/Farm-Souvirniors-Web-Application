@@ -15,6 +15,7 @@ const withdrawSteakToken  = async (address_wallet, value) => {
   return { status: "success" };
 };
 const depositSteakToken  = async (address_wallet, value) => {
+  console.log(address_wallet, value)
   let { SteakToken } = await getContract();
   await SteakToken.methods._DepositToken(address_wallet, value).send({
     from: address_wallet,
