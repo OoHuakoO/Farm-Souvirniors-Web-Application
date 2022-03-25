@@ -123,6 +123,7 @@ export const Deposit = (props) => {
                 />
               </div>
             </div>
+            
             <div>
               <select
                 className={[styles.formSelect, "form-select"].join(" ")}
@@ -141,8 +142,10 @@ export const Deposit = (props) => {
             </div>
           </div>
           <div className={styles.menuSwap}>
-            <span className="material-icons">south</span>
+            <div className="material-icons">south</div>
+            
           </div>
+          <div className={styles.balance}>Balance : 0</div>
           <div className={styles.exchangeCoin2}>
             <div className={styles.Coin1}>{ExchangePrice}</div>
             <div className={styles.coin2}>

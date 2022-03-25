@@ -156,6 +156,7 @@ export const Withdraw = (props) => {
           <div className={styles.menuSwap}>
             <span className="material-icons">south</span>
           </div>
+          <div className={styles.balance}>Balance : 0</div>
           <div className={styles.exchangeCoin2}>
             <div className={styles.Coin1}>{ExchangePrice}</div>
             <div className={styles.coin2}>

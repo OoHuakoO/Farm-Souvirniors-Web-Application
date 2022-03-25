@@ -175,9 +175,10 @@ const CardMyItem = (props) => {
           </div>
           <div
             onClick={() => sellRandombox(props)}
+            
             className={styles.buttonSell}
           >
-            <span>Sell</span>
+            <span >Sell</span>
           </div>
         </div>
       ) : props.status === "not_plant" ? (
@@ -199,19 +200,43 @@ const CardMyItem = (props) => {
         onHide={handleClose}
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        size="lg"
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
+        <Modal.Header className={styles.popupBg} closeButton></Modal.Header>
+        <Modal.Body className={styles.popupBg}>
+          <div className={styles.cardMyItem1Popup}>
+            <div className={styles.cardMyItem2Popup}>
+              {/* <div onClick={() => setshowModal(true)} className={styles.cardMyItem6} > */}
+              <div className={styles.imageMyItemPopup}>
+                <Image
+                  src={props.picture}
+                  alt="Corn"
+                  width={200}
+                  height={200}
+                />
+              </div>
+            </div>
+            <div className={styles.NameCardPopup}>
+              <span>{props.name}</span>
+            </div>
+          </div>
+          <div className={styles.detailPopup}>
+            <div>{props.name}</div>
+            <div>Price</div>
+            <div className="input-group mb-3">
+                <input
+                  type="number"
+                  className="form-control"
+                  aria-label="Default"
+                  aria-describedby="inputGroup-sizing-default"
+                  // onChange={calculateCoin}
+                />
+              </div>
+              <div className={styles.buttonSellPopup} >
+          Sell
+        </div>
+          </div>
+        </Modal.Body>
       </Modal>
     </div>
   );

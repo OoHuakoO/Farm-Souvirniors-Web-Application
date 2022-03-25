@@ -1,9 +1,9 @@
 .topicInventories {
   display: flex;
   justify-content: space-around;
-  padding: 10px;
+  padding: 6px;
   background-color: #f4dbb9;
-  width: 500px;
+  width: 400px;
   margin: 20px 0px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;

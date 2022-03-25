@@ -104,19 +104,33 @@ const CardCraft = (props) => {
         onHide={handleClose}
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        size="lg"
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
+        <Modal.Header className={styles.popupBg} closeButton></Modal.Header>
+        <Modal.Body className={styles.popupBg}>
+          <div className={styles.cardMyItem1Popup}>
+            <div className={styles.cardMyItem2Popup}>
+              {/* <div onClick={() => setshowModal(true)} className={styles.cardMyItem6} > */}
+              <div className={styles.imageMyItemPopup}>
+                <Image
+                  src={props.picture}
+                  alt="Corn"
+                  width={200}
+                  height={200}
+                />
+              </div>
+            </div>
+            <div className={styles.NameCardPopup}>
+              <span>{props.name}</span>
+            </div>
+          </div>
+          <div className={styles.detailPopup}>
+            <div>Reward : 10 metat</div>
+            <div>Chaege Time : 60 mins</div>
+            <div>Energy Consumed : 3 meat</div>
+            <div>Durability Consumed : 2 fruit</div>
+          </div>
+        </Modal.Body>
       </Modal>
     </div>
   );
