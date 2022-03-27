@@ -70,7 +70,7 @@ export default function Sell() {
       }
     }
     fetchGetMySell();
-  }, [isAuthenticated]);
+  }, [share_address_wallet]);
   useEffect(() => {
     return () => {
       setDataMySell([]);

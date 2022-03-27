@@ -21,6 +21,7 @@ export default function Navbar() {
     setWalletAddress(accounts[0]);
     setShare_Address_wallet(accounts[0]);
   };
+
   const loginUser = async () => {
     if (window.web3) {
       const authen = await authenticate();

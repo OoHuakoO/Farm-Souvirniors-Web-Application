@@ -5,9 +5,11 @@ import { cancleNFTAPI } from "../api/marketplace";
 import { cancleNFTWeb3 } from "../web3/nft";
 import { cancleNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { useRouter } from "next/router";
-import { Modal, Button } from "react-bootstrap";
+import ModalDetailNFT from "./ModalDetailNFT";
 const CardSell = (props) => {
   const router = useRouter();
+  const [showPopupDetailNFT, setShowPopupDetailNFT] = useState(false);
+  const handleShowPopupDetailNFT = () => setShowPopupDetailNFT(true);
   const cancleSell = async (item) => {
     if (item.from === "nft") {
       const responseWeb3 = await cancleNFTWeb3(
@@ -46,12 +48,9 @@ const CardSell = (props) => {
       pathname: "/MyItem",
     });
   };
-  const [showPopup, setShowPopup] = useState(false);
-  const handleClose = () => setShowPopup(false);
-  const handleShow = () => setShowPopup(true);
   return (
     <div className={styles.cardMyItem1}>
-      <div className={styles.cardMyItem2} onClick={handleShow}>
+      <div className={styles.cardMyItem2} onClick={handleShowPopupDetailNFT}>
         <div className={styles.uidCard}>
           <span>UID : </span>
           <span>{props.nft_id}</span>
@@ -78,39 +77,11 @@ const CardSell = (props) => {
           <span>Cancle Sell</span>
         </div>
       )}
-       <Modal
-        show={showPopup}
-        onHide={handleClose}
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-        size="lg"
-      >
-        <Modal.Header className={styles.popupBg} closeButton></Modal.Header>
-        <Modal.Body className={styles.popupBg}>
-          <div className={styles.cardMyItem1Popup}>
-            <div className={styles.cardMyItem2Popup}>
-              {/* <div onClick={() => setshowModal(true)} className={styles.cardMyItem6} > */}
-              <div className={styles.imageMyItemPopup}>
-                <Image
-                  src={props.picture}
-                  alt="Corn"
-                  width={200}
-                  height={200}
-                />
-              </div>
-            </div>
-            <div className={styles.NameCardPopup}>
-              <span>{props.name}</span>
-            </div>
-          </div>
-          <div className={styles.detailPopup}>
-            <div>Reward : 10 metat</div>
-            <div>Chaege Time : 60 mins</div>
-            <div>Energy Consumed : 3 meat</div>
-            <div>Durability Consumed : 2 fruit</div>
-          </div>
-        </Modal.Body>
-      </Modal>
+      <ModalDetailNFT
+        item={props}
+        setShowPopupDetailNFT={setShowPopupDetailNFT}
+        showPopupDetailNFT={showPopupDetailNFT}
+      />
     </div>
   );
 };

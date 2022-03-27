@@ -14,8 +14,10 @@ export default function Craft() {
   const [CurrentCategory, setCurrentCategory] = useState("all");
   const { isAuthenticated } = useMoralis();
   const handleGetDataUser = async () => {
-    let response = await getDataUser(share_address_wallet);
-    setDataResource(response.data.resource);
+    if (share_address_wallet) {
+      let response = await getDataUser(share_address_wallet);
+      setDataResource(response.data.resource);
+    }
   };
   const fetchGetInfoNFT = async () => {
     let response = await getInfoNFT();
@@ -30,31 +32,31 @@ export default function Craft() {
   }, []);
   useEffect(() => {
     handleGetDataUser();
-  }, [isAuthenticated]);
+  }, [isAuthenticated, share_address_wallet]);
   return (
     <div>
       <div className={styles.maincategoryInventories}>
-      <div className={styles.maincategory}>
-        {" "}
-        Class :
-        {categories.map((category) => {
-          return (
-            <button
-              className={
-                CurrentCategory === category
-                  ? styles.buttonCategoryActive
-                  : styles.buttonCategory
-              }
-              onClick={() => setCurrentCategory(category)}
-              key={category}
-            >
-              {category}
-            </button>
-          );
-        })}
-      </div>
+        <div className={styles.maincategory}>
+          {" "}
+          Class :
+          {categories.map((category) => {
+            return (
+              <button
+                className={
+                  CurrentCategory === category
+                    ? styles.buttonCategoryActive
+                    : styles.buttonCategory
+                }
+                onClick={() => setCurrentCategory(category)}
+                key={category}
+              >
+                {category}
+              </button>
+            );
+          })}
+        </div>
 
-      <CardInventories dataResource={dataResource} />
+        <CardInventories dataResource={dataResource} />
       </div>
       <div className={styles.mainMyItem}>
         {CurrentCategory == "all"
@@ -64,7 +66,6 @@ export default function Craft() {
                   key={index}
                   {...item}
                   share_address_wallet={share_address_wallet}
-                 
                 />
               );
             })
@@ -76,7 +77,6 @@ export default function Craft() {
                     key={index}
                     {...item}
                     share_address_wallet={share_address_wallet}
-                   
                   />
                 );
               })}

@@ -4,20 +4,19 @@ import { Withdraw } from "../components/Withdraw";
 import styles from "../styles/Exchange.module.css";
 import { useUserState } from "../context/user";
 import { getDataUser } from "../api/user";
-import CardInventories from "../components/CardInventories";
-import { useMoralis } from "react-moralis";
 export default function Exchange() {
   const { share_address_wallet } = useUserState();
   const [CurrentTab, setCurrentTab] = useState(1);
-  const { isAuthenticated } = useMoralis();
   const [dataResource, setDataResource] = useState();
   const [refrestFetchAPI, setRefrestFetchAPI] = useState(false);
   const changeTab = (index) => {
     setCurrentTab(index);
   };
   const handleGetDataUser = async () => {
-    let response = await getDataUser(share_address_wallet);
-    setDataResource(response.data.resource);
+    if (share_address_wallet) {
+      let response = await getDataUser(share_address_wallet);
+      setDataResource(response.data.resource);
+    }
   };
   const SwapTab = () => {
     if (CurrentTab == 0) {
@@ -26,6 +25,7 @@ export default function Exchange() {
           setRefrestFetchAPI={setRefrestFetchAPI}
           refrestFetchAPI={refrestFetchAPI}
           share_address_wallet={share_address_wallet}
+          dataResource={dataResource}
         />
       );
     } else if (CurrentTab == 1) {
@@ -34,13 +34,14 @@ export default function Exchange() {
           setRefrestFetchAPI={setRefrestFetchAPI}
           refrestFetchAPI={refrestFetchAPI}
           share_address_wallet={share_address_wallet}
+          dataResource={dataResource}
         />
       );
     }
   };
   useEffect(() => {
     handleGetDataUser();
-  }, [isAuthenticated,refrestFetchAPI]);
+  }, [refrestFetchAPI, share_address_wallet]);
   return (
     <div>
       <div className={styles.topicSelecyExchage}>
@@ -65,8 +66,6 @@ export default function Exchange() {
           withdraw
         </button>
       </div>
-
-      
 
       <SwapTab />
     </div>

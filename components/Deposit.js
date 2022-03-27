@@ -107,8 +107,16 @@ export const Deposit = (props) => {
     <div>
       <div className={styles.BgExchange}>
         <div className={styles.TopicExchange}>
-          <div >Swap</div>
-          <div>Balance : 0</div>
+          <div>Swap</div>
+          {CoinsExchange[SelectedCoinIndex].nameCoin2 === "Wood" ? (
+            <div>Balance : {props.dataResource && props.dataResource.wood}</div>
+          ) : CoinsExchange[SelectedCoinIndex].nameCoin2 === "Fruit" ? (
+            <div>
+              Balance : {props.dataResource && props.dataResource.fruit}
+            </div>
+          ) : (
+            <div>Balance : {props.dataResource && props.dataResource.meat}</div>
+          )}
         </div>
         <div className={styles.exchangeCoin}>
           <div className={styles.exchangeCoin1}>
@@ -123,7 +131,7 @@ export const Deposit = (props) => {
                 />
               </div>
             </div>
-            
+
             <div>
               <select
                 className={[styles.formSelect, "form-select"].join(" ")}
@@ -143,7 +151,6 @@ export const Deposit = (props) => {
           </div>
           <div className={styles.menuSwap}>
             <div className="material-icons">south</div>
-            
           </div>
           <div className={styles.balance}>Balance : 0</div>
           <div className={styles.exchangeCoin2}>

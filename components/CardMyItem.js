@@ -1,23 +1,20 @@
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
-import { sellNFTAPI } from "../api/marketplace";
-import { sellNFTWeb3 } from "../web3/nft";
-import {
-  sellNFTWeb3InstanceRandombox,
-  openRandomBoxWeb3,
-} from "../web3/randomBox";
+import { openRandomBoxWeb3 } from "../web3/randomBox";
 import { openRandomBoxAPI, getOneInfoNFT } from "../api/random-box";
-import { useRouter } from "next/router";
-import { Modal, Button } from "react-bootstrap";
+import ModalDetailNFT from "./ModalDetailNFT";
+import ModalSellNFT from "./ModalSellNFT";
 const CardMyItem = (props) => {
-  const router = useRouter();
+  const [showPopupDetailNFT, setShowPopupDetailNFT] = useState(false);
+  const [showPopupSellNFT, setShowPopupSellNFT] = useState(false);
+  const handleShowPopupDetailNFT = () => setShowPopupDetailNFT(true);
+  const handleShowPopupSellNFT = () => setShowPopupSellNFT(true);
   const randomNFT = (values) => {
     let i,
       pickedValue,
       randomNr = Math.random(),
       threshold = 0;
-
     for (i = 0; i < values.length; i++) {
       threshold += values[i].probability;
       if (threshold > randomNr) {
@@ -108,52 +105,10 @@ const CardMyItem = (props) => {
       }
     }
   };
-  const sellNFT = async (item) => {
-    if (item.from === "nft") {
-      const responseWeb3 = await sellNFTWeb3(
-        props.share_address_wallet,
-        item.indexNFT,
-        "0.01"
-      );
-      if (responseWeb3) {
-        const responseAPI = await sellNFTAPI("0.01", item.nft_id);
-        console.log(responseAPI);
-        router.push({
-          pathname: "/Sell",
-        });
-      }
-    } else if (item.from === "randombox") {
-      const responseWeb3InstanceRandombox = await sellNFTWeb3InstanceRandombox(
-        props.share_address_wallet,
-        item.indexNFT,
-        "0.01"
-      );
-      if (responseWeb3InstanceRandombox) {
-        const responseAPI = await sellNFTAPI("0.01", item.nft_id);
-        console.log(responseAPI);
-        router.push({
-          pathname: "/Sell",
-        });
-      }
-    }
-  };
-  const sellRandombox = async (item) => {
-    const response = await sellNFTWeb3InstanceRandombox(
-      props.share_address_wallet,
-      item.indexNFT,
-      "0.01"
-    );
-    router.push({
-      pathname: "/Sell",
-    });
-    console.log(response);
-  };
-  const [showPopup, setShowPopup] = useState(false);
-  const handleClose = () => setShowPopup(false);
-  const handleShow = () => setShowPopup(true);
+
   return (
     <div className={styles.cardMyItem1}>
-      <div className={styles.cardMyItem2} onClick={handleShow}>
+      <div className={styles.cardMyItem2} onClick={handleShowPopupDetailNFT}>
         <div className={styles.uidCard}>
           <span>UID : </span>
           <span>{props.nft_id}</span>
@@ -173,16 +128,12 @@ const CardMyItem = (props) => {
           >
             <span>Open</span>
           </div>
-          <div
-            onClick={() => sellRandombox(props)}
-            
-            className={styles.buttonSell}
-          >
-            <span >Sell</span>
+          <div onClick={handleShowPopupSellNFT} className={styles.buttonSell}>
+            <span>Sell</span>
           </div>
         </div>
       ) : props.status === "not_plant" ? (
-        <div onClick={() => sellNFT(props)} className={styles.buttonSell}>
+        <div onClick={handleShowPopupSellNFT} className={styles.buttonSell}>
           <span> Sell</span>
         </div>
       ) : (
@@ -195,49 +146,17 @@ const CardMyItem = (props) => {
           </div>
         </>
       )}
-      <Modal
-        show={showPopup}
-        onHide={handleClose}
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-        size="lg"
-      >
-        <Modal.Header className={styles.popupBg} closeButton></Modal.Header>
-        <Modal.Body className={styles.popupBg}>
-          <div className={styles.cardMyItem1Popup}>
-            <div className={styles.cardMyItem2Popup}>
-              {/* <div onClick={() => setshowModal(true)} className={styles.cardMyItem6} > */}
-              <div className={styles.imageMyItemPopup}>
-                <Image
-                  src={props.picture}
-                  alt="Corn"
-                  width={200}
-                  height={200}
-                />
-              </div>
-            </div>
-            <div className={styles.NameCardPopup}>
-              <span>{props.name}</span>
-            </div>
-          </div>
-          <div className={styles.detailPopup}>
-            <div>{props.name}</div>
-            <div>Price</div>
-            <div className="input-group mb-3">
-                <input
-                  type="number"
-                  className="form-control"
-                  aria-label="Default"
-                  aria-describedby="inputGroup-sizing-default"
-                  // onChange={calculateCoin}
-                />
-              </div>
-              <div className={styles.buttonSellPopup} >
-          Sell
-        </div>
-          </div>
-        </Modal.Body>
-      </Modal>
+      <ModalDetailNFT
+        item={props}
+        setShowPopupDetailNFT={setShowPopupDetailNFT}
+        showPopupDetailNFT={showPopupDetailNFT}
+      />
+      <ModalSellNFT
+        item={props}
+        showPopupSellNFT={showPopupSellNFT}
+        setShowPopupSellNFT={setShowPopupSellNFT}
+        share_address_wallet={props.share_address_wallet}
+      />
     </div>
   );
 };

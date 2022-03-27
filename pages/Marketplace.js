@@ -9,14 +9,12 @@ import {
 } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
 
-
 export default function Marketplace() {
   const { share_address_wallet } = useUserState();
   const [dataMarketplace, setDataMarketplace] = useState([]);
   const { isAuthenticated } = useMoralis();
   const categories = ["all", "animal", "fruit", "vegetable", "chest"];
   const [CurrentCategory, setCurrentCategory] = useState("all");
-  
 
   useEffect(() => {
     async function fetchMarketplace() {
@@ -62,7 +60,7 @@ export default function Marketplace() {
       }
     }
     fetchMarketplace();
-  }, [isAuthenticated]);
+  }, [share_address_wallet]);
   return (
     <div>
       <div className={styles.maincategory}>
@@ -93,9 +91,8 @@ export default function Marketplace() {
                   {...item}
                   share_address_wallet={share_address_wallet}
                 />
-                
               );
-              <div id="modal-root"></div>
+              <div id="modal-root"></div>;
             })
           : dataMarketplace
               .filter((_item) => CurrentCategory === _item.type_nft)

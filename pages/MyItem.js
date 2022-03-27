@@ -117,7 +117,7 @@ export default function MyItem() {
   }
   useEffect(() => {
     fetchGetOwnerNFT();
-  }, [isAuthenticated, refrestFetchAPI]);
+  }, [refrestFetchAPI, share_address_wallet]);
   useEffect(() => {
     return () => {
       setDataMyItem([]);

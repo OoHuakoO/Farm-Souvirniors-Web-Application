@@ -58,7 +58,7 @@ export const Withdraw = (props) => {
             inputSaveCoin,
             CoinsExchange[SelectedCoinIndex].nameCoin1
           );
-          props.setRefrestFetchAPI(!props.refrestFetchAPI)
+          props.setRefrestFetchAPI(!props.refrestFetchAPI);
           console.log("responseAPI", responseAPI);
         }
         console.log("responseWeb3", responseWeb3);
@@ -82,7 +82,7 @@ export const Withdraw = (props) => {
             inputSaveCoin,
             CoinsExchange[SelectedCoinIndex].nameCoin1
           );
-          props.setRefrestFetchAPI(!props.refrestFetchAPI)
+          props.setRefrestFetchAPI(!props.refrestFetchAPI);
           console.log("responseAPI", responseAPI);
         }
         console.log("responseWeb3", responseWeb3);
@@ -106,7 +106,7 @@ export const Withdraw = (props) => {
             inputSaveCoin,
             CoinsExchange[SelectedCoinIndex].nameCoin1
           );
-          props.setRefrestFetchAPI(!props.refrestFetchAPI)
+          props.setRefrestFetchAPI(!props.refrestFetchAPI);
           console.log("responseAPI", responseAPI);
         }
         console.log("responseWeb3", responseWeb3);
@@ -119,9 +119,17 @@ export const Withdraw = (props) => {
   return (
     <div>
       <div className={styles.BgExchange}>
-      <div className={styles.TopicExchange}>
-          <div >Swap</div>
-          <div>Balance : 0</div>
+        <div className={styles.TopicExchange}>
+          <div>Swap</div>
+          {CoinsExchange[SelectedCoinIndex].nameCoin1 === "Wood" ? (
+            <div>Balance : {props.dataResource && props.dataResource.wood}</div>
+          ) : CoinsExchange[SelectedCoinIndex].nameCoin1 === "Fruit" ? (
+            <div>
+              Balance : {props.dataResource && props.dataResource.fruit}
+            </div>
+          ) : (
+            <div>Balance : {props.dataResource && props.dataResource.meat}</div>
+          )}
         </div>
         <div className={styles.exchangeCoin}>
           <div className={styles.exchangeCoin1}>
