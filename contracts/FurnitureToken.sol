@@ -32,4 +32,7 @@ contract FurnitureToken {
         balanceOf[owner] = balanceOf[owner] + _value;
         return true;
     }
+      function _BalanceOf(address _from) public view returns (uint256) {
+        return balanceOf[_from];
+    }
 }

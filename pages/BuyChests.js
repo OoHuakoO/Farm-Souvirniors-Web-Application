@@ -37,6 +37,7 @@ export default function BuyChests() {
   useEffect(() => {
     async function fetctGetRandomBox() {
       let response = await getRandomBox();
+      console.log(response)
       if (response) {
         setListRandomBox(response);
       }
@@ -48,13 +49,13 @@ export default function BuyChests() {
   }, [isAuthenticated]);
   return (
     <div className={styles.BuyChestsPages}>
-      {/* <div
+      <div
         onClick={() => {
           handleMintRandomBox();
         }}
       >
         Mint
-      </div> */}
+      </div>
       {listRandomBox.map((item, index) => {
         return (
           <CardBuychests

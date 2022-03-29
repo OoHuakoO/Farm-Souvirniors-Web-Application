@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/Exchange.module.css";
-import { withdrawSteakToken } from "../web3/steakToken";
+import { withdrawSteakToken, balanceOf } from "../web3/steakToken";
 import { withdrawFurnitureToken } from "../web3/furnitureToken";
 import { withdrawWineToken } from "../web3/wineToken";
 import { checkResource, withdrawTokenAPI } from "../api/token";
@@ -8,19 +8,19 @@ export const Withdraw = (props) => {
   const CoinsExchange = [
     {
       nameCoin1: "Fruit",
-      nameCoin2: "CoinFruit",
+      nameCoin2: "WineToken",
       priceCoin1: 5,
       priceCoin2: 1,
     },
     {
       nameCoin1: "Wood",
-      nameCoin2: "CoinWood",
+      nameCoin2: "FurnitureToken",
       priceCoin1: 5,
       priceCoin2: 1,
     },
     {
       nameCoin1: "Meat",
-      nameCoin2: "CoinMeat",
+      nameCoin2: "SteakToken",
       priceCoin1: 5,
       priceCoin2: 1,
     },
@@ -164,7 +164,23 @@ export const Withdraw = (props) => {
           <div className={styles.menuSwap}>
             <span className="material-icons">south</span>
           </div>
-          <div className={styles.balance}>Balance : 0</div>
+
+          {CoinsExchange[SelectedCoinIndex].nameCoin1 === "Wood" ? (
+            <div className={styles.balance}>
+              Balance :{" "}
+              {props.dataBalance && props.dataBalance.balanceOfFurnitureToken}
+            </div>
+          ) : CoinsExchange[SelectedCoinIndex].nameCoin1 === "Fruit" ? (
+            <div className={styles.balance}>
+              Balance :{" "}
+              {props.dataBalance && props.dataBalance.balanceOfWineToken}
+            </div>
+          ) : (
+            <div className={styles.balance}>
+              Balance :{" "}
+              {props.dataBalance && props.dataBalance.balanceOfSteakToken}
+            </div>
+          )}
           <div className={styles.exchangeCoin2}>
             <div className={styles.Coin1}>{ExchangePrice}</div>
             <div className={styles.coin2}>

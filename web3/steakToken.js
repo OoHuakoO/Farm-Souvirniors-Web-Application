@@ -6,7 +6,7 @@ const getContractAddressSteakToken = async () => {
   let { SteakToken } = await getContract();
   return SteakToken._address;
 };
-const withdrawSteakToken  = async (address_wallet, value) => {
+const withdrawSteakToken = async (address_wallet, value) => {
   let { SteakToken } = await getContract();
   await SteakToken.methods._WithdrawToken(address_wallet, value).send({
     from: address_wallet,
@@ -14,8 +14,7 @@ const withdrawSteakToken  = async (address_wallet, value) => {
   });
   return { status: "success" };
 };
-const depositSteakToken  = async (address_wallet, value) => {
-  console.log(address_wallet, value)
+const depositSteakToken = async (address_wallet, value) => {
   let { SteakToken } = await getContract();
   await SteakToken.methods._DepositToken(address_wallet, value).send({
     from: address_wallet,
@@ -23,9 +22,15 @@ const depositSteakToken  = async (address_wallet, value) => {
   });
   return { status: "success" };
 };
+const balanceOfSteak = async (address_wallet) => {
+  let { SteakToken } = await getContract();
+  const response = await SteakToken.methods._BalanceOf(address_wallet).call();
+  return  response ;
+};
 
 module.exports = {
   getContractAddressSteakToken,
   withdrawSteakToken,
   depositSteakToken,
+  balanceOfSteak,
 };

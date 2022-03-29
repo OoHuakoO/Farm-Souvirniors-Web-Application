@@ -17,19 +17,19 @@ export const Deposit = (props) => {
   const CoinsExchange = [
     {
       nameCoin2: "Fruit",
-      nameCoin1: "CoinFruit",
+      nameCoin1: "WineToken",
       priceCoin1: 5,
       priceCoin2: 1,
     },
     {
       nameCoin2: "Wood",
-      nameCoin1: "CoinWood",
+      nameCoin1: "FurnitureToken",
       priceCoin1: 5,
       priceCoin2: 1,
     },
     {
       nameCoin2: "Meat",
-      nameCoin1: "CoinMeat",
+      nameCoin1: "SteakToken",
       priceCoin1: 5,
       priceCoin2: 1,
     },
@@ -109,13 +109,20 @@ export const Deposit = (props) => {
         <div className={styles.TopicExchange}>
           <div>Swap</div>
           {CoinsExchange[SelectedCoinIndex].nameCoin2 === "Wood" ? (
-            <div>Balance : {props.dataResource && props.dataResource.wood}</div>
+            <div>
+              Balance :{" "}
+              {props.dataBalance && props.dataBalance.balanceOfFurnitureToken}
+            </div>
           ) : CoinsExchange[SelectedCoinIndex].nameCoin2 === "Fruit" ? (
             <div>
-              Balance : {props.dataResource && props.dataResource.fruit}
+              Balance :{" "}
+              {props.dataBalance && props.dataBalance.balanceOfWineToken}
             </div>
           ) : (
-            <div>Balance : {props.dataResource && props.dataResource.meat}</div>
+            <div>
+              Balance :{" "}
+              {props.dataBalance && props.dataBalance.balanceOfSteakToken}
+            </div>
           )}
         </div>
         <div className={styles.exchangeCoin}>
@@ -152,7 +159,19 @@ export const Deposit = (props) => {
           <div className={styles.menuSwap}>
             <div className="material-icons">south</div>
           </div>
-          <div className={styles.balance}>Balance : 0</div>
+          {CoinsExchange[SelectedCoinIndex].nameCoin2 === "Wood" ? (
+            <div className={styles.balance}>
+              Balance : {props.dataResource && props.dataResource.wood}
+            </div>
+          ) : CoinsExchange[SelectedCoinIndex].nameCoin2 === "Fruit" ? (
+            <div className={styles.balance}>
+              Balance : {props.dataResource && props.dataResource.fruit}
+            </div>
+          ) : (
+            <div className={styles.balance}>
+              Balance : {props.dataResource && props.dataResource.meat}
+            </div>
+          )}
           <div className={styles.exchangeCoin2}>
             <div className={styles.Coin1}>{ExchangePrice}</div>
             <div className={styles.coin2}>
