@@ -84,23 +84,22 @@ const CardMarketplace = (props) => {
 
           <span>{props.seller}</span>
         </div>
+        <div className={styles.uidCard}>
+          <span>price : {props.price} BNB</span>
+        <span >&nbsp;
+          <Image src={binance} alt="binance" width={20} height={20} />
+        </span>
+        </div>
         <div className={styles.imageMyItem}>
           <Image src={props.picture} alt="Corn" width={200} height={200} />
         </div>
       </div>
-      <div className={styles.NameCardMarketplace}>
+      <div className={styles.NameCard}>
         <div>{props.name}</div>
-        <div>
-        <span >{props.price} BNB</span>
-        <span >
-          <Image src={binance} alt="binance" width={20} height={20} />
-        </span></div>
+        
       </div> 
       {props.seller === props.share_address_wallet ? (
         <>
-          {/* <div className={styles.buttonSell}>
-            <span>Not Buy</span>
-          </div > */}
           <div className={styles.buttonMarketplace}>
             <span>This Owner NFT</span>
           </div>

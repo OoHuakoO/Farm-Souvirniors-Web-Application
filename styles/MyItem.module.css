@@ -151,17 +151,7 @@
   line-height: 27px;
   width: 100%;
 }
-.NameCardMarketplace {
-  display: grid;
-  grid-template-columns: 1fr 130px;
-  text-align: right;
-  font-family: "Prompt", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 36px;
-  padding: 10px 10px;
-}
+
 .buttonMarketplace {
   height: 40px;
   width: 170px;
