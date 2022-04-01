@@ -6,17 +6,28 @@ const getContractAddressWineToken = async () => {
   let { WineToken } = await getContract();
   return WineToken._address;
 };
-const withdrawWineToken = async (address_wallet, value) => {
+const withdrawWineToken = async (address_wallet, value, taxValue) => {
   let { WineToken } = await getContract();
-  await WineToken.methods._WithdrawToken(address_wallet, value).send({
-    from: address_wallet,
-    gas: 5500000,
-  });
+  let amount;
+  let amountTax;
+  amount = value.toString();
+  amount = web3.utils.toWei(amount, "Ether");
+  amountTax = taxValue.toString();
+  amountTax = web3.utils.toWei(amountTax, "Ether");
+  await WineToken.methods
+    ._WithdrawToken(address_wallet, amount, amountTax)
+    .send({
+      from: address_wallet,
+      gas: 5500000,
+    });
   return { status: "success" };
 };
 const depositWineToken = async (address_wallet, value) => {
   let { WineToken } = await getContract();
-  await WineToken.methods._DepositToken(address_wallet, value).send({
+  let amount;
+  amount = value.toString();
+  amount = web3.utils.toWei(amount, "Ether");
+  await WineToken.methods._DepositToken(address_wallet, amount).send({
     from: address_wallet,
     gas: 5500000,
   });
@@ -25,12 +36,12 @@ const depositWineToken = async (address_wallet, value) => {
 const balanceOfWine = async (address_wallet) => {
   let { WineToken } = await getContract();
   const response = await WineToken.methods._BalanceOf(address_wallet).call();
-  return  response ;
+  return web3.utils.fromWei(response, "Ether");
 };
 
 module.exports = {
   getContractAddressWineToken,
   withdrawWineToken,
   depositWineToken,
-  balanceOfWine
+  balanceOfWine,
 };
