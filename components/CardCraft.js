@@ -5,6 +5,8 @@ import { craftNFTAPI, checkResource } from "../api/info-nft";
 import { craftNFTWeb3 } from "../web3/nft";
 import { useRouter } from "next/router";
 import { Modal, Button } from "react-bootstrap";
+import ModalDetailNFT from "./ModalDetailNFT";
+import ModalNotEnoughCoinsNFT from "./ModalNotEnoughCoinsNFT";
 
 // import Modal from "./PopupDetail";
 
@@ -53,12 +55,14 @@ const CardCraft = (props) => {
     }
   };
   const [showPopup, setShowPopup] = useState(false);
-  const handleClose = () => setShowPopup(false);
-  const handleShow = () => setShowPopup(true);
+  const [showPopupDetailNFT, setShowPopupDetailNFT] = useState(false);
+  const handleShowPopupDetailNFT = () => setShowPopupDetailNFT(true);
+  const [showPopupNotEnoughCoinsNFT, setShowPopupNotEnoughCoinsNFT] = useState(false);
+  const handleShowPopupNotEnoughCoinsNFT = () => setShowPopupNotEnoughCoinsNFT(true);
 
   return (
     <div className={styles.cardMyItem5}>
-      <div className={styles.cardMyItem6} onClick={handleShow}>
+      <div className={styles.cardMyItem6} onClick={handleShowPopupNotEnoughCoinsNFT}>
         {/* <div onClick={() => setshowModal(true)} className={styles.cardMyItem6} > */}
         <div className={styles.imageMyItem}>
           <Image src={props.picture} alt="Corn" width={200} height={200} />
@@ -92,46 +96,23 @@ const CardCraft = (props) => {
               height={30}
             />
           </div>
-          <div className={styles.coinCraft2Coin}>{props.cost.fruit}</div>
+          <div className={styles.coinCraft2Coin} >{props.cost.fruit}</div>
         </div>
       </div>
-      <div onClick={() => craftNFT(props)} className={styles.buttonSell}>
+      <div onClick={() => craftNFT(props)} className={styles.buttonSell} >
         <span>Craft</span>
       </div>
 
-      <Modal
-        show={showPopup}
-        onHide={handleClose}
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-        size="lg"
-      >
-        <Modal.Header className={styles.popupBg} closeButton></Modal.Header>
-        <Modal.Body className={styles.popupBg}>
-          <div className={styles.cardMyItem1Popup}>
-            <div className={styles.cardMyItem2Popup}>
-              {/* <div onClick={() => setshowModal(true)} className={styles.cardMyItem6} > */}
-              <div className={styles.imageMyItemPopup}>
-                <Image
-                  src={props.picture}
-                  alt="Corn"
-                  width={200}
-                  height={200}
-                />
-              </div>
-            </div>
-            <div className={styles.NameCardPopup}>
-              <span>{props.name}</span>
-            </div>
-          </div>
-          <div className={styles.detailPopup}>
-            <div>Reward : 10 metat</div>
-            <div>Chaege Time : 60 mins</div>
-            <div>Energy Consumed : 3 meat</div>
-            <div>Durability Consumed : 2 fruit</div>
-          </div>
-        </Modal.Body>
-      </Modal>
+      <ModalDetailNFT
+        item={props}
+        setShowPopupDetailNFT={setShowPopupDetailNFT}
+        showPopupDetailNFT={showPopupDetailNFT}
+      />
+       <ModalNotEnoughCoinsNFT
+        item={props}
+        setShowPopupNotEnoughCoinsNFT={setShowPopupNotEnoughCoinsNFT}
+        showPopupNotEnoughCoinsNFT={showPopupNotEnoughCoinsNFT}
+      />
     </div>
   );
 };

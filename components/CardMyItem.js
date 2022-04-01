@@ -138,11 +138,9 @@ const CardMyItem = (props) => {
         </div>
       ) : (
         <>
-          <div className={styles.buttonSell}>
-            <span>Not Sell</span>
-          </div>
-          <div>
-            <span>this nft in game</span>
+          
+          <div className={styles.buttonMarketplace}>
+            <span>This NFT in game</span>
           </div>
         </>
       )}

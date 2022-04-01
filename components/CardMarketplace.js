@@ -1,12 +1,13 @@
 import React, { useState, useEffect }from "react";
 import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
-import Ethereum from "../public/Ethereum-icon-purple.png";
+import binance from "../public/binance.png";
 import { buyNFTAPI } from "../api/marketplace";
 import { buyNFTWeb3 } from "../web3/nft";
 import { buyNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { useRouter } from "next/router";
 import { Modal, Button } from "react-bootstrap";
+import ModalDetailNFT from "./ModalDetailNFT";
 
 const CardMarketplace = (props) => {
   const router = useRouter();
@@ -64,12 +65,11 @@ const CardMarketplace = (props) => {
     });
   };
   const [showPopup, setShowPopup] = useState(false);
-  const handleClose = () => setShowPopup(false);
-  const handleShow = () => setShowPopup(true);
-
+  const [showPopupDetailNFT, setShowPopupDetailNFT] = useState(false);
+  const handleShowPopupDetailNFT = () => setShowPopupDetailNFT(true);
   return (
     <div className={styles.cardMyItem3}>
-      <div className={styles.cardMyItem4} onClick={handleShow}>
+      <div className={styles.cardMyItem4} onClick={handleShowPopupDetailNFT}>
         <div className={styles.uidCard}>
           <span>UID : </span>
           <span>{props.nft_id}</span>
@@ -88,20 +88,21 @@ const CardMarketplace = (props) => {
           <Image src={props.picture} alt="Corn" width={200} height={200} />
         </div>
       </div>
-      <div className={styles.NameCard}>
-        <span>{props.name}</span>
-        <span>{props.price} ETH</span>
-        <span>
-          <Image src={Ethereum} alt="Ethereum" width={25} height={25} />
-        </span>
-      </div>
+      <div className={styles.NameCardMarketplace}>
+        <div>{props.name}</div>
+        <div>
+        <span >{props.price} BNB</span>
+        <span >
+          <Image src={binance} alt="binance" width={20} height={20} />
+        </span></div>
+      </div> 
       {props.seller === props.share_address_wallet ? (
         <>
-          <div className={styles.buttonSell}>
+          {/* <div className={styles.buttonSell}>
             <span>Not Buy</span>
-          </div>
-          <div>
-            <span>this Owner NFT</span>
+          </div > */}
+          <div className={styles.buttonMarketplace}>
+            <span>This Owner NFT</span>
           </div>
         </>
       ) : props.type_nft === "chest" ? (
@@ -116,39 +117,12 @@ const CardMarketplace = (props) => {
           <span>Buy</span>
         </div>
       )}
-      <Modal
-        show={showPopup}
-        onHide={handleClose}
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-        size="lg"
-      >
-        <Modal.Header className={styles.popupBg} closeButton></Modal.Header>
-        <Modal.Body className={styles.popupBg}>
-          <div className={styles.cardMyItem1Popup}>
-            <div className={styles.cardMyItem2Popup}>
-              {/* <div onClick={() => setshowModal(true)} className={styles.cardMyItem6} > */}
-              <div className={styles.imageMyItemPopup}>
-                <Image
-                  src={props.picture}
-                  alt="Corn"
-                  width={200}
-                  height={200}
-                />
-              </div>
-            </div>
-            <div className={styles.NameCardPopup}>
-              <span>{props.name}</span>
-            </div>
-          </div>
-          <div className={styles.detailPopup}>
-            <div>Reward : 10 metat</div>
-            <div>Chaege Time : 60 mins</div>
-            <div>Energy Consumed : 3 meat</div>
-            <div>Durability Consumed : 2 fruit</div>
-          </div>
-        </Modal.Body>
-      </Modal>
+      <ModalDetailNFT
+        item={props}
+        setShowPopupDetailNFT={setShowPopupDetailNFT}
+        showPopupDetailNFT={showPopupDetailNFT}
+      />
+     
     </div>
   );
 };

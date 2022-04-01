@@ -1,4 +1,5 @@
 .mainMyItem {
+  
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -150,6 +151,35 @@
   line-height: 27px;
   width: 100%;
 }
+.NameCardMarketplace {
+  display: grid;
+  grid-template-columns: 1fr 130px;
+  text-align: right;
+  font-family: "Prompt", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  padding: 10px 10px;
+}
+.buttonMarketplace {
+  height: 40px;
+  width: 170px;
+  padding: 10px 15px;
+  background: #acadaf;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color: rgb(94, 95, 96);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+
 
 
 /* CardCraft */
@@ -312,4 +342,19 @@ line-height: 60px;
   border: 1px solid #ffa34c;
   color: aliceblue;
   background-color: #ffa34c;
+}
+.buttonPopupNotenoughCoin{
+  height: 40px;
+  width: 150px;
+  padding: 10px 15px;
+  background: #272c32;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color: aliceblue;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }

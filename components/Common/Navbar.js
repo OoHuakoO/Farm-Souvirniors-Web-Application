@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Ethereum from "../../public/Ethereum-icon-purple.png";
+import binance from "../../public/binance.png";
 import exchange from "../../public/Exchange.svg";
 import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
@@ -98,7 +98,7 @@ export default function Navbar() {
           <div className={styles.munuNavbarRight}>
             <div className={styles.buttonNavbarConnected}>
               <div>
-                <Image src={Ethereum} alt="Ethereum" width={25} height={25} />
+                <Image src={binance} alt="binance" width={20} height={20} />
               </div>
               <div>Connected to Address {walletAddress}</div>
             </div>
