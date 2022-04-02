@@ -6,9 +6,15 @@ const getContractAddressSteakToken = async () => {
   let { SteakToken } = await getContract();
   return SteakToken._address;
 };
-const withdrawSteakToken = async (address_wallet, value) => {
+const withdrawSteakToken = async (address_wallet, value, taxValue) => {
   let { SteakToken } = await getContract();
-  await SteakToken.methods._WithdrawToken(address_wallet, value).send({
+  let amount;
+  let amountTax;
+  amount = value.toString();
+  amount = web3.utils.toWei(amount, "Ether");
+  amountTax = taxValue.toString();
+  amountTax = web3.utils.toWei(amountTax, "Ether");
+  await SteakToken.methods._WithdrawToken(address_wallet, amount,amountTax).send({
     from: address_wallet,
     gas: 5500000,
   });
@@ -16,7 +22,10 @@ const withdrawSteakToken = async (address_wallet, value) => {
 };
 const depositSteakToken = async (address_wallet, value) => {
   let { SteakToken } = await getContract();
-  await SteakToken.methods._DepositToken(address_wallet, value).send({
+  let amount;
+  amount = value.toString();
+  amount = web3.utils.toWei(amount, "Ether");
+  await SteakToken.methods._DepositToken(address_wallet, amount).send({
     from: address_wallet,
     gas: 5500000,
   });
@@ -25,9 +34,8 @@ const depositSteakToken = async (address_wallet, value) => {
 const balanceOfSteak = async (address_wallet) => {
   let { SteakToken } = await getContract();
   const response = await SteakToken.methods._BalanceOf(address_wallet).call();
-  return  response ;
+  return web3.utils.fromWei(response, "Ether");
 };
-
 module.exports = {
   getContractAddressSteakToken,
   withdrawSteakToken,

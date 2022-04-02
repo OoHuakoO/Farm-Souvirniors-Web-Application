@@ -28,6 +28,7 @@ export const Withdraw = (props) => {
 
   const [SelectedCoinIndex, setSelectedCoinIndex] = useState(0);
   const [ExchangePrice, setExchangePrice] = useState(0);
+  const [taxPrice, setTaxPrice] = useState(0);
   const [inputSaveCoin, setInputSaveCoin] = useState(0);
   const changeSelectcoin = (index) => {
     const _index = Number(index);
@@ -38,6 +39,8 @@ export const Withdraw = (props) => {
     const InputSaveCoin = Number(event.target.value);
     setInputSaveCoin(InputSaveCoin);
     const TotalCoin = InputSaveCoin - InputSaveCoin * 0.1;
+    const taxCoin = InputSaveCoin - TotalCoin;
+    setTaxPrice(taxCoin);
     setExchangePrice(TotalCoin);
   };
   const withdrawCoin = async () => {
@@ -50,7 +53,8 @@ export const Withdraw = (props) => {
       if (responseAPI.data === "can withdraw token") {
         let responseWeb3 = await withdrawFurnitureToken(
           props.share_address_wallet,
-          ExchangePrice
+          ExchangePrice,
+          taxPrice
         );
         if (responseWeb3) {
           let responseAPI = await withdrawTokenAPI(
@@ -74,7 +78,8 @@ export const Withdraw = (props) => {
       if (responseAPI.data === "can withdraw token") {
         let responseWeb3 = await withdrawSteakToken(
           props.share_address_wallet,
-          ExchangePrice
+          ExchangePrice,
+          taxPrice
         );
         if (responseWeb3) {
           let responseAPI = await withdrawTokenAPI(
@@ -98,7 +103,8 @@ export const Withdraw = (props) => {
       if (responseAPI.data === "can withdraw token") {
         let responseWeb3 = await withdrawWineToken(
           props.share_address_wallet,
-          ExchangePrice
+          ExchangePrice,
+          taxPrice
         );
         if (responseWeb3) {
           let responseAPI = await withdrawTokenAPI(

