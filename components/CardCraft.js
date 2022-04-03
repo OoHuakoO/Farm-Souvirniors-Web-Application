@@ -4,11 +4,8 @@ import Image from "next/image";
 import { craftNFTAPI, checkResource } from "../api/info-nft";
 import { craftNFTWeb3 } from "../web3/nft";
 import { useRouter } from "next/router";
-import { Modal, Button } from "react-bootstrap";
 import ModalDetailNFT from "./ModalDetailNFT";
 import ModalNotEnoughCoinsNFT from "./ModalNotEnoughCoinsNFT";
-
-// import Modal from "./PopupDetail";
 
 const CardCraft = (props) => {
   const router = useRouter();
@@ -51,18 +48,20 @@ const CardCraft = (props) => {
       }
       console.log("responseWeb3", responseWeb3);
     } else {
-      // popup แจ้งเตือน
+      handleShowPopupNotEnoughCoinsNFT();
     }
   };
   const [showPopup, setShowPopup] = useState(false);
   const [showPopupDetailNFT, setShowPopupDetailNFT] = useState(false);
   const handleShowPopupDetailNFT = () => setShowPopupDetailNFT(true);
-  const [showPopupNotEnoughCoinsNFT, setShowPopupNotEnoughCoinsNFT] = useState(false);
-  const handleShowPopupNotEnoughCoinsNFT = () => setShowPopupNotEnoughCoinsNFT(true);
+  const [showPopupNotEnoughCoinsNFT, setShowPopupNotEnoughCoinsNFT] =
+    useState(false);
+  const handleShowPopupNotEnoughCoinsNFT = () =>
+    setShowPopupNotEnoughCoinsNFT(true);
 
   return (
     <div className={styles.cardMyItem5}>
-      <div className={styles.cardMyItem6} onClick={handleShowPopupNotEnoughCoinsNFT}>
+      <div className={styles.cardMyItem6} onClick={handleShowPopupDetailNFT}>
         {/* <div onClick={() => setshowModal(true)} className={styles.cardMyItem6} > */}
         <div className={styles.imageMyItem}>
           <Image src={props.picture} alt="Corn" width={200} height={200} />
@@ -96,10 +95,10 @@ const CardCraft = (props) => {
               height={30}
             />
           </div>
-          <div className={styles.coinCraft2Coin} >{props.cost.fruit}</div>
+          <div className={styles.coinCraft2Coin}>{props.cost.fruit}</div>
         </div>
       </div>
-      <div onClick={() => craftNFT(props)} className={styles.buttonSell} >
+      <div onClick={() => craftNFT(props)} className={styles.buttonSell}>
         <span>Craft</span>
       </div>
 
@@ -108,10 +107,12 @@ const CardCraft = (props) => {
         setShowPopupDetailNFT={setShowPopupDetailNFT}
         showPopupDetailNFT={showPopupDetailNFT}
       />
-       <ModalNotEnoughCoinsNFT
+      <ModalNotEnoughCoinsNFT
         item={props}
         setShowPopupNotEnoughCoinsNFT={setShowPopupNotEnoughCoinsNFT}
         showPopupNotEnoughCoinsNFT={showPopupNotEnoughCoinsNFT}
+        bodyText={"คุณมีผลไม้หรือไม้ ไม่เพียงพอสำหรับการ Craft"}
+        headerText={"Craft"}
       />
     </div>
   );
