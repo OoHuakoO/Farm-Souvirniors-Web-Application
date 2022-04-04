@@ -26,13 +26,13 @@ export default function BuyChests() {
     //   "https://res.cloudinary.com/smilejob/image/upload/v1645697085/Farm-Souvirniors/fruit-chest_mx58t4.png"
     // );
     // Vegetable Chest
-    await mintRandomBox(
-      share_address_wallet,
-      "Vegetable Chests",
-      "0.01",
-      100,
-      "https://res.cloudinary.com/smilejob/image/upload/v1645697085/Farm-Souvirniors/vegatable-chest_idssx9.png"
-    );
+    // await mintRandomBox(
+    //   share_address_wallet,
+    //   "Vegetable Chests",
+    //   "0.01",
+    //   100,
+    //   "https://res.cloudinary.com/smilejob/image/upload/v1645697085/Farm-Souvirniors/vegatable-chest_idssx9.png"
+    // );
   };
   useEffect(() => {
     async function fetctGetRandomBox() {

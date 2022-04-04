@@ -17,16 +17,12 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .cardMyItem2 {
-  /* width: 300px; */
+  
   height: 260px;
   background-color: #f8f4d3;
   border-radius: 10px 10px 0px 0px;
   padding: 20px;
   cursor: pointer;
-  /* display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center; */
 }
 .uidCard {
   font-family: "Prompt", sans-serif;

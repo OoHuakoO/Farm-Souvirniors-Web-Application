@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/BuyChests.module.css";
 import Image from "next/image";
-import Ethereum from "../public/Ethereum-icon-purple.png";
+import binance from "../public/binance.png";
 import { buyRandomBox } from "../web3/randomBox";
 import { useRouter } from "next/router";
 const CardBuychests = (props) => {
@@ -25,7 +25,7 @@ const CardBuychests = (props) => {
   return (
     <div className={styles.CardBuyChests1}>
       <div className={styles.CardBuyChests2}>
-        <div>
+        <div className={styles.CardBuyChestsImage}>
           <Image src={props.picture} alt="Box1" width={200} height={200} />
         </div>
         <div className={styles.typeBox}>
@@ -33,16 +33,20 @@ const CardBuychests = (props) => {
           <span> {props.name}</span>
         </div>
         <div className={styles.bnb}>
-          <div>{props.price} ETH</div>
+          <div>{props.price} BNB</div>
           <div>
-            <Image src={Ethereum} alt="Ethereum" width={25} height={25} />
+            {" "}
+            &nbsp;
+            <Image src={binance} alt="binance" width={20} height={20} />
           </div>
         </div>
-        <div
-          onClick={() => handleBuyRandomBox(props)}
-          className={styles.buttonBuy}
-        >
-          buy
+        <div className={styles.CardBuyChestsImage}>
+          <div
+            onClick={() => handleBuyRandomBox(props)}
+            className={styles.buttonBuy}
+          >
+            buy
+          </div>
         </div>
       </div>
     </div>
