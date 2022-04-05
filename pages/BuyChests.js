@@ -10,13 +10,13 @@ export default function BuyChests() {
   const { isAuthenticated } = useMoralis();
   const handleMintRandomBox = async () => {
     // Animal chest
-    // await mintRandomBox(
-    //   share_address_wallet,
-    //   "Animal chests",
-    //   "0.01",
-    //   100,
-    //   "https://res.cloudinary.com/smilejob/image/upload/v1645697086/Farm-Souvirniors/animal-chest_waxfph.png"
-    // );
+    await mintRandomBox(
+      share_address_wallet,
+      "Animal Chests",
+      "0.01",
+      100,
+      "https://res.cloudinary.com/smilejob/image/upload/v1645697086/Farm-Souvirniors/animal-chest_waxfph.png"
+    );
     // Fruit Chest
     // await mintRandomBox(
     //   share_address_wallet,
