@@ -137,4 +137,14 @@
   align-items: center;
   justify-content: center;
 }
+.tax10 {
+  background-color: #8D3131;
+  color: #ffffff;
+  width: 100px;
+  text-align: center;
+  border: 1px solid #8D3131;
+  padding: 5px 15px;
+  border-radius: 10px;
+
+}
 

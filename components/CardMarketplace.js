@@ -84,9 +84,9 @@ const CardMarketplace = (props) => {
 
           <span>{props.seller}</span>
         </div>
-        <div className={styles.uidCard}>
+        <div className={styles.priceCard}>
           <span>price : {props.price} BNB</span>
-        <span >&nbsp;
+        <span>&nbsp;
           <Image src={binance} alt="binance" width={20} height={20} />
         </span>
         </div>

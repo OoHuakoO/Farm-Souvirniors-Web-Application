@@ -344,3 +344,13 @@ line-height: 60px;
   justify-content: center;
   cursor: pointer;
 }
+.priceCard{
+  font-family: "Prompt", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 27px;
+  display: flex;
+  align-items: center;
+  
+}

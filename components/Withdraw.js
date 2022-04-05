@@ -197,6 +197,9 @@ export const Withdraw = (props) => {
         <div className={styles.buttonExchange} onClick={withdrawCoin}>
           Withdraw
         </div>
+        <div className={styles.tax10} >
+         Tax : 10%
+        </div>
       </div>
     </div>
   );

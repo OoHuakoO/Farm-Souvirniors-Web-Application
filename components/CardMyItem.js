@@ -24,6 +24,7 @@ const CardMyItem = (props) => {
     }
     return pickedValue;
   };
+  
   const openRandombox = async (item) => {
     const pid = Date.now();
     var NFT;
