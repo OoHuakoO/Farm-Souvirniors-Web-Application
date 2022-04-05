@@ -5,6 +5,7 @@ import { openRandomBoxWeb3 } from "../web3/randomBox";
 import { openRandomBoxAPI, getOneInfoNFT } from "../api/random-box";
 import ModalDetailNFT from "./ModalDetailNFT";
 import ModalSellNFT from "./ModalSellNFT";
+import ModalOpenBuyChests from "./ModalOpenBuyChests";
 const CardMyItem = (props) => {
   const [showPopupDetailNFT, setShowPopupDetailNFT] = useState(false);
   const [showPopupSellNFT, setShowPopupSellNFT] = useState(false);
@@ -24,7 +25,7 @@ const CardMyItem = (props) => {
     }
     return pickedValue;
   };
-  
+
   const openRandombox = async (item) => {
     const pid = Date.now();
     var NFT;
@@ -106,7 +107,8 @@ const CardMyItem = (props) => {
       }
     }
   };
-
+  const [showPopupOpenBuyChests, setShowPopupOpenBuyChests] = useState(true);
+  const handleShowPopupOpenBuyChests = () => setShowPopupOpenBuyChests(true);
   return (
     <div className={styles.cardMyItem1}>
       <div className={styles.cardMyItem2} onClick={handleShowPopupDetailNFT}>
@@ -155,6 +157,11 @@ const CardMyItem = (props) => {
         showPopupSellNFT={showPopupSellNFT}
         setShowPopupSellNFT={setShowPopupSellNFT}
         share_address_wallet={props.share_address_wallet}
+      />
+      <ModalOpenBuyChests
+        item={props}
+        setShowPopupOpenBuyChests={setShowPopupOpenBuyChests}
+        showPopupOpenBuyChests={showPopupOpenBuyChests}
       />
     </div>
   );
