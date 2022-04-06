@@ -9,8 +9,12 @@ import ModalOpenBuyChests from "./ModalOpenBuyChests";
 const CardMyItem = (props) => {
   const [showPopupDetailNFT, setShowPopupDetailNFT] = useState(false);
   const [showPopupSellNFT, setShowPopupSellNFT] = useState(false);
+  const [showPopupOpenBuyChests, setShowPopupOpenBuyChests] = useState(false);
+  const [detailNFTOpenBox, setDetailNFTOpenBox] = useState({});
+  const handleShowPopupOpenBuyChests = () => setShowPopupOpenBuyChests(true);
   const handleShowPopupDetailNFT = () => setShowPopupDetailNFT(true);
   const handleShowPopupSellNFT = () => setShowPopupSellNFT(true);
+
   const randomNFT = (values) => {
     let i,
       pickedValue,
@@ -71,7 +75,7 @@ const CardMyItem = (props) => {
         probability: 0.6,
       },
     ];
-    if (item.name === "animal chests") {
+    if (item.name === "Animal Chests") {
       NFT = randomNFT(animal);
     } else if (item.name === "Fruit Chests") {
       NFT = randomNFT(fruit);
@@ -101,14 +105,17 @@ const CardMyItem = (props) => {
             props.share_address_wallet,
             responseGetInfoNFT.data.name
           );
+          if (responseAPI) {
+            setDetailNFTOpenBox({ ...responseGetInfoNFT.data, pid });
+            handleShowPopupOpenBuyChests();
+          }
           props.setRefrestFetchAPI(!props.refrestFetchAPI);
           console.log(responseAPI);
         }
       }
     }
   };
-  const [showPopupOpenBuyChests, setShowPopupOpenBuyChests] = useState(true);
-  const handleShowPopupOpenBuyChests = () => setShowPopupOpenBuyChests(true);
+
   return (
     <div className={styles.cardMyItem1}>
       <div className={styles.cardMyItem2} onClick={handleShowPopupDetailNFT}>
@@ -141,7 +148,6 @@ const CardMyItem = (props) => {
         </div>
       ) : (
         <>
-          
           <div className={styles.buttonMarketplace}>
             <span>This NFT in game</span>
           </div>
@@ -162,6 +168,7 @@ const CardMyItem = (props) => {
         item={props}
         setShowPopupOpenBuyChests={setShowPopupOpenBuyChests}
         showPopupOpenBuyChests={showPopupOpenBuyChests}
+        detailNFTOpenBox={detailNFTOpenBox}
       />
     </div>
   );
