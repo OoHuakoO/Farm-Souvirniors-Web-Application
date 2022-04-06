@@ -6,6 +6,7 @@ import { cancleNFTWeb3 } from "../web3/nft";
 import { cancleNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { useRouter } from "next/router";
 import ModalDetailNFT from "./ModalDetailNFT";
+import binance from "../public/binance.png";
 const CardSell = (props) => {
   const router = useRouter();
   const [showPopupDetailNFT, setShowPopupDetailNFT] = useState(false);
@@ -49,8 +50,8 @@ const CardSell = (props) => {
     });
   };
   return (
-    <div className={styles.cardMyItem1}>
-      <div className={styles.cardMyItem2} onClick={handleShowPopupDetailNFT}>
+    <div className={styles.bgCardSell1}>
+      <div className={styles.bgCardSell2} onClick={handleShowPopupDetailNFT}>
         <div className={styles.uidCard}>
           <span>UID : </span>
           <span>{props.nft_id}</span>
@@ -62,9 +63,13 @@ const CardSell = (props) => {
       <div className={styles.NameCard}>
         <span>{props.name}</span>
       </div>
-      <div className={styles.NameCard}>
-        <span>{props.price}</span>
-      </div>
+      <div className={styles.priceCard}>
+          <span>{props.price} BNB</span>
+        <span>&nbsp;
+          <Image src={binance} alt="binance" width={20} height={20} />
+        </span>
+        </div>
+      
       {props.type_nft === "chest" ? (
         <div
           onClick={() => handleCancleRandomBox(props)}
