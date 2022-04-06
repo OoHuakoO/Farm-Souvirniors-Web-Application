@@ -91,7 +91,7 @@ const CardMarketplace = (props) => {
       </div>
       <div  className={styles.bgMarketplace}>
       
-      <div className={styles.NameCard}>
+      <div className={styles.NameCard1}>
         <div>{props.name}</div>
         
       </div> 

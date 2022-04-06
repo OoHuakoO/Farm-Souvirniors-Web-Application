@@ -60,7 +60,7 @@ const CardSell = (props) => {
           <Image src={props.picture} alt="Corn" width={200} height={200} />
         </div>
       </div>
-      <div className={styles.NameCard}>
+      <div className={styles.NameCard1}>
         <span>{props.name}</span>
       </div>
       <div className={styles.priceCard}>
