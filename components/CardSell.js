@@ -62,6 +62,9 @@ const CardSell = (props) => {
       <div className={styles.NameCard}>
         <span>{props.name}</span>
       </div>
+      <div className={styles.NameCard}>
+        <span>{props.price}</span>
+      </div>
       {props.type_nft === "chest" ? (
         <div
           onClick={() => handleCancleRandomBox(props)}
