@@ -53,7 +53,7 @@ const CardMarketplace = (props) => {
     }
   };
   const handleBuyOwnerRandomBox = async (item) => {
-    const response = await buyOwnerRandomBox(
+    const response = await buyNFTWeb3InstanceRandombox(
       props.share_address_wallet,
       item.seller,
       item.indexNFT,
