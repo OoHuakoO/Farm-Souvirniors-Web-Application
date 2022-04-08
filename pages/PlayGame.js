@@ -8,7 +8,7 @@ export default function PlayGame() {
   const { share_address_wallet } = useUserState();
   const unityContext = new UnityContext({
     loaderUrl: "buildUnity/again.loader.js",
-    dataUrl: "buildUnity/gain.data",
+    dataUrl: "buildUnity/again.data",
     frameworkUrl: "buildUnity/again.framework.js",
     codeUrl: "buildUnity/again.wasm",
     webglContextAttributes:{
