@@ -7,18 +7,22 @@ export default function PlayGame() {
   const { isAuthenticated } = useMoralis();
   const { share_address_wallet } = useUserState();
   const unityContext = new UnityContext({
-    loaderUrl: "buildUnity/again.loader.js",
-    dataUrl: "buildUnity/again.data",
-    frameworkUrl: "buildUnity/again.framework.js",
-    codeUrl: "buildUnity/again.wasm",
-    webglContextAttributes:{
-      preserveDrawingBuffer:true
-    }
+    loaderUrl: "buildUnity/Other.loader.js",
+    dataUrl: "buildUnity/Other.data",
+    frameworkUrl: "buildUnity/Other.framework.js",
+    codeUrl: "buildUnity/Other.wasm",
+    webglContextAttributes: {
+      preserveDrawingBuffer: true,
+    },
   });
   return (
-    <div style={{ marginLeft: "15%" }}>
-      <h1 className={styles.title}>PlayGame</h1>
-      <Unity unityContext={unityContext} />
+<div style={{ marginLeft: "15%" }}>
+<h1 className={styles.title}>PlayGame</h1>
+      <Unity
+        style={{ height: "680px", width: "700px", alignSelf: "center" }}
+        unityContext={unityContext}
+      />
+      ;
     </div>
   );
 }
