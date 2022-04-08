@@ -28,6 +28,7 @@
     "react-multi-carousel": "^2.8.0",
     "react-pro-sidebar": "^0.7.1",
     "react-router-dom": "^6.2.1",
+    "react-unity-webgl": "^8.8.0",
     "truffle-hdwallet-provider": "^1.0.17",
     "web3": "^1.7.0",
     "yarn": "^1.22.17"
