@@ -13,6 +13,7 @@ import {
   depositWineToken,
 } from "../web3/wineToken";
 import { depositTokenAPI } from "../api/token";
+import ModalNotEnoughCoinsNFT from "./ModalNotEnoughCoinsNFT";
 export const Deposit = (props) => {
   const CoinsExchange = [
     {
@@ -36,11 +37,14 @@ export const Deposit = (props) => {
   ];
   const [SelectedCoinIndex, setSelectedCoinIndex] = useState(0);
   const [ExchangePrice, setExchangePrice] = useState(0);
+  const [showPopupNotEnoughCoinsNFT, setShowPopupNotEnoughCoinsNFT] =
+    useState(false);
+  const handleShowPopupNotEnoughCoinsNFT = () =>
+    setShowPopupNotEnoughCoinsNFT(true);
   const changeSelectcoin = (index) => {
     const _index = Number(index);
     setSelectedCoinIndex(_index);
   };
-  //คิดภาษีกับจำนวน coin
   const calculateCoin = (event) => {
     const InputSaveCoin = Number(event.target.value);
     const TotalCoin = InputSaveCoin;
@@ -48,51 +52,65 @@ export const Deposit = (props) => {
   };
   const DepositCoin = async () => {
     if (CoinsExchange[SelectedCoinIndex].nameCoin2 === "Wood") {
-      console.log(CoinsExchange[SelectedCoinIndex].nameCoin2);
-      let responseWeb3 = await depositFurnitureToken(
-        props.share_address_wallet,
-        parseInt(ExchangePrice)
-      );
-      console.log("responseWeb3", responseWeb3);
-      if (responseWeb3) {
-        let responseAPI = await depositTokenAPI(
+      if (Number(props.dataBalance.balanceOfFurnitureToken) >= ExchangePrice) {
+        let responseWeb3 = await depositFurnitureToken(
           props.share_address_wallet,
-          ExchangePrice,
-          CoinsExchange[SelectedCoinIndex].nameCoin2
+          parseInt(ExchangePrice)
         );
-        props.setRefrestFetchAPI(!props.refrestFetchAPI);
-        console.log("responseAPI", responseAPI);
+        console.log("responseWeb3", responseWeb3);
+        if (responseWeb3) {
+          let responseAPI = await depositTokenAPI(
+            props.share_address_wallet,
+            ExchangePrice,
+            CoinsExchange[SelectedCoinIndex].nameCoin2
+          );
+          props.setRefrestFetchAPI(!props.refrestFetchAPI);
+          console.log("responseAPI", responseAPI);
+        }
+      } else {
+        handleShowPopupNotEnoughCoinsNFT();
+        console.log("cannot deposit FurnitureToken");
       }
     } else if (CoinsExchange[SelectedCoinIndex].nameCoin2 === "Meat") {
-      let responseWeb3 = await depositSteakToken(
-        props.share_address_wallet,
-        ExchangePrice
-      );
-      console.log("responseWeb3", responseWeb3);
-      if (responseWeb3) {
-        let responseAPI = await depositTokenAPI(
+      if (Number(props.dataBalance.balanceOfSteakToken) >= ExchangePrice) {
+        let responseWeb3 = await depositSteakToken(
           props.share_address_wallet,
-          ExchangePrice,
-          CoinsExchange[SelectedCoinIndex].nameCoin2
+          ExchangePrice
         );
-        props.setRefrestFetchAPI(!props.refrestFetchAPI);
-        console.log("responseAPI", responseAPI);
+        console.log("responseWeb3", responseWeb3);
+        if (responseWeb3) {
+          let responseAPI = await depositTokenAPI(
+            props.share_address_wallet,
+            ExchangePrice,
+            CoinsExchange[SelectedCoinIndex].nameCoin2
+          );
+          props.setRefrestFetchAPI(!props.refrestFetchAPI);
+          console.log("responseAPI", responseAPI);
+        }
+      } else {
+        handleShowPopupNotEnoughCoinsNFT();
+        console.log("cannot deposit SteakToken");
       }
     } else {
-      let responseWeb3 = await depositWineToken(
-        props.share_address_wallet,
-        ExchangePrice
-      );
-      if (responseWeb3) {
-        let responseAPI = await depositTokenAPI(
+      if (Number(props.dataBalance.balanceOfWineToken) >= ExchangePrice) {
+        let responseWeb3 = await depositWineToken(
           props.share_address_wallet,
-          ExchangePrice,
-          CoinsExchange[SelectedCoinIndex].nameCoin2
+          ExchangePrice
         );
-        props.setRefrestFetchAPI(!props.refrestFetchAPI);
-        console.log("responseAPI", responseAPI);
+        if (responseWeb3) {
+          let responseAPI = await depositTokenAPI(
+            props.share_address_wallet,
+            ExchangePrice,
+            CoinsExchange[SelectedCoinIndex].nameCoin2
+          );
+          props.setRefrestFetchAPI(!props.refrestFetchAPI);
+          console.log("responseAPI", responseAPI);
+        }
+        console.log("responseWeb3", responseWeb3);
+      } else {
+        handleShowPopupNotEnoughCoinsNFT();
+        console.log("cannot deposit WineToken");
       }
-      console.log("responseWeb3", responseWeb3);
     }
   };
   useEffect(() => {
@@ -183,6 +201,13 @@ export const Deposit = (props) => {
           Deposit
         </div>
       </div>
+      <ModalNotEnoughCoinsNFT
+        item={props}
+        setShowPopupNotEnoughCoinsNFT={setShowPopupNotEnoughCoinsNFT}
+        showPopupNotEnoughCoinsNFT={showPopupNotEnoughCoinsNFT}
+        bodyText={"คุณมี Token ไม่เพียงพอสำหรับการ Deposit"}
+        headerText={"Deposit"}
+      />
     </div>
   );
 };

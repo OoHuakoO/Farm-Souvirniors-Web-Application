@@ -77,7 +77,7 @@ export default function Exchange() {
           }
           onClick={() => changeTab(1)}
         >
-          withdraw
+          Withdraw
         </button>
       </div>
 

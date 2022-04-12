@@ -4,6 +4,7 @@ import { withdrawSteakToken, balanceOf } from "../web3/steakToken";
 import { withdrawFurnitureToken } from "../web3/furnitureToken";
 import { withdrawWineToken } from "../web3/wineToken";
 import { checkResource, withdrawTokenAPI } from "../api/token";
+import ModalNotEnoughCoinsNFT from "./ModalNotEnoughCoinsNFT";
 export const Withdraw = (props) => {
   const CoinsExchange = [
     {
@@ -30,6 +31,10 @@ export const Withdraw = (props) => {
   const [ExchangePrice, setExchangePrice] = useState(0);
   const [taxPrice, setTaxPrice] = useState(0);
   const [inputSaveCoin, setInputSaveCoin] = useState(0);
+  const [showPopupNotEnoughCoinsNFT, setShowPopupNotEnoughCoinsNFT] =
+    useState(false);
+  const handleShowPopupNotEnoughCoinsNFT = () =>
+    setShowPopupNotEnoughCoinsNFT(true);
   const changeSelectcoin = (index) => {
     const _index = Number(index);
     setSelectedCoinIndex(_index);
@@ -67,7 +72,7 @@ export const Withdraw = (props) => {
         }
         console.log("responseWeb3", responseWeb3);
       } else {
-        console.log(responseAPI.data);
+        handleShowPopupNotEnoughCoinsNFT();
       }
     } else if (CoinsExchange[SelectedCoinIndex].nameCoin1 === "Meat") {
       let responseAPI = await checkResource(
@@ -92,7 +97,7 @@ export const Withdraw = (props) => {
         }
         console.log("responseWeb3", responseWeb3);
       } else {
-        console.log(responseAPI.data);
+        handleShowPopupNotEnoughCoinsNFT();
       }
     } else {
       let responseAPI = await checkResource(
@@ -117,7 +122,7 @@ export const Withdraw = (props) => {
         }
         console.log("responseWeb3", responseWeb3);
       } else {
-        console.log(responseAPI.data);
+        handleShowPopupNotEnoughCoinsNFT();
       }
     }
   };
@@ -197,10 +202,15 @@ export const Withdraw = (props) => {
         <div className={styles.buttonExchange} onClick={withdrawCoin}>
           Withdraw
         </div>
-        <div className={styles.tax10} >
-         Tax : 10%
-        </div>
+        <div className={styles.tax10}>Tax : 10%</div>
       </div>
+      <ModalNotEnoughCoinsNFT
+        item={props}
+        setShowPopupNotEnoughCoinsNFT={setShowPopupNotEnoughCoinsNFT}
+        showPopupNotEnoughCoinsNFT={showPopupNotEnoughCoinsNFT}
+        bodyText={"คุณมี Resource ไม่เพียงพอสำหรับการ Withdraw"}
+        headerText={"Withdraw"}
+      />
     </div>
   );
 };
