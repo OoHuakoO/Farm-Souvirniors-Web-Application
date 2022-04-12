@@ -6,7 +6,6 @@ import { useUserState } from "../context/user";
 import { getOwnerNftWeb3 } from "../web3/nft";
 import { getOwnerNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
-import Web3 from "web3";
 export default function MyItem() {
   const { share_address_wallet } = useUserState();
   const [dataMyItem, setDataMyItem] = useState([]);
@@ -21,9 +20,7 @@ export default function MyItem() {
       let responseWeb3RandomBox = await getOwnerNFTWeb3InstanceRandombox(
         share_address_wallet
       );
-      console.log(responseWeb3 ,responseAPI)
       if (responseWeb3RandomBox && !responseWeb3) {
-        console.log(responseWeb3RandomBox);
         if (responseAPI.data.length !== 0) {
           await responseWeb3RandomBox.map(
             async (dataFromSmartContract, indexFromSmartContract) => {

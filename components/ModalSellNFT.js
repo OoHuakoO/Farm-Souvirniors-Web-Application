@@ -89,6 +89,7 @@ const ModalSellNFT = (props) => {
               onChange={(event) => setPriceNFT(event.target.value)}
             />
           </div>
+          
           {props.item.type_nft === "chest" ? (
             <div
               onClick={() => sellRandombox(props.item)}

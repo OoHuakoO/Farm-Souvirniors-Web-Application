@@ -21,6 +21,7 @@ export default function Craft() {
   };
   const fetchGetInfoNFT = async () => {
     let response = await getInfoNFT();
+
     setDataCraft(response.data);
   };
   useEffect(() => {

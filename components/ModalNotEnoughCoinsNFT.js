@@ -1,9 +1,7 @@
 import React from "react";
 import styles from "../styles/MyItem.module.css";
-import Image from "next/image";
 import { Modal, Button } from "react-bootstrap";
 const ModalNotEnoughCoinsNFT = (props) => {
-  console.log(props);
   const handleClose = () => props.setShowPopupNotEnoughCoinsNFT(false);
   return (
     <Modal

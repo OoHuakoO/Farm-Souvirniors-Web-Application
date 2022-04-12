@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import binance from "../public/binance.png";
@@ -84,47 +84,46 @@ const CardMarketplace = (props) => {
 
           <span>{props.seller}</span>
         </div>
-        
+
         <div className={styles.imageMyItem}>
           <Image src={props.picture} alt="Corn" width={200} height={200} />
         </div>
       </div>
-      <div  className={styles.bgMarketplace}>
-      
-      <div className={styles.NameCard1}>
-        <div>{props.name}</div>
-        
-      </div> 
-      <div className={styles.priceCard}>
+      <div className={styles.bgMarketplace}>
+        <div className={styles.NameCard1}>
+          <div>{props.name}</div>
+        </div>
+        <div className={styles.priceCard}>
           <span>{props.price} BNB</span>
-        <span>&nbsp;
-          <Image src={binance} alt="binance" width={20} height={20} />
-        </span>
+          <span>
+            &nbsp;
+            <Image src={binance} alt="binance" width={20} height={20} />
+          </span>
         </div>
-      {props.seller === props.share_address_wallet ? (
-        <>
-          <div className={styles.buttonMarketplace}>
-            <span>This Owner NFT</span>
+        {props.seller === props.share_address_wallet ? (
+          <>
+            <div className={styles.buttonMarketplace}>
+              <span>This Owner NFT</span>
+            </div>
+          </>
+        ) : props.type_nft === "chest" ? (
+          <div
+            onClick={() => handleBuyOwnerRandomBox(props)}
+            className={styles.buttonSell}
+          >
+            <span>Buy</span>
           </div>
-        </>
-      ) : props.type_nft === "chest" ? (
-        <div
-          onClick={() => handleBuyOwnerRandomBox(props)}
-          className={styles.buttonSell}
-        >
-          <span>Buy</span>
-        </div>
-      ) : (
-        <div onClick={() => buyNFT(props)} className={styles.buttonSell}>
-          <span>Buy</span>
-        </div>
-      )}</div>
+        ) : (
+          <div onClick={() => buyNFT(props)} className={styles.buttonSell}>
+            <span>Buy</span>
+          </div>
+        )}
+      </div>
       <ModalDetailNFT
         item={props}
         setShowPopupDetailNFT={setShowPopupDetailNFT}
         showPopupDetailNFT={showPopupDetailNFT}
       />
-     
     </div>
   );
 };

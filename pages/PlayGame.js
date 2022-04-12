@@ -14,18 +14,17 @@ export default function PlayGame() {
     setTimeout(async () => {
       const web3 = new Web3(Web3.givenProvider || Config.web3ProviderGanache);
       const accounts = await web3.eth.requestAccounts();
-      unityContext.send("GameManager", "SpawnEnemies", accounts[0]);
-    }, 6000);
+      unityContext.send("Canvas", "SpawnEnemies", accounts[0]);
+    }, 2000);
   }, []);
 
   return (
     <div style={{ marginLeft: "15%" }}>
       <h1 className={styles.title}>PlayGame</h1>
-      <Unity
+      {/* <Unity
         style={{ height: "680px", width: "700px", alignSelf: "center" }}
         unityContext={unityContext}
-      />
-      ;
+      /> */}
     </div>
   );
 }
