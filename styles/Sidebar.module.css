@@ -5,7 +5,7 @@
   width: 15%;
   background-color: #2e373f;
   overflow-x: hidden;
-
+  
 }
 
 
@@ -19,11 +19,12 @@
   margin: auto;
   align-items: center;
   margin-bottom: 30px;
+  margin-top: 40px;
 
 }
 
 .sidenav a:hover {
-  background-color: #F03B3B;
+  background-color: #a92a2a;
 }
 .menuplaygame {
   display: grid;

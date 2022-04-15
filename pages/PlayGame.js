@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/Playgame.module.css";
 import Web3 from "web3";
 import Unity, { UnityContext } from "react-unity-webgl";
+import CardInventories from "../components/CardInventories";
+import ProgressBar from "react-bootstrap/ProgressBar";
 export default function PlayGame() {
+  const [dataResource, setDataResource] = useState();
   const unityContext = new UnityContext({
     loaderUrl: "buildUnity/Huak.loader.js",
     dataUrl: "buildUnity/Huak.data",
@@ -17,14 +20,14 @@ export default function PlayGame() {
       unityContext.send("Canvas", "SpawnEnemies", accounts[0]);
     }, 2000);
   }, []);
-
+  
+ 
   return (
-    <div style={{ marginLeft: "15%" }}>
-      <h1 className={styles.title}>PlayGame</h1>
-      {/* <Unity
-        style={{ height: "680px", width: "700px", alignSelf: "center" }}
-        unityContext={unityContext}
-      /> */}
+    <div className={styles.maincategoryInventories}>
+     <ProgressBar now={60} />
+      <CardInventories dataResource={dataResource} />
     </div>
+    
   );
+  
 }
