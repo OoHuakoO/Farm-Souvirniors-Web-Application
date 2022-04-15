@@ -6,6 +6,8 @@ import { sellNFTWeb3 } from "../web3/nft";
 import { sellNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { Modal } from "react-bootstrap";
 import { useRouter } from "next/router";
+import binance from "../public/binance.png";
+
 const ModalSellNFT = (props) => {
   const router = useRouter();
   const handleClose = () => props.setShowPopupSellNFT(false);
@@ -89,7 +91,12 @@ const ModalSellNFT = (props) => {
               onChange={(event) => setPriceNFT(event.target.value)}
             />
           </div>
-          
+          <div className={styles.binanceBNB}>
+            <div>BNB</div>&nbsp;
+            <div>
+              <Image src={binance} alt="binance" width={20} height={20} />
+            </div>
+          </div>
           {props.item.type_nft === "chest" ? (
             <div
               onClick={() => sellRandombox(props.item)}
