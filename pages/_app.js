@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import MainLayout from "../layout/MainLayout";
 import { UserProvider } from "../context/user";
 import { MoralisProvider } from "react-moralis";
+
 function MyApp({ Component, pageProps }) {
   return (
     <MoralisProvider

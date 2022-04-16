@@ -20,14 +20,17 @@ export default function PlayGame() {
       unityContext.send("Canvas", "SpawnEnemies", accounts[0]);
     }, 2000);
   }, []);
-  
- 
+
   return (
     <div className={styles.maincategoryInventories}>
-     <ProgressBar now={60} />
+      <ProgressBar now={60} />
       <CardInventories dataResource={dataResource} />
+
+      <h1 className={styles.title}>PlayGame</h1>
+      <Unity
+        style={{ height: "680px", width: "700px", alignSelf: "center" }}
+        unityContext={unityContext}
+      />
     </div>
-    
   );
-  
 }

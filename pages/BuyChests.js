@@ -4,6 +4,8 @@ import CardBuychests from "../components/CardBuyChests";
 import { useUserState } from "../context/user";
 import { mintRandomBox, getRandomBox } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
+
+
 export default function BuyChests() {
   const { share_address_wallet } = useUserState();
   const [listRandomBox, setListRandomBox] = useState([]);
@@ -55,6 +57,9 @@ export default function BuyChests() {
       >
         Mint
       </div> */}
+
+    
+
       {listRandomBox.map((item, index) => {
         return (
           <CardBuychests

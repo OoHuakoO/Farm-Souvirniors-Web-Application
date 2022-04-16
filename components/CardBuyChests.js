@@ -5,22 +5,29 @@ import binance from "../public/binance.png";
 import { buyRandomBox } from "../web3/randomBox";
 import { useRouter } from "next/router";
 import ModalDetailNFT from "./ModalDetailNFT";
+import ClipLoaderButton from "../components/ClipLoaderButton";
 const CardBuychests = (props) => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const handleBuyRandomBox = async (item) => {
+    setLoading(true);
     const pid = Date.now();
-    const response = await buyRandomBox(
-      pid,
-      item.price,
-      parseInt(item.indexNFT),
-      item.name,
-      item.picture,
-      props.share_address_wallet
-    );
-    if (response) {
-      router.push({
-        pathname: "/MyItem",
-      });
+    try {
+      const response = await buyRandomBox(
+        pid,
+        item.price,
+        parseInt(item.indexNFT),
+        item.name,
+        item.picture,
+        props.share_address_wallet
+      );
+      if (response) {
+        router.push({
+          pathname: "/MyItem",
+        });
+      }
+    } catch {
+      setLoading(false);
     }
   };
   const [showPopupDetailNFT, setShowPopupDetailNFT] = useState(false);
@@ -45,12 +52,18 @@ const CardBuychests = (props) => {
         </div>
       </div>
       <div className={styles.CardBuyChestsImage}>
-        <div
-          onClick={() => handleBuyRandomBox(props)}
-          className={styles.buttonBuy}
-        >
-          buy
-        </div>
+        {loading ? (
+          <div className={styles.buttonBuy}>
+            <ClipLoaderButton loading={loading} />
+          </div>
+        ) : (
+          <div
+            onClick={() => handleBuyRandomBox(props)}
+            className={styles.buttonBuy}
+          >
+            buy
+          </div>
+        )}
       </div>
       <ModalDetailNFT
         item={props}

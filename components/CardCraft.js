@@ -6,48 +6,55 @@ import { craftNFTWeb3 } from "../web3/nft";
 import { useRouter } from "next/router";
 import ModalDetailNFT from "./ModalDetailNFT";
 import ModalNotEnoughCoinsNFT from "./ModalNotEnoughCoinsNFT";
-
+import ClipLoaderButton from "../components/ClipLoaderButton";
 const CardCraft = (props) => {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const craftNFT = async (item) => {
     const pid = Date.now();
+    setLoading(true);
     const resourceCheckResource = await checkResource(
       item.cost,
       props.share_address_wallet
     );
-
     if (resourceCheckResource.data === "have enough resource") {
-      const responseWeb3 = await craftNFTWeb3(
-        pid,
-        item.name,
-        item.picture,
-        item.reward,
-        item.type_nft,
-        item.cost.wood,
-        item.cost.fruit,
-        item.energy_consumed,
-        item.amount_food,
-        props.share_address_wallet
-      );
-      if (responseWeb3) {
-        const responseAPI = await craftNFTAPI(
+      try {
+        const responseWeb3 = await craftNFTWeb3(
           pid,
           item.name,
           item.picture,
           item.reward,
           item.type_nft,
-          item.cost,
+          item.cost.wood,
+          item.cost.fruit,
           item.energy_consumed,
           item.amount_food,
           props.share_address_wallet
         );
-        router.push({
-          pathname: "/MyItem",
-        });
-        console.log("responseAPI", responseAPI);
+        if (responseWeb3) {
+          const responseAPI = await craftNFTAPI(
+            pid,
+            item.name,
+            item.picture,
+            item.reward,
+            item.type_nft,
+            item.cost,
+            item.energy_consumed,
+            item.amount_food,
+            props.share_address_wallet
+          );
+          router.push({
+            pathname: "/MyItem",
+          });
+          console.log("responseAPI", responseAPI);
+        }
+        console.log("responseWeb3", responseWeb3);
+      } catch (err) {
+        setLoading(false);
+        console.log(err);
       }
-      console.log("responseWeb3", responseWeb3);
     } else {
+      setLoading(false);
       handleShowPopupNotEnoughCoinsNFT();
     }
   };
@@ -98,9 +105,15 @@ const CardCraft = (props) => {
           <div className={styles.coinCraft2Coin}>{props.cost.fruit}</div>
         </div>
       </div>
-      <div onClick={() => craftNFT(props)} className={styles.buttonSell}>
-        <span>Craft</span>
-      </div>
+      {loading ? (
+        <div className={styles.buttonSell}>
+          <ClipLoaderButton loading={loading} />
+        </div>
+      ) : (
+        <div onClick={() => craftNFT(props)} className={styles.buttonSell}>
+          <span>Craft</span>
+        </div>
+      )}
 
       <ModalDetailNFT
         item={props}

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styles from "../styles/Index.module.css";
 import { useMoralis } from "react-moralis";
 import { useRouter } from "next/router";
+
 const index = () => {
   const router = useRouter();
   const { authenticate, isAuthenticated, logout } = useMoralis();

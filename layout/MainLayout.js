@@ -4,6 +4,7 @@ import Footer from "../components/Common/Footer";
 import Head from "next/head";
 import Navbar from "../components/Common/Navbar";
 import styles from "../styles/MainLayout.module.css";
+
 export default function MainLayout({ children }) {
   return (
     <div>
@@ -34,6 +35,7 @@ export default function MainLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;700&display=swap"
           rel="stylesheet"
         />
+        
       </Head>
       <Navbar />
       <Sidebar />
