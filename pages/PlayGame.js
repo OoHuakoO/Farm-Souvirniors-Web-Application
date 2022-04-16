@@ -3,7 +3,7 @@ import styles from "../styles/Playgame.module.css";
 import Web3 from "web3";
 import Unity, { UnityContext } from "react-unity-webgl";
 import CardInventories from "../components/CardInventories";
-import ProgressBar from "react-bootstrap/ProgressBar";
+import ProgressBar from "@ramonak/react-progress-bar";
 export default function PlayGame() {
   const [dataResource, setDataResource] = useState();
   const unityContext = new UnityContext({
@@ -23,14 +23,13 @@ export default function PlayGame() {
 
   return (
     <div className={styles.maincategoryInventories}>
-      <ProgressBar now={60} />
+      <ProgressBar completed={200} maxCompleted={500} width="200px"/>
       <CardInventories dataResource={dataResource} />
 
-      <h1 className={styles.title}>PlayGame</h1>
-      <Unity
+      {/* <Unity
         style={{ height: "680px", width: "700px", alignSelf: "center" }}
         unityContext={unityContext}
-      />
+      /> */}
     </div>
   );
 }

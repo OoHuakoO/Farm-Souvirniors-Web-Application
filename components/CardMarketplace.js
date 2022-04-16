@@ -6,7 +6,6 @@ import { buyNFTAPI } from "../api/marketplace";
 import { buyNFTWeb3 } from "../web3/nft";
 import { buyNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { useRouter } from "next/router";
-import { Modal, Button } from "react-bootstrap";
 import ModalDetailNFT from "./ModalDetailNFT";
 
 const CardMarketplace = (props) => {
@@ -64,7 +63,6 @@ const CardMarketplace = (props) => {
       pathname: "/MyItem",
     });
   };
-  const [showPopup, setShowPopup] = useState(false);
   const [showPopupDetailNFT, setShowPopupDetailNFT] = useState(false);
   const handleShowPopupDetailNFT = () => setShowPopupDetailNFT(true);
   return (

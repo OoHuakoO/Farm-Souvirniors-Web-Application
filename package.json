@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ramonak/react-progress-bar": "^4.4.0",
     "@truffle/contract": "^4.4.8",
     "@truffle/hdwallet-provider": "^2.0.3",
     "@walletconnect/web3-provider": "^1.7.1",

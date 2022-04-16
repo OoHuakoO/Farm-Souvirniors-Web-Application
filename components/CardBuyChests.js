@@ -54,14 +54,14 @@ const CardBuychests = (props) => {
       <div className={styles.CardBuyChestsImage}>
         {loading ? (
           <div className={styles.buttonBuy}>
-            <ClipLoaderButton loading={loading} />
+            <ClipLoaderButton loading={loading} color="white" />
           </div>
         ) : (
           <div
             onClick={() => handleBuyRandomBox(props)}
             className={styles.buttonBuy}
           >
-            buy
+            Buy
           </div>
         )}
       </div>

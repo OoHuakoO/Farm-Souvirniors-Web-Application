@@ -6,7 +6,9 @@ import { openRandomBoxAPI, getOneInfoNFT } from "../api/random-box";
 import ModalDetailNFT from "./ModalDetailNFT";
 import ModalSellNFT from "./ModalSellNFT";
 import ModalOpenBuyChests from "./ModalOpenBuyChests";
+import ClipLoaderButton from "../components/ClipLoaderButton";
 const CardMyItem = (props) => {
+  const [loading, setLoading] = useState(false);
   const [showPopupDetailNFT, setShowPopupDetailNFT] = useState(false);
   const [showPopupSellNFT, setShowPopupSellNFT] = useState(false);
   const [showPopupOpenBuyChests, setShowPopupOpenBuyChests] = useState(false);
@@ -75,42 +77,49 @@ const CardMyItem = (props) => {
         probability: 0.6,
       },
     ];
-    if (item.name === "Animal Chests") {
+    if (item.name === "animal chests") {
       NFT = randomNFT(animal);
-    } else if (item.name === "Fruit Chests") {
+    } else if (item.name === "fruit chests") {
       NFT = randomNFT(fruit);
-    } else if (item.name === "Vegetable Chests") {
+    } else if (item.name === "vegetable chests") {
       NFT = randomNFT(vegetable);
     }
     if (NFT) {
+      setLoading(true);
       let responseGetInfoNFT = await getOneInfoNFT(NFT);
       if (responseGetInfoNFT.data) {
-        let responseWeb3 = await openRandomBoxWeb3(
-          pid,
-          responseGetInfoNFT.data.name,
-          responseGetInfoNFT.data.picture,
-          responseGetInfoNFT.data.reward,
-          responseGetInfoNFT.data.type,
-          responseGetInfoNFT.data.cost.wood,
-          responseGetInfoNFT.data.cost.fruit,
-          responseGetInfoNFT.data.energy_consumed,
-          responseGetInfoNFT.data.amount_food,
-          props.share_address_wallet,
-          item.indexNFT
-        );
-        console.log(responseWeb3);
-        if (responseWeb3) {
-          let responseAPI = await openRandomBoxAPI(
+        try {
+          let responseWeb3 = await openRandomBoxWeb3(
             pid,
+            responseGetInfoNFT.data.name,
+            responseGetInfoNFT.data.picture,
+            responseGetInfoNFT.data.reward,
+            responseGetInfoNFT.data.type_nft,
+            responseGetInfoNFT.data.cost.wood,
+            responseGetInfoNFT.data.cost.fruit,
+            responseGetInfoNFT.data.energy_consumed,
+            responseGetInfoNFT.data.amount_food,
             props.share_address_wallet,
-            responseGetInfoNFT.data.name
+            item.indexNFT
           );
-          if (responseAPI) {
-            setDetailNFTOpenBox({ ...responseGetInfoNFT.data, pid });
-            handleShowPopupOpenBuyChests();
+          console.log(responseWeb3);
+          if (responseWeb3) {
+            let responseAPI = await openRandomBoxAPI(
+              pid,
+              props.share_address_wallet,
+              responseGetInfoNFT.data.name
+            );
+            if (responseAPI) {
+              setLoading(false);
+              setDetailNFTOpenBox({ ...responseGetInfoNFT.data, pid });
+              handleShowPopupOpenBuyChests();
+            }
+            props.setRefrestFetchAPI(!props.refrestFetchAPI);
+            console.log(responseAPI);
           }
-          props.setRefrestFetchAPI(!props.refrestFetchAPI);
-          console.log(responseAPI);
+        } catch (err) {
+          setLoading(false);
+          console.log(err);
         }
       }
     }
@@ -132,12 +141,22 @@ const CardMyItem = (props) => {
       </div>
       {props.type_nft === "chest" ? (
         <div style={{ display: "flex", flexDirection: "row" }}>
-          <div
-            onClick={() => openRandombox(props)}
-            className={styles.buttonSell}
-          >
-            <span>Open</span>
-          </div>
+          {loading ? (
+            <div
+              onClick={() => openRandombox(props)}
+              className={styles.buttonSell}
+            >
+              <ClipLoaderButton loading={loading}  color="white"/>
+            </div>
+          ) : (
+            <div
+              onClick={() => openRandombox(props)}
+              className={styles.buttonSell}
+            >
+              <span>Open</span>
+            </div>
+          )}
+
           <div onClick={handleShowPopupSellNFT} className={styles.buttonSell}>
             <span>Sell</span>
           </div>

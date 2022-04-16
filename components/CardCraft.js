@@ -58,7 +58,6 @@ const CardCraft = (props) => {
       handleShowPopupNotEnoughCoinsNFT();
     }
   };
-  const [showPopup, setShowPopup] = useState(false);
   const [showPopupDetailNFT, setShowPopupDetailNFT] = useState(false);
   const handleShowPopupDetailNFT = () => setShowPopupDetailNFT(true);
   const [showPopupNotEnoughCoinsNFT, setShowPopupNotEnoughCoinsNFT] =
@@ -69,7 +68,6 @@ const CardCraft = (props) => {
   return (
     <div className={styles.cardMyItem5}>
       <div className={styles.cardMyItem6} onClick={handleShowPopupDetailNFT}>
-        {/* <div onClick={() => setshowModal(true)} className={styles.cardMyItem6} > */}
         <div className={styles.imageMyItem}>
           <Image src={props.picture} alt="Corn" width={200} height={200} />
         </div>
@@ -107,7 +105,7 @@ const CardCraft = (props) => {
       </div>
       {loading ? (
         <div className={styles.buttonSell}>
-          <ClipLoaderButton loading={loading} />
+          <ClipLoaderButton loading={loading} color="white" />
         </div>
       ) : (
         <div onClick={() => craftNFT(props)} className={styles.buttonSell}>

@@ -7,50 +7,72 @@ import { sellNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { Modal } from "react-bootstrap";
 import { useRouter } from "next/router";
 import binance from "../public/binance.png";
-
+import ClipLoaderButton from "../components/ClipLoaderButton";
 const ModalSellNFT = (props) => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const handleClose = () => props.setShowPopupSellNFT(false);
   const [priceNFT, setPriceNFT] = useState();
   const sellNFT = async (item) => {
+    setLoading(true);
     if (item.from === "nft") {
-      const responseWeb3 = await sellNFTWeb3(
-        props.share_address_wallet,
-        item.indexNFT,
-        priceNFT
-      );
-      if (responseWeb3) {
-        const responseAPI = await sellNFTAPI(priceNFT, item.nft_id);
-        console.log(responseAPI);
-        router.push({
-          pathname: "/Sell",
-        });
+      try {
+        const responseWeb3 = await sellNFTWeb3(
+          props.share_address_wallet,
+          item.indexNFT,
+          priceNFT
+        );
+        if (responseWeb3) {
+          const responseAPI = await sellNFTAPI(priceNFT, item.nft_id);
+          setLoading(false);
+          console.log(responseAPI);
+          router.push({
+            pathname: "/Sell",
+          });
+        }
+      } catch (err) {
+        setLoading(false);
+        console.log(err);
       }
     } else if (item.from === "randombox") {
-      const responseWeb3InstanceRandombox = await sellNFTWeb3InstanceRandombox(
-        props.share_address_wallet,
-        item.indexNFT,
-        priceNFT
-      );
-      if (responseWeb3InstanceRandombox) {
-        const responseAPI = await sellNFTAPI(priceNFT, item.nft_id);
-        console.log(responseAPI);
-        router.push({
-          pathname: "/Sell",
-        });
+      try {
+        const responseWeb3InstanceRandombox =
+          await sellNFTWeb3InstanceRandombox(
+            props.share_address_wallet,
+            item.indexNFT,
+            priceNFT
+          );
+        if (responseWeb3InstanceRandombox) {
+          const responseAPI = await sellNFTAPI(priceNFT, item.nft_id);
+          console.log(responseAPI);
+          setLoading(false);
+          router.push({
+            pathname: "/Sell",
+          });
+        }
+      } catch (err) {
+        setLoading(false);
+        console.log(err);
       }
     }
   };
   const sellRandombox = async (item) => {
-    const response = await sellNFTWeb3InstanceRandombox(
-      props.share_address_wallet,
-      item.indexNFT,
-      priceNFT
-    );
-    router.push({
-      pathname: "/Sell",
-    });
-    console.log(response);
+    setLoading(true);
+    try {
+      const response = await sellNFTWeb3InstanceRandombox(
+        props.share_address_wallet,
+        item.indexNFT,
+        priceNFT
+      );
+      setLoading(false);
+      router.push({
+        pathname: "/Sell",
+      });
+      console.log(response);
+    } catch (err) {
+      setLoading(false);
+      console.log(err);
+    }
   };
 
   return (
@@ -98,11 +120,27 @@ const ModalSellNFT = (props) => {
             </div>
           </div>
           {props.item.type_nft === "chest" ? (
+            loading ? (
+              <div
+                onClick={() => sellRandombox(props.item)}
+                className={styles.buttonSellPopup}
+              >
+                <ClipLoaderButton loading={loading} color="white"/>
+              </div>
+            ) : (
+              <div
+                onClick={() => sellRandombox(props.item)}
+                className={styles.buttonSellPopup}
+              >
+                Sell
+              </div>
+            )
+          ) : loading ? (
             <div
-              onClick={() => sellRandombox(props.item)}
+              onClick={() => sellNFT(props.item)}
               className={styles.buttonSellPopup}
             >
-              Sell
+              <ClipLoaderButton loading={loading} color="white"/>
             </div>
           ) : (
             <div

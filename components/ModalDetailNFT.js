@@ -30,7 +30,7 @@ const ModalDetailNFT = (props) => {
           </div>
         </div>
         <div className={styles.detailPopup}>
-          {props.item.name === "Animal Chests" ? (
+          {props.item.name === "animal chests" ? (
             <div>
               <div className={styles.randomItems}> Random Items</div>
               <div className={styles.detailRandomItems}>
@@ -64,7 +64,7 @@ const ModalDetailNFT = (props) => {
                 <div>60% Chance</div>
               </div>
             </div>
-          ) : props.item.name === "Fruit Chests" ? (
+          ) : props.item.name === "fruit chests" ? (
             <div>
               <div className={styles.randomItems}> Random Items</div>
               <div className={styles.detailRandomItems}>
@@ -98,7 +98,7 @@ const ModalDetailNFT = (props) => {
                 <div>60% Chance</div>
               </div>
             </div>
-          ) : props.item.name === "Vegetable Chests" ? (
+          ) : props.item.name === "vegetable chests" ? (
             <div>
               <div className={styles.randomItems}> Random Items</div>
               <div className={styles.detailRandomItems}>

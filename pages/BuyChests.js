@@ -5,24 +5,23 @@ import { useUserState } from "../context/user";
 import { mintRandomBox, getRandomBox } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
 
-
 export default function BuyChests() {
   const { share_address_wallet } = useUserState();
   const [listRandomBox, setListRandomBox] = useState([]);
   const { isAuthenticated } = useMoralis();
   const handleMintRandomBox = async () => {
     // Animal chest
-    // await mintRandomBox(
-    //   share_address_wallet,
-    //   "Animal Chests",
-    //   "0.01",
-    //   100,
-    //   "https://res.cloudinary.com/smilejob/image/upload/v1645697086/Farm-Souvirniors/animal-chest_waxfph.png"
-    // );
+    await mintRandomBox(
+      share_address_wallet,
+      "animal chests",
+      "0.01",
+      100,
+      "https://res.cloudinary.com/smilejob/image/upload/v1645697086/Farm-Souvirniors/animal-chest_waxfph.png"
+    );
     // Fruit Chest
     // await mintRandomBox(
     //   share_address_wallet,
-    //   "Fruit Chests",
+    //   "fruit chests",
     //   "0.01",
     //   100,
     //   "https://res.cloudinary.com/smilejob/image/upload/v1645697085/Farm-Souvirniors/fruit-chest_mx58t4.png"
@@ -30,7 +29,7 @@ export default function BuyChests() {
     // Vegetable Chest
     // await mintRandomBox(
     //   share_address_wallet,
-    //   "Vegetable Chests",
+    //   "vegetable chests",
     //   "0.01",
     //   100,
     //   "https://res.cloudinary.com/smilejob/image/upload/v1645697085/Farm-Souvirniors/vegatable-chest_idssx9.png"
@@ -57,8 +56,6 @@ export default function BuyChests() {
       >
         Mint
       </div> */}
-
-    
 
       {listRandomBox.map((item, index) => {
         return (
