@@ -4,7 +4,8 @@ import Web3 from "web3";
 import Unity, { UnityContext } from "react-unity-webgl";
 import CardInventories from "../components/CardInventories";
 import ProgressBar from "@ramonak/react-progress-bar";
-export default function PlayGame() {
+import ModalPlayGame from "../components/ModalPlayGame";
+export default function PlayGame(props) {
   const [dataResource, setDataResource] = useState();
   const unityContext = new UnityContext({
     loaderUrl: "buildUnity/Huak.loader.js",
@@ -20,6 +21,8 @@ export default function PlayGame() {
       unityContext.send("Canvas", "SpawnEnemies", accounts[0]);
     }, 2000);
   }, []);
+  const [showPopupModalPlayGame, setShowPopupModalPlayGame] = useState(false);
+  const handleShowPopupModalPlayGame = () => setShowPopupModalPlayGame(true);
 
   return (
     <div className={styles.maincategoryInventories}>
@@ -30,17 +33,24 @@ export default function PlayGame() {
         </div>
         <div className={styles.progressBar}>
           <ProgressBar
-            completed={90}
-            maxCompleted={100}
+            completed={300}
+            maxCompleted={500}
             width="400px"
             height="30px"
+            bgColor="#ffa34c"
           />
-          <div className={styles.progressBaradd}>
+          <div className={styles.progressBaradd} onClick={handleShowPopupModalPlayGame}>
             <div className="material-icons">add</div>
           </div>
         </div>
       </div>
       <CardInventories dataResource={dataResource} />
+      <ModalPlayGame
+        item={props}
+        setShowPopupModalPlayGame={setShowPopupModalPlayGame}
+        showPopupModalPlayGame={showPopupModalPlayGame}
+      />
     </div>
+    
   );
 }
