@@ -3,3 +3,30 @@
   justify-content: flex-start;
   padding: 0px 20px;
 }
+.progressBar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px 0px;
+  cursor: pointer;
+}
+
+.energyInventories {
+  padding: 5px 10px 0px 0px;
+}
+.energyInventories1 {
+  padding: 0px 0px 5px 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.progressBaradd {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px 0px;
+  cursor: pointer;
+}
+.progressBaradd:hover {
+  color: #ffa34c;
+}

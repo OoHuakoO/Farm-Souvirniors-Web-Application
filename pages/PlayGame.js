@@ -23,13 +23,24 @@ export default function PlayGame() {
 
   return (
     <div className={styles.maincategoryInventories}>
-      <ProgressBar completed={200} maxCompleted={500} width="200px"/>
+      <div className={styles.energyInventories}>
+        <div className={styles.energyInventories1}>
+          <div>Energy </div>
+          <div className="material-icons">bolt</div>
+        </div>
+        <div className={styles.progressBar}>
+          <ProgressBar
+            completed={90}
+            maxCompleted={100}
+            width="400px"
+            height="30px"
+          />
+          <div className={styles.progressBaradd}>
+            <div className="material-icons">add</div>
+          </div>
+        </div>
+      </div>
       <CardInventories dataResource={dataResource} />
-
-      {/* <Unity
-        style={{ height: "680px", width: "700px", alignSelf: "center" }}
-        unityContext={unityContext}
-      /> */}
     </div>
   );
 }
