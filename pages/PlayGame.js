@@ -10,6 +10,8 @@ import { useMoralis } from "react-moralis";
 import { getDataUser } from "../api/user";
 export default function PlayGame(props) {
   const [dataResource, setDataResource] = useState();
+  const [energy, setEnergy] = useState(0);
+  const [maxEnergy, setMaxEnergy] = useState(0);
   const { share_address_wallet } = useUserState();
   const { isAuthenticated } = useMoralis();
   const unityContext = new UnityContext({
@@ -18,10 +20,15 @@ export default function PlayGame(props) {
     frameworkUrl: "buildUnity/Huak.framework.js",
     codeUrl: "buildUnity/Huak.wasm",
   });
+  const [showPopupModalPlayGame, setShowPopupModalPlayGame] = useState(false);
+  const handleShowPopupModalPlayGame = () => setShowPopupModalPlayGame(true);
   const handleGetDataUser = async () => {
     if (share_address_wallet) {
       let response = await getDataUser(share_address_wallet);
+      console.log(response);
       setDataResource(response.data.resource);
+      setEnergy(response.data.energy);
+      setMaxEnergy(500 - response.data.energy);
     }
   };
   useEffect(() => {
@@ -34,9 +41,7 @@ export default function PlayGame(props) {
   useEffect(() => {
     handleGetDataUser();
   }, [isAuthenticated, share_address_wallet]);
-  const [showPopupModalPlayGame, setShowPopupModalPlayGame] = useState(false);
-  const handleShowPopupModalPlayGame = () => setShowPopupModalPlayGame(true);
-
+console.log(maxEnergy)
   return (
     <div className={styles.maincategoryInventories}>
       <div className={styles.energyInventories}>
@@ -46,7 +51,7 @@ export default function PlayGame(props) {
         </div>
         <div className={styles.progressBar}>
           <ProgressBar
-            completed={300}
+            completed={energy}
             maxCompleted={500}
             width="400px"
             height="30px"
@@ -65,6 +70,10 @@ export default function PlayGame(props) {
         item={props}
         setShowPopupModalPlayGame={setShowPopupModalPlayGame}
         showPopupModalPlayGame={showPopupModalPlayGame}
+        energy={energy}
+        setEnergy={setEnergy}
+        maxEnergy={maxEnergy}
+        dataResource={dataResource}
       />
     </div>
   );
