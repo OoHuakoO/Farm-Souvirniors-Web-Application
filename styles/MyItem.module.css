@@ -420,3 +420,9 @@ line-height: 60px;
   display: flex;
   justify-content: flex-end;
 }
+.clipLoaderButton {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
