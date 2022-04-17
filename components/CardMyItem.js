@@ -142,11 +142,8 @@ const CardMyItem = (props) => {
       {props.type_nft === "chest" ? (
         <div style={{ display: "flex", flexDirection: "row" }}>
           {loading ? (
-            <div
-              onClick={() => openRandombox(props)}
-              className={styles.buttonSell}
-            >
-              <ClipLoaderButton loading={loading}  color="white"/>
+            <div className={styles.buttonSell}>
+              <ClipLoaderButton loading={loading} color="white" />
             </div>
           ) : (
             <div

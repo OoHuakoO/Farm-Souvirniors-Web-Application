@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import ModalDetailNFT from "./ModalDetailNFT";
 import ModalNotEnoughCoinsNFT from "./ModalNotEnoughCoinsNFT";
 import ClipLoaderButton from "../components/ClipLoaderButton";
+import Wood from "../public/coinWood.svg";
+import Apple from "../public/coinApple.png";
 const CardCraft = (props) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -82,7 +84,7 @@ const CardCraft = (props) => {
         <div className={styles.coinCraft1}>
           <div className={styles.coinCraft1Icon}>
             <Image
-              src={"/../public/coinWood.svg"}
+              src={Wood}
               alt="Corn"
               width={35}
               height={35}
@@ -94,7 +96,7 @@ const CardCraft = (props) => {
           <div className={styles.coinCraft2Icon}>
             {" "}
             <Image
-              src={"/../public/coinApple.png"}
+              src={Apple}
               alt="Corn"
               width={30}
               height={30}

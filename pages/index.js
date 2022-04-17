@@ -6,13 +6,7 @@ import { useRouter } from "next/router";
 const index = () => {
   const router = useRouter();
   const { authenticate, isAuthenticated, logout } = useMoralis();
-  useEffect(() => {
-    if (isAuthenticated) {
-      router.push({
-        pathname: "/BuyChests",
-      });
-    }
-  }, [isAuthenticated]);
+
   return (
     <div className={styles.homemain}>
       {isAuthenticated ? null : (

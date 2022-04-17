@@ -5,6 +5,7 @@ import { withdrawFurnitureToken } from "../web3/furnitureToken";
 import { withdrawWineToken } from "../web3/wineToken";
 import { checkResource, withdrawTokenAPI } from "../api/token";
 import ModalNotEnoughCoinsNFT from "./ModalNotEnoughCoinsNFT";
+import ClipLoaderButton from "../components/ClipLoaderButton";
 export const Withdraw = (props) => {
   const CoinsExchange = [
     {
@@ -33,6 +34,7 @@ export const Withdraw = (props) => {
   const [inputSaveCoin, setInputSaveCoin] = useState(0);
   const [showPopupNotEnoughCoinsNFT, setShowPopupNotEnoughCoinsNFT] =
     useState(false);
+  const [loading, setLoading] = useState(false);
   const handleShowPopupNotEnoughCoinsNFT = () =>
     setShowPopupNotEnoughCoinsNFT(true);
   const changeSelectcoin = (index) => {
@@ -49,6 +51,7 @@ export const Withdraw = (props) => {
     setExchangePrice(TotalCoin);
   };
   const withdrawCoin = async () => {
+    setLoading(true);
     if (CoinsExchange[SelectedCoinIndex].nameCoin1 === "Wood") {
       let responseAPI = await checkResource(
         props.share_address_wallet,
@@ -56,22 +59,29 @@ export const Withdraw = (props) => {
         CoinsExchange[SelectedCoinIndex].nameCoin1
       );
       if (responseAPI.data === "can withdraw token") {
-        let responseWeb3 = await withdrawFurnitureToken(
-          props.share_address_wallet,
-          ExchangePrice,
-          taxPrice
-        );
-        if (responseWeb3) {
-          let responseAPI = await withdrawTokenAPI(
+        try {
+          let responseWeb3 = await withdrawFurnitureToken(
             props.share_address_wallet,
-            inputSaveCoin,
-            CoinsExchange[SelectedCoinIndex].nameCoin1
+            ExchangePrice,
+            taxPrice
           );
-          props.setRefrestFetchAPI(!props.refrestFetchAPI);
-          console.log("responseAPI", responseAPI);
+          if (responseWeb3) {
+            let responseAPI = await withdrawTokenAPI(
+              props.share_address_wallet,
+              inputSaveCoin,
+              CoinsExchange[SelectedCoinIndex].nameCoin1
+            );
+            props.setRefrestFetchAPI(!props.refrestFetchAPI);
+            console.log("responseAPI", responseAPI);
+            setLoading(false);
+          }
+          console.log("responseWeb3", responseWeb3);
+        } catch (err) {
+          setLoading(false);
+          console.log(err);
         }
-        console.log("responseWeb3", responseWeb3);
       } else {
+        setLoading(false);
         handleShowPopupNotEnoughCoinsNFT();
       }
     } else if (CoinsExchange[SelectedCoinIndex].nameCoin1 === "Meat") {
@@ -81,22 +91,29 @@ export const Withdraw = (props) => {
         CoinsExchange[SelectedCoinIndex].nameCoin1
       );
       if (responseAPI.data === "can withdraw token") {
-        let responseWeb3 = await withdrawSteakToken(
-          props.share_address_wallet,
-          ExchangePrice,
-          taxPrice
-        );
-        if (responseWeb3) {
-          let responseAPI = await withdrawTokenAPI(
+        try {
+          let responseWeb3 = await withdrawSteakToken(
             props.share_address_wallet,
-            inputSaveCoin,
-            CoinsExchange[SelectedCoinIndex].nameCoin1
+            ExchangePrice,
+            taxPrice
           );
-          props.setRefrestFetchAPI(!props.refrestFetchAPI);
-          console.log("responseAPI", responseAPI);
+          if (responseWeb3) {
+            let responseAPI = await withdrawTokenAPI(
+              props.share_address_wallet,
+              inputSaveCoin,
+              CoinsExchange[SelectedCoinIndex].nameCoin1
+            );
+            props.setRefrestFetchAPI(!props.refrestFetchAPI);
+            console.log("responseAPI", responseAPI);
+            setLoading(false);
+          }
+          console.log("responseWeb3", responseWeb3);
+        } catch (err) {
+          setLoading(false);
+          console.log(err);
         }
-        console.log("responseWeb3", responseWeb3);
       } else {
+        setLoading(false);
         handleShowPopupNotEnoughCoinsNFT();
       }
     } else {
@@ -106,22 +123,29 @@ export const Withdraw = (props) => {
         CoinsExchange[SelectedCoinIndex].nameCoin1
       );
       if (responseAPI.data === "can withdraw token") {
-        let responseWeb3 = await withdrawWineToken(
-          props.share_address_wallet,
-          ExchangePrice,
-          taxPrice
-        );
-        if (responseWeb3) {
-          let responseAPI = await withdrawTokenAPI(
+        try {
+          let responseWeb3 = await withdrawWineToken(
             props.share_address_wallet,
-            inputSaveCoin,
-            CoinsExchange[SelectedCoinIndex].nameCoin1
+            ExchangePrice,
+            taxPrice
           );
-          props.setRefrestFetchAPI(!props.refrestFetchAPI);
-          console.log("responseAPI", responseAPI);
+          if (responseWeb3) {
+            let responseAPI = await withdrawTokenAPI(
+              props.share_address_wallet,
+              inputSaveCoin,
+              CoinsExchange[SelectedCoinIndex].nameCoin1
+            );
+            props.setRefrestFetchAPI(!props.refrestFetchAPI);
+            console.log("responseAPI", responseAPI);
+            setLoading(false);
+          }
+          console.log("responseWeb3", responseWeb3);
+        } catch (err) {
+          setLoading(false);
+          console.log(err);
         }
-        console.log("responseWeb3", responseWeb3);
       } else {
+        setLoading(false);
         handleShowPopupNotEnoughCoinsNFT();
       }
     }
@@ -199,9 +223,16 @@ export const Withdraw = (props) => {
             </div>
           </div>
         </div>
-        <div className={styles.buttonExchange} onClick={withdrawCoin}>
-          Withdraw
-        </div>
+        {loading ? (
+          <div className={styles.buttonExchange} onClick={withdrawCoin}>
+            <ClipLoaderButton loading={loading} color="white" />
+          </div>
+        ) : (
+          <div className={styles.buttonExchange} onClick={withdrawCoin}>
+            Withdraw
+          </div>
+        )}
+
         <div className={styles.tax10}>Tax : 10%</div>
       </div>
       <ModalNotEnoughCoinsNFT

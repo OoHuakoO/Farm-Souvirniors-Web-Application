@@ -26,7 +26,8 @@ const CardBuychests = (props) => {
           pathname: "/MyItem",
         });
       }
-    } catch {
+    } catch(err) {
+      console.log(err)
       setLoading(false);
     }
   };
