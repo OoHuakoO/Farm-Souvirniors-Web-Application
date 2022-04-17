@@ -12,6 +12,7 @@ export default function PlayGame(props) {
   const [dataResource, setDataResource] = useState();
   const [energy, setEnergy] = useState(0);
   const [maxEnergy, setMaxEnergy] = useState(0);
+  const [refreshResource ,setRefreshResource] = useState(false)
   const { share_address_wallet } = useUserState();
   const { isAuthenticated } = useMoralis();
   const unityContext = new UnityContext({
@@ -25,7 +26,6 @@ export default function PlayGame(props) {
   const handleGetDataUser = async () => {
     if (share_address_wallet) {
       let response = await getDataUser(share_address_wallet);
-      console.log(response);
       setDataResource(response.data.resource);
       setEnergy(response.data.energy);
       setMaxEnergy(500 - response.data.energy);
@@ -40,8 +40,7 @@ export default function PlayGame(props) {
   }, []);
   useEffect(() => {
     handleGetDataUser();
-  }, [isAuthenticated, share_address_wallet]);
-console.log(maxEnergy)
+  }, [isAuthenticated, share_address_wallet,refreshResource]);
   return (
     <div className={styles.maincategoryInventories}>
       <div className={styles.energyInventories}>
@@ -74,6 +73,9 @@ console.log(maxEnergy)
         setEnergy={setEnergy}
         maxEnergy={maxEnergy}
         dataResource={dataResource}
+        share_address_wallet={share_address_wallet}
+        refreshResource={refreshResource}
+        setRefreshResource={setRefreshResource}
       />
     </div>
   );

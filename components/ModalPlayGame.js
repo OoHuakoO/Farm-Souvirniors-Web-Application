@@ -3,15 +3,17 @@ import styles from "../styles/ModalPlayGame.module.css";
 import { Modal, Button } from "react-bootstrap";
 import Image from "next/image";
 import Meat from "../public/meat.png";
+import { addEnergy } from "../api/user";
 const ModalPlayGame = (props) => {
   const handleClose = () => props.setShowPopupModalPlayGame(false);
   const [TotalEnergy, setTotalEnergy] = useState(0);
+  const [inputMeat, setInputMeat] = useState(0);
   const [energyError, setEnergyError] = useState(false);
   const [meatError, setMeatError] = useState(false);
   const calculateEnergy = (event) => {
     const InputMeat = Number(event.target.value);
     const TotalEnergy = InputMeat * 5;
-
+    setInputMeat(InputMeat);
     setTotalEnergy(TotalEnergy);
     if (TotalEnergy > props.maxEnergy && props.dataResource.meat < InputMeat) {
       setMeatError(true);
@@ -25,6 +27,18 @@ const ModalPlayGame = (props) => {
     } else {
       setEnergyError(false);
       setMeatError(false);
+    }
+  };
+  const handleAddEnergy = async () => {
+    const response = await addEnergy(
+      props.share_address_wallet,
+      inputMeat,
+      TotalEnergy
+    );
+
+    if (response.status === "success") {
+      handleClose();
+      props.setRefreshResource(!props.refreshResource);
     }
   };
   return (
@@ -96,7 +110,7 @@ const ModalPlayGame = (props) => {
           </div>
         ) : (
           <Button
-            onClick={() => handleClose()}
+            onClick={() => handleAddEnergy()}
             variant="secondary"
             className={styles.buttonPopupNotenoughCoin}
           >

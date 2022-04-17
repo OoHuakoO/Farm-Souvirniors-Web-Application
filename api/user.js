@@ -6,10 +6,11 @@ const Login = async (address_wallet) => {
   });
   return response.data;
 };
-const addEnergy = async (address_wallet, meat) => {
+const addEnergy = async (address_wallet, meat,energy) => {
   const response = await Axios.post(`${Config.apiBaseURL}/user/add-energy`, {
     address_wallet,
     meat,
+    energy
   });
   return response.data;
 };
