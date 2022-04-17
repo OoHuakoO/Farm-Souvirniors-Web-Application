@@ -40,8 +40,10 @@ export default function BuyChests() {
     setLoading(true);
     let response = await getRandomBox();
     if (response) {
-      // setLoading(false);
+      setLoading(false);
       setListRandomBox(response);
+    } else {
+      setLoading(false);
     }
   };
   useEffect(() => {

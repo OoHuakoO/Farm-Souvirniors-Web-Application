@@ -34,24 +34,24 @@ export default function Sell() {
             listOwnerNFT.push({ ...data, from: "randombox" });
           }
           if (responseWeb3InstanceRandombox.length - 1 === index) {
-            // setLoading(false)
+            setLoading(false)
             setDataMySell(listOwnerNFT);
           }
         });
       }
 
-      if (responseWeb3 && !responseWeb3InstanceRandombox) {
+     else if (responseWeb3 && !responseWeb3InstanceRandombox) {
         await responseWeb3.map(async (data, index) => {
           if (data.seller === share_address_wallet) {
             listOwnerNFT.push({ ...data, from: "nft" });
           }
           if (responseWeb3.length - 1 === index) {
-            // setLoading(false)
+            setLoading(false)
             setDataMySell(listOwnerNFT);
           }
         });
       }
-      if (responseWeb3 && responseWeb3InstanceRandombox) {
+     else if (responseWeb3 && responseWeb3InstanceRandombox) {
         let newResponseWeb3 = await responseWeb3.map((data) => {
           data.from = "nft";
           return data;
@@ -68,10 +68,13 @@ export default function Sell() {
             listOwnerNFT.push(data);
           }
           if (listNFT.length - 1 === index) {
-            // setLoading(false)
+            setLoading(false)
             setDataMySell(listOwnerNFT);
           }
         });
+      }
+      else{
+        setLoading(false)
       }
     }
   };

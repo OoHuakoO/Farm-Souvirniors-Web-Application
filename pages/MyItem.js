@@ -36,7 +36,7 @@ export default function MyItem() {
                   responseWeb3RandomBox.length - 1 === indexFromSmartContract &&
                   responseAPI.data.length - 1 === indexFromDB
                 ) {
-                  // setLoading(false)
+                  setLoading(false);
                   setDataMyItem(
                     responseWeb3RandomBox.sort(function (a, b) {
                       if (parseInt(a.nft_id) > parseInt(b.nft_id)) return -1;
@@ -49,7 +49,7 @@ export default function MyItem() {
             }
           );
         } else {
-          // setLoading(false)
+          setLoading(false);
           setDataMyItem(
             responseWeb3RandomBox.sort(function (a, b) {
               if (parseInt(a.nft_id) > parseInt(b.nft_id)) return -1;
@@ -58,8 +58,7 @@ export default function MyItem() {
             })
           );
         }
-      }
-      if (responseWeb3 && !responseWeb3RandomBox) {
+      } else if (responseWeb3 && !responseWeb3RandomBox) {
         await responseWeb3.map(
           async (dataFromSmartContract, indexFromSmartContract) => {
             await responseAPI.data.map((dataFromDB, indexFromDB) => {
@@ -71,7 +70,7 @@ export default function MyItem() {
                 responseWeb3.length - 1 === indexFromSmartContract &&
                 responseAPI.data.length - 1 === indexFromDB
               ) {
-                // setLoading(false)
+                setLoading(false);
                 setDataMyItem(
                   responseWeb3.sort(function (a, b) {
                     if (parseInt(a.nft_id) > parseInt(b.nft_id)) return -1;
@@ -83,8 +82,7 @@ export default function MyItem() {
             });
           }
         );
-      }
-      if (responseWeb3 && responseWeb3RandomBox) {
+      } else if (responseWeb3 && responseWeb3RandomBox) {
         let newResponseWeb3 = await responseWeb3.map((data) => {
           data.from = "nft";
           return data;
@@ -106,7 +104,7 @@ export default function MyItem() {
                 listOwnerNFT.length - 1 === indexFromSmartContract &&
                 responseAPI.data.length - 1 === indexFromDB
               ) {
-                // setLoading(false)
+                setLoading(false);
                 setDataMyItem(
                   listOwnerNFT.sort(function (a, b) {
                     if (parseInt(a.nft_id) > parseInt(b.nft_id)) return -1;
@@ -118,6 +116,8 @@ export default function MyItem() {
             });
           }
         );
+      } else {
+        setLoading(false);
       }
     }
   }
@@ -133,7 +133,6 @@ export default function MyItem() {
   return (
     <div>
       <div className={styles.maincategory}>
-        {" "}
         Class :
         {categories.map((category) => {
           return (
