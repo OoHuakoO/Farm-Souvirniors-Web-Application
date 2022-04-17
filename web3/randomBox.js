@@ -7,6 +7,7 @@ const getContractAddressRandomBox = async () => {
   return RandomBox._address;
 };
 const mintRandomBox = async (address_wallet, name, price, count, picture) => {
+  console.log(address_wallet, name, price, count, picture)
   let { RandomBox } = await getContract();
   await RandomBox.methods._mintRandomBox(name, price, count, picture).send({
     from: address_wallet,

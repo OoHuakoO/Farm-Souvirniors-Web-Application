@@ -17,7 +17,7 @@ export default function BuyChests() {
       "animal chests",
       "0.01",
       100,
-      "https://res.cloudinary.com/smilejob/image/upload/v1645697086/Farm-Souvirniors/animal-chest_waxfph.png"
+      "https://res.cloudinary.com/smilejob/image/upload/v1650221380/Farm-Souvirniors/Rich_Mahogany_Chest_s54mf1.png"
     );
     // Fruit Chest
     // await mintRandomBox(
@@ -25,7 +25,7 @@ export default function BuyChests() {
     //   "fruit chests",
     //   "0.01",
     //   100,
-    //   "https://res.cloudinary.com/smilejob/image/upload/v1645697085/Farm-Souvirniors/fruit-chest_mx58t4.png"
+    //   "https://res.cloudinary.com/smilejob/image/upload/v1650221036/Farm-Souvirniors/Ivy_Chest_mizgmt.png"
     // );
     // Vegetable Chest
     // await mintRandomBox(
@@ -33,12 +33,13 @@ export default function BuyChests() {
     //   "vegetable chests",
     //   "0.01",
     //   100,
-    //   "https://res.cloudinary.com/smilejob/image/upload/v1645697085/Farm-Souvirniors/vegatable-chest_idssx9.png"
+    //   "https://res.cloudinary.com/smilejob/image/upload/v1650221035/Farm-Souvirniors/Web_Covered_Chest_hfzet8.png"
     // );
   };
   const fetctGetRandomBox = async () => {
     setLoading(true);
     let response = await getRandomBox();
+    console.log(response)
     if (response) {
       setLoading(false);
       setListRandomBox(response);
