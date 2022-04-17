@@ -5,15 +5,25 @@ import Unity, { UnityContext } from "react-unity-webgl";
 import CardInventories from "../components/CardInventories";
 import ProgressBar from "@ramonak/react-progress-bar";
 import ModalPlayGame from "../components/ModalPlayGame";
+import { useUserState } from "../context/user";
+import { useMoralis } from "react-moralis";
+import { getDataUser } from "../api/user";
 export default function PlayGame(props) {
   const [dataResource, setDataResource] = useState();
+  const { share_address_wallet } = useUserState();
+  const { isAuthenticated } = useMoralis();
   const unityContext = new UnityContext({
     loaderUrl: "buildUnity/Huak.loader.js",
     dataUrl: "buildUnity/Huak.data",
     frameworkUrl: "buildUnity/Huak.framework.js",
     codeUrl: "buildUnity/Huak.wasm",
   });
-
+  const handleGetDataUser = async () => {
+    if (share_address_wallet) {
+      let response = await getDataUser(share_address_wallet);
+      setDataResource(response.data.resource);
+    }
+  };
   useEffect(() => {
     setTimeout(async () => {
       const web3 = new Web3(Web3.givenProvider || Config.web3ProviderGanache);
@@ -21,6 +31,9 @@ export default function PlayGame(props) {
       unityContext.send("Canvas", "SpawnEnemies", accounts[0]);
     }, 2000);
   }, []);
+  useEffect(() => {
+    handleGetDataUser();
+  }, [isAuthenticated, share_address_wallet]);
   const [showPopupModalPlayGame, setShowPopupModalPlayGame] = useState(false);
   const handleShowPopupModalPlayGame = () => setShowPopupModalPlayGame(true);
 
@@ -39,7 +52,10 @@ export default function PlayGame(props) {
             height="30px"
             bgColor="#ffa34c"
           />
-          <div className={styles.progressBaradd} onClick={handleShowPopupModalPlayGame}>
+          <div
+            className={styles.progressBaradd}
+            onClick={handleShowPopupModalPlayGame}
+          >
             <div className="material-icons">add</div>
           </div>
         </div>
@@ -51,6 +67,5 @@ export default function PlayGame(props) {
         showPopupModalPlayGame={showPopupModalPlayGame}
       />
     </div>
-    
   );
 }
