@@ -54,7 +54,7 @@ export const Deposit = (props) => {
     setExchangePrice(TotalCoin);
   };
   const DepositCoin = async () => {
-    setLoading(true)
+    setLoading(true);
     if (CoinsExchange[SelectedCoinIndex].nameCoin2 === "Wood") {
       if (Number(props.dataBalance.balanceOfFurnitureToken) >= ExchangePrice) {
         try {
