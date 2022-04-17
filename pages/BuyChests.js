@@ -4,10 +4,11 @@ import CardBuychests from "../components/CardBuyChests";
 import { useUserState } from "../context/user";
 import { mintRandomBox, getRandomBox } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
-
+import ClipLoaderPage from "../components/ClipLoaderPage";
 export default function BuyChests() {
   const { share_address_wallet } = useUserState();
   const [listRandomBox, setListRandomBox] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { isAuthenticated } = useMoralis();
   const handleMintRandomBox = async () => {
     // Animal chest
@@ -35,13 +36,15 @@ export default function BuyChests() {
     //   "https://res.cloudinary.com/smilejob/image/upload/v1645697085/Farm-Souvirniors/vegatable-chest_idssx9.png"
     // );
   };
-  useEffect(() => {
-    async function fetctGetRandomBox() {
-      let response = await getRandomBox();
-      if (response) {
-        setListRandomBox(response);
-      }
+  const fetctGetRandomBox = async () => {
+    setLoading(true);
+    let response = await getRandomBox();
+    if (response) {
+      // setLoading(false);
+      setListRandomBox(response);
     }
+  };
+  useEffect(() => {
     fetctGetRandomBox();
     return () => {
       setListRandomBox([]);
@@ -56,16 +59,19 @@ export default function BuyChests() {
       >
         Mint
       </div> */}
-
-      {listRandomBox.map((item, index) => {
-        return (
-          <CardBuychests
-            key={index}
-            {...item}
-            share_address_wallet={share_address_wallet}
-          />
-        );
-      })}
+      {loading ? (
+        <ClipLoaderPage loading={loading} color="grey" />
+      ) : (
+        listRandomBox.map((item, index) => {
+          return (
+            <CardBuychests
+              key={index}
+              {...item}
+              share_address_wallet={share_address_wallet}
+            />
+          );
+        })
+      )}
     </div>
   );
 }

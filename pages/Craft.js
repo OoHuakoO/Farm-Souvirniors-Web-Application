@@ -6,12 +6,14 @@ import { getDataUser } from "../api/user";
 import { useUserState } from "../context/user";
 import CardInventories from "../components/CardInventories";
 import { useMoralis } from "react-moralis";
+import ClipLoaderPage from "../components/ClipLoaderPage";
 export default function Craft() {
   const { share_address_wallet } = useUserState();
   const [dataCraft, setDataCraft] = useState([]);
   const [dataResource, setDataResource] = useState();
   const categories = ["all", "animal", "fruit", "vegetable"];
   const [CurrentCategory, setCurrentCategory] = useState("all");
+  const [loading, setLoading] = useState(true);
   const { isAuthenticated } = useMoralis();
   const handleGetDataUser = async () => {
     if (share_address_wallet) {
@@ -20,8 +22,9 @@ export default function Craft() {
     }
   };
   const fetchGetInfoNFT = async () => {
+    setLoading(true);
     let response = await getInfoNFT();
-
+    // setLoading(false);
     setDataCraft(response.data);
   };
   useEffect(() => {
@@ -59,20 +62,12 @@ export default function Craft() {
 
         <CardInventories dataResource={dataResource} />
       </div>
-      <div className={styles.mainMyItem}>
-        {CurrentCategory == "all"
-          ? dataCraft.map((item, index) => {
-              return (
-                <CardCraft
-                  key={index}
-                  {...item}
-                  share_address_wallet={share_address_wallet}
-                />
-              );
-            })
-          : dataCraft
-              .filter((_item) => CurrentCategory === _item.type)
-              .map((item, index) => {
+      {loading ? (
+        <ClipLoaderPage loading={loading} color="grey" />
+      ) : (
+        <div className={styles.mainMyItem}>
+          {CurrentCategory == "all"
+            ? dataCraft.map((item, index) => {
                 return (
                   <CardCraft
                     key={index}
@@ -80,8 +75,20 @@ export default function Craft() {
                     share_address_wallet={share_address_wallet}
                   />
                 );
-              })}
-      </div>
+              })
+            : dataCraft
+                .filter((_item) => CurrentCategory === _item.type)
+                .map((item, index) => {
+                  return (
+                    <CardCraft
+                      key={index}
+                      {...item}
+                      share_address_wallet={share_address_wallet}
+                    />
+                  );
+                })}
+        </div>
+      )}
     </div>
   );
 }

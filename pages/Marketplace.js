@@ -8,17 +8,18 @@ import {
   getOwnerNFTWeb3InstanceRandombox,
 } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
-
+import ClipLoaderPage from "../components/ClipLoaderPage";
 export default function Marketplace() {
   const { share_address_wallet } = useUserState();
   const [dataMarketplace, setDataMarketplace] = useState([]);
-
   const { isAuthenticated } = useMoralis();
   const categories = ["all", "animal", "fruit", "vegetable", "chest"];
   const [CurrentCategory, setCurrentCategory] = useState("all");
+  const [loading, setLoading] = useState(true);
 
   const fetchMarketplace = async () => {
     let listNFT = [];
+    setLoading(true); 
     if (isAuthenticated) {
       let responseContractAddress = await getContractAddressNFT();
       let responseContractAddressRandombox =
@@ -28,11 +29,12 @@ export default function Marketplace() {
         await getOwnerNFTWeb3InstanceRandombox(
           responseContractAddressRandombox
         );
-      
+     
       if (responseWeb3InstanceRandombox && !responseWeb3) {
         await responseWeb3InstanceRandombox.map(async (data, index) => {
           listNFT.push({ ...data, from: "randombox" });
           if (responseWeb3InstanceRandombox.length - 1 === index) {
+            //  setLoading(false);
             setDataMarketplace(listNFT);
           }
         });
@@ -41,6 +43,7 @@ export default function Marketplace() {
         await responseWeb3.map(async (data, index) => {
           listNFT.push({ ...data, from: "nft" });
           if (responseWeb3.length - 1 === index) {
+            // setLoading(false);
             setDataMarketplace(listNFT);
           }
         });
@@ -58,7 +61,11 @@ export default function Marketplace() {
           }
         );
         let newListNFT = newResponseWeb3RandomBox.concat(newResponseWeb3);
+        // setLoading(false);
         setDataMarketplace(newListNFT);
+      }
+      else{
+        // setLoading(false);
       }
     }
   };
@@ -92,20 +99,12 @@ export default function Marketplace() {
           );
         })}
       </div>
-      <div className={styles.mainMyItem}>
-        {CurrentCategory == "all"
-          ? dataMarketplace.map((item, index) => {
-              return (
-                <CardMarketplace
-                  key={index}
-                  {...item}
-                  share_address_wallet={share_address_wallet}
-                />
-              );
-            })
-          : dataMarketplace
-              .filter((_item) => CurrentCategory === _item.type_nft)
-              .map((item, index) => {
+      {loading ? (
+        <ClipLoaderPage loading={loading} color="grey" />
+      ) : (
+        <div className={styles.mainMyItem}>
+          {CurrentCategory == "all"
+            ? dataMarketplace.map((item, index) => {
                 return (
                   <CardMarketplace
                     key={index}
@@ -113,8 +112,20 @@ export default function Marketplace() {
                     share_address_wallet={share_address_wallet}
                   />
                 );
-              })}
-      </div>
+              })
+            : dataMarketplace
+                .filter((_item) => CurrentCategory === _item.type_nft)
+                .map((item, index) => {
+                  return (
+                    <CardMarketplace
+                      key={index}
+                      {...item}
+                      share_address_wallet={share_address_wallet}
+                    />
+                  );
+                })}
+        </div>
+      )}
     </div>
   );
 }

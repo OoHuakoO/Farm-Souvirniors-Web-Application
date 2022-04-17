@@ -6,6 +6,7 @@ import { useUserState } from "../context/user";
 import { getOwnerNftWeb3 } from "../web3/nft";
 import { getOwnerNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
+import ClipLoaderPage from "../components/ClipLoaderPage";
 export default function MyItem() {
   const { share_address_wallet } = useUserState();
   const [dataMyItem, setDataMyItem] = useState([]);
@@ -13,7 +14,9 @@ export default function MyItem() {
   const categories = ["all", "animal", "fruit", "vegetable", "chest"];
   const [CurrentCategory, setCurrentCategory] = useState("all");
   const [refrestFetchAPI, setRefrestFetchAPI] = useState(false);
+  const [loading, setLoading] = useState(true);
   async function fetchGetOwnerNFT() {
+    setLoading(true);
     if (isAuthenticated && share_address_wallet) {
       let responseWeb3 = await getOwnerNftWeb3(share_address_wallet);
       let responseAPI = await getOwnerNFTAPI(share_address_wallet);
@@ -33,6 +36,7 @@ export default function MyItem() {
                   responseWeb3RandomBox.length - 1 === indexFromSmartContract &&
                   responseAPI.data.length - 1 === indexFromDB
                 ) {
+                  // setLoading(false)
                   setDataMyItem(
                     responseWeb3RandomBox.sort(function (a, b) {
                       if (parseInt(a.nft_id) > parseInt(b.nft_id)) return -1;
@@ -45,6 +49,7 @@ export default function MyItem() {
             }
           );
         } else {
+          // setLoading(false)
           setDataMyItem(
             responseWeb3RandomBox.sort(function (a, b) {
               if (parseInt(a.nft_id) > parseInt(b.nft_id)) return -1;
@@ -66,6 +71,7 @@ export default function MyItem() {
                 responseWeb3.length - 1 === indexFromSmartContract &&
                 responseAPI.data.length - 1 === indexFromDB
               ) {
+                // setLoading(false)
                 setDataMyItem(
                   responseWeb3.sort(function (a, b) {
                     if (parseInt(a.nft_id) > parseInt(b.nft_id)) return -1;
@@ -100,6 +106,7 @@ export default function MyItem() {
                 listOwnerNFT.length - 1 === indexFromSmartContract &&
                 responseAPI.data.length - 1 === indexFromDB
               ) {
+                // setLoading(false)
                 setDataMyItem(
                   listOwnerNFT.sort(function (a, b) {
                     if (parseInt(a.nft_id) > parseInt(b.nft_id)) return -1;
@@ -144,22 +151,12 @@ export default function MyItem() {
           );
         })}
       </div>
-      <div className={styles.mainMyItem}>
-        {CurrentCategory == "all"
-          ? dataMyItem.map((item, index) => {
-              return (
-                <CardMyItem
-                  key={index}
-                  {...item}
-                  setRefrestFetchAPI={setRefrestFetchAPI}
-                  refrestFetchAPI={refrestFetchAPI}
-                  share_address_wallet={share_address_wallet}
-                />
-              );
-            })
-          : dataMyItem
-              .filter((_item) => CurrentCategory === _item.type_nft)
-              .map((item, index) => {
+      {loading ? (
+        <ClipLoaderPage loading={loading} color="grey" />
+      ) : (
+        <div className={styles.mainMyItem}>
+          {CurrentCategory == "all"
+            ? dataMyItem.map((item, index) => {
                 return (
                   <CardMyItem
                     key={index}
@@ -169,8 +166,22 @@ export default function MyItem() {
                     share_address_wallet={share_address_wallet}
                   />
                 );
-              })}
-      </div>
+              })
+            : dataMyItem
+                .filter((_item) => CurrentCategory === _item.type_nft)
+                .map((item, index) => {
+                  return (
+                    <CardMyItem
+                      key={index}
+                      {...item}
+                      setRefrestFetchAPI={setRefrestFetchAPI}
+                      refrestFetchAPI={refrestFetchAPI}
+                      share_address_wallet={share_address_wallet}
+                    />
+                  );
+                })}
+        </div>
+      )}
     </div>
   );
 }
