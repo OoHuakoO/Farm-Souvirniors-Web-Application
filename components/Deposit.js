@@ -236,7 +236,7 @@ export const Deposit = (props) => {
         item={props}
         setShowPopupNotEnoughCoinsNFT={setShowPopupNotEnoughCoinsNFT}
         showPopupNotEnoughCoinsNFT={showPopupNotEnoughCoinsNFT}
-        bodyText={"คุณมี Token ไม่เพียงพอสำหรับการ Deposit"}
+        bodyText={"Not enough token for deposit"}
         headerText={"Deposit"}
       />
     </div>

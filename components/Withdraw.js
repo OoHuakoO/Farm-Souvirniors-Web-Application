@@ -239,7 +239,7 @@ export const Withdraw = (props) => {
         item={props}
         setShowPopupNotEnoughCoinsNFT={setShowPopupNotEnoughCoinsNFT}
         showPopupNotEnoughCoinsNFT={showPopupNotEnoughCoinsNFT}
-        bodyText={"คุณมี Resource ไม่เพียงพอสำหรับการ Withdraw"}
+        bodyText={"Not enough resource for withdraw"}
         headerText={"Withdraw"}
       />
     </div>
