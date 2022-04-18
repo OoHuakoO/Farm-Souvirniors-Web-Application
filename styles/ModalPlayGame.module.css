@@ -1,4 +1,13 @@
 .modalPlayGameBG {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    justify-self: center;
+    align-items: center;
+    padding: 0px 20px 0px 10px;
+    font-family: "Prompt", sans-serif;
+    justify-items: end;
+}
+.modalPlayGameBG1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,9 +20,7 @@
     font-size: 18px;
     background-color: #272C32;
     color: aliceblue;
-    
 }
-
 .inventoriesPlayGame {
     display: flex;
     justify-content: center;
@@ -33,3 +40,12 @@
 .inputEnergy > input {
     width: 100px;
 }
+.modalPlayGameFooter {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0px 0px 20px;
+    color: red;
+}
+

@@ -57,7 +57,7 @@ const ModalPlayGame = (props) => {
 
       <Modal.Body className={styles.modalPlayGameBGColor}>
         <div className={styles.modalPlayGameBG}>
-          <div className={styles.modalPlayGameBG}>
+          <div className={styles.modalPlayGameBG1}>
             <div className={styles.inventoriesPlayGame}>
               <div>
                 <Image src={Meat} alt="Apple" width={30} height={30} />
@@ -76,7 +76,7 @@ const ModalPlayGame = (props) => {
           </div>
 
           <div className="material-icons">arrow_forward</div>
-          <div className={styles.modalPlayGameBG}>
+          <div className={styles.modalPlayGameBG1}>
             <div className="material-icons">bolt</div>
             <div>{TotalEnergy}</div>
           </div>
@@ -87,10 +87,10 @@ const ModalPlayGame = (props) => {
         </div>
       </Modal.Body>
 
-      <Modal.Footer>
+      <Modal.Footer >
         {meatError ? (
-          <div>
-            <p>Not enough meat</p>
+          <div className={styles.modalPlayGameFooter}>
+            <div>Not enough meat</div>
             <Button
               variant="secondary"
               className={styles.buttonPopupNotenoughCoin}
