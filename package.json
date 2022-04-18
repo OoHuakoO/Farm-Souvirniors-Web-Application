@@ -8,7 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ant-design/icons": "4.0.0",
+    "@ant-design/icons": "^4.7.0",
     "@ramonak/react-progress-bar": "^4.4.0",
     "@truffle/contract": "^4.4.8",
     "@truffle/hdwallet-provider": "^2.0.3",
