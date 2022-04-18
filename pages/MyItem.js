@@ -7,7 +7,7 @@ import { getOwnerNftWeb3 } from "../web3/nft";
 import { getOwnerNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
 import ClipLoaderPage from "../components/ClipLoaderPage";
-import EmptyData from "../components/EmptyData"
+import EmptyData from "../components/EmptyData";
 export default function MyItem() {
   const { share_address_wallet } = useUserState();
   const [dataMyItem, setDataMyItem] = useState([]);
@@ -153,36 +153,36 @@ export default function MyItem() {
       </div>
       {loading ? (
         <ClipLoaderPage loading={loading} color="grey" />
+      ) : dataMyItem.length !== 0 ? (
+        <div className={styles.mainMyItem}>
+          {CurrentCategory == "all"
+            ? dataMyItem.map((item, index) => {
+                return (
+                  <CardMyItem
+                    key={index}
+                    {...item}
+                    setRefrestFetchAPI={setRefrestFetchAPI}
+                    refrestFetchAPI={refrestFetchAPI}
+                    share_address_wallet={share_address_wallet}
+                  />
+                );
+              })
+            : dataMyItem
+                .filter((_item) => CurrentCategory === _item.type_nft)
+                .map((item, index) => {
+                  return (
+                    <CardMyItem
+                      key={index}
+                      {...item}
+                      setRefrestFetchAPI={setRefrestFetchAPI}
+                      refrestFetchAPI={refrestFetchAPI}
+                      share_address_wallet={share_address_wallet}
+                    />
+                  );
+                })}
+        </div>
       ) : (
-        <EmptyData/>
-        // <div className={styles.mainMyItem}>
-        //    
-        //   {/* {CurrentCategory == "all"
-        //     ? dataMyItem.map((item, index) => {
-        //         return (
-        //           <CardMyItem
-        //             key={index}
-        //             {...item}
-        //             setRefrestFetchAPI={setRefrestFetchAPI}
-        //             refrestFetchAPI={refrestFetchAPI}
-        //             share_address_wallet={share_address_wallet}
-        //           />
-        //         );
-        //       })
-        //     : dataMyItem
-        //         .filter((_item) => CurrentCategory === _item.type_nft)
-        //         .map((item, index) => {
-        //           return (
-        //             <CardMyItem
-        //               key={index}
-        //               {...item}
-        //               setRefrestFetchAPI={setRefrestFetchAPI}
-        //               refrestFetchAPI={refrestFetchAPI}
-        //               share_address_wallet={share_address_wallet}
-        //             />
-        //           );
-        //         })} */}
-        // </div>
+        <EmptyData />
       )}
     </div>
   );

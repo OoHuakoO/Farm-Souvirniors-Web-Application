@@ -9,10 +9,11 @@
      text-align: center;
   }
   .copyOutlined {
-      font-size: 60px;
+      font-size: 120px;
       color: gray;
   }
   .noData {
     color: rgb(117, 116, 116);
     padding: 20px;
+    font-size: 24px;
   }

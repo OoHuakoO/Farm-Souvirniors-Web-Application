@@ -9,6 +9,7 @@ import {
 } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
 import ClipLoaderPage from "../components/ClipLoaderPage";
+import EmptyData from "../components/EmptyData";
 export default function Marketplace() {
   const { share_address_wallet } = useUserState();
   const [dataMarketplace, setDataMarketplace] = useState([]);
@@ -19,7 +20,7 @@ export default function Marketplace() {
 
   const fetchMarketplace = async () => {
     let listNFT = [];
-    setLoading(true); 
+    setLoading(true);
     if (isAuthenticated) {
       let responseContractAddress = await getContractAddressNFT();
       let responseContractAddressRandombox =
@@ -29,17 +30,16 @@ export default function Marketplace() {
         await getOwnerNFTWeb3InstanceRandombox(
           responseContractAddressRandombox
         );
-     
+
       if (responseWeb3InstanceRandombox && !responseWeb3) {
         await responseWeb3InstanceRandombox.map(async (data, index) => {
           listNFT.push({ ...data, from: "randombox" });
           if (responseWeb3InstanceRandombox.length - 1 === index) {
-             setLoading(false);
+            setLoading(false);
             setDataMarketplace(listNFT);
           }
         });
-      }
-     else if (responseWeb3 && !responseWeb3InstanceRandombox) {
+      } else if (responseWeb3 && !responseWeb3InstanceRandombox) {
         await responseWeb3.map(async (data, index) => {
           listNFT.push({ ...data, from: "nft" });
           if (responseWeb3.length - 1 === index) {
@@ -47,9 +47,7 @@ export default function Marketplace() {
             setDataMarketplace(listNFT);
           }
         });
-      }
-
-     else if (responseWeb3 && responseWeb3InstanceRandombox) {
+      } else if (responseWeb3 && responseWeb3InstanceRandombox) {
         let newResponseWeb3 = await responseWeb3.map((data) => {
           data.from = "nft";
           return data;
@@ -63,8 +61,7 @@ export default function Marketplace() {
         let newListNFT = newResponseWeb3RandomBox.concat(newResponseWeb3);
         setLoading(false);
         setDataMarketplace(newListNFT);
-      }
-      else{
+      } else {
         setLoading(false);
       }
     }
@@ -101,7 +98,7 @@ export default function Marketplace() {
       </div>
       {loading ? (
         <ClipLoaderPage loading={loading} color="grey" />
-      ) : (
+      ) : dataMarketplace.length !== 0 ? (
         <div className={styles.mainMyItem}>
           {CurrentCategory == "all"
             ? dataMarketplace.map((item, index) => {
@@ -125,6 +122,8 @@ export default function Marketplace() {
                   );
                 })}
         </div>
+      ) : (
+        <EmptyData />
       )}
     </div>
   );

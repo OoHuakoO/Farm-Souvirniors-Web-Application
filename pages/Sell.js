@@ -9,6 +9,7 @@ import {
 } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
 import ClipLoaderPage from "../components/ClipLoaderPage";
+import EmptyData from "../components/EmptyData";
 export default function Sell() {
   const { share_address_wallet } = useUserState();
   const [dataMySell, setDataMySell] = useState([]);
@@ -110,7 +111,7 @@ export default function Sell() {
       </div>
       {loading ? (
         <ClipLoaderPage loading={loading} color="grey" />
-      ) : (
+      ) : dataMySell.length !== 0 ? (
         <div className={styles.mainMyItem}>
           {CurrentCategory == "all"
             ? dataMySell.map((item, index) => {
@@ -134,7 +135,7 @@ export default function Sell() {
                   );
                 })}
         </div>
-      )}
+      ) : <EmptyData />}
     </div>
   );
 }
