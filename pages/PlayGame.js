@@ -32,15 +32,17 @@ export default function PlayGame(props) {
     }
   };
   useEffect(() => {
-    // unityContext.on("GameOver", function (action) {
-    //   console.log(action);
-    //   setRefreshResource(!refreshResource);
-    // });
     setTimeout(async () => {
       const web3 = new Web3(Web3.givenProvider || Config.web3ProviderGanache);
       const accounts = await web3.eth.requestAccounts();
       unityContext.send("Canvas", "SpawnEnemies", accounts[0]);
     }, 2000);
+  }, []);
+  useEffect(() => {
+    unityContext.on("GameOver", function (action) {
+      console.log("action", action);
+      setRefreshResource(!refreshResource);
+    });
   }, []);
   useEffect(() => {
     handleGetDataUser();
@@ -71,7 +73,9 @@ export default function PlayGame(props) {
         </div>
 
         <CardInventories dataResource={dataResource} />
-        <ModalPlayGame
+      
+      </div>
+      <ModalPlayGame
           item={props}
           setShowPopupModalPlayGame={setShowPopupModalPlayGame}
           showPopupModalPlayGame={showPopupModalPlayGame}
@@ -81,11 +85,10 @@ export default function PlayGame(props) {
           refreshResource={refreshResource}
           setRefreshResource={setRefreshResource}
         />
-      </div>
-      {/* <Unity
-        style={{ height: "81vh", width: "100%", alignSelf: "center" }}
+      <Unity
+        style={{ height: "81vh", width: "100%" }}
         unityContext={unityContext}
-      /> */}
+      />
     </div>
   );
 }
