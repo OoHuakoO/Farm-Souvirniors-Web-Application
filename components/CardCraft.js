@@ -124,7 +124,7 @@ const CardCraft = (props) => {
         item={props}
         setShowPopupNotEnoughCoinsNFT={setShowPopupNotEnoughCoinsNFT}
         showPopupNotEnoughCoinsNFT={showPopupNotEnoughCoinsNFT}
-        bodyText={"คุณมีผลไม้หรือไม้ ไม่เพียงพอสำหรับการ Craft"}
+        bodyText={"Not enough fruit or wood for craft"}
         headerText={"Craft"}
       />
     </div>

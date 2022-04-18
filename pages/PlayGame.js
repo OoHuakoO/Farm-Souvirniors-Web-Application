@@ -12,7 +12,7 @@ export default function PlayGame(props) {
   const [dataResource, setDataResource] = useState();
   const [energy, setEnergy] = useState(0);
   const [maxEnergy, setMaxEnergy] = useState(0);
-  const [refreshResource ,setRefreshResource] = useState(false)
+  const [refreshResource, setRefreshResource] = useState(false);
   const { share_address_wallet } = useUserState();
   const { isAuthenticated } = useMoralis();
   const unityContext = new UnityContext({
@@ -27,11 +27,15 @@ export default function PlayGame(props) {
     if (share_address_wallet) {
       let response = await getDataUser(share_address_wallet);
       setDataResource(response.data.resource);
-      setEnergy(response.data.energy);
+      setEnergy(response.data.energy.toString());
       setMaxEnergy(500 - response.data.energy);
     }
   };
   useEffect(() => {
+    // unityContext.on("GameOver", function (action) {
+    //   console.log(action);
+    //   setRefreshResource(!refreshResource);
+    // });
     setTimeout(async () => {
       const web3 = new Web3(Web3.givenProvider || Config.web3ProviderGanache);
       const accounts = await web3.eth.requestAccounts();
@@ -40,43 +44,48 @@ export default function PlayGame(props) {
   }, []);
   useEffect(() => {
     handleGetDataUser();
-  }, [isAuthenticated, share_address_wallet,refreshResource]);
+  }, [isAuthenticated, share_address_wallet, refreshResource]);
   return (
-    <div className={styles.maincategoryInventories}>
-      <div className={styles.energyInventories}>
-        <div className={styles.energyInventories1}>
-          <div>Energy </div>
-          <div className="material-icons">bolt</div>
-        </div>
-        <div className={styles.progressBar}>
-          <ProgressBar
-            completed={energy}
-            maxCompleted={500}
-            width="400px"
-            height="30px"
-            bgColor="#ffa34c"
-          />
-          <div
-            className={styles.progressBaradd}
-            onClick={handleShowPopupModalPlayGame}
-          >
-            <div className="material-icons">add</div>
+    <div>
+      <div className={styles.maincategoryInventories}>
+        <div className={styles.energyInventories}>
+          <div className={styles.energyInventories1}>
+            <div>Energy </div>
+            <div className="material-icons">bolt</div>
+          </div>
+          <div className={styles.progressBar}>
+            <ProgressBar
+              completed={energy}
+              maxCompleted="500"
+              width="400px"
+              height="30px"
+              bgColor="#ffa34c"
+            />
+            <div
+              className={styles.progressBaradd}
+              onClick={handleShowPopupModalPlayGame}
+            >
+              <div className="material-icons">add</div>
+            </div>
           </div>
         </div>
+
+        <CardInventories dataResource={dataResource} />
+        <ModalPlayGame
+          item={props}
+          setShowPopupModalPlayGame={setShowPopupModalPlayGame}
+          showPopupModalPlayGame={showPopupModalPlayGame}
+          maxEnergy={maxEnergy}
+          dataResource={dataResource}
+          share_address_wallet={share_address_wallet}
+          refreshResource={refreshResource}
+          setRefreshResource={setRefreshResource}
+        />
       </div>
-      <CardInventories dataResource={dataResource} />
-      <ModalPlayGame
-        item={props}
-        setShowPopupModalPlayGame={setShowPopupModalPlayGame}
-        showPopupModalPlayGame={showPopupModalPlayGame}
-        energy={energy}
-        setEnergy={setEnergy}
-        maxEnergy={maxEnergy}
-        dataResource={dataResource}
-        share_address_wallet={share_address_wallet}
-        refreshResource={refreshResource}
-        setRefreshResource={setRefreshResource}
-      />
+      {/* <Unity
+        style={{ height: "81vh", width: "100%", alignSelf: "center" }}
+        unityContext={unityContext}
+      /> */}
     </div>
   );
 }

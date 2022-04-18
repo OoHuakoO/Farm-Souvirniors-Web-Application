@@ -7,6 +7,7 @@ import { getOwnerNftWeb3 } from "../web3/nft";
 import { getOwnerNFTWeb3InstanceRandombox } from "../web3/randomBox";
 import { useMoralis } from "react-moralis";
 import ClipLoaderPage from "../components/ClipLoaderPage";
+import EmptyData from "../components/EmptyData"
 export default function MyItem() {
   const { share_address_wallet } = useUserState();
   const [dataMyItem, setDataMyItem] = useState([]);
@@ -154,7 +155,8 @@ export default function MyItem() {
         <ClipLoaderPage loading={loading} color="grey" />
       ) : (
         <div className={styles.mainMyItem}>
-          {CurrentCategory == "all"
+            <EmptyData/>
+          {/* {CurrentCategory == "all"
             ? dataMyItem.map((item, index) => {
                 return (
                   <CardMyItem
@@ -178,7 +180,7 @@ export default function MyItem() {
                       share_address_wallet={share_address_wallet}
                     />
                   );
-                })}
+                })} */}
         </div>
       )}
     </div>
