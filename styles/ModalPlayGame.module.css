@@ -45,7 +45,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 0px 0px 20px;
+    padding: 0px 0px 0px 15x;
     color: red;
 }
+.buttonConfirm {
+    background-color: #242A30;
+}
+.buttonConfirm:hover {
+    background-color: #ffa34c;
+}
+
 

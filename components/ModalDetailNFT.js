@@ -10,9 +10,13 @@ const ModalDetailNFT = (props) => {
       onHide={handleClose}
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      size="lg"
+      // size="lg"
     >
-      <Modal.Header className={styles.popupBg} closeButton></Modal.Header>
+      <Modal.Header className={styles.popupBg1}>
+        <div className={styles.modalclose} onClick={() => handleClose()}>
+          <div className="material-icons">close</div>
+        </div>
+      </Modal.Header>
       <Modal.Body className={styles.popupBg}>
         <div className={styles.cardMyItem1Popup}>
           <div className={styles.cardMyItem2Popup}>
@@ -136,27 +140,30 @@ const ModalDetailNFT = (props) => {
             <div>
               {props.item.type || props.item.type_nft === "fruit" ? (
                 <>
-                  <div>Reward : {props.item.reward} fruit</div>
-                  <div>
-                    Energy Consumed : {props.item.energy_consumed} energy
-                  </div>
-                  <div>Amount Food: {props.item.amount_food} fruit</div>
+                  <div className={styles.detailReward}>Reward</div>
+                  <div>{props.item.reward} fruit</div>
+                  <div className={styles.detailReward}>Energy Consumed</div>
+                  <div>{props.item.energy_consumed} energy</div>
+                  <div className={styles.detailReward}>Amount Food</div>
+                  <div>{props.item.amount_food} fruit</div>
                 </>
               ) : props.item.type || props.item.type_nft === "animal" ? (
                 <>
-                  <div>Reward : {props.item.reward} meat</div>
-                  <div>
-                    Energy Consumed : {props.item.energy_consumed} energy
-                  </div>
-                  <div>Amount Food: {props.item.amount_food} fruit</div>
+                  <div className={styles.detailReward}>Reward </div>
+                  <div> {props.item.reward} meat</div>
+                  <div className={styles.detailReward}>Energy Consumed </div>
+                  <div>{props.item.energy_consumed} energy</div>
+                  <div className={styles.detailReward}>Amount Food </div>
+                  <div>{props.item.amount_food} fruit</div>
                 </>
               ) : (
                 <>
-                  <div>Reward : {props.item.reward} wood</div>
-                  <div>
-                    Energy Consumed : {props.item.energy_consumed} energy
-                  </div>
-                  <div>Amount Food: {props.item.amount_food} fruit</div>
+                  <div className={styles.detailReward}>Reward </div>
+                  <div> {props.item.reward} wood</div>
+                  <div className={styles.detailReward}>Energy Consumed </div>
+                  <div>{props.item.energy_consumed} energy</div>
+                  <div className={styles.detailReward}>Amount Food </div>
+                  <div>{props.item.amount_food} fruit</div>
                 </>
               )}
             </div>

@@ -272,12 +272,21 @@
   line-height: 36px;
 }
 .popupBg {
-  background-color: #f59b47;
+  
   display: flex;
   justify-content: center;
-  
- 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.popupBg1 {
+  background-color: #242A30;
+  display: flex;
+  justify-content: flex-end;
+  color: #ffffff;
+}
+.modalclose {
+  cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 .cardMyItem1Popup {
   
@@ -319,19 +328,19 @@
   padding: 10px 0px;
 }
 .detailPopup {
-  width: 140%;
+  width: 70%;
   height: 300px;
   background-color: #ffffff;
   border-radius: 10px;
-  margin: 30px 0px 30px 30px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 20px;
-  font-family: 'Prompt';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 60px;
+  margin: 40px 0px 0px 30px;
+font-size: 16px;
+line-height: 40px;
 }
+.detailReward {
+  font-weight: 500;
+  font-size: 18px;
+}
+
 .buttonSellPopup {
   height: 40px;
   width: 150px;
