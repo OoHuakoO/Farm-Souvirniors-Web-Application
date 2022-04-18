@@ -154,34 +154,35 @@ export default function MyItem() {
       {loading ? (
         <ClipLoaderPage loading={loading} color="grey" />
       ) : (
-        <div className={styles.mainMyItem}>
-            <EmptyData/>
-          {/* {CurrentCategory == "all"
-            ? dataMyItem.map((item, index) => {
-                return (
-                  <CardMyItem
-                    key={index}
-                    {...item}
-                    setRefrestFetchAPI={setRefrestFetchAPI}
-                    refrestFetchAPI={refrestFetchAPI}
-                    share_address_wallet={share_address_wallet}
-                  />
-                );
-              })
-            : dataMyItem
-                .filter((_item) => CurrentCategory === _item.type_nft)
-                .map((item, index) => {
-                  return (
-                    <CardMyItem
-                      key={index}
-                      {...item}
-                      setRefrestFetchAPI={setRefrestFetchAPI}
-                      refrestFetchAPI={refrestFetchAPI}
-                      share_address_wallet={share_address_wallet}
-                    />
-                  );
-                })} */}
-        </div>
+        <EmptyData/>
+        // <div className={styles.mainMyItem}>
+        //    
+        //   {/* {CurrentCategory == "all"
+        //     ? dataMyItem.map((item, index) => {
+        //         return (
+        //           <CardMyItem
+        //             key={index}
+        //             {...item}
+        //             setRefrestFetchAPI={setRefrestFetchAPI}
+        //             refrestFetchAPI={refrestFetchAPI}
+        //             share_address_wallet={share_address_wallet}
+        //           />
+        //         );
+        //       })
+        //     : dataMyItem
+        //         .filter((_item) => CurrentCategory === _item.type_nft)
+        //         .map((item, index) => {
+        //           return (
+        //             <CardMyItem
+        //               key={index}
+        //               {...item}
+        //               setRefrestFetchAPI={setRefrestFetchAPI}
+        //               refrestFetchAPI={refrestFetchAPI}
+        //               share_address_wallet={share_address_wallet}
+        //             />
+        //           );
+        //         })} */}
+        // </div>
       )}
     </div>
   );

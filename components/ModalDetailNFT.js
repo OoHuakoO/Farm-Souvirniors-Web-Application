@@ -10,7 +10,7 @@ const ModalDetailNFT = (props) => {
       onHide={handleClose}
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      // size="lg"
+      size="lg"
     >
       <Modal.Header className={styles.popupBg1}>
         <div className={styles.modalclose} onClick={() => handleClose()}>

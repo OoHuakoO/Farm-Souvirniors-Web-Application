@@ -1,0 +1,18 @@
+/* EmptyData */
+.emptyData {
+    height:70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .emptyData1 {
+     text-align: center;
+  }
+  .copyOutlined {
+      font-size: 60px;
+      color: gray;
+  }
+  .noData {
+    color: rgb(117, 116, 116);
+    padding: 20px;
+  }
