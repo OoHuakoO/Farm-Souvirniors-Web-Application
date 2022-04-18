@@ -56,7 +56,7 @@ export default function PlayGame(props) {
           <div className={styles.progressBar}>
             <ProgressBar
               completed={energy}
-              maxCompleted="500"
+              maxCompleted={500}
               width="400px"
               height="30px"
               bgColor="#ffa34c"
