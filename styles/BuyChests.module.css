@@ -48,8 +48,6 @@
   background-color: #ffa34c;
 }
 .typeBox {
-  font-family: "Prompt", sans-serif;
-  font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
@@ -57,7 +55,7 @@
   text-align: center;
 }
 .bnb {
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 22px;

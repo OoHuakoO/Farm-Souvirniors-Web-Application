@@ -32,7 +32,7 @@
 .BgExchange {
   width: 50%;
   margin: 0 auto;
-  background-color: #f8f4d3;
+  background-color: #FFEFC8;
   display: flex;
   justify-content: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -50,7 +50,7 @@
 .exchangeCoin1 {
   width: 100%;
   padding: 20px 20px 20px 20px;
-  background-color: #eec587;
+  background-color: #AE825F;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
@@ -59,7 +59,7 @@
 .exchangeCoin2 {
   width: 100%;
   padding: 20px 20px 20px 20px;
-  background-color: #eec587;
+  background-color: #AE825F;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
@@ -78,7 +78,7 @@
   padding: 20px 0px 0px 0px;
 }
 .balance {
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -110,7 +110,7 @@
 }
 .TopicExchange {
   padding: 20px 0px;
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -119,18 +119,19 @@
   justify-content: space-between;
 }
 .Coin1 {
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: 24px;
   line-height: 27px;
   display: flex;
   align-items: center;
+  color: #ffffff;
 }
 .coin2 {
   height: 40px;
   width: 150px;
-  background: #ffa34c;
+  background: #eee5d7;
   box-sizing: border-box;
   border-radius: 10px;
   display: flex;
@@ -138,11 +139,11 @@
   justify-content: center;
 }
 .tax10 {
-  background-color: #8D3131;
+  background-color: #5D3A13;
   color: #ffffff;
   width: 100px;
   text-align: center;
-  border: 1px solid #8D3131;
+  border: 1px solid #5D3A13;
   padding: 5px 15px;
   border-radius: 10px;
 

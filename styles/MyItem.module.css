@@ -25,7 +25,7 @@
   cursor: pointer;
 }
 .uidCard {
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -37,7 +37,7 @@
 }
 .NameCard {
   text-align: center;
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -45,7 +45,7 @@
 }
 .NameCard1 {
   text-align: center;
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -164,7 +164,7 @@
     align-items: center; */
 }
 .uidSeller{
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -246,7 +246,7 @@
   justify-content: flex-start;
   align-content: center;
   align-items: center;
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -257,7 +257,7 @@
   justify-content: flex-start;
   align-content: center;
   align-items: center;
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -265,7 +265,7 @@
 }
 .costCraft {
   padding: 0px 20px;
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -308,7 +308,7 @@
   
 }
 .uidCardPopup {
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -320,7 +320,7 @@
 }
 .NameCardPopup {
   text-align: center;
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -379,7 +379,7 @@ line-height: 40px;
 }
 .priceCard{
   text-align: center;
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -413,7 +413,7 @@ line-height: 40px;
   
 }
 .youGotThis{
-  font-family: "Prompt", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
