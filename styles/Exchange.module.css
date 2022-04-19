@@ -55,6 +55,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
 .exchangeCoin2 {
   width: 100%;
@@ -127,6 +128,7 @@
   display: flex;
   align-items: center;
   color: #ffffff;
+  margin-top: 15px;
 }
 .coin2 {
   height: 40px;
