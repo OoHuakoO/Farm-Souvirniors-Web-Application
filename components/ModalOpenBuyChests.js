@@ -3,7 +3,6 @@ import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import { Modal } from "react-bootstrap";
 const ModalOpenBuyChests = (props) => {
-  console.log("555",props)
   const handleClose = () => props.setShowPopupOpenBuyChests(false);
   return (
     <Modal
