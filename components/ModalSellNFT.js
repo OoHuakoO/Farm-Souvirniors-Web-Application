@@ -83,7 +83,13 @@ const ModalSellNFT = (props) => {
       centered
       size="lg"
     >
-      <Modal.Header className={styles.popupBg} closeButton></Modal.Header>
+      <Modal.Header className={styles.popupBg1}>
+      <div >Sell</div>
+        <div className={styles.modalclose} onClick={() => handleClose()}>
+         
+          <div className="material-icons">close</div>
+        </div>
+      </Modal.Header>
       <Modal.Body className={styles.popupBg}>
         <div className={styles.cardMyItem1Popup}>
           <div className={styles.cardMyItem2Popup}>
@@ -101,8 +107,8 @@ const ModalSellNFT = (props) => {
             <span>{props.item.name}</span>
           </div>
         </div>
-        <div className={styles.detailPopup}>
-          <div>{props.item.name}</div>
+        <div className={styles.detailPopup1}>
+          <di className={styles.detailReward}>{props.item.name}</di>
           <div>Price</div>
           <div className="input-group mb-3">
             <input

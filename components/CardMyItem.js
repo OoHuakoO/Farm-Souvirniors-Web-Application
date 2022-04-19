@@ -13,7 +13,11 @@ const CardMyItem = (props) => {
   const [showPopupSellNFT, setShowPopupSellNFT] = useState(false);
   const [showPopupOpenBuyChests, setShowPopupOpenBuyChests] = useState(false);
   const [detailNFTOpenBox, setDetailNFTOpenBox] = useState({});
-  const handleShowPopupOpenBuyChests = () => setShowPopupOpenBuyChests(true);
+  const handleShowPopupOpenBuyChests = () => {
+    setShowPopupOpenBuyChests(true);
+    console.log("666");
+  };
+
   const handleShowPopupDetailNFT = () => setShowPopupDetailNFT(true);
   const handleShowPopupSellNFT = () => setShowPopupSellNFT(true);
 
@@ -113,8 +117,9 @@ const CardMyItem = (props) => {
               setLoading(false);
               setDetailNFTOpenBox({ ...responseGetInfoNFT.data, pid });
               handleShowPopupOpenBuyChests();
+              props.setRefrestFetchAPI(!props.refrestFetchAPI);
             }
-            props.setRefrestFetchAPI(!props.refrestFetchAPI);
+           
             console.log(responseAPI);
           }
         } catch (err) {

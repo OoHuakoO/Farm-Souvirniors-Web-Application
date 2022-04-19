@@ -3,6 +3,7 @@ import styles from "../styles/MyItem.module.css";
 import Image from "next/image";
 import { Modal } from "react-bootstrap";
 const ModalOpenBuyChests = (props) => {
+  console.log("555",props)
   const handleClose = () => props.setShowPopupOpenBuyChests(false);
   return (
     <Modal
@@ -11,7 +12,13 @@ const ModalOpenBuyChests = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header className={styles.popupBg} closeButton></Modal.Header>
+      <Modal.Header className={styles.popupBg1}>
+      <div >Detail</div>
+        <div className={styles.modalclose} onClick={() => handleClose()}>
+         
+          <div className="material-icons">close</div>
+        </div>
+      </Modal.Header>
       <Modal.Body className={styles.popupBg}>
         <div className={styles.cardMyItem1PopupOpen}>
           <div className={styles.cardMyItem2PopupOpen}>

@@ -151,12 +151,12 @@ const ModalPlayGame = (props) => {
         {meatError ? (
           <div className={styles.modalPlayGameFooter}>
             <div>Not enough meat</div>
-            <Button className={styles.buttonConfirm}>Confirm</Button>
+            <Button disabled className={styles.buttonConfirm1}>Confirm</Button>
           </div>
         ) : energyError ? (
           <div className={styles.modalPlayGameFooter}>
             <div>The result energy has exceeded the maximum energy</div>
-            <Button className={styles.buttonConfirm}>Confirm</Button>
+            <Button disabled className={styles.buttonConfirm1}>Confirm</Button>
           </div>
         ) : (
           <Button

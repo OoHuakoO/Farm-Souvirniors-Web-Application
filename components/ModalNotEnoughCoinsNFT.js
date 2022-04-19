@@ -10,7 +10,14 @@ const ModalNotEnoughCoinsNFT = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>{props.headerText}</Modal.Header>
+      
+      <Modal.Header className={styles.popupBg1}>
+      <div >{props.headerText}</div>
+        <div className={styles.modalclose} onClick={() => handleClose()}>
+         
+          <div className="material-icons">close</div>
+        </div>
+      </Modal.Header>
 
       <Modal.Body>
         <p>{props.bodyText}</p>

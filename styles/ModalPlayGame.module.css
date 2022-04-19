@@ -58,4 +58,8 @@
     background-color: #ffa34c;
 }
 
+.buttonConfirm1:disabled {
+    background-color: #d6d1ce;
+    color: #989695;
+}
 

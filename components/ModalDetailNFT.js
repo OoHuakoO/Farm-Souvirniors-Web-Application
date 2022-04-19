@@ -13,7 +13,9 @@ const ModalDetailNFT = (props) => {
       size="lg"
     >
       <Modal.Header className={styles.popupBg1}>
+      <div >Detail</div>
         <div className={styles.modalclose} onClick={() => handleClose()}>
+         
           <div className="material-icons">close</div>
         </div>
       </Modal.Header>
@@ -45,7 +47,7 @@ const ModalDetailNFT = (props) => {
                   height={40}
                 />
                 &nbsp;
-                <div>10% Chance</div>
+                <div className={styles.detailRewar}>10% Chance</div>
               </div>
               <div className={styles.detailRandomItems}>
                 <Image
@@ -55,7 +57,7 @@ const ModalDetailNFT = (props) => {
                   height={40}
                 />
                 &nbsp;
-                <div>30% Chance</div>
+                <div className={styles.detailRewar}>30% Chance</div>
               </div>
               <div className={styles.detailRandomItems}>
                 <Image
@@ -65,7 +67,7 @@ const ModalDetailNFT = (props) => {
                   height={40}
                 />
                 &nbsp;
-                <div>60% Chance</div>
+                <div className={styles.detailRewar}>60% Chance</div>
               </div>
             </div>
           ) : props.item.name === "fruit chests" ? (
@@ -79,7 +81,7 @@ const ModalDetailNFT = (props) => {
                   height={40}
                 />
                 &nbsp;
-                <div>10% Chance</div>
+                <div className={styles.detailRewar}>10% Chance</div>
               </div>
               <div className={styles.detailRandomItems}>
                 <Image
@@ -89,7 +91,7 @@ const ModalDetailNFT = (props) => {
                   height={40}
                 />
                 &nbsp;
-                <div>30% Chance</div>
+                <div className={styles.detailRewar}>30% Chance</div>
               </div>
               <div className={styles.detailRandomItems}>
                 <Image
@@ -99,7 +101,7 @@ const ModalDetailNFT = (props) => {
                   height={40}
                 />
                 &nbsp;
-                <div>60% Chance</div>
+                <div className={styles.detailRewar}>60% Chance</div>
               </div>
             </div>
           ) : props.item.name === "vegetable chests" ? (
@@ -113,7 +115,7 @@ const ModalDetailNFT = (props) => {
                   height={40}
                 />
                 &nbsp;
-                <div>10% Chance</div>
+                <div className={styles.detailRewar}>10% Chance</div>
               </div>
               <div className={styles.detailRandomItems}>
                 <Image
@@ -123,7 +125,7 @@ const ModalDetailNFT = (props) => {
                   height={40}
                 />
                 &nbsp;
-                <div>30% Chance</div>
+                <div className={styles.detailRewar}>30% Chance</div>
               </div>
               <div className={styles.detailRandomItems}>
                 <Image
@@ -133,37 +135,50 @@ const ModalDetailNFT = (props) => {
                   height={40}
                 />
                 &nbsp;
-                <div>60% Chance</div>
+                <div className={styles.detailRewar}>60% Chance</div>
               </div>
             </div>
           ) : (
             <div>
               {props.item.type || props.item.type_nft === "fruit" ? (
                 <>
-                  <div className={styles.detailReward}>Reward</div>
-                  <div>{props.item.reward} fruit</div>
-                  <div className={styles.detailReward}>Energy Consumed</div>
-                  <div>{props.item.energy_consumed} energy</div>
-                  <div className={styles.detailReward}>Amount Food</div>
-                  <div>{props.item.amount_food} fruit</div>
+                  <div className={styles.detailReward}>
+                    Reward : {props.item.reward} fruit
+                  </div>
+
+                  <div className={styles.detailReward}>
+                    Energy Consumed : {props.item.energy_consumed} energy
+                  </div>
+
+                  <div className={styles.detailReward}>
+                    Amount Food : {props.item.amount_food} fruit
+                  </div>
                 </>
               ) : props.item.type || props.item.type_nft === "animal" ? (
                 <>
-                  <div className={styles.detailReward}>Reward </div>
-                  <div> {props.item.reward} meat</div>
-                  <div className={styles.detailReward}>Energy Consumed </div>
-                  <div>{props.item.energy_consumed} energy</div>
-                  <div className={styles.detailReward}>Amount Food </div>
-                  <div>{props.item.amount_food} fruit</div>
+                  <div className={styles.detailReward}>
+                    Reward : {props.item.reward} meat
+                  </div>
+
+                  <div className={styles.detailReward}>
+                    Energy Consumed : {props.item.energy_consumed} energy
+                  </div>
+
+                  <div className={styles.detailReward}>
+                    Amount Food : {props.item.amount_food} fruit
+                  </div>
                 </>
               ) : (
                 <>
-                  <div className={styles.detailReward}>Reward </div>
-                  <div> {props.item.reward} wood</div>
-                  <div className={styles.detailReward}>Energy Consumed </div>
-                  <div>{props.item.energy_consumed} energy</div>
-                  <div className={styles.detailReward}>Amount Food </div>
-                  <div>{props.item.amount_food} fruit</div>
+                  <div className={styles.detailReward}>
+                    Reward : {props.item.reward} wood
+                  </div>
+                  <div className={styles.detailReward}>
+                    Energy Consumed :{props.item.energy_consumed} energy
+                  </div>
+                  <div className={styles.detailReward}>
+                    Amount Food :{props.item.amount_food} fruit
+                  </div>
                 </>
               )}
             </div>
