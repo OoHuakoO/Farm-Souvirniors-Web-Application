@@ -4,21 +4,27 @@ import { Modal, Button } from "react-bootstrap";
 import Image from "next/image";
 import Meat from "../public/meat.png";
 import { addEnergy } from "../api/user";
+import { Range, getTrackBackground } from "react-range";
+
 const ModalPlayGame = (props) => {
   const handleClose = () => props.setShowPopupModalPlayGame(false);
   const [TotalEnergy, setTotalEnergy] = useState(0);
-  const [inputMeat, setInputMeat] = useState(0);
+  const [rangeMeat, setRangeMeat] = useState([0]);
   const [energyError, setEnergyError] = useState(false);
   const [meatError, setMeatError] = useState(false);
-  const calculateEnergy = (event) => {
-    const InputMeat = Number(event.target.value);
-    const TotalEnergy = InputMeat * 5;
-    setInputMeat(InputMeat);
+  const [maxMeat, setMaxMeat] = useState(props.dataResource.meat);
+  const calculateEnergy = (value) => {
+
+    setRangeMeat(value);
+    const TotalEnergy = value[0] * 5;
     setTotalEnergy(TotalEnergy);
-    if (TotalEnergy > props.maxEnergy && props.dataResource.meat < InputMeat) {
+    if (
+      TotalEnergy > props.maxEnergy &&
+      props.dataResource.meat < value[0]
+    ) {
       setMeatError(true);
       setEnergyError(false);
-    } else if (props.dataResource.meat < InputMeat) {
+    } else if (props.dataResource.meat < value[0]) {
       setMeatError(true);
       setEnergyError(false);
     } else if (TotalEnergy > props.maxEnergy) {
@@ -32,7 +38,7 @@ const ModalPlayGame = (props) => {
   const handleAddEnergy = async () => {
     const response = await addEnergy(
       props.share_address_wallet,
-      inputMeat,
+      rangeMeat[0],
       TotalEnergy
     );
 
@@ -59,19 +65,73 @@ const ModalPlayGame = (props) => {
         <div className={styles.modalPlayGameBG}>
           <div className={styles.modalPlayGameBG1}>
             <div className={styles.inventoriesPlayGame}>
-              <div>
-                <Image src={Meat} alt="Apple" width={30} height={30} />
+              <div className={styles.boxImgMeat}>
+                <Image src={Meat} alt="Meat" width={30} height={30} />
               </div>
-              &nbsp;
-              <div className={styles.inputEnergy}>
-                <input
-                  className="form-control"
-                  aria-label="Default"
-                  aria-describedby="inputGroup-sizing-default"
-                  onChange={calculateEnergy}
-                  type="number"
-                />
-              </div>
+              <Range
+                step={1}
+                min={0}
+                max={maxMeat}
+                values={rangeMeat}
+                onChange={(values) => {
+                  calculateEnergy(values);
+                }}
+                renderTrack={({ props, children }) => (
+                  <div
+                    onMouseDown={props.onMouseDown}
+                    onTouchStart={props.onTouchStart}
+                    style={{
+                      ...props.style,
+                      height: "20px",
+                      display: "flex",
+                      width: "120px",
+                    }}
+                  >
+                    <div
+                      ref={props.ref}
+                      style={{
+                        height: "5px",
+                        width: "100%",
+                        borderRadius: "4px",
+                        background: getTrackBackground({
+                          values: rangeMeat,
+                          colors: ["#ffa34c", "#ccc"],
+                          min: 0,
+                          max: maxMeat,
+                        }),
+                        alignSelf: "center",
+                      }}
+                    >
+                      {children}
+                    </div>
+                  </div>
+                )}
+                renderThumb={({ props, isDragged }) => (
+                  <div
+                    {...props}
+                    style={{
+                      ...props.style,
+                      height: "30px",
+                      width: "30px",
+                      borderRadius: "4px",
+                      backgroundColor: "#FFF",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      boxShadow: "0px 2px 6px #AAA",
+                    }}
+                  >
+                    <div
+                      style={{
+                        height: "10px",
+                        width: "5px",
+                        backgroundColor: isDragged ? "#ffa34c" : "#CCC",
+                      }}
+                    />
+                  </div>
+                )}
+              />
+              <span className={styles.textRangeMeat}>{rangeMeat[0]}</span>
             </div>
           </div>
 

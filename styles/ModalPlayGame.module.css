@@ -26,6 +26,12 @@
     justify-content: center;
     align-items: center;
 }
+.textRangeMeat{
+    margin-left: 25px;
+}
+.boxImgMeat {
+    margin-right : 10px
+}
 .modalPlayGameEnergy {
     display: flex;
     justify-content: space-between;
@@ -36,9 +42,6 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-}
-.inputEnergy > input {
-    width: 100px;
 }
 .modalPlayGameFooter {
     width: 100%;
