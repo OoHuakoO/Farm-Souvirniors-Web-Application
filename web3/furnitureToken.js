@@ -18,7 +18,7 @@ const withdrawFurnitureToken = async (address_wallet, value, taxValue) => {
     ._WithdrawToken(address_wallet, amount, amountTax)
     .send({
       from: address_wallet,
-      gas: 5500000,
+  
     });
   return { status: "success" };
 };
@@ -29,7 +29,7 @@ const depositFurnitureToken = async (address_wallet, value) => {
   amount = web3.utils.toWei(amount, "Ether");
   await FurnitureToken.methods._DepositToken(address_wallet, amount).send({
     from: address_wallet,
-    gas: 5500000,
+
   });
   return { status: "success" };
 };

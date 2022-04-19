@@ -27,7 +27,7 @@ const craftNFTWeb3 = async (
       energy_consumed,
       amount_food
     )
-    .send({ from: address_wallet, gas: 5500000 });
+    .send({ from: address_wallet });
 
   return { status: "success" };
 };
@@ -81,7 +81,7 @@ const sellNFTWeb3 = async (address_wallet, indexNFT, price) => {
   let { NFT } = await getContract();
   await NFT.methods
     .sellNFT(indexNFT, price)
-    .send({ from: address_wallet, gas: 5500000 });
+    .send({ from: address_wallet});
   return { status: "success" };
 };
 
@@ -89,7 +89,7 @@ const cancleNFTWeb3 = async (address_wallet, indexNFT) => {
   let { NFT } = await getContract();
   await NFT.methods
     .cancleNFT(indexNFT)
-    .send({ from: address_wallet, gas: 5500000 });
+    .send({ from: address_wallet });
   return { status: "success" };
 };
 
@@ -102,7 +102,6 @@ const buyNFTWeb3 = async (
   let { NFT } = await getContract();
   await NFT.methods.buyNFT(indexNFT, price, seller_address_wallet).send({
     from: buyer_address_wallet,
-    gas: 5500000,
     value: web3.utils.toWei(price, "ether"),
   });
   return { status: "success" };

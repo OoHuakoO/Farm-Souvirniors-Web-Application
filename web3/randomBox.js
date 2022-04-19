@@ -7,11 +7,10 @@ const getContractAddressRandomBox = async () => {
   return RandomBox._address;
 };
 const mintRandomBox = async (address_wallet, name, price, count, picture) => {
-  console.log(address_wallet, name, price, count, picture)
+  console.log(address_wallet, name, price, count, picture);
   let { RandomBox } = await getContract();
   await RandomBox.methods._mintRandomBox(name, price, count, picture).send({
     from: address_wallet,
-    gas: 5500000,
   });
   return { status: "success" };
 };
@@ -47,7 +46,6 @@ const addCountRandomBox = async (indexNFT, count, address_wallet) => {
   let { RandomBox } = await getContract();
   await RandomBox.methods._addCountRandomBox(indexNFT, count).send({
     from: address_wallet,
-    gas: 5500000,
   });
   return { status: "success" };
 };
@@ -62,7 +60,6 @@ const buyRandomBox = async (
   let { RandomBox } = await getContract();
   await RandomBox.methods._buyRandomBox(pid, indexNFT, name, picture).send({
     from: address_wallet,
-    gas: 5500000,
     value: web3.utils.toWei(price, "ether"),
   });
   return { status: "success" };
@@ -119,15 +116,13 @@ const sellNFTWeb3InstanceRandombox = async (
   let { RandomBox } = await getContract();
   await RandomBox.methods
     .sellNFT(indexNFT, price)
-    .send({ from: address_wallet, gas: 5500000 });
+    .send({ from: address_wallet });
   return { status: "success" };
 };
 
 const cancleNFTWeb3InstanceRandombox = async (address_wallet, indexNFT) => {
   let { RandomBox } = await getContract();
-  await RandomBox.methods
-    .cancleNFT(indexNFT)
-    .send({ from: address_wallet, gas: 5500000 });
+  await RandomBox.methods.cancleNFT(indexNFT).send({ from: address_wallet });
   return { status: "success" };
 };
 
@@ -140,7 +135,7 @@ const buyNFTWeb3InstanceRandombox = async (
   let { RandomBox } = await getContract();
   await RandomBox.methods.buyNFT(indexNFT, price, seller_address_wallet).send({
     from: buyer_address_wallet,
-    gas: 5500000,
+
     value: web3.utils.toWei(price, "ether"),
   });
   return { status: "success" };
@@ -174,7 +169,6 @@ const openRandomBoxWeb3 = async (
     )
     .send({
       from: address_wallet,
-      gas: 5500000,
     });
   return { status: "success" };
 };

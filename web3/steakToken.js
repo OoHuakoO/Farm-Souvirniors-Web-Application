@@ -16,7 +16,6 @@ const withdrawSteakToken = async (address_wallet, value, taxValue) => {
   amountTax = web3.utils.toWei(amountTax, "Ether");
   await SteakToken.methods._WithdrawToken(address_wallet, amount,amountTax).send({
     from: address_wallet,
-    gas: 5500000,
   });
   return { status: "success" };
 };
@@ -27,7 +26,6 @@ const depositSteakToken = async (address_wallet, value) => {
   amount = web3.utils.toWei(amount, "Ether");
   await SteakToken.methods._DepositToken(address_wallet, amount).send({
     from: address_wallet,
-    gas: 5500000,
   });
   return { status: "success" };
 };
