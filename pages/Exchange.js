@@ -13,13 +13,17 @@ export default function Exchange() {
   const [dataResource, setDataResource] = useState();
   const [dataBalance, setDataBalance] = useState();
   const [refrestFetchAPI, setRefrestFetchAPI] = useState(false);
+  const [loading, setLoading] = useState(false);
   const changeTab = (index) => {
     setCurrentTab(index);
   };
   const handleGetDataUser = async () => {
     if (share_address_wallet) {
+      setLoading(true);
       let balanceOfSteakToken = await balanceOfSteak(share_address_wallet);
-      let balanceOfFurnitureToken = await balanceOfFurniture(share_address_wallet);
+      let balanceOfFurnitureToken = await balanceOfFurniture(
+        share_address_wallet
+      );
       let balanceOfWineToken = await balanceOfWine(share_address_wallet);
       let response = await getDataUser(share_address_wallet);
       setDataResource(response.data.resource);
@@ -28,6 +32,7 @@ export default function Exchange() {
         balanceOfFurnitureToken: balanceOfFurnitureToken,
         balanceOfWineToken: balanceOfWineToken,
       });
+      setLoading(false);
     }
   };
   const SwapTab = () => {
@@ -39,6 +44,7 @@ export default function Exchange() {
           share_address_wallet={share_address_wallet}
           dataResource={dataResource}
           dataBalance={dataBalance}
+          loading={loading}
         />
       );
     } else if (CurrentTab == 1) {
@@ -49,6 +55,7 @@ export default function Exchange() {
           share_address_wallet={share_address_wallet}
           dataResource={dataResource}
           dataBalance={dataBalance}
+          loading={loading}
         />
       );
     }

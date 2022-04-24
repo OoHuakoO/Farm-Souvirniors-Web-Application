@@ -157,13 +157,38 @@ export const Withdraw = (props) => {
         <div className={styles.TopicExchange}>
           <div>Swap</div>
           {CoinsExchange[SelectedCoinIndex].nameCoin1 === "Wood" ? (
-            <div>Balance : {props.dataResource && props.dataResource.wood}</div>
+            <div className={styles.balance}>
+              Balance :{" "}
+              {props.dataBalance ? (
+                props.dataResource && props.dataResource.wood
+              ) : (
+                <div className={styles.boxLoading}>
+                  <ClipLoaderButton loading={props.loading} color="black" />
+                </div>
+              )}
+            </div>
           ) : CoinsExchange[SelectedCoinIndex].nameCoin1 === "Fruit" ? (
-            <div>
-              Balance : {props.dataResource && props.dataResource.fruit}
+            <div className={styles.balance}>
+              Balance :{" "}
+              {props.dataBalance ? (
+                props.dataResource && props.dataResource.fruit
+              ) : (
+                <div className={styles.boxLoading}>
+                  <ClipLoaderButton loading={props.loading} color="black" />
+                </div>
+              )}
             </div>
           ) : (
-            <div>Balance : {props.dataResource && props.dataResource.meat}</div>
+            <div className={styles.balance}>
+              Balance :{" "}
+              {props.dataBalance ? (
+                props.dataResource && props.dataResource.meat
+              ) : (
+                <div className={styles.boxLoading}>
+                  <ClipLoaderButton loading={props.loading} color="black" />
+                </div>
+              )}
+            </div>
           )}
         </div>
         <div className={styles.exchangeCoin}>
@@ -203,17 +228,35 @@ export const Withdraw = (props) => {
           {CoinsExchange[SelectedCoinIndex].nameCoin1 === "Wood" ? (
             <div className={styles.balance}>
               Balance :{" "}
-              {props.dataBalance && props.dataBalance.balanceOfFurnitureToken}
+              {props.dataBalance ? (
+                props.dataBalance && props.dataBalance.balanceOfFurnitureToken
+              ) : (
+                <div className={styles.boxLoading}>
+                  <ClipLoaderButton loading={props.loading} color="black" />
+                </div>
+              )}
             </div>
           ) : CoinsExchange[SelectedCoinIndex].nameCoin1 === "Fruit" ? (
             <div className={styles.balance}>
               Balance :{" "}
-              {props.dataBalance && props.dataBalance.balanceOfWineToken}
+              {props.dataBalance ? (
+                props.dataBalance && props.dataBalance.balanceOfWineToken
+              ) : (
+                <div className={styles.boxLoading}>
+                  <ClipLoaderButton loading={props.loading} color="black" />
+                </div>
+              )}
             </div>
           ) : (
             <div className={styles.balance}>
               Balance :{" "}
-              {props.dataBalance && props.dataBalance.balanceOfSteakToken}
+              {props.dataBalance ? (
+                props.dataBalance && props.dataBalance.balanceOfSteakToken
+              ) : (
+                <div className={styles.boxLoading}>
+                  <ClipLoaderButton loading={props.loading} color="black" />
+                </div>
+              )}
             </div>
           )}
           <div className={styles.exchangeCoin2}>

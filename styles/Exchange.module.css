@@ -86,8 +86,14 @@
   line-height: 27px;
   padding: 20px 0px;
   float: right;
+  flex-direction: row;
+  display: flex ;
+  flex-direction: row;
+  align-items: center;
 }
-
+.boxLoading {
+  margin-left: 5px
+}
 .buttonExchange {
   height: 40px;
   width: 150px;

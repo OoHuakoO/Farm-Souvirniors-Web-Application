@@ -16,6 +16,7 @@ import { depositTokenAPI } from "../api/token";
 import ModalNotEnoughCoinsNFT from "./ModalNotEnoughCoinsNFT";
 import ClipLoaderButton from "../components/ClipLoaderButton";
 export const Deposit = (props) => {
+  console.log(props);
   const CoinsExchange = [
     {
       nameCoin2: "Fruit",
@@ -152,19 +153,37 @@ export const Deposit = (props) => {
         <div className={styles.TopicExchange}>
           <div>Swap</div>
           {CoinsExchange[SelectedCoinIndex].nameCoin2 === "Wood" ? (
-            <div>
+            <div className={styles.balance}>
               Balance :{" "}
-              {props.dataBalance && props.dataBalance.balanceOfFurnitureToken}
+              {props.dataBalance ? (
+                props.dataBalance && props.dataBalance.balanceOfFurnitureToken
+              ) : (
+                <div className={styles.boxLoading}>
+                  <ClipLoaderButton loading={props.loading} color="black" />
+                </div>
+              )}
             </div>
           ) : CoinsExchange[SelectedCoinIndex].nameCoin2 === "Fruit" ? (
-            <div>
+            <div className={styles.balance}>
               Balance :{" "}
-              {props.dataBalance && props.dataBalance.balanceOfWineToken}
+              {props.dataBalance ? (
+                props.dataBalance && props.dataBalance.balanceOfWineToken
+              ) : (
+                <div className={styles.boxLoading}>
+                  <ClipLoaderButton loading={props.loading} color="black" />
+                </div>
+              )}
             </div>
           ) : (
-            <div>
+            <div className={styles.balance}>
               Balance :{" "}
-              {props.dataBalance && props.dataBalance.balanceOfSteakToken}
+              {props.dataBalance ? (
+                props.dataBalance && props.dataBalance.balanceOfSteakToken
+              ) : (
+                <div className={styles.boxLoading}>
+                  <ClipLoaderButton loading={props.loading} color="black" />
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -204,15 +223,36 @@ export const Deposit = (props) => {
           </div>
           {CoinsExchange[SelectedCoinIndex].nameCoin2 === "Wood" ? (
             <div className={styles.balance}>
-              Balance : {props.dataResource && props.dataResource.wood}
+              Balance :
+              {props.dataBalance ? (
+                props.dataResource && props.dataResource.wood
+              ) : (
+                <div className={styles.boxLoading}>
+                  <ClipLoaderButton loading={props.loading} color="black" />
+                </div>
+              )}
             </div>
           ) : CoinsExchange[SelectedCoinIndex].nameCoin2 === "Fruit" ? (
             <div className={styles.balance}>
-              Balance : {props.dataResource && props.dataResource.fruit}
+              Balance :{" "}
+              {props.dataBalance ? (
+                props.dataResource && props.dataResource.fruit
+              ) : (
+                <div className={styles.boxLoading}>
+                  <ClipLoaderButton loading={props.loading} color="black" />
+                </div>
+              )}
             </div>
           ) : (
             <div className={styles.balance}>
-              Balance : {props.dataResource && props.dataResource.meat}
+              Balance :{" "}
+              {props.dataBalance ? (
+                props.dataResource && props.dataResource.meat
+              ) : (
+                <div className={styles.boxLoading}>
+                  <ClipLoaderButton loading={props.loading} color="black" />
+                </div>
+              )}
             </div>
           )}
           <div className={styles.exchangeCoin2}>
