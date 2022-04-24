@@ -143,41 +143,41 @@ const ModalDetailNFT = (props) => {
               {props.item.type || props.item.type_nft === "fruit" ? (
                 <>
                   <div className={styles.detailReward}>
-                    Reward : {props.item.reward} fruit
+                    Reward : {props.item.reward} Fruit
                   </div>
 
                   <div className={styles.detailReward}>
-                    Energy Consumed : {props.item.energy_consumed} energy
+                    Energy Consumed : {props.item.energy_consumed} Energy
                   </div>
 
                   <div className={styles.detailReward}>
-                    Amount Food : {props.item.amount_food} fruit
+                    Amount Food : {props.item.amount_food} Fruit
                   </div>
                 </>
               ) : props.item.type || props.item.type_nft === "animal" ? (
                 <>
                   <div className={styles.detailReward}>
-                    Reward : {props.item.reward} meat
+                    Reward : {props.item.reward} Meat
                   </div>
 
                   <div className={styles.detailReward}>
-                    Energy Consumed : {props.item.energy_consumed} energy
+                    Energy Consumed : {props.item.energy_consumed} Energy
                   </div>
 
                   <div className={styles.detailReward}>
-                    Amount Food : {props.item.amount_food} fruit
+                    Amount Food : {props.item.amount_food} Fruit
                   </div>
                 </>
               ) : (
                 <>
                   <div className={styles.detailReward}>
-                    Reward : {props.item.reward} wood
+                    Reward : {props.item.reward} Wood
                   </div>
                   <div className={styles.detailReward}>
-                    Energy Consumed :{props.item.energy_consumed} energy
+                    Energy Consumed :{props.item.energy_consumed} Energy
                   </div>
                   <div className={styles.detailReward}>
-                    Amount Food :{props.item.amount_food} fruit
+                    Amount Food :{props.item.amount_food} Fruit
                   </div>
                 </>
               )}
