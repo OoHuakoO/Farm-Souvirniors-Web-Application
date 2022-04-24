@@ -76,7 +76,7 @@ export default function Marketplace() {
     };
   }, []);
   return (
-    <div>
+    <div className={styles.mainBG15}>
       <div className={styles.maincategory}>
         {" "}
         Class :

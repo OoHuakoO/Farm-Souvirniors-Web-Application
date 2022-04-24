@@ -7,6 +7,9 @@
   padding: 0px 20px;
   flex-wrap: wrap;
 }
+.mainBG15 {
+  margin-left: 15%;
+}
 .cardMyItem1 {
   max-width: 350px;
   width: 100%;

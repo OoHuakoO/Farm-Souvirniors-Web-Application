@@ -38,7 +38,7 @@ export default function Craft() {
     handleGetDataUser();
   }, [isAuthenticated, share_address_wallet]);
   return (
-    <div>
+    <div className={styles.mainBG15}>
       <div className={styles.maincategoryInventories}>
         <div className={styles.maincategory}>
           {" "}

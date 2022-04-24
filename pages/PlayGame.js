@@ -46,7 +46,7 @@ export default function PlayGame(props) {
     handleGetDataUser();
   }, [isAuthenticated, share_address_wallet, refreshResource]);
   return (
-    <div>
+    <div className={styles.mainBG15}>
       <div className={styles.maincategoryInventories}>
         <div className={styles.energyInventories}>
           <div className={styles.energyInventories1}>

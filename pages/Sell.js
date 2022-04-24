@@ -89,7 +89,7 @@ export default function Sell() {
     };
   }, []);
   return (
-    <div>
+    <div className={styles.mainBG15}>
       <div className={styles.maincategory}>
         {" "}
         Class :

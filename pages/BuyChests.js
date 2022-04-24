@@ -28,13 +28,13 @@ export default function BuyChests() {
     //   "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2350_in5klp.png"
     // );
     // Vegetable Chest
-    await mintRandomBox(
-      share_address_wallet,
-      "vegetable chests",
-      "0.01",
-      100,
-      "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2343_gqgy55.png"
-    );
+    // await mintRandomBox(
+    //   share_address_wallet,
+    //   "vegetable chests",
+    //   "0.01",
+    //   100,
+    //   "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2343_gqgy55.png"
+    // );
   };
   const fetctGetRandomBox = async () => {
     setLoading(true);
@@ -53,14 +53,15 @@ export default function BuyChests() {
     };
   }, [isAuthenticated]);
   return (
+    <div className={styles.mainBG15}>
     <div className={styles.BuyChestsPages}>
-      <div
+      {/* <div
         onClick={() => {
           handleMintRandomBox();
         }}
       >
         Mint
-      </div>
+      </div> */}
       {loading ? (
         <ClipLoaderPage loading={loading} color="grey" />
       ) : (
@@ -74,6 +75,7 @@ export default function BuyChests() {
           );
         })
       )}
+    </div>
     </div>
   );
 }

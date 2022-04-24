@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import styles from "../styles/Index.module.css";
 import { useMoralis } from "react-moralis";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import BGFarm from "../public/FarmSouvirniorsGame.png";
 
 const index = () => {
   const router = useRouter();
@@ -11,11 +13,23 @@ const index = () => {
     <div className={styles.homemain}>
       {isAuthenticated ? null : (
         <>
-          <div className={styles.homeWelcome}>
-            <h2>Welcome</h2>
-            <h2>FARM SOUVIRNIORS</h2>
+          <div>
+            <div
+              className={styles.homeWelcomeImage}
+              
+            >
+              <Image
+              // height="100%"
+              // width="100%"
+                layout="fill"
+                objectFit="cover"
+                objectPosition="top"
+                src={BGFarm}
+                alt="BGFarm"
+              />
+            </div>
           </div>
-          <div className={styles.buttonLogin}>Login</div>
+          {/* <div className={styles.buttonLogin}>Login</div> */}
         </>
       )}
     </div>
