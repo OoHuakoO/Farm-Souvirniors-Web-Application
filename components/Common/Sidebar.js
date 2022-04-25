@@ -16,6 +16,14 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
+          <Link href="/BuyChests">
+            <a>
+              <div className={styles.menuplaygame}>
+                <span className="material-icons">home_repair_service</span>
+                <span>Buy Chests</span>
+              </div>
+            </a>
+          </Link>
           <Link href="/Marketplace">
             <a>
               <div className={styles.menuplaygame}>
@@ -48,6 +56,7 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
+        
         </div>
       ) : null}
     </div>

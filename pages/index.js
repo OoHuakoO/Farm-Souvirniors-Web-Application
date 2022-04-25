@@ -14,13 +14,10 @@ const index = () => {
       {isAuthenticated ? null : (
         <>
           <div>
-            <div
-              className={styles.homeWelcomeImage}
-              
-            >
+            <div className={styles.homeWelcomeImage}>
               <Image
-              // height="100%"
-              // width="100%"
+                // height="100%"
+                // width="100%"
                 layout="fill"
                 objectFit="cover"
                 objectPosition="top"
