@@ -19,7 +19,7 @@ export default function Sidebar() {
           <Link href="/BuyChests">
             <a>
               <div className={styles.menuplaygame}>
-                <span className="material-icons">home_repair_service</span>
+                <span className="material-icons">view_in_ar</span>
                 <span>Buy Chests</span>
               </div>
             </a>
