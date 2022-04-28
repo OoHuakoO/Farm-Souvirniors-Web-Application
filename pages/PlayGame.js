@@ -86,10 +86,10 @@ export default function PlayGame(props) {
         />
       ) : null}
 
-      {/* <Unity
+      <Unity
         style={{ height: "81vh", width: "100%" }}
         unityContext={unityContext}
-      /> */}
+      />
     </div>
   );
 }
