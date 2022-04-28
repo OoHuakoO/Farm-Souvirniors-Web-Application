@@ -1,3 +1,4 @@
+
 .mainMyItem {
   
   width: 100%;
@@ -69,6 +70,23 @@
   justify-content: center;
   cursor: pointer;
 }
+.buttonSellDisable {
+  height: 40px;
+  width: 150px;
+  padding: 10px 15px;
+  background: #acadaf;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color: rgb(94, 95, 96);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: none;
+}
+
 .buttonSell:hover {
   border: 1px solid #ffa34c;
   color: aliceblue;

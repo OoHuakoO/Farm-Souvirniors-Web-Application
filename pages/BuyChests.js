@@ -12,13 +12,13 @@ export default function BuyChests() {
   const { isAuthenticated } = useMoralis();
   const handleMintRandomBox = async () => {
     // Animal chest
-    // await mintRandomBox(
-    //   share_address_wallet,
-    //   "animal chests",
-    //   "0.01",
-    //   100,
-    //   "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2345_balm7t.png"
-    // );
+    await mintRandomBox(
+      share_address_wallet,
+      "animal chests",
+      "0.01",
+      100,
+      "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2345_balm7t.png"
+    );
     // Fruit Chest
     // await mintRandomBox(
     //   share_address_wallet,
@@ -28,13 +28,13 @@ export default function BuyChests() {
     //   "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2350_in5klp.png"
     // );
     // Vegetable Chest
-    await mintRandomBox(
-      share_address_wallet,
-      "vegetable chests",
-      "0.01",
-      100,
-      "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2343_gqgy55.png"
-    );
+    // await mintRandomBox(
+    //   share_address_wallet,
+    //   "vegetable chests",
+    //   "0.01",
+    //   100,
+    //   "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2343_gqgy55.png"
+    // );
   };
   const fetctGetRandomBox = async () => {
     setLoading(true);
@@ -43,7 +43,7 @@ export default function BuyChests() {
       setLoading(false);
       setListRandomBox(response);
     } else {
-      setLoading(true);
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -54,28 +54,29 @@ export default function BuyChests() {
   }, [isAuthenticated]);
   return (
     <div className={styles.mainBG15}>
-    <div className={styles.BuyChestsPages}>
-      {/* <div
-        onClick={() => {
-          handleMintRandomBox();
-        }}
-      >
-        Mint
-      </div> */}
       {loading ? (
-        <ClipLoaderPage loading={true} color="grey" />
+        <ClipLoaderPage loading={loading} color="grey" />
       ) : (
-        listRandomBox.map((item, index) => {
-          return (
-            <CardBuychests
-              key={index}
-              {...item}
-              share_address_wallet={share_address_wallet}
-            />
-          );
-        })
+        <div className={styles.BuyChestsPages}>
+          <div
+            onClick={() => {
+              handleMintRandomBox();
+            }}
+          >
+            Mint
+          </div>
+
+          {listRandomBox.map((item, index) => {
+            return (
+              <CardBuychests
+                key={index}
+                {...item}
+                share_address_wallet={share_address_wallet}
+              />
+            );
+          })}
+        </div>
       )}
-    </div>
     </div>
   );
 }
