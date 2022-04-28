@@ -77,7 +77,7 @@ export default function Craft() {
                 );
               })
             : dataCraft
-                .filter((_item) => CurrentCategory === _item.type)
+                .filter((_item) => CurrentCategory === _item.type_nft)
                 .map((item, index) => {
                   return (
                     <CardCraft

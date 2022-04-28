@@ -43,7 +43,7 @@ export default function BuyChests() {
       setLoading(false);
       setListRandomBox(response);
     } else {
-      setLoading(false);
+      setLoading(true);
     }
   };
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function BuyChests() {
         Mint
       </div> */}
       {loading ? (
-        <ClipLoaderPage loading={loading} color="grey" />
+        <ClipLoaderPage loading={true} color="grey" />
       ) : (
         listRandomBox.map((item, index) => {
           return (
