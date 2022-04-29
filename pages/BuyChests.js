@@ -58,13 +58,13 @@ export default function BuyChests() {
         <ClipLoaderPage loading={loading} color="grey" />
       ) : (
         <div className={styles.BuyChestsPages}>
-          <div
+          {/* <div
             onClick={() => {
               handleMintRandomBox();
             }}
           >
             Mint
-          </div>
+          </div> */}
 
           {listRandomBox.map((item, index) => {
             return (
