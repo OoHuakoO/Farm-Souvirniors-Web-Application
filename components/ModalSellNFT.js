@@ -84,9 +84,8 @@ const ModalSellNFT = (props) => {
       size="lg"
     >
       <Modal.Header className={styles.popupBg1}>
-      <div >Sell</div>
+        <div>Sell</div>
         <div className={styles.modalclose} onClick={() => handleClose()}>
-         
           <div className="material-icons">close</div>
         </div>
       </Modal.Header>
@@ -108,14 +107,13 @@ const ModalSellNFT = (props) => {
           </div>
         </div>
         <div className={styles.detailPopup1}>
-          <di className={styles.detailReward}>{props.item.name}</di>
+          <div className={styles.detailReward}>{props.item.name}</div>
           <div>Price</div>
           <div className="input-group mb-3">
             <input
               type="number"
               className="form-control"
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
+              inputMode="numeric"
               onChange={(event) => setPriceNFT(event.target.value)}
             />
           </div>
@@ -131,7 +129,7 @@ const ModalSellNFT = (props) => {
                 onClick={() => sellRandombox(props.item)}
                 className={styles.buttonSellPopup}
               >
-                <ClipLoaderButton loading={loading} color="white"/>
+                <ClipLoaderButton loading={loading} color="white" />
               </div>
             ) : (
               <div
@@ -146,7 +144,7 @@ const ModalSellNFT = (props) => {
               onClick={() => sellNFT(props.item)}
               className={styles.buttonSellPopup}
             >
-              <ClipLoaderButton loading={loading} color="white"/>
+              <ClipLoaderButton loading={loading} color="white" />
             </div>
           ) : (
             <div

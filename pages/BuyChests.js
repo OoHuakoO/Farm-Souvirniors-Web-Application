@@ -43,7 +43,7 @@ export default function BuyChests() {
       setLoading(false);
       setListRandomBox(response);
     } else {
-      setLoading(true);
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -54,28 +54,29 @@ export default function BuyChests() {
   }, [isAuthenticated]);
   return (
     <div className={styles.mainBG15}>
-    <div className={styles.BuyChestsPages}>
-      {/* <div
-        onClick={() => {
-          handleMintRandomBox();
-        }}
-      >
-        Mint
-      </div> */}
       {loading ? (
-        <ClipLoaderPage loading={true} color="grey" />
+        <ClipLoaderPage loading={loading} color="grey" />
       ) : (
-        listRandomBox.map((item, index) => {
-          return (
-            <CardBuychests
-              key={index}
-              {...item}
-              share_address_wallet={share_address_wallet}
-            />
-          );
-        })
+        <div className={styles.BuyChestsPages}>
+          {/* <div
+            onClick={() => {
+              handleMintRandomBox();
+            }}
+          >
+            Mint
+          </div> */}
+
+          {listRandomBox.map((item, index) => {
+            return (
+              <CardBuychests
+                key={index}
+                {...item}
+                share_address_wallet={share_address_wallet}
+              />
+            );
+          })}
+        </div>
       )}
-    </div>
     </div>
   );
 }

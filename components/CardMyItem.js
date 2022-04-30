@@ -158,10 +158,15 @@ const CardMyItem = (props) => {
               <span>Open</span>
             </div>
           )}
-
-          <div onClick={handleShowPopupSellNFT} className={styles.buttonSell}>
-            <span>Sell</span>
-          </div>
+          {loading ? (
+            <div className={styles.buttonSellDisable}>
+              <span>Sell</span>
+            </div>
+          ) : (
+            <div onClick={handleShowPopupSellNFT} className={styles.buttonSell}>
+              <span>Sell</span>
+            </div>
+          )}
         </div>
       ) : props.status === "not_plant" ? (
         <div onClick={handleShowPopupSellNFT} className={styles.buttonSell}>

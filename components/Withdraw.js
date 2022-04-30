@@ -160,7 +160,8 @@ export const Withdraw = (props) => {
             <div className={styles.balance}>
               Balance :{" "}
               {props.dataBalance ? (
-                props.dataResource && props.dataResource.wood
+                props.dataResource &&
+                Math.floor(parseFloat(props.dataResource.wood) * 100) / 100
               ) : (
                 <div className={styles.boxLoading}>
                   <ClipLoaderButton loading={props.loading} color="black" />
@@ -171,7 +172,8 @@ export const Withdraw = (props) => {
             <div className={styles.balance}>
               Balance :{" "}
               {props.dataBalance ? (
-                props.dataResource && props.dataResource.fruit
+                props.dataResource &&
+                Math.floor(parseFloat(props.dataResource.fruit) * 100) / 100
               ) : (
                 <div className={styles.boxLoading}>
                   <ClipLoaderButton loading={props.loading} color="black" />
@@ -182,7 +184,8 @@ export const Withdraw = (props) => {
             <div className={styles.balance}>
               Balance :{" "}
               {props.dataBalance ? (
-                props.dataResource && props.dataResource.meat
+                props.dataResource &&
+                Math.floor(parseFloat(props.dataResource.meat) * 100) / 100
               ) : (
                 <div className={styles.boxLoading}>
                   <ClipLoaderButton loading={props.loading} color="black" />
@@ -201,6 +204,7 @@ export const Withdraw = (props) => {
                   aria-label="Default"
                   aria-describedby="inputGroup-sizing-default"
                   onChange={calculateCoin}
+                  placeholder="0"
                 />
               </div>
             </div>
@@ -229,7 +233,10 @@ export const Withdraw = (props) => {
             <div className={styles.balance}>
               Balance :{" "}
               {props.dataBalance ? (
-                props.dataBalance && props.dataBalance.balanceOfFurnitureToken
+                props.dataBalance &&
+                Math.floor(
+                  parseFloat(props.dataBalance.balanceOfFurnitureToken) * 100
+                ) / 100
               ) : (
                 <div className={styles.boxLoading}>
                   <ClipLoaderButton loading={props.loading} color="black" />
@@ -240,7 +247,10 @@ export const Withdraw = (props) => {
             <div className={styles.balance}>
               Balance :{" "}
               {props.dataBalance ? (
-                props.dataBalance && props.dataBalance.balanceOfWineToken
+                props.dataBalance &&
+                Math.floor(
+                  parseFloat(props.dataBalance.balanceOfWineToken) * 100
+                ) / 100
               ) : (
                 <div className={styles.boxLoading}>
                   <ClipLoaderButton loading={props.loading} color="black" />
@@ -251,7 +261,10 @@ export const Withdraw = (props) => {
             <div className={styles.balance}>
               Balance :{" "}
               {props.dataBalance ? (
-                props.dataBalance && props.dataBalance.balanceOfSteakToken
+                props.dataBalance &&
+                Math.floor(
+                  parseFloat(props.dataBalance.balanceOfSteakToken) * 100
+                ) / 100
               ) : (
                 <div className={styles.boxLoading}>
                   <ClipLoaderButton loading={props.loading} color="black" />

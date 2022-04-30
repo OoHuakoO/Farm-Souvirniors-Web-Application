@@ -28,9 +28,9 @@ export default function Exchange() {
       let response = await getDataUser(share_address_wallet);
       setDataResource(response.data.resource);
       setDataBalance({
-        balanceOfSteakToken: balanceOfSteakToken,
-        balanceOfFurnitureToken: balanceOfFurnitureToken,
-        balanceOfWineToken: balanceOfWineToken,
+        balanceOfSteakToken:  balanceOfSteakToken,
+        balanceOfFurnitureToken:  balanceOfFurnitureToken,
+        balanceOfWineToken:  balanceOfWineToken,
       });
       setLoading(false);
     }

@@ -13,7 +13,7 @@ const CardInventories = (props) => {
           <Image src={Apple} alt="Apple" width={25} height={25} />
         </span>
         <span className={styles.inventoriesCoin}>
-          {props.dataResource && props.dataResource.fruit}
+          {props.dataResource &&  Math.floor(parseFloat(props.dataResource.fruit) * 100) / 100}
         </span>
       </div>
       <div className={styles.inventories}>
@@ -22,7 +22,7 @@ const CardInventories = (props) => {
         </span>
         <span className={styles.inventoriesCoin}>
           {" "}
-          {props.dataResource && props.dataResource.wood}{" "}
+          {props.dataResource &&  Math.floor(parseFloat(props.dataResource.wood) * 100) / 100}{" "}
         </span>
       </div>
       <div className={styles.inventories}>
@@ -31,7 +31,7 @@ const CardInventories = (props) => {
         </span>
         <span className={styles.inventoriesCoin}>
           {" "}
-          {props.dataResource && props.dataResource.meat}{" "}
+          {props.dataResource &&  Math.floor(parseFloat(props.dataResource.meat) * 100) / 100}{" "}
         </span>
       </div>
     </div>
