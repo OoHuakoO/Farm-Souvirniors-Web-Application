@@ -173,6 +173,10 @@
   font-weight: 500;
   margin-left: 10px;
 }
+.maxCoin:hover {
+  background: #f8df9e;
+  border: 1px solid #f8df9e;
+}
 
 .tax10 {
   background-color: #5D3A13;
