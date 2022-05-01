@@ -84,7 +84,7 @@
   font-weight: 500;
   font-size: 24px;
   line-height: 27px;
-  padding: 20px 0px;
+  padding: 10px 0px;
   float: right;
   flex-direction: row;
   display: flex ;
@@ -116,14 +116,24 @@
   background-color: #ffa34c;
 }
 .TopicExchange {
-  padding: 20px 0px;
+  padding: 5px 0px;
   font-family: 'Lato', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 27px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+}
+.TopicExchange1 {
+  padding: 5px 0px;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 27px;
+  display: flex;
+  justify-content: center;
 }
 .Coin1 {
   font-family: 'Lato', sans-serif;
@@ -132,7 +142,7 @@
   font-size: 24px;
   line-height: 27px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   color: #ffffff;
   margin-top: 15px;
 }
@@ -146,6 +156,24 @@
   align-items: center;
   justify-content: center;
 }
+.maxCoin {
+  height: 35px;
+  width: 60px;
+  padding: 10px 15px;
+  background: #FFEFC8;
+  border: 1px solid #FFEFC8;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color: #AE825F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
 .tax10 {
   background-color: #5D3A13;
   color: #ffffff;

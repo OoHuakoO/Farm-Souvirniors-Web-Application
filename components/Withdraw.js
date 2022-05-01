@@ -154,8 +154,8 @@ export const Withdraw = (props) => {
   return (
     <div>
       <div className={styles.BgExchange}>
+        <div className={styles.TopicExchange1}>Swap</div>
         <div className={styles.TopicExchange}>
-          <div>Swap</div>
           {CoinsExchange[SelectedCoinIndex].nameCoin1 === "Wood" ? (
             <div className={styles.balance}>
               Balance :{" "}
@@ -207,7 +207,10 @@ export const Withdraw = (props) => {
                   placeholder="0"
                 />
               </div>
+
+              <div className={styles.maxCoin}>max</div>
             </div>
+
             <div>
               <select
                 className={[styles.formSelect, "form-select"].join(" ")}
