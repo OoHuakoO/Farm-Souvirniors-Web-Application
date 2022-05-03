@@ -41,6 +41,7 @@ export const Deposit = (props) => {
   const [ExchangePrice, setExchangePrice] = useState(0);
   const [showPopupNotEnoughCoinsNFT, setShowPopupNotEnoughCoinsNFT] =
     useState(false);
+  const [inputCoin, setInputCoin] = useState("");
   const [loading, setLoading] = useState(false);
   const handleShowPopupNotEnoughCoinsNFT = () =>
     setShowPopupNotEnoughCoinsNFT(true);
@@ -48,11 +49,26 @@ export const Deposit = (props) => {
   const changeSelectcoin = (index) => {
     const _index = Number(index);
     setSelectedCoinIndex(_index);
+    setExchangePrice(0)
+    setInputCoin("")
   };
   const calculateCoin = (event) => {
     const InputSaveCoin = Number(event.target.value);
     const TotalCoin = InputSaveCoin;
+    setInputCoin(event.target.value);
     setExchangePrice(TotalCoin);
+  };
+  const handleMax = () => {
+    if (CoinsExchange[SelectedCoinIndex].nameCoin2 === "Wood") {
+      setInputCoin(props.dataBalance.balanceOfFurnitureToken);
+      setExchangePrice(Number(props.dataBalance.balanceOfFurnitureToken));
+    } else if (CoinsExchange[SelectedCoinIndex].nameCoin2 === "Meat") {
+      setInputCoin(props.dataBalance.balanceOfSteakToken);
+      setExchangePrice(Number(props.dataBalance.balanceOfSteakToken));
+    } else {
+      setInputCoin(props.dataBalance.balanceOfWineToken);
+      setExchangePrice(Number(props.dataBalance.balanceOfWineToken));
+    }
   };
   const DepositCoin = async () => {
     setLoading(true);
@@ -150,9 +166,8 @@ export const Deposit = (props) => {
   return (
     <div>
       <div className={styles.BgExchange}>
-      <div className={styles.TopicExchange1}>Swap</div>
+        <div className={styles.TopicExchange1}>Swap</div>
         <div className={styles.TopicExchange}>
-          
           {CoinsExchange[SelectedCoinIndex].nameCoin2 === "Wood" ? (
             <div className={styles.balance}>
               Balance :{" "}
@@ -208,9 +223,12 @@ export const Deposit = (props) => {
                   aria-describedby="inputGroup-sizing-default"
                   onChange={calculateCoin}
                   placeholder="0"
+                  value={inputCoin}
                 />
               </div>
-              <div className={styles.maxCoin}>max</div>
+              <div onClick={handleMax} className={styles.maxCoin}>
+                max
+              </div>
             </div>
 
             <div>

@@ -31,7 +31,7 @@ export const Withdraw = (props) => {
   const [SelectedCoinIndex, setSelectedCoinIndex] = useState(0);
   const [ExchangePrice, setExchangePrice] = useState(0);
   const [taxPrice, setTaxPrice] = useState(0);
-  const [inputSaveCoin, setInputSaveCoin] = useState(0);
+  const [inputSaveCoin, setInputSaveCoin] = useState("");
   const [showPopupNotEnoughCoinsNFT, setShowPopupNotEnoughCoinsNFT] =
     useState(false);
   const [loading, setLoading] = useState(false);
@@ -40,6 +40,35 @@ export const Withdraw = (props) => {
   const changeSelectcoin = (index) => {
     const _index = Number(index);
     setSelectedCoinIndex(_index);
+    setInputSaveCoin("");
+    setTaxPrice(0);
+    setExchangePrice(0);
+  };
+
+  const handleMax = () => {
+    if (CoinsExchange[SelectedCoinIndex].nameCoin1 === "Wood") {
+      const TotalCoin =
+        Number(props.dataResource.wood) - Number(props.dataResource.wood) * 0.1;
+      const taxCoin = Number(props.dataResource.wood) - TotalCoin;
+      setInputSaveCoin(props.dataResource.wood);
+      setTaxPrice(taxCoin);
+      setExchangePrice(TotalCoin);
+    } else if (CoinsExchange[SelectedCoinIndex].nameCoin1 === "Meat") {
+      const TotalCoin =
+        Number(props.dataResource.meat) - Number(props.dataResource.meat) * 0.1;
+      const taxCoin = Number(props.dataResource.meat) - TotalCoin;
+      setInputSaveCoin(props.dataResource.meat);
+      setTaxPrice(taxCoin);
+      setExchangePrice(TotalCoin);
+    } else {
+      const TotalCoin =
+        Number(props.dataResource.fruit) -
+        Number(props.dataResource.fruit) * 0.1;
+      const taxCoin = Number(props.dataResource.fruit) - TotalCoin;
+      setInputSaveCoin(props.dataResource.fruit);
+      setTaxPrice(taxCoin);
+      setExchangePrice(TotalCoin);
+    }
   };
   //คิดภาษีกับจำนวน coin
   const calculateCoin = (event) => {
@@ -205,10 +234,13 @@ export const Withdraw = (props) => {
                   aria-describedby="inputGroup-sizing-default"
                   onChange={calculateCoin}
                   placeholder="0"
+                  value={inputSaveCoin}
                 />
               </div>
 
-              <div className={styles.maxCoin}>max</div>
+              <div onClick={handleMax} className={styles.maxCoin}>
+                max
+              </div>
             </div>
 
             <div>
