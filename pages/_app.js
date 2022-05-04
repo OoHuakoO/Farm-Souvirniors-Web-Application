@@ -2,12 +2,12 @@ import "../styles/globals.css";
 import MainLayout from "../layout/MainLayout";
 import { UserProvider } from "../context/user";
 import { MoralisProvider } from "react-moralis";
-
+import Config from "../config";
 function MyApp({ Component, pageProps }) {
   return (
     <MoralisProvider
-      appId="kPg7clzA2Be7arc960GrpLVJEaXZh0X4u9h3VNjq"
-      serverUrl="https://hqgfasdwij2x.usemoralis.com:2053/server"
+      appId={Config.appIDBSCTestnet}
+      serverUrl={Config.serverURLBSCTestnet}
     >
       <UserProvider>
         <MainLayout>

@@ -10,7 +10,7 @@ import dataRandomBox from "../build/contracts/RandomBox.json";
 import dataSteakToken from "../build/contracts/SteakToken.json";
 import dataWineToken from "../build/contracts/WineToken.json";
 import dataFurnitureToken from "../build/contracts/FurnitureToken.json";
-const web3 = new Web3(Web3.givenProvider ||  Config.web3ProviderGanache);
+const web3 = new Web3(Web3.givenProvider ||  Config.web3ProviderBscTestnet);
 const getContract = async () => {
   const netId = await web3.eth.net.getId();
   NFT = new web3.eth.Contract(
