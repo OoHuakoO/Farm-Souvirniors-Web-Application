@@ -16,7 +16,6 @@ import { depositTokenAPI } from "../api/token";
 import ModalNotEnoughCoinsNFT from "./ModalNotEnoughCoinsNFT";
 import ClipLoaderButton from "../components/ClipLoaderButton";
 export const Deposit = (props) => {
-  console.log(props);
   const CoinsExchange = [
     {
       nameCoin2: "Fruit",
