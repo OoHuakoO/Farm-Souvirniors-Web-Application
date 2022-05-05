@@ -16,9 +16,13 @@ export default function Navbar() {
   const [walletAddress, setWalletAddress] = useState();
   const { setShare_Address_wallet } = useUserState();
   const getAddressWallet = async () => {
-    const web3 = new Web3(Web3.givenProvider ||  Config.web3ProviderBscTestnet);
+    const web3 = new Web3(Web3.givenProvider || Config.web3ProviderGanache);
     const accounts = await web3.eth.requestAccounts();
-    setWalletAddress(accounts[0]);
+    let accountsFormat =
+      accounts[0].substring(0, 5) +
+      "..." +
+      accounts[0].substring(accounts[0].length - 4 , accounts[0].length);
+    setWalletAddress(accountsFormat);
     setShare_Address_wallet(accounts[0]);
   };
 
@@ -26,7 +30,7 @@ export default function Navbar() {
     if (window.web3) {
       const authen = await authenticate();
       if (authen) {
-        const web3 = new Web3(Web3.givenProvider ||  Config.web3ProviderBscTestnet);
+        const web3 = new Web3(Web3.givenProvider || Config.web3ProviderGanache);
         const accounts = await web3.eth.requestAccounts();
         await Login(accounts[0]);
         router.push({
@@ -72,7 +76,7 @@ export default function Navbar() {
           <h1
             onClick={() => {
               router.push({
-                pathname: "/BuyChests",
+                pathname: "/PlayGame",
               });
             }}
             style={{ cursor: "pointer" }}

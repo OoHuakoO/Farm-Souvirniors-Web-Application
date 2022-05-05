@@ -11,30 +11,30 @@ export default function BuyChests() {
   const [loading, setLoading] = useState(true);
   const { isAuthenticated } = useMoralis();
   const handleMintRandomBox = async () => {
-    // Animal chest
-    // await mintRandomBox(
-    //   share_address_wallet,
-    //   "animal chests",
-    //   "0.01",
-    //   100,
-    //   "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2345_balm7t.png"
-    // );
-    // Fruit Chest
-    // await mintRandomBox(
-    //   share_address_wallet,
-    //   "fruit chests",
-    //   "0.01",
-    //   100,
-    //   "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2350_in5klp.png"
-    // );
-    // Vegetable Chest
-    // await mintRandomBox(
-    //   share_address_wallet,
-    //   "vegetable chests",
-    //   "0.01",
-    //   100,
-    //   "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2343_gqgy55.png"
-    // );
+
+    await mintRandomBox(
+      share_address_wallet,
+      "Animal Chests",
+      "0.01",
+      100,
+      "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2345_balm7t.png"
+    );
+
+    await mintRandomBox(
+      share_address_wallet,
+      "Fruit Chests",
+      "0.01",
+      100,
+      "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2350_in5klp.png"
+    );
+
+    await mintRandomBox(
+      share_address_wallet,
+      "Vegetable Chests",
+      "0.01",
+      100,
+      "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2343_gqgy55.png"
+    );
   };
   const fetctGetRandomBox = async () => {
     setLoading(true);

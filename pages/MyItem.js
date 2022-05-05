@@ -12,8 +12,8 @@ export default function MyItem() {
   const { share_address_wallet } = useUserState();
   const [dataMyItem, setDataMyItem] = useState([]);
   const { isAuthenticated } = useMoralis();
-  const categories = ["all", "animal", "fruit", "vegetable", "chest"];
-  const [CurrentCategory, setCurrentCategory] = useState("all");
+  const categories = ["All", "Animal", "Fruit", "Vegetable", "Chest"];
+  const [CurrentCategory, setCurrentCategory] = useState("All");
   const [refrestFetchAPI, setRefrestFetchAPI] = useState(false);
   const [loading, setLoading] = useState(true);
   async function fetchGetOwnerNFT() {
@@ -128,13 +128,13 @@ export default function MyItem() {
   useEffect(() => {
     return () => {
       setDataMyItem([]);
-      setCurrentCategory("all");
+      setCurrentCategory("All");
     };
   }, []);
   return (
     <div className={styles.mainBG15}>
       <div className={styles.maincategory}>
-        Class :
+      Category :
         {categories.map((category) => {
           return (
             <button
@@ -155,7 +155,7 @@ export default function MyItem() {
         <ClipLoaderPage loading={loading} color="grey" />
       ) : dataMyItem.length !== 0 ? (
         <div className={styles.mainMyItem}>
-          {CurrentCategory == "all"
+          {CurrentCategory == "All"
             ? dataMyItem.map((item, index) => {
                 return (
                   <CardMyItem
@@ -168,7 +168,12 @@ export default function MyItem() {
                 );
               })
             : dataMyItem
-                .filter((_item) => CurrentCategory === _item.type_nft)
+                .filter(
+                  (_item) =>
+                    CurrentCategory ===
+                    _item.type_nft[0].toUpperCase() +
+                      _item.type_nft.substring(1)
+                )
                 .map((item, index) => {
                   return (
                     <CardMyItem

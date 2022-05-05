@@ -40,7 +40,7 @@ const CardBuychests = (props) => {
           <Image src={props.picture} alt="Box1" width={200} height={200} />
         </div>
         <div className={styles.typeBox}>
-          <span>{props.count}/100 </span>
+          <span>{100-props.count}/100 </span>
           <span> {props.name}</span>
         </div>
       </div>

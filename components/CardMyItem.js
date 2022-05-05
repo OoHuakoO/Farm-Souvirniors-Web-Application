@@ -40,51 +40,51 @@ const CardMyItem = (props) => {
     var NFT;
     let animal = [
       {
-        value: "cow",
+        value: "Cow",
         probability: 0.1,
       },
       {
-        value: "pig",
+        value: "Pig",
         probability: 0.3,
       },
       {
-        value: "bird",
+        value: "Bird",
         probability: 0.6,
       },
     ];
     let fruit = [
       {
-        value: "strawberry",
+        value: "Strawberry",
         probability: 0.1,
       },
       {
-        value: "grape",
+        value: "Grape",
         probability: 0.3,
       },
       {
-        value: "apple",
+        value: "Apple",
         probability: 0.6,
       },
     ];
     let vegetable = [
       {
-        value: "cauliflower",
+        value: "Cauliflower",
         probability: 0.1,
       },
       {
-        value: "pumpkin",
+        value: "Pumpkin",
         probability: 0.3,
       },
       {
-        value: "corn",
+        value: "Corn",
         probability: 0.6,
       },
     ];
-    if (item.name === "animal chests") {
+    if (item.name === "Animal Chests") {
       NFT = randomNFT(animal);
-    } else if (item.name === "fruit chests") {
+    } else if (item.name === "Fruit Chests") {
       NFT = randomNFT(fruit);
-    } else if (item.name === "vegetable chests") {
+    } else if (item.name === "Vegetable Chests") {
       NFT = randomNFT(vegetable);
     }
     if (NFT) {
@@ -116,9 +116,6 @@ const CardMyItem = (props) => {
               setLoading(false);
               setDetailNFTOpenBox({ ...responseGetInfoNFT.data, pid });
               handleShowPopupOpenBuyChests();
-              setTimeout(() => {
-                props.setRefrestFetchAPI(!props.refrestFetchAPI);
-              }, 3000);
             }
             console.log(responseAPI);
           }
@@ -195,6 +192,8 @@ const CardMyItem = (props) => {
         setShowPopupOpenBuyChests={setShowPopupOpenBuyChests}
         showPopupOpenBuyChests={showPopupOpenBuyChests}
         detailNFTOpenBox={detailNFTOpenBox}
+        setRefrestFetchAPI={props.setRefrestFetchAPI}
+        refrestFetchAPI={props.refrestFetchAPI}
       />
     </div>
   );

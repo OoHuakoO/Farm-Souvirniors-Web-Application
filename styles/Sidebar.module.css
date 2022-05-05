@@ -7,8 +7,6 @@
   overflow-x: hidden;
   
 }
-
-
 .sidenav a {
   font-family: 'Lato', sans-serif;
   font-weight: bold;
@@ -21,10 +19,36 @@
   align-items: center;
   margin-bottom: 30px;
   margin-top: 40px;
-
+  flex-direction: row;
+  justify-content: center;
 }
 
-.sidenav a:hover {
+.boxNavNormal  {
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  padding: 10px 6px 6px 30px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #ffffff;
+  display: block;
+  margin: auto;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 40px;
+}
+
+.boxNavPress{
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  padding: 10px 6px 6px 30px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #ffffff;
+  display: block;
+  margin: auto;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 40px;
   background-color: #a92a2a;
 }
 .menuplaygame {

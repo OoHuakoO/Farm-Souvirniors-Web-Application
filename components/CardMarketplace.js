@@ -94,7 +94,14 @@ const CardMarketplace = (props) => {
         >
           <span>Seller : </span>
 
-          <span>{props.seller}</span>
+          <span>
+            {props.seller.substring(0, 5) +
+              "..." +
+              props.seller.substring(
+                props.seller.length - 4,
+                props.seller.length
+              )}
+          </span>
         </div>
 
         <div className={styles.imageMyItem}>

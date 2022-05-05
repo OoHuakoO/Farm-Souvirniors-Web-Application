@@ -7,21 +7,23 @@ import { addEnergy } from "../api/user";
 import { Range, getTrackBackground } from "react-range";
 
 const ModalPlayGame = (props) => {
-  const handleClose = () => props.setShowPopupModalPlayGame(false);
+  const handleClose = () => {
+    props.setShowPopupModalPlayGame(false);
+    setTotalEnergy(0)
+    setRangeMeat([0])
+    setEnergyError(false)
+    setMeatError(false)
+  };
   const [TotalEnergy, setTotalEnergy] = useState(0);
   const [rangeMeat, setRangeMeat] = useState([0]);
   const [energyError, setEnergyError] = useState(false);
   const [meatError, setMeatError] = useState(false);
   const [maxMeat, setMaxMeat] = useState(props.dataResource.meat);
   const calculateEnergy = (value) => {
-
     setRangeMeat(value);
     const TotalEnergy = value[0] * 5;
     setTotalEnergy(TotalEnergy);
-    if (
-      TotalEnergy > props.maxEnergy &&
-      props.dataResource.meat < value[0]
-    ) {
+    if (TotalEnergy > props.maxEnergy && props.dataResource.meat < value[0]) {
       setMeatError(true);
       setEnergyError(false);
     } else if (props.dataResource.meat < value[0]) {
@@ -41,7 +43,6 @@ const ModalPlayGame = (props) => {
       rangeMeat[0],
       TotalEnergy
     );
-
     if (response.status === "success") {
       handleClose();
       props.setRefreshResource(!props.refreshResource);
@@ -151,12 +152,16 @@ const ModalPlayGame = (props) => {
         {meatError ? (
           <div className={styles.modalPlayGameFooter}>
             <div>Not enough meat</div>
-            <Button disabled className={styles.buttonConfirm1}>Confirm</Button>
+            <Button disabled className={styles.buttonConfirm1}>
+              Confirm
+            </Button>
           </div>
         ) : energyError ? (
           <div className={styles.modalPlayGameFooter}>
             <div>The result energy has exceeded the maximum energy</div>
-            <Button disabled className={styles.buttonConfirm1}>Confirm</Button>
+            <Button disabled className={styles.buttonConfirm1}>
+              Confirm
+            </Button>
           </div>
         ) : (
           <Button

@@ -11,8 +11,8 @@ export default function Craft() {
   const { share_address_wallet } = useUserState();
   const [dataCraft, setDataCraft] = useState([]);
   const [dataResource, setDataResource] = useState();
-  const categories = ["all", "animal", "fruit", "vegetable"];
-  const [CurrentCategory, setCurrentCategory] = useState("all");
+  const categories = ["All", "Animal", "Fruit", "Vegetable"];
+  const [CurrentCategory, setCurrentCategory] = useState("All");
   const [loading, setLoading] = useState(true);
   const { isAuthenticated } = useMoralis();
   const handleGetDataUser = async () => {
@@ -31,7 +31,7 @@ export default function Craft() {
     fetchGetInfoNFT();
     return () => {
       setDataCraft([]);
-      setCurrentCategory("all");
+      setCurrentCategory("All");
     };
   }, []);
   useEffect(() => {
@@ -41,8 +41,7 @@ export default function Craft() {
     <div className={styles.mainBG15}>
       <div className={styles.maincategoryInventories}>
         <div className={styles.maincategory}>
-          {" "}
-          Class :
+          Category :
           {categories.map((category) => {
             return (
               <button
@@ -66,7 +65,7 @@ export default function Craft() {
         <ClipLoaderPage loading={loading} color="grey" />
       ) : (
         <div className={styles.mainMyItem}>
-          {CurrentCategory == "all"
+          {CurrentCategory == "All"
             ? dataCraft.map((item, index) => {
                 return (
                   <CardCraft
@@ -77,7 +76,12 @@ export default function Craft() {
                 );
               })
             : dataCraft
-                .filter((_item) => CurrentCategory === _item.type_nft)
+                .filter(
+                  (_item) =>
+                    CurrentCategory ===
+                    _item.type_nft[0].toUpperCase() +
+                      _item.type_nft.substring(1)
+                )
                 .map((item, index) => {
                   return (
                     <CardCraft

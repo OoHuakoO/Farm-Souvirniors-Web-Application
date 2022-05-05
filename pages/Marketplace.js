@@ -14,8 +14,8 @@ export default function Marketplace() {
   const { share_address_wallet } = useUserState();
   const [dataMarketplace, setDataMarketplace] = useState([]);
   const { isAuthenticated } = useMoralis();
-  const categories = ["all", "animal", "fruit", "vegetable", "chest"];
-  const [CurrentCategory, setCurrentCategory] = useState("all");
+  const categories = ["All", "Animal", "Fruit", "Vegetable", "Chest"];
+  const [CurrentCategory, setCurrentCategory] = useState("All");
   const [loading, setLoading] = useState(true);
 
   const fetchMarketplace = async () => {
@@ -72,14 +72,14 @@ export default function Marketplace() {
   useEffect(() => {
     return () => {
       setDataMarketplace([]);
-      setCurrentCategory("all");
+      setCurrentCategory("All");
     };
   }, []);
   return (
     <div className={styles.mainBG15}>
       <div className={styles.maincategory}>
         {" "}
-        Class :
+        Category :
         {categories.map((category) => {
           return (
             <button
@@ -100,7 +100,7 @@ export default function Marketplace() {
         <ClipLoaderPage loading={loading} color="grey" />
       ) : dataMarketplace.length !== 0 ? (
         <div className={styles.mainMyItem}>
-          {CurrentCategory == "all"
+          {CurrentCategory == "All"
             ? dataMarketplace.map((item, index) => {
                 return (
                   <CardMarketplace
@@ -111,7 +111,12 @@ export default function Marketplace() {
                 );
               })
             : dataMarketplace
-                .filter((_item) => CurrentCategory === _item.type_nft)
+                .filter(
+                  (_item) =>
+                    CurrentCategory ===
+                    _item.type_nft[0].toUpperCase() +
+                      _item.type_nft.substring(1)
+                )
                 .map((item, index) => {
                   return (
                     <CardMarketplace

@@ -14,8 +14,8 @@ export default function Sell() {
   const { share_address_wallet } = useUserState();
   const [dataMySell, setDataMySell] = useState([]);
   const { isAuthenticated } = useMoralis();
-  const categories = ["all", "animal", "fruit", "vegetable", "chest"];
-  const [CurrentCategory, setCurrentCategory] = useState("all");
+  const categories = ["All", "Animal", "Fruit", "Vegetable", "Chest"];
+  const [CurrentCategory, setCurrentCategory] = useState("All");
   const [loading, setLoading] = useState(true);
   const fetchGetMySell = async () => {
     let listOwnerNFT = [];
@@ -35,24 +35,21 @@ export default function Sell() {
             listOwnerNFT.push({ ...data, from: "randombox" });
           }
           if (responseWeb3InstanceRandombox.length - 1 === index) {
-            setLoading(false)
+            setLoading(false);
             setDataMySell(listOwnerNFT);
           }
         });
-      }
-
-     else if (responseWeb3 && !responseWeb3InstanceRandombox) {
+      } else if (responseWeb3 && !responseWeb3InstanceRandombox) {
         await responseWeb3.map(async (data, index) => {
           if (data.seller === share_address_wallet) {
             listOwnerNFT.push({ ...data, from: "nft" });
           }
           if (responseWeb3.length - 1 === index) {
-            setLoading(false)
+            setLoading(false);
             setDataMySell(listOwnerNFT);
           }
         });
-      }
-     else if (responseWeb3 && responseWeb3InstanceRandombox) {
+      } else if (responseWeb3 && responseWeb3InstanceRandombox) {
         let newResponseWeb3 = await responseWeb3.map((data) => {
           data.from = "nft";
           return data;
@@ -69,13 +66,12 @@ export default function Sell() {
             listOwnerNFT.push(data);
           }
           if (listNFT.length - 1 === index) {
-            setLoading(false)
+            setLoading(false);
             setDataMySell(listOwnerNFT);
           }
         });
-      }
-      else{
-        setLoading(false)
+      } else {
+        setLoading(false);
       }
     }
   };
@@ -85,14 +81,14 @@ export default function Sell() {
   useEffect(() => {
     return () => {
       setDataMySell([]);
-      setCurrentCategory("all");
+      setCurrentCategory("All");
     };
   }, []);
   return (
     <div className={styles.mainBG15}>
       <div className={styles.maincategory}>
         {" "}
-        Class :
+        Category :
         {categories.map((category) => {
           return (
             <button
@@ -113,7 +109,7 @@ export default function Sell() {
         <ClipLoaderPage loading={loading} color="grey" />
       ) : dataMySell.length !== 0 ? (
         <div className={styles.mainMyItem}>
-          {CurrentCategory == "all"
+          {CurrentCategory == "All"
             ? dataMySell.map((item, index) => {
                 return (
                   <CardSell
@@ -124,7 +120,12 @@ export default function Sell() {
                 );
               })
             : dataMySell
-                .filter((_item) => CurrentCategory === _item.type_nft)
+                .filter(
+                  (_item) =>
+                    CurrentCategory ===
+                    _item.type_nft[0].toUpperCase() +
+                      _item.type_nft.substring(1)
+                )
                 .map((item, index) => {
                   return (
                     <CardSell
@@ -135,7 +136,9 @@ export default function Sell() {
                   );
                 })}
         </div>
-      ) : <EmptyData />}
+      ) : (
+        <EmptyData />
+      )}
     </div>
   );
 }
