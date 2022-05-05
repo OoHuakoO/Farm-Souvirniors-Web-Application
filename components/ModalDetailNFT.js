@@ -13,9 +13,8 @@ const ModalDetailNFT = (props) => {
       size="lg"
     >
       <Modal.Header className={styles.popupBg1}>
-      <div >Detail</div>
+        <div>Detail</div>
         <div className={styles.modalclose} onClick={() => handleClose()}>
-         
           <div className="material-icons">close</div>
         </div>
       </Modal.Header>
@@ -151,7 +150,7 @@ const ModalDetailNFT = (props) => {
                   </div>
 
                   <div className={styles.detailReward}>
-                    Amount Food : {props.item.amount_food} Fruit
+                    Feed : {props.item.amount_food} Fruit
                   </div>
                 </>
               ) : props.item.type || props.item.type_nft === "animal" ? (
@@ -165,7 +164,7 @@ const ModalDetailNFT = (props) => {
                   </div>
 
                   <div className={styles.detailReward}>
-                    Amount Food : {props.item.amount_food} Fruit
+                  Feed : {props.item.amount_food} Fruit
                   </div>
                 </>
               ) : (
@@ -177,7 +176,7 @@ const ModalDetailNFT = (props) => {
                     Energy Consumed :{props.item.energy_consumed} Energy
                   </div>
                   <div className={styles.detailReward}>
-                    Amount Food :{props.item.amount_food} Fruit
+                    Feed : {props.item.amount_food} Fruit
                   </div>
                 </>
               )}

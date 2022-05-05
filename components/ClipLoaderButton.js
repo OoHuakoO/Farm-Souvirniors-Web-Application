@@ -8,7 +8,6 @@ const override = css`
 `;
 const ClipLoaderButton = ({ loading, color }) => {
   return (
-    
     <ClipLoader color={color} loading={loading} size={20} css={override} />
   );
 };
