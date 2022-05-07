@@ -103,7 +103,7 @@ const CardSell = (props) => {
             onClick={() => handleCancleRandomBox(props)}
             className={styles.buttonCancleSell}
           >
-            <span>Cancle Sell</span>
+            <span>CANCLE SELL</span>
           </div>
         )
       ) : loading ? (

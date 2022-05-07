@@ -167,7 +167,7 @@ const CardMyItem = (props) => {
         </div>
       ) : props.status === "not_plant" ? (
         <div onClick={handleShowPopupSellNFT} className={styles.buttonSell}>
-          <span> Sell</span>
+          <span> SELL</span>
         </div>
       ) : (
         <>

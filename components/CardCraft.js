@@ -75,7 +75,7 @@ const CardCraft = (props) => {
         </div>
       </div>
       <div className={styles.NameCard}>
-        <span>{props.name}</span>
+        <span >{props.name}</span>
       </div>
       <div className={styles.costCraft}>
         <span>Cost</span>
@@ -111,7 +111,7 @@ const CardCraft = (props) => {
         </div>
       ) : (
         <div onClick={() => craftNFT(props)} className={styles.buttonSell}>
-          <span>Craft</span>
+          <span>CRAFT</span>
         </div>
       )}
 

@@ -62,7 +62,7 @@ const CardBuychests = (props) => {
             onClick={() => handleBuyRandomBox(props)}
             className={styles.buttonBuy}
           >
-            Buy
+            BUY
           </div>
         )}
       </div>

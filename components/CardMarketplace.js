@@ -144,7 +144,7 @@ const CardMarketplace = (props) => {
           </div>
         ) : (
           <div onClick={() => buyNFT(props)} className={styles.buttonSell}>
-            <span>Buy</span>
+            <span>BUY</span>
           </div>
         )}
       </div>
