@@ -113,7 +113,7 @@ const ModalPlayGame = (props) => {
                     style={{
                       ...props.style,
                       height: "30px",
-                      width: "30px",
+                      width: "10px",
                       borderRadius: "4px",
                       backgroundColor: "#FFF",
                       display: "flex",
@@ -124,8 +124,8 @@ const ModalPlayGame = (props) => {
                   >
                     <div
                       style={{
-                        height: "10px",
-                        width: "5px",
+                        height: "12px",
+                        width: "3px",
                         backgroundColor: isDragged ? "#ffa34c" : "#CCC",
                       }}
                     />
