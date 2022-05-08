@@ -12,21 +12,21 @@ export default function BuyChests() {
   const { isAuthenticated } = useMoralis();
   const handleMintRandomBox = async () => {
 
-    await mintRandomBox(
-      share_address_wallet,
-      "Animal Chests",
-      "0.01",
-      100,
-      "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2345_balm7t.png"
-    );
+    // await mintRandomBox(
+    //   share_address_wallet,
+    //   "Animal Chests",
+    //   "0.01",
+    //   100,
+    //   "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2345_balm7t.png"
+    // );
 
-    await mintRandomBox(
-      share_address_wallet,
-      "Fruit Chests",
-      "0.01",
-      100,
-      "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2350_in5klp.png"
-    );
+    // await mintRandomBox(
+    //   share_address_wallet,
+    //   "Fruit Chests",
+    //   "0.01",
+    //   100,
+    //   "https://res.cloudinary.com/smilejob/image/upload/v1650294244/Farm-Souvirniors/IMG_2350_in5klp.png"
+    // );
 
     await mintRandomBox(
       share_address_wallet,
@@ -58,13 +58,13 @@ export default function BuyChests() {
         <ClipLoaderPage loading={loading} color="grey" />
       ) : (
         <div className={styles.BuyChestsPages}>
-          <div
+          {/* <div
             onClick={() => {
               handleMintRandomBox();
             }}
           >
             Mint
-          </div>
+          </div> */}
 
           {listRandomBox.map((item, index) => {
             return (
