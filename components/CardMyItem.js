@@ -139,7 +139,7 @@ const CardMyItem = (props) => {
         </div>
       </div>
       <div className={styles.NameCard}>
-        <span>{props.name}</span>
+        <span>{props.name[0].toUpperCase() + props.name.substring(1)}</span>
       </div>
       {props.type_nft === "chest" ? (
         <div style={{ display: "flex", flexDirection: "row" }}>

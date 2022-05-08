@@ -38,7 +38,7 @@ const ModalOpenBuyChests = (props) => {
             </div>
           </div>
           <div className={styles.NameCardPopup}>
-            <span>{props.detailNFTOpenBox.name}</span>
+            <span>{props.detailNFTOpenBox.name  }</span>
           </div>
         </div>
       </Modal.Body>

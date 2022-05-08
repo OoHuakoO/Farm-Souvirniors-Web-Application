@@ -110,7 +110,7 @@ const CardMarketplace = (props) => {
       </div>
       <div className={styles.bgMarketplace}>
         <div className={styles.NameCard1}>
-          <div>{props.name}</div>
+          <div>{props.name[0].toUpperCase() + props.name.substring(1)}</div>
         </div>
         <div className={styles.priceCard}>
           <span>{props.price} BNB</span>

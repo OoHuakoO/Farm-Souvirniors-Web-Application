@@ -75,7 +75,7 @@ const CardCraft = (props) => {
         </div>
       </div>
       <div className={styles.NameCard}>
-        <span >{props.name}</span>
+        <span >{props.name[0].toUpperCase() + props.name.substring(1)}</span>
       </div>
       <div className={styles.costCraft}>
         <span>Cost</span>

@@ -103,11 +103,11 @@ const ModalSellNFT = (props) => {
             </div>
           </div>
           <div className={styles.NameCardPopup}>
-            <span>{props.item.name}</span>
+            <span>{props.item.name[0].toUpperCase() + props.item.name.substring(1)}</span>
           </div>
         </div>
         <div className={styles.detailPopup1}>
-          <div className={styles.detailReward}>{props.item.name}</div>
+          <div className={styles.detailReward}>{props.item.name[0].toUpperCase() + props.item.name.substring(1)}</div>
           <div>Price</div>
           <div className="input-group mb-3">
             <input
