@@ -34,7 +34,7 @@ export default function Navbar() {
         const accounts = await web3.eth.requestAccounts();
         await Login(accounts[0]);
         router.push({
-          pathname: "/BuyChests",
+          pathname: "/PlayGame",
         });
       }
     } else {

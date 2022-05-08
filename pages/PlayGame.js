@@ -15,6 +15,7 @@ export default function PlayGame(props) {
   const [refreshResource, setRefreshResource] = useState(false);
   const { share_address_wallet } = useUserState();
   const { isAuthenticated } = useMoralis();
+  console.log(share_address_wallet)
   const unityContext = new UnityContext({
     loaderUrl: "buildUnity/Huak.loader.js",
     dataUrl: "buildUnity/Huak.data",
