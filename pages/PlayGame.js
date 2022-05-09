@@ -15,7 +15,6 @@ export default function PlayGame(props) {
   const [refreshResource, setRefreshResource] = useState(false);
   const { share_address_wallet } = useUserState();
   const { isAuthenticated } = useMoralis();
-  console.log(share_address_wallet)
   const unityContext = new UnityContext({
     loaderUrl: "buildUnity/Huak.loader.js",
     dataUrl: "buildUnity/Huak.data",
@@ -38,7 +37,7 @@ export default function PlayGame(props) {
       setRefreshResource(Math.random());
     });
     setTimeout(async () => {
-      const web3 = new Web3(Web3.givenProvider ||  Config.web3ProviderBscTestnet);
+      const web3 = new Web3(Web3.givenProvider ||  Config.web3ProviderGanache);
       const accounts = await web3.eth.requestAccounts();
       unityContext.send("Canvas", "SpawnEnemies", accounts[0]);
     }, 2000);
