@@ -40,43 +40,43 @@ const CardMyItem = (props) => {
     var NFT;
     let animal = [
       {
-        value: "Cow",
+        value: "cow",
         probability: 0.1,
       },
       {
-        value: "Pig",
+        value: "pig",
         probability: 0.3,
       },
       {
-        value: "Bird",
+        value: "bird",
         probability: 0.6,
       },
     ];
     let fruit = [
       {
-        value: "Strawberry",
+        value: "strawberry",
         probability: 0.1,
       },
       {
-        value: "Grape",
+        value: "grape",
         probability: 0.3,
       },
       {
-        value: "Apple",
+        value: "apple",
         probability: 0.6,
       },
     ];
     let vegetable = [
       {
-        value: "Cauliflower",
+        value: "cauliflower",
         probability: 0.1,
       },
       {
-        value: "Pumpkin",
+        value: "pumpkin",
         probability: 0.3,
       },
       {
-        value: "Corn",
+        value: "corn",
         probability: 0.6,
       },
     ];
@@ -139,7 +139,7 @@ const CardMyItem = (props) => {
         </div>
       </div>
       <div className={styles.NameCard}>
-        <span>{props.name}</span>
+        <span>{props.name[0].toUpperCase() + props.name.substring(1)}</span>
       </div>
       {props.type_nft === "chest" ? (
         <div style={{ display: "flex", flexDirection: "row" }}>

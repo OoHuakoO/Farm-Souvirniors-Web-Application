@@ -31,7 +31,9 @@ const ModalDetailNFT = (props) => {
             </div>
           </div>
           <div className={styles.NameCardPopup}>
-            <span>{props.item.name}</span>
+            <span>
+              {props.item.name[0].toUpperCase() + props.item.name.substring(1)}
+            </span>
           </div>
         </div>
         <div className={styles.detailPopup}>
@@ -164,7 +166,7 @@ const ModalDetailNFT = (props) => {
                   </div>
 
                   <div className={styles.detailReward}>
-                  Feed : {props.item.amount_food} Fruit
+                    Feed : {props.item.amount_food} Fruit
                   </div>
                 </>
               ) : (

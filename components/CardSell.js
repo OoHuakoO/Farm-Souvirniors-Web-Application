@@ -83,7 +83,7 @@ const CardSell = (props) => {
         </div>
       </div>
       <div className={styles.NameCard1}>
-        <span>{props.name}</span>
+        <span>{props.name[0].toUpperCase() + props.name.substring(1)}</span>
       </div>
       <div className={styles.priceCard}>
         <span>{props.price} BNB</span>
