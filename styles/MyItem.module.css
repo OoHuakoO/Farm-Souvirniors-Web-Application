@@ -372,7 +372,6 @@ line-height: 60px;
 .detailReward {
   font-weight: 700;
   font-size: 20px;
-  
 }
 .binanceBNB1 {
   padding-top: 3px;
@@ -430,6 +429,7 @@ line-height: 60px;
 .randomItems {
   text-align: center;
   font-size: 24px;
+  font-weight: 700;
 }
 /* ModalOpenBuyChests */
 .cardMyItem2PopupOpen {
@@ -461,7 +461,14 @@ line-height: 60px;
 .detailRandomItems {
   display: flex;
   align-items: center;
+  font-weight: 700;
+  font-size: 20px;
   
+}
+.randomItems1 {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .binanceBNB {
   display: flex;
