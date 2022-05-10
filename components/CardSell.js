@@ -87,7 +87,7 @@ const CardSell = (props) => {
       </div>
       <div className={styles.priceCard}>
         <span>{props.price} BNB</span>
-        <span>
+        <span className={styles.binanceBNB1} >
           &nbsp;
           <Image src={binance} alt="binance" width={20} height={20} />
         </span>
@@ -115,7 +115,7 @@ const CardSell = (props) => {
           onClick={() => cancleSell(props)}
           className={styles.buttonCancleSell}
         >
-          <span>Cancle Sell</span>
+          <span>CANCLE SELL</span>
         </div>
       )}
       <ModalDetailNFT

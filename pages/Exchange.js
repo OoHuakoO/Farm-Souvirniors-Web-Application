@@ -64,7 +64,7 @@ export default function Exchange() {
     handleGetDataUser();
   }, [refrestFetchAPI, share_address_wallet]);
   return (
-    <div>
+    <div className={styles.mainBG15}>
       <div className={styles.topicSelecyExchage}>
         <button
           className={
@@ -74,7 +74,7 @@ export default function Exchange() {
           }
           onClick={() => changeTab(0)}
         >
-          Deposit
+          DEPOSIT
         </button>
         <button
           className={
@@ -84,7 +84,7 @@ export default function Exchange() {
           }
           onClick={() => changeTab(1)}
         >
-          Withdraw
+          WITHDRAW
         </button>
       </div>
 

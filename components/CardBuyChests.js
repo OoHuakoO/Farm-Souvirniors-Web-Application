@@ -46,7 +46,7 @@ const CardBuychests = (props) => {
       </div>
       <div className={styles.bnb}>
         <div>{props.price} BNB</div>
-        <div>
+        <div className={styles.bnb1}>
           {" "}
           &nbsp;
           <Image src={binance} alt="binance" width={20} height={20} />

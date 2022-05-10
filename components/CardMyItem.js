@@ -152,16 +152,16 @@ const CardMyItem = (props) => {
               onClick={() => openRandombox(props)}
               className={styles.buttonSell}
             >
-              <span>Open</span>
+              <span>OPEN</span>
             </div>
           )}
           {loading ? (
             <div className={styles.buttonSellDisable}>
-              <span>Sell</span>
+              <span>SELL</span>
             </div>
           ) : (
             <div onClick={handleShowPopupSellNFT} className={styles.buttonSell}>
-              <span>Sell</span>
+              <span>SELL</span>
             </div>
           )}
         </div>
@@ -172,7 +172,7 @@ const CardMyItem = (props) => {
       ) : (
         <>
           <div className={styles.buttonMarketplace}>
-            <span>Use in game</span>
+            <span>USE IN GAME</span>
           </div>
         </>
       )}

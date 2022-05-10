@@ -118,8 +118,8 @@ const ModalSellNFT = (props) => {
             />
           </div>
           <div className={styles.binanceBNB}>
-            <div>BNB</div>&nbsp;
-            <div>
+            <div>BNB</div>&nbsp;&nbsp;
+            <div className={styles.binanceBNB1}>
               <Image src={binance} alt="binance" width={20} height={20} />
             </div>
           </div>
@@ -136,7 +136,7 @@ const ModalSellNFT = (props) => {
                 onClick={() => sellRandombox(props.item)}
                 className={styles.buttonSellPopup}
               >
-                Sell
+                SELL
               </div>
             )
           ) : loading ? (
@@ -151,7 +151,7 @@ const ModalSellNFT = (props) => {
               onClick={() => sellNFT(props.item)}
               className={styles.buttonSellPopup}
             >
-              Sell
+              SELL
             </div>
           )}
         </div>

@@ -122,7 +122,7 @@ const CardMarketplace = (props) => {
         {props.seller === props.share_address_wallet ? (
           <>
             <div className={styles.buttonMarketplace}>
-              <span>This Owner NFT</span>
+              <span>THIS OWNER NFT</span>
             </div>
           </>
         ) : props.type_nft === "chest" ? (

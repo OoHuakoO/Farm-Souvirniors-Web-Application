@@ -41,7 +41,9 @@
   grid-template-columns: 25px 1fr;
   align-items: center;
 }
-
+.buttonNavbarConnected1{
+  padding-top: 4px;
+}
 .buttonNavbar:hover {
   border: 1px solid #ffa34c;
   color: #ffa34c;

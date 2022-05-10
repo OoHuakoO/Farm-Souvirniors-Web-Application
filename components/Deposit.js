@@ -288,7 +288,7 @@ export const Deposit = (props) => {
             </div>
           )}
           <div className={styles.exchangeCoin2}>
-            <div className={styles.Coin1}>{ExchangePrice}</div>
+            <div className={styles.Coin3}>{ExchangePrice}</div>
             <div className={styles.coin2}>
               {CoinsExchange[SelectedCoinIndex].nameCoin2}
             </div>
@@ -300,7 +300,7 @@ export const Deposit = (props) => {
           </div>
         ) : (
           <div className={styles.buttonExchange} onClick={DepositCoin}>
-            Deposit
+            DEPOSIT
           </div>
         )}
       </div>

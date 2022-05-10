@@ -303,6 +303,8 @@
   display: flex;
   justify-content: space-between;
   color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
 }
 .modalclose {
   
@@ -313,7 +315,7 @@
 .cardMyItem1Popup {
   
   width: 60%;
-  height: 300px;
+  height: 280px;
   background-color: #ffffff;
   border-radius: 10px;
   margin: 30px 0px 30px 0px;
@@ -326,7 +328,7 @@
   background-color: #f8f4d3;
   border-radius: 10px 10px 0px 0px;
   padding: 20px;
-  cursor: pointer;
+  /* cursor: pointer; */
   
 }
 .uidCardPopup {
@@ -344,7 +346,7 @@
   text-align: center;
   font-family: 'Lato', sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 24px;
   line-height: 36px;
   padding: 10px 0px;
@@ -368,10 +370,14 @@ font-size: 16px;
 line-height: 60px;
 }
 .detailReward {
-  font-weight: 500;
+  font-weight: 700;
   font-size: 20px;
   
 }
+.binanceBNB1 {
+  padding-top: 3px;
+}
+
 
 .buttonSellPopup {
   height: 40px;

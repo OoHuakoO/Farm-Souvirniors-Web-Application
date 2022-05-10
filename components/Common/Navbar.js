@@ -101,7 +101,7 @@ export default function Navbar() {
         {isAuthenticated ? (
           <div className={styles.munuNavbarRight}>
             <div className={styles.buttonNavbarConnected}>
-              <div>
+              <div className={styles.buttonNavbarConnected1}>
                 <Image src={binance} alt="binance" width={20} height={20} />
               </div>
               <div>Connected to Address {walletAddress}</div>
@@ -113,7 +113,7 @@ export default function Navbar() {
                   styles.buttonNavbarConnected,
                 ].join(" ")}
               >
-                <div>
+                <div className={styles.buttonNavbarConnected1}>
                   <Image
                     className={styles.exchangeSVG}
                     src={exchange}

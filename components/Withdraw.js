@@ -308,7 +308,7 @@ export const Withdraw = (props) => {
             </div>
           )}
           <div className={styles.exchangeCoin2}>
-            <div className={styles.Coin1}>{ExchangePrice}</div>
+            <div className={styles.Coin3}>{ExchangePrice}</div>
             <div className={styles.coin2}>
               {CoinsExchange[SelectedCoinIndex].nameCoin2}
             </div>
@@ -320,7 +320,7 @@ export const Withdraw = (props) => {
           </div>
         ) : (
           <div className={styles.buttonExchange} onClick={withdrawCoin}>
-            Withdraw
+            WITHDRAW
           </div>
         )}
 
