@@ -81,7 +81,7 @@ export default function Navbar() {
             }}
             style={{ cursor: "pointer" }}
           >
-            FARM SOUVIRNIORS
+            FARM SOUVENIR
           </h1>
         ) : (
           <h1
@@ -92,7 +92,7 @@ export default function Navbar() {
             }}
             style={{ cursor: "pointer" }}
           >
-            FARM SOUVIRNIORS
+            FARM SOUVENIR
           </h1>
         )}
       </div>

@@ -10,7 +10,7 @@ export default function MainLayout({ children }) {
     <div>
       {" "}
       <Head>
-        <title>FARM SOUVIRNIORS</title>
+        <title>FARM SOUVENIR</title>
         {/* bootstrap */}
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
