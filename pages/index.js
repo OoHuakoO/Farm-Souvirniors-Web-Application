@@ -3,7 +3,7 @@ import styles from "../styles/Index.module.css";
 import { useMoralis } from "react-moralis";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import BGFarm from "../public/FarmSouvirniorsGame.png";
+import BGFarm from "../public/BGGame.png";
 
 const index = () => {
   const router = useRouter();
