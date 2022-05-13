@@ -6,8 +6,8 @@ import Config from "../config";
 function MyApp({ Component, pageProps }) {
   return (
     <MoralisProvider
-      appId={Config.appIDBSCTestnet}
-      serverUrl={Config.serverURLBSCTestnet}
+      appId={Config.appIDGanache}
+      serverUrl={Config.serverURLGanache}
     >
       <UserProvider>
         <MainLayout>

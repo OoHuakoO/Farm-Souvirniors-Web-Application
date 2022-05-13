@@ -64,14 +64,14 @@ export default function Sidebar() {
               <a className={styles.boxNavPress}>
                 <div className={styles.menuplaygame}>
                   <span className="material-icons">person</span>
-                  <span>My Item</span>
+                  <span>My Items</span>
                 </div>
               </a>
             ) : (
               <a className={styles.boxNavNormal}>
                 <div className={styles.menuplaygame}>
                   <span className="material-icons">person</span>
-                  <span>My Item</span>
+                  <span>My Items</span>
                 </div>
               </a>
             )}

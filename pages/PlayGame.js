@@ -37,7 +37,7 @@ export default function PlayGame(props) {
       setRefreshResource(Math.random());
     });
     setTimeout(async () => {
-      const web3 = new Web3(Web3.givenProvider ||  Config.web3ProviderBscTestnet);
+      const web3 = new Web3(Web3.givenProvider ||  Config.web3ProviderGanache);
       const accounts = await web3.eth.requestAccounts();
       unityContext.send("Canvas", "SpawnEnemies", accounts[0]);
     }, 2000);
