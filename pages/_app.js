@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <MoralisProvider
       appId={Config.appIDBSCTestnet}
-      serverUrl={Config.serverURLGanache}
+      serverUrl={Config.serverURLBSCTestnet}
     >
       <UserProvider>
         <MainLayout>
