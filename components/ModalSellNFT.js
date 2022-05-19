@@ -111,9 +111,9 @@ const ModalSellNFT = (props) => {
           <div>Price</div>
           <div className="input-group mb-3">
             <input
-              type="number"
+              // type="number"
               className="form-control"
-              inputMode="numeric"
+              // inputMode="numeric"
               onChange={(event) => setPriceNFT(event.target.value)}
             />
           </div>
