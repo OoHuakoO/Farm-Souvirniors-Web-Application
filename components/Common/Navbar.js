@@ -16,7 +16,7 @@ export default function Navbar() {
   const [walletAddress, setWalletAddress] = useState();
   const { setShare_Address_wallet } = useUserState();
   const getAddressWallet = async () => {
-    const web3 = new Web3(Web3.givenProvider || Config.web3ProviderGanache);
+    const web3 = new Web3(Web3.givenProvider || Config.web3ProviderBscTestnet);
     const accounts = await web3.eth.requestAccounts();
     let accountsFormat =
       accounts[0].substring(0, 5) +
@@ -30,7 +30,7 @@ export default function Navbar() {
     if (window.web3) {
       const authen = await authenticate();
       if (authen) {
-        const web3 = new Web3(Web3.givenProvider || Config.web3ProviderGanache);
+        const web3 = new Web3(Web3.givenProvider || Config.web3ProviderBscTestnet);
         const accounts = await web3.eth.requestAccounts();
         await Login(accounts[0]);
         router.push({

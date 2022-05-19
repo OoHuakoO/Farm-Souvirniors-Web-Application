@@ -1,7 +1,7 @@
 import { getContract } from "./index.js";
 import Config from "../config";
 import Web3 from "web3";
-const web3 = new Web3(Web3.givenProvider ||  Config.web3ProviderGanache);
+const web3 = new Web3(Web3.givenProvider ||  Config.web3ProviderBscTestnet);
 const getContractAddressFurnitureToken = async () => {
   let { FurnitureToken } = await getContract();
   return FurnitureToken._address;
